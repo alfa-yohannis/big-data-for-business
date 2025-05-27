@@ -1,0 +1,337 @@
+\chapter{Strategi dan Kerangka Kerja Big Data}
+
+\noindent
+Implementasi big data yang sukses dalam organisasi tidak cukup hanya mengandalkan teknologi canggih atau volume data yang besar. Diperlukan pendekatan strategis yang menyeluruh agar data dapat diolah dan dimanfaatkan secara efektif untuk mendukung tujuan bisnis. Strategi big data berfungsi sebagai fondasi dalam merencanakan, mengelola, dan mengevaluasi inisiatif data di seluruh unit organisasi. Dalam bab ini, akan dibahas berbagai kerangka kerja penting yang digunakan untuk memahami dan membangun strategi big data secara sistematis, termasuk model 5Vs, McKinsey Value Chain, Big Data Maturity Model (BDMM), serta kerangka tata kelola DAMA-DMBOK. Kerangka-kerangka ini tidak hanya memberikan panduan konseptual, tetapi juga membantu organisasi dalam mengukur kesiapan, menetapkan prioritas, dan mengelola siklus hidup data secara strategis.
+
+
+\section{Pentingnya Strategi Big Data dalam Organisasi}
+
+Strategi big data merupakan pendekatan terencana dan terstruktur yang dirancang untuk memaksimalkan pemanfaatan data dalam mencapai tujuan bisnis. Di tengah meningkatnya volume, variasi, dan kecepatan data yang masuk ke organisasi, keberadaan strategi yang jelas menjadi faktor penentu keberhasilan implementasi big data secara berkelanjutan dan berdampak nyata.
+
+Tanpa strategi, organisasi sering kali terjebak dalam inisiatif teknologi yang terfragmentasi, tidak selaras dengan prioritas bisnis, serta menghasilkan beban biaya tinggi tanpa hasil yang signifikan. Gartner (2018) melaporkan bahwa lebih dari 85\% proyek big data gagal memberikan nilai bisnis karena kurangnya penyelarasan antara teknologi, proses bisnis, dan kompetensi organisasi \cite{gartner2018}.
+
+Strategi big data yang efektif mencakup beberapa elemen utama:
+\begin{enumerate}
+	\item \textbf{Visi dan Tujuan Bisnis:} Strategi harus dimulai dari pemahaman tujuan bisnis, seperti meningkatkan loyalitas pelanggan, efisiensi rantai pasok, atau inovasi produk berbasis data.
+	
+	\item \textbf{Arsitektur dan Teknologi:} Pemilihan platform dan infrastruktur yang sesuai dengan skala, kecepatan, dan kebutuhan integrasi data organisasi sangat krusial dalam mendukung strategi data yang berkelanjutan \cite{ekambaram2021}.
+	
+	\item \textbf{Tata Kelola dan Kepatuhan:} Strategi harus mengatur bagaimana data dikumpulkan, disimpan, diakses, dan digunakan dengan mematuhi kebijakan privasi dan etika \cite{otieno2021}.
+	
+	\item \textbf{Kapabilitas Organisasi:} Pengembangan kompetensi internal, pelatihan, dan pembentukan budaya berbasis data menjadi fondasi pelaksanaan strategi secara menyeluruh \cite{lewis2021}.
+	
+	\item \textbf{Metrik dan Evaluasi Dampak:} Strategi perlu menetapkan indikator kinerja untuk mengukur efektivitas inisiatif data, baik dari sisi operasional, finansial, maupun inovasi.
+\end{enumerate}
+
+Dalam konteks yang lebih luas, strategi big data juga berfungsi sebagai jembatan antara visi digital organisasi dan pelaksanaannya melalui teknologi. Menurut laporan McKinsey, perusahaan yang mengintegrasikan strategi data dengan pengambilan keputusan tingkat manajemen cenderung lebih adaptif dan unggul dalam bersaing di era digital \cite{mckinsey2016}.
+
+Oleh karena itu, strategi big data bukan sekadar rencana teknis, tetapi merupakan bagian integral dari transformasi organisasi menuju pengambilan keputusan berbasis bukti, efisiensi proses, dan inovasi yang berkelanjutan.
+
+\section{Kerangka Konseptual 5Vs Big Data}
+
+Kerangka 5Vs merupakan salah satu model konseptual yang paling umum digunakan untuk menjelaskan kompleksitas dan tantangan pengelolaan big data. Diperkenalkan pertama kali oleh Doug Laney (2001) dengan tiga elemen awal—Volume, Velocity, dan Variety—kerangka ini kemudian diperluas dengan Veracity dan Value oleh peneliti dan praktisi industri \cite{laney2001, gandomi2015}. Setiap dimensi mencerminkan karakteristik unik data modern yang harus dipertimbangkan dalam perencanaan strategi data organisasi.
+
+\subsection{Volume}
+
+Volume merujuk pada skala besar data yang dikumpulkan dan disimpan oleh organisasi. Peningkatan volume data berasal dari beragam sumber seperti sistem transaksi, log aktivitas pengguna, sensor IoT, media sosial, hingga rekam medis elektronik. Menurut IDC (2021), total data digital global diperkirakan mencapai lebih dari 180 zettabytes pada tahun 2025 \cite{idc2021}. Volume besar ini menuntut penggunaan sistem penyimpanan terdistribusi seperti Hadoop HDFS atau penyimpanan awan dengan skala elastis.
+
+Sebagai contoh, perusahaan e-commerce seperti Amazon menangani miliaran permintaan produk, klik pengguna, dan transaksi per hari yang harus disimpan dan diproses secara efisien untuk kebutuhan analitik dan layanan personalisasi. Di sektor kesehatan, rumah sakit dan penyedia layanan kesehatan menghasilkan data medis dalam jumlah besar, seperti hasil laboratorium, rekam radiologi, dan catatan elektronik pasien, yang semuanya harus disimpan dengan aman dan sesuai standar regulasi.
+
+\subsection{Velocity}
+
+Velocity mengacu pada kecepatan data dihasilkan, ditransmisikan, dan diproses. Dalam konteks bisnis modern, kemampuan memproses data secara real-time atau near-real-time menjadi sangat penting, misalnya dalam sistem rekomendasi online, deteksi fraud perbankan, atau monitoring kondisi mesin. Teknologi seperti Apache Kafka dan Spark Streaming memungkinkan organisasi merespons data streaming dengan latensi rendah \cite{demchenko2013}.
+
+Contoh nyata dari penerapan velocity adalah sistem navigasi transportasi daring seperti Gojek atau Grab yang memproses data lokasi jutaan pengguna dan pengemudi secara real-time untuk mengatur alokasi armada dan estimasi waktu kedatangan. Contoh lain adalah sistem perdagangan saham algoritmik yang harus memproses dan merespons data pasar dalam milidetik untuk mengeksekusi keputusan pembelian atau penjualan secara otomatis.
+
+
+\subsection{Variety}
+
+Variety menjelaskan keragaman jenis dan format data. Data modern tidak hanya berupa data terstruktur dalam tabel relasional, tetapi juga mencakup data semi-terstruktur (seperti XML dan JSON), serta data tidak terstruktur seperti teks, gambar, audio, dan video. Perusahaan yang mampu menggabungkan data dari berbagai format dapat memperoleh wawasan yang lebih menyeluruh dan holistik \cite{gandomi2015}.
+
+Sebagai contoh, platform media sosial seperti Facebook dan TikTok memproses berbagai jenis data termasuk teks status, metadata pengguna, komentar suara, foto, serta video pendek. Penggabungan data ini memungkinkan algoritma rekomendasi bekerja lebih akurat dalam memahami preferensi pengguna. Di sektor layanan pelanggan, perusahaan seperti Telkom atau PLN menggabungkan data terstruktur dari sistem billing dengan data tidak terstruktur dari log percakapan call center untuk meningkatkan kualitas layanan dan merespon keluhan secara proaktif.
+
+\subsection{Veracity}
+
+Veracity berhubungan dengan akurasi, konsistensi, dan keandalan data. Data yang mengandung noise, inkonsistensi, atau bias dapat menghasilkan kesimpulan yang salah dan berdampak negatif pada keputusan bisnis. Oleh karena itu, proses validasi, pembersihan data, dan pengelolaan metadata menjadi komponen penting dalam manajemen data modern \cite{sadiq2017}.
+
+Sebagai contoh, dalam industri kesehatan, kesalahan input dalam data rekam medis pasien seperti usia, alergi, atau riwayat obat dapat mengakibatkan diagnosis yang tidak akurat dan membahayakan nyawa pasien. Di sektor keuangan, data nasabah yang tidak konsisten antar sistem—misalnya perbedaan ejaan nama atau alamat—dapat menyebabkan duplikasi profil atau kesalahan scoring risiko kredit. Oleh karena itu, verifikasi, normalisasi, dan deduplikasi data menjadi prosedur wajib dalam proyek integrasi data lintas sistem.
+
+\subsection{Value}
+
+Value adalah tujuan akhir dari seluruh inisiatif big data—yakni menciptakan nilai nyata bagi organisasi. Data yang besar dan cepat tidak memiliki arti tanpa penerapan analitik dan interpretasi yang tepat. Nilai dapat dihasilkan dalam bentuk peningkatan efisiensi, pengurangan biaya, peningkatan kepuasan pelanggan, atau penciptaan model bisnis baru \cite{waller2013}. Oleh karena itu, strategi big data harus berorientasi pada nilai, bukan hanya volume teknis.
+
+Sebagai contoh, Netflix menggunakan big data untuk menganalisis perilaku tontonan penggunanya secara real-time, yang kemudian diterjemahkan menjadi strategi rekomendasi konten yang sangat personal. Pendekatan ini tidak hanya meningkatkan waktu tonton dan retensi pelanggan, tetapi juga digunakan dalam pengambilan keputusan produksi serial orisinal, seperti dalam kasus sukses “House of Cards.”
+
+Contoh lain datang dari industri logistik: perusahaan seperti DHL atau Maersk memanfaatkan analitik big data untuk mengoptimalkan rute pengiriman, meminimalkan waktu tempuh, serta mengurangi konsumsi bahan bakar dan emisi karbon. Hasilnya adalah peningkatan efisiensi operasional sekaligus kontribusi terhadap tujuan keberlanjutan (sustainability) perusahaan.
+
+\begin{longtable}{|p{0.1\textwidth}|p{0.34\textwidth}|p{0.47\textwidth}|}
+	\caption{Ringkasan 5Vs dalam Kerangka Konseptual Big Data}
+	\label{tab:5vs} \\
+	\hline
+	\textbf{Dimensi} & \textbf{Deskripsi} & \textbf{Contoh Aplikasi Nyata} \\
+	\hline
+	\endfirsthead
+	
+	\multicolumn{3}{c}{{\tablename\ \thetable{} -- lanjutan dari halaman sebelumnya}} \\
+	\hline
+	\textbf{Dimensi} & \textbf{Deskripsi} & \textbf{Contoh Aplikasi Nyata} \\
+	\hline
+	\endhead
+	
+	\hline \multicolumn{3}{r}{{Bersambung ke halaman berikutnya}} \\
+	\endfoot
+	
+	\hline
+	\endlastfoot
+	
+	\textbf{Volume} & Skala besar data yang dikumpulkan dari berbagai sumber, seperti transaksi, sensor IoT, media sosial, dan rekam medis. & Amazon menangani miliaran transaksi dan klik; rumah sakit menyimpan data laboratorium, radiologi, dan rekam medis dalam jumlah besar. \\
+	\hline
+	\textbf{Velocity} & Kecepatan data dihasilkan dan diproses secara real-time atau near-real-time. & Gojek memproses data lokasi jutaan pengguna secara langsung; algoritma saham mengeksekusi transaksi dalam hitungan milidetik. \\
+	\hline
+	\textbf{Variety} & Keragaman format data: terstruktur, semi-terstruktur (XML/JSON), dan tidak terstruktur (teks, audio, video). & TikTok menggabungkan metadata, video, dan komentar suara; Telkom memadukan data billing dengan log percakapan pelanggan. \\
+	\hline
+	\textbf{Veracity} & Tingkat keakuratan, konsistensi, dan keandalan data, serta pengelolaan noise dan bias. & Kesalahan input data medis dapat membahayakan diagnosis; duplikasi data nasabah menyebabkan kesalahan scoring risiko kredit. \\
+	\hline
+	\textbf{Value} & Nilai bisnis yang dihasilkan melalui analitik, seperti efisiensi, penghematan biaya, atau inovasi. & Netflix meningkatkan retensi dengan rekomendasi konten personal; DHL mengoptimalkan rute dan efisiensi logistik menggunakan data. \\
+	\hline
+	
+\end{longtable}
+
+
+
+Kerangka 5Vs (Tabel~\ref{tab:5vs}) memberikan dasar konseptual yang berguna untuk mengevaluasi kesiapan organisasi dalam memanfaatkan big data serta membantu merumuskan pendekatan yang tepat dalam perencanaan, integrasi, dan penggunaan data dalam konteks bisnis.
+
+\section{McKinsey Big Data Value Chain}
+
+Salah satu pendekatan kerangka kerja yang banyak digunakan dalam strategi big data adalah model \textit{Big Data Value Chain} yang diperkenalkan oleh McKinsey \& Company \cite{mckinsey2011}. Model ini menggambarkan alur transformasi data menjadi nilai bisnis melalui enam tahapan berurutan: \textbf{Capture}, \textbf{Curate}, \textbf{Process}, \textbf{Analyse}, \textbf{Visualise}, dan \textbf{Decide}. Setiap tahapan memiliki peran penting dalam mendukung keputusan berbasis data dan memastikan nilai maksimal dapat diperoleh dari aset data organisasi.
+
+\subsection{Tahapan: Capture, Curate, Process, Analyse, Visualise, Decide}
+
+\begin{itemize}
+	\item \textbf{Capture} \\
+	Tahap pengumpulan data dari berbagai sumber, baik internal maupun eksternal, terstruktur maupun tidak terstruktur. Contohnya meliputi transaksi pelanggan, sensor IoT, log sistem, media sosial, dan data pihak ketiga. Teknologi yang umum digunakan pada tahap ini termasuk API, web scraping, dan platform integrasi data seperti Apache NiFi.
+	
+	\item \textbf{Curate} \\
+	Data yang dikumpulkan perlu dibersihkan, difilter, dan diintegrasikan agar dapat digunakan secara efektif. Ini termasuk validasi kualitas data, penghapusan duplikasi, standarisasi format, serta penggabungan data dari berbagai sistem. Tools seperti KNIME, Talend, dan Alteryx banyak digunakan pada tahap ini.
+	
+	\item \textbf{Process} \\
+	Tahap ini mencakup transformasi dan penyimpanan data dalam bentuk yang siap dianalisis. Proses ini dapat melibatkan pemrosesan batch menggunakan Hadoop MapReduce atau pemrosesan real-time menggunakan Apache Spark. Pemilihan metode tergantung pada kebutuhan bisnis dan volume data.
+	
+	\item \textbf{Analyse} \\
+	Data yang telah diproses dianalisis untuk menemukan pola, tren, dan insight menggunakan metode statistik maupun algoritma machine learning. Tools seperti Orange, Python scikit-learn, atau RapidMiner dapat digunakan oleh analis data untuk mengevaluasi model prediksi dan segmentasi pelanggan.
+	
+	\item \textbf{Visualise} \\
+	Hasil analisis disajikan dalam bentuk visualisasi yang informatif untuk mendukung interpretasi dan pengambilan keputusan. Dashboard interaktif dengan Power BI atau Tableau memungkinkan pengguna bisnis menavigasi hasil secara intuitif dan mendalam.
+	
+	\item \textbf{Decide} \\
+	Tahap akhir adalah pengambilan keputusan berbasis data (data-driven decision making). Keputusan ini dapat bersifat operasional (misal: pengaturan stok otomatis), taktis (misal: kampanye pemasaran berbasis segmen), atau strategis (misal: pengembangan produk baru berbasis preferensi pelanggan).
+\end{itemize}
+
+Kerangka ini tidak hanya menjelaskan bagaimana data diproses secara teknis, tetapi juga menekankan pentingnya nilai bisnis dari setiap tahapan. Tabel~\ref{tab:mckinsey_value_chain} merangkum tiap tahapan.
+
+\begin{longtable}{|p{0.11\textwidth}|p{0.82\textwidth}|}
+	\caption{Tahapan dalam McKinsey Big Data Value Chain}
+	\label{tab:mckinsey_value_chain} \\
+	\hline
+	\textbf{Tahapan} & \textbf{Deskripsi dan Contoh} \\
+	\hline
+	\endfirsthead
+	
+	\multicolumn{2}{c}{{\tablename\ \thetable{} -- lanjutan dari halaman sebelumnya}} \\
+	\hline
+	\textbf{Tahapan} & \textbf{Deskripsi dan Contoh} \\
+	\hline
+	\endhead
+	
+	\hline \multicolumn{2}{r}{{Bersambung ke halaman berikutnya}} \\
+	\endfoot
+	
+	\hline
+	\endlastfoot
+	
+	\textbf{Capture} &
+	Pengumpulan data dari berbagai sumber internal dan eksternal, baik terstruktur maupun tidak terstruktur. Contoh: transaksi pelanggan, log sistem, sensor IoT, media sosial. Teknologi: API, web scraping, Apache NiFi. \\
+	\hline
+	\textbf{Curate} &
+	Pembersihan, filter, dan integrasi data untuk memastikan kualitas dan konsistensi. Contoh aktivitas: penghapusan duplikasi, standarisasi format. Tools: KNIME, Talend, Alteryx. \\
+	\hline
+	\textbf{Process} &
+	Transformasi dan penyimpanan data agar siap dianalisis. Meliputi pemrosesan batch (Hadoop) atau real-time (Spark). Pilihan bergantung pada volume dan kebutuhan bisnis. \\
+	\hline
+	\textbf{Analyse} &
+	Analisis data untuk menemukan pola dan insight. Pendekatan statistik dan machine learning digunakan. Tools: Orange, scikit-learn, RapidMiner. \\
+	\hline
+	\textbf{Visualise} &
+	Penyajian hasil analisis dalam bentuk visualisasi informatif dan interaktif. Contoh: dashboard Power BI, Tableau untuk mendukung interpretasi bisnis. \\
+	\hline
+	\textbf{Decide} &
+	Pengambilan keputusan berbasis data. Dapat berupa keputusan operasional (pengaturan stok), taktis (kampanye), atau strategis (pengembangan produk). \\
+	\hline
+	
+\end{longtable}
+
+
+\subsection{Aplikasi Value Chain dalam Konteks Bisnis}
+
+Model McKinsey Big Data Value Chain sangat relevan dalam berbagai sektor industri. Beberapa contoh aplikatif meliputi:
+
+\begin{itemize}
+	\item \textbf{Ritel dan E-commerce:} Perusahaan seperti Tokopedia atau Shopee menangkap data klik dan transaksi (\textit{capture}), membersihkannya dari bot dan error (\textit{curate}), memproses dalam data warehouse (\textit{process}), menganalisis perilaku pengguna (\textit{analyse}), menampilkan rekomendasi produk (\textit{visualise}), dan secara otomatis mempersonalisasi halaman utama pelanggan (\textit{decide}).
+	
+	\item \textbf{Manufaktur:} Dalam industri manufaktur, sensor pada mesin produksi menangkap data suhu dan getaran (\textit{capture}), data dikurasi agar hanya anomali penting yang disimpan (\textit{curate}), dilakukan proses normalisasi data IoT (\textit{process}), lalu digunakan untuk model prediksi kerusakan mesin (\textit{analyse}). Hasil ditampilkan melalui dashboard kondisi mesin (\textit{visualise}) untuk mendukung keputusan pemeliharaan prediktif (\textit{decide}).
+	
+	\item \textbf{Keuangan:} Di sektor perbankan, aliran transaksi digital (\textit{capture}) dikurasi untuk menyingkirkan noise dan error (\textit{curate}), diproses secara real-time dengan streaming analytics (\textit{process}), dianalisis untuk mendeteksi fraud (\textit{analyse}), ditampilkan sebagai alert visual kepada analis (\textit{visualise}), dan menghasilkan tindakan pemblokiran otomatis (\textit{decide}).
+	
+	\item \textbf{Pemerintahan dan Publik:} Instansi pemerintah dapat menggunakan data survei dan pelayanan publik (\textit{capture}), mengkurasi data warga (\textit{curate}), memproses tren populasi dan permintaan layanan (\textit{process}), menganalisis dampak kebijakan (\textit{analyse}), menyusun laporan interaktif untuk legislatif (\textit{visualise}), dan menentukan intervensi sosial atau ekonomi yang tepat (\textit{decide}).
+\end{itemize}
+
+Kerangka ini fleksibel dan dapat diadaptasi dalam berbagai skala organisasi, mulai dari startup digital hingga institusi publik berskala nasional. Dengan pendekatan ini, organisasi dapat membangun alur kerja data yang terstruktur, transparan, dan terarah pada penciptaan nilai yang nyata.
+
+
+
+\section{Big Data Maturity Model (BDMM)}
+
+Model Kematangan Big Data atau \textit{Big Data Maturity Model} (BDMM) merupakan kerangka kerja yang dirancang untuk membantu organisasi menilai sejauh mana mereka telah mengadopsi dan memanfaatkan big data secara efektif dan strategis. Model ini menyediakan tahapan perkembangan yang dapat dijadikan peta jalan (\textit{roadmap}) menuju transformasi organisasi berbasis data \cite{wan2019}.
+
+\subsection{Tingkat Kematangan Organisasi}
+
+Berbagai versi BDMM dikembangkan oleh lembaga seperti TDWI, IBM, dan Informatica, namun secara umum kerangka ini terdiri atas lima tingkat kematangan:
+
+\begin{enumerate}
+	\item \textbf{Ad-hoc:} Organisasi berada pada tahap awal, belum memiliki strategi data formal, dan inisiatif big data bersifat tidak terkoordinasi. Contoh: Tim pemasaran menggunakan Excel untuk menganalisis data kampanye tanpa standar format. Divisi operasional menyimpan data transaksi lokal tanpa integrasi ke sistem pusat.
+	
+	\item \textbf{Opportunistic:} Beberapa unit kerja mulai memanfaatkan data untuk inisiatif terbatas, namun belum ada standarisasi atau integrasi antar departemen. Contoh: Departemen keuangan menggunakan dashboard Power BI untuk laporan internal saja. Tim penjualan menjalankan analisis churn pelanggan menggunakan data CRM sendiri tanpa melibatkan divisi lain.
+	
+	\item \textbf{Systematic:} Pengelolaan data mulai terstruktur dengan arsitektur yang jelas dan penggunaan analitik yang lebih luas dalam proses operasional. Contoh: Organisasi mengimplementasikan data warehouse terpusat untuk semua unit kerja. Beberapa model machine learning digunakan secara reguler untuk prediksi permintaan dan alokasi inventori.
+	
+	\item \textbf{Enterprise:} Pendekatan berbasis data telah menyeluruh dan terintegrasi lintas fungsi, didukung oleh tata kelola dan platform teknologi yang matang. Contoh: Setiap departemen mengakses data terstandar melalui portal self-service analitik organisasi. Kebijakan tata kelola data dan keamanan telah disahkan dan dijalankan oleh komite lintas fungsi.
+	
+	\item \textbf{Transformational:} Data menjadi inti dari strategi bisnis. Organisasi memiliki budaya berbasis data, pengambilan keputusan otomatis, dan inovasi berkelanjutan berbasis insight \cite{tdwi2013}. Contoh: Rekomendasi produk dan harga diubah secara dinamis berdasarkan analisis real-time. Inovasi layanan baru seperti digital twin dan chatbot diluncurkan berdasarkan insight dari data pelanggan.
+\end{enumerate}
+
+
+\subsection{Aspek Penilaian dan Indikator Maturitas}
+
+Penilaian tingkat kematangan big data dilakukan dengan mengukur kapabilitas organisasi di berbagai dimensi utama, antara lain:
+
+\begin{itemize}
+	\item \textbf{Strategi:} Apakah organisasi memiliki visi dan rencana jangka panjang terkait penggunaan data? Contoh: Organisasi memiliki roadmap lima tahun untuk transformasi digital berbasis data. Visi strategis mencakup pemanfaatan data pelanggan untuk pengembangan layanan baru.
+	
+	\item \textbf{Tata Kelola dan Kebijakan:} Apakah terdapat peraturan, struktur tanggung jawab, dan mekanisme perlindungan data yang terstandarisasi? Contoh: Terdapat kebijakan formal tentang klasifikasi dan perlindungan data sensitif. Peran seperti data steward dan data owner telah didefinisikan di seluruh unit.
+	
+	\item \textbf{Teknologi dan Infrastruktur:} Sejauh mana sistem penyimpanan, pemrosesan, dan keamanan data mendukung operasional big data? Contoh: Organisasi telah mengadopsi data lake berbasis cloud untuk integrasi data multi-sumber. Infrastruktur pemrosesan real-time menggunakan Apache Kafka dan Spark telah diterapkan.
+	
+	\item \textbf{Analitik dan Inovasi:} Apakah organisasi menggunakan analitik lanjutan dan machine learning dalam operasional dan pengambilan keputusan? Contoh: Model prediktif digunakan untuk menganalisis churn pelanggan dan segmentasi pasar. Machine learning diterapkan dalam otomatisasi proses logistik dan pengiriman.
+	
+	\item \textbf{Sumber Daya Manusia:} Apakah tersedia tenaga ahli dan pelatihan untuk mendukung kapabilitas data science dan data management? Contoh: Tersedia program pelatihan internal untuk analis dan data engineer. Organisasi merekrut spesialis data dari latar belakang statistik dan TI.
+	
+	\item \textbf{Budaya Organisasi:} Seberapa kuat adopsi budaya berbasis data dalam praktik kerja sehari-hari? Contoh: Pengambilan keputusan rutin di level manajemen didasarkan pada dashboard dan metrik performa. Karyawan didorong untuk menggunakan insight data dalam proyek lintas divisi.
+\end{itemize}
+
+
+Penilaian terhadap dimensi-dimensi tersebut biasanya dilakukan melalui survei internal, audit manajemen data, dan diskusi terfokus bersama stakeholder lintas fungsi.
+
+\subsection{Penerapan BDMM dalam Evaluasi Strategi}
+
+BDMM dapat digunakan oleh organisasi sebagai alat refleksi strategis untuk:
+
+\begin{itemize}
+	\item \textbf{Menilai posisi saat ini:} Dengan menentukan tingkat kematangan saat ini, organisasi dapat memahami kekuatan dan kelemahan pengelolaan datanya. Contoh: Survei internal dilakukan untuk memetakan kapabilitas analitik di tiap divisi. Audit data menunjukkan bahwa beberapa unit masih menyimpan data secara silo.
+	
+	\item \textbf{Menentukan target transformasi:} BDMM menyediakan tahapan bertahap yang dapat menjadi tujuan jangka pendek, menengah, dan panjang. Contoh: Organisasi menetapkan target naik dari tingkat \textit{opportunistic} ke \textit{systematic} dalam dua tahun. Rencana strategis disusun untuk membangun data warehouse sebagai prasyarat integrasi lintas sistem.
+	
+	\item \textbf{Mengarahkan investasi teknologi:} Identifikasi celah maturitas membantu mengarahkan investasi pada teknologi dan proses yang relevan. Contoh: Hasil evaluasi menunjukkan kebutuhan akan platform integrasi data dan sistem visualisasi real-time. Investasi difokuskan pada solusi cloud-native untuk meningkatkan skalabilitas dan kecepatan pemrosesan data.
+	
+	\item \textbf{Mendorong dialog lintas departemen:} Kerangka ini menjadi titik temu antara fungsi bisnis, TI, dan manajemen dalam menyusun strategi data yang terkoordinasi. Contoh: Forum koordinasi bulanan dibentuk antara departemen data, pemasaran, dan operasional. Proyek percontohan segmentasi pelanggan melibatkan kontribusi lintas fungsi sejak tahap desain.
+	
+	\item \textbf{Mengukur dampak inisiatif data:} Penilaian secara berkala terhadap indikator maturitas memungkinkan organisasi memantau efektivitas strategi dan membuat penyesuaian jika diperlukan. Contoh: Indikator seperti jumlah proyek berbasis data dan ROI dashboard dipantau setiap semester. Evaluasi tahunan menunjukkan peningkatan adopsi analitik di unit layanan pelanggan.
+\end{itemize}
+
+
+Dengan demikian, BDMM bukan hanya alat evaluasi, tetapi juga kompas strategis yang membantu organisasi dalam perjalanan transformasi digital berbasis data secara sistematis, terukur, dan berorientasi pada nilai.
+
+
+
+\section{DAMA-DMBOK: Kerangka Tata Kelola Data}
+
+Tata kelola data (data governance) adalah elemen fundamental dalam strategi big data yang berkelanjutan dan bertanggung jawab. Salah satu kerangka kerja paling komprehensif dalam bidang ini adalah DAMA-DMBOK, yaitu \textit{Data Management Body of Knowledge}, yang dikembangkan oleh Data Management Association (DAMA International) \cite{dama2017}.
+
+Kerangka ini memberikan panduan menyeluruh mengenai domain, prinsip, dan praktik terbaik dalam manajemen data di seluruh siklus hidupnya. DAMA-DMBOK tidak berfokus pada teknologi tertentu, melainkan pada struktur kebijakan dan kapabilitas organisasi untuk memastikan data dikelola secara akurat, aman, dan bernilai.
+
+\subsection{Komponen Utama DAMA}
+
+DAMA-DMBOK membagi manajemen data ke dalam 11 domain utama:
+
+\begin{enumerate}
+	\item \textbf{Data Governance} – pengawasan dan pengendalian strategis atas data, termasuk kepemilikan, standar, dan kebijakan penggunaan data. Contoh: Organisasi membentuk komite tata kelola data lintas departemen. Kebijakan akses data disusun dan diimplementasikan melalui persetujuan berjenjang.
+	
+	\item \textbf{Data Architecture} – desain struktural data enterprise, termasuk pemodelan konseptual, logikal, dan fisikal. Contoh: Enterprise data model dibuat untuk menyatukan skema antar sistem. Arsitektur data disusun untuk mendukung integrasi cloud dan on-premise.
+	
+	\item \textbf{Data Modeling \& Design} – pembangunan model data untuk mendukung aplikasi dan sistem bisnis. Contoh: Diagram ER dibuat sebagai bagian dari proses pengembangan sistem keuangan. Tim pengembang menggunakan skema logikal untuk mendesain struktur database pelanggan.
+	
+	\item \textbf{Data Storage \& Operations} – pengelolaan penyimpanan, backup, dan pengambilan data yang andal. Contoh: Perusahaan menerapkan jadwal backup harian dan replikasi geografis. Penggunaan object storage berbasis cloud memungkinkan penyimpanan skala besar dengan biaya efisien.
+	
+	\item \textbf{Data Security} – perlindungan data dari akses tidak sah, pelanggaran, dan kerusakan. Contoh: Implementasi enkripsi data end-to-end untuk data pelanggan. Audit keamanan dilakukan secara berkala terhadap hak akses database.
+	
+	\item \textbf{Data Integration \& Interoperability} – penggabungan data dari berbagai sistem dan menjamin sinkronisasi. Contoh: ETL pipeline dibangun untuk menggabungkan data penjualan dari tiga platform berbeda. Integrasi API dilakukan untuk menyatukan data layanan pelanggan dan sistem ERP.
+	
+	\item \textbf{Document \& Content Management} – pengelolaan data tidak terstruktur seperti dokumen dan multimedia. Contoh: Sistem manajemen dokumen digunakan untuk menyimpan laporan internal dan kontrak hukum. File audio dari call center diarsipkan dan diklasifikasikan berdasarkan metadata.
+	
+	\item \textbf{Reference \& Master Data Management} – pemusatan dan standarisasi entitas inti seperti pelanggan dan produk. Contoh: Satu identitas pelanggan ditetapkan lintas sistem untuk menghindari duplikasi. Daftar produk disinkronkan secara otomatis antara sistem gudang dan penjualan.
+	
+	\item \textbf{Data Warehousing \& BI} – pemusatan data untuk pelaporan dan pengambilan keputusan. Contoh: Data warehouse dibangun untuk mengkonsolidasikan data penjualan nasional. Dashboard BI disediakan bagi manajemen untuk memantau KPI harian.
+	
+	\item \textbf{Metadata Management} – pengelolaan informasi tentang data (data tentang data). Contoh: Data katalog dikembangkan untuk mendokumentasikan asal-usul dan struktur dataset. Metadata digunakan untuk mengotomatisasi proses audit dan lineage data.
+	
+	\item \textbf{Data Quality Management} – perencanaan, pemantauan, dan perbaikan kualitas data. Contoh: Pembersihan data dilakukan secara otomatis untuk menghapus duplikasi. Skor kualitas data dilaporkan mingguan untuk memantau tingkat kelengkapan dan akurasi.
+\end{enumerate}
+
+
+Kesebelas domain ini saling terintegrasi dan membentuk dasar tata kelola data organisasi yang berkelanjutan dan adaptif terhadap pertumbuhan volume dan kompleksitas data.
+
+\subsection{Hubungan DAMA dengan Strategi Big Data}
+
+Kerangka DAMA melengkapi strategi big data dengan menyediakan struktur pengelolaan yang stabil dan dapat ditelusuri (traceable). Hubungannya dapat diringkas sebagai berikut:
+
+\begin{itemize}
+	\item \textbf{Mendukung Strategi Jangka Panjang:} DAMA memberi fondasi proses dan peran yang jelas untuk pelaksanaan strategi data lintas fungsi. Contoh: Organisasi menetapkan peran data steward untuk setiap domain bisnis sebagai bagian dari roadmap transformasi data. Visi jangka panjang untuk integrasi data lintas departemen didukung oleh struktur tata kelola yang diatur dalam DAMA.
+	
+	\item \textbf{Memastikan Kepatuhan dan Etika:} DAMA mengatur peran, tanggung jawab, dan kontrol yang mendukung kepatuhan terhadap regulasi seperti GDPR dan UU PDP. Contoh: Prosedur pelabelan data pribadi dan persetujuan eksplisit ditetapkan berdasarkan prinsip tata kelola DAMA. Audit internal dilakukan secara rutin untuk memverifikasi kesesuaian dengan kebijakan perlindungan data.
+	
+	\item \textbf{Menjamin Kualitas dan Konsistensi:} Strategi big data yang berbasis analitik sangat bergantung pada kualitas dan konsistensi data, yang diatur melalui domain seperti Data Quality Management dan Metadata Management. Contoh: Skor kualitas data mingguan digunakan sebagai indikator kinerja tim pengelola data. Metadata standar diterapkan agar definisi data seragam antar unit.
+	
+	\item \textbf{Menghubungkan Teknologi dan Kebijakan:} DAMA menjembatani tim TI dan unit bisnis melalui kebijakan dan prinsip pengelolaan data yang disepakati. Contoh: Tim data engineer dan analis bisnis menyusun aturan validasi data bersama dalam kerangka standar DAMA. Proses pengelolaan data lintas divisi dilakukan berdasarkan kebijakan yang telah disetujui bersama.
+\end{itemize}
+
+
+DAMA-DMBOK juga dapat digunakan bersamaan dengan Big Data Maturity Model (BDMM) sebagai indikator kesiapan organisasi dalam menjalankan program data secara strategis dan bertanggung jawab.
+
+\subsection{Implikasi Praktis bagi Organisasi}
+
+Adopsi kerangka DAMA memiliki implikasi langsung terhadap tata kelola dan operasional organisasi, antara lain:
+
+\begin{itemize}
+	\item \textbf{Penerapan Data Stewardship:} Organisasi harus menetapkan peran seperti \textit{data steward}, \textit{data owner}, dan \textit{data custodian} dengan tugas dan akuntabilitas yang jelas. Contoh: Setiap domain data utama seperti pelanggan dan produk memiliki penanggung jawab yang berbeda sesuai peran DAMA. Tim proyek diminta berkoordinasi dengan data steward sebelum melakukan migrasi data antar sistem.
+	
+	\item \textbf{Peningkatan Transparansi dan Auditabilitas:} Dengan metadata dan pengelolaan kualitas yang baik, organisasi dapat menelusuri asal-usul data dan menjamin keabsahannya. Contoh: Metadata lineage memungkinkan tim untuk melacak perubahan data dari input awal hingga dashboard pelaporan. Dokumentasi definisi data KPI membantu menghindari interpretasi ganda antar divisi.
+	
+	\item \textbf{Reduksi Risiko dan Biaya:} Kontrol akses yang baik dan integrasi sistem yang terstruktur mengurangi risiko kehilangan data, redundansi, dan kebocoran informasi. Contoh: Otentikasi berbasis peran diterapkan pada semua platform data internal. Eliminasi data duplikat antar sistem berhasil menghemat kapasitas penyimpanan hingga 30\%.
+	
+	\item \textbf{Skalabilitas dalam Analitik:} Infrastruktur tata kelola yang kokoh memungkinkan organisasi untuk mengadopsi teknologi analitik lanjutan secara lebih cepat dan terarah. Contoh: Platform analitik berbasis cloud dapat langsung dimanfaatkan tanpa perlu restrukturisasi besar. Tim AI/ML menggunakan katalog data resmi untuk mempercepat proses eksplorasi dan pengujian model.
+\end{itemize}
+
+
+Dengan kata lain, DAMA-DMBOK membantu organisasi menyusun kerangka manajemen data yang tidak hanya mendukung inisiatif teknologi, tetapi juga menciptakan sinergi antara data, proses bisnis, dan nilai strategis organisasi.
+
+\section{Penutup}
+
+Strategi dan kerangka kerja big data merupakan fondasi penting dalam upaya organisasi untuk mentransformasikan data menjadi nilai bisnis yang nyata dan berkelanjutan. Bab ini telah membahas berbagai pendekatan konseptual dan praktis yang dapat digunakan untuk merancang, mengevaluasi, dan mengelola inisiatif big data secara sistematis.
+
+Melalui kerangka 5Vs, organisasi dapat memahami kompleksitas karakteristik data modern yang mencakup volume yang besar, kecepatan tinggi, keragaman format, kebutuhan akan keandalan, dan potensi nilai yang dapat diekstrak. Sementara itu, model McKinsey Big Data Value Chain membantu memetakan alur kerja data dari pengumpulan hingga pengambilan keputusan, yang penting dalam merancang proses bisnis berbasis data.
+
+Lebih lanjut, Big Data Maturity Model (BDMM) memberikan kerangka penilaian yang memungkinkan organisasi mengidentifikasi posisi kematangan mereka dan menetapkan target peningkatan yang realistis. Di sisi lain, kerangka DAMA-DMBOK menekankan pentingnya tata kelola dan pengelolaan data yang disiplin, dengan struktur peran dan proses yang mendukung penerapan strategi data secara menyeluruh.
+
+Keseluruhan kerangka ini saling melengkapi, dan memberikan perspektif lintas dimensi—teknologi, organisasi, manusia, dan kebijakan—yang harus diperhitungkan dalam implementasi big data. Pemahaman terhadap strategi dan kerangka kerja ini akan sangat membantu organisasi dalam menghindari jebakan implementasi teknologi yang terputus dari nilai bisnis, serta dalam merancang transformasi digital yang bertumpu pada data.
+
+Bab-bab selanjutnya akan membahas aspek teknis dan praktis yang mendukung strategi-strategi ini, seperti arsitektur teknologi big data, integrasi data, serta pendekatan visualisasi dan analitik yang dapat diterapkan oleh organisasi dalam konteks nyata.
+
