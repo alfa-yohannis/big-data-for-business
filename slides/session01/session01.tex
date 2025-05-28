@@ -1,0 +1,410 @@
+\documentclass[aspectratio=169, table]{beamer}
+
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit}
+
+\usetheme{Pradita}
+
+\title{\Huge Introduction to\\
+	\vspace{10pt}
+	Big Data for Business}
+\subtitle{IT140704 - Big Data for Business}
+%\date[Serial]{Penggunaan Large Language Model untuk Pengajaran}
+\author{\textbf{Alfa Yohannis}}
+\begin{document}
+	
+	\frame{\titlepage}
+	
+	
+	\begin{frame}[fragile]
+		\frametitle{Materi 1}
+		\vspace{20pt}
+		\begin{columns}[t]
+			\column{0.5\textwidth}
+			\tableofcontents[sections={1-3}]
+			
+			\column{0.5\textwidth}
+			\tableofcontents[sections={4-6}]
+		\end{columns}
+	\end{frame}
+
+
+
+\section{Introduction}
+
+\begin{frame}[fragile]{Background: The Role of Big Data}
+	
+	\begin{itemize}
+		\item In today’s digital transformation era, data is a strategic asset.
+		\item Rapidly growing volumes from internal transactions, customer interactions, and social media create both opportunities and challenges for evidence-based decisions.
+
+		\item Executives must focus on strategic use of data to drive:
+		\begin{itemize}
+			\item Business value
+			\item Operational efficiency
+			\item Customer insight
+			\item Innovation
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\section{Learning Objectives}
+
+\begin{frame}[fragile]{Course Objectives}
+	
+	This course equips postgraduate students in business and management with strategic and practical big data knowledge — no programming background required.
+	
+	\vspace{4pt}
+	\begin{itemize}
+		\item Understand big data concepts and strategic roles.
+		\item Explain big data architecture and infrastructure.
+		\item Use visual tools (Power BI, Orange, KNIME) for data exploration and prediction.
+		\item Analyse real-world applications across industries.
+		\item Identify challenges in ethics, governance, and data monetisation.
+	\end{itemize}
+\end{frame}
+
+\section{Course Scope}
+
+\begin{frame}[fragile]{Course Scope}
+	
+	The course covers four key learning areas:
+	
+	\vspace{4pt}
+	\begin{enumerate}
+		\item \textbf{Big Data Foundations \& Strategy:} Concepts, 5Vs, Big Data Value Chain, Maturity Models, Architecture.
+		\item \textbf{Data Management:} Basics of SQL/NoSQL, data cleaning, source integration.
+		\item \textbf{Analytics \& Decision-Making:} BI tools, customer segmentation, prediction, sentiment analysis.
+		\item \textbf{Value, Ethics \& Governance:} Data value, policy and compliance.
+	\end{enumerate}
+\end{frame}
+
+
+\section{Definition and Characteristics of Big Data}
+
+\begin{frame}[fragile]{Big Data as a New Paradigm}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\textbf{The Digital Revolution:}
+		\begin{itemize}
+			\item Data comes from business transactions, IoT sensors, social media, and internal systems.
+			\item Data volume is massive and growing rapidly.
+		\end{itemize}
+		
+		\textbf{The Emergence of Big Data:}
+		\begin{itemize}
+			\item Not just a technical term.
+			\item A new paradigm for understanding and managing data.
+			\item Focused on creating strategic value from data.
+		\end{itemize}
+		
+		\column{0.5\textwidth}
+		\textbf{Chapter Objectives:}
+		\begin{itemize}
+			\item Introduce the fundamental concept of big data.
+			\item Explain its unique characteristics.
+			\item Analyse its strategic role in business.
+			\item Explore challenges and opportunities in the digital era.
+		\end{itemize}
+		
+		\textbf{Business Relevance:}
+		\begin{itemize}
+			\item Organisations must be adaptive and data-driven.
+			\item Big data is a source of competitive advantage.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Definition and 5V Characteristics of Big Data}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\textbf{Definition:}
+		\begin{itemize}
+			\item Large, fast, and varied data that exceeds the capacity of conventional systems.
+			\item Known through Gartner's 3V model, later extended to 5V.
+			\item Supported by NIST, IEEE P2301, and ISO/IEC 20547-1 definitions.
+		\end{itemize}
+		
+		\textbf{Core Characteristics:}
+		\begin{itemize}
+			\item \textbf{Volume:} Massive data scale.
+			\item \textbf{Velocity:} High-speed data inflow.
+			\item \textbf{Variety:} Diverse data formats.
+		\end{itemize}
+		
+		\column{0.5\textwidth}
+		\textbf{Additional Characteristics:}
+		\begin{itemize}
+			\item \textbf{Veracity:} Data quality and reliability.
+			\item \textbf{Value:} Strategic insights from data.
+		\end{itemize}
+		
+		\textbf{Business Implications:}
+		\begin{itemize}
+			\item Organisations require effective data management strategies.
+			\item Leveraging the 5V helps achieve competitive advantage.
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+
+\section{Strategic Role of Big Data in Organisations}
+
+\begin{frame}[fragile]{Strategic Role of Big Data in Organisations}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.55\textwidth}
+		\textbf{Overview:}
+		\begin{itemize}
+			\item Accelerates digital transformation and innovation.
+			\item Delivers insights in real-time and over time.
+			\item Data-driven firms perform better.
+		\end{itemize}
+		
+		\textbf{Key Roles:}
+		\begin{enumerate}
+			\item \textbf{Smarter Decisions:} Actions based on data, not assumptions.
+			\item \textbf{Operational Efficiency:} Detects waste, cuts costs, automates tasks.
+			\item \textbf{Customer Insight:} Enables personalisation and trend prediction.
+		\end{enumerate}
+		
+		\column{0.45\textwidth}
+		\begin{enumerate}
+			\setcounter{enumi}{3}
+			\item \textbf{Innovation:} Drives new products and models like subscriptions.
+			\item \textbf{Competitive Edge:} Improves market speed and differentiation.
+		\end{enumerate}
+		
+		\textbf{Organisational Need:} Requires governance, infrastructure, and culture.  
+		\textbf{Conclusion:} Big data is a strategic enabler, beyond just technology.
+	\end{columns}
+\end{frame}
+
+
+\section{Evolution of Technology and Digital Business Context}
+
+\begin{frame}[fragile]{Technology Evolution and Digital Business}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\textbf{Context:}  
+		ICT growth has transformed business. Organisations now rely on global connectivity, automation, and digital platforms. Big data supports fast, informed decisions and innovation.
+		
+		\vspace{6pt}
+		\textbf{Tech Milestones:}
+		\begin{itemize}
+			\item \textbf{Warehouse Era (1980–2000):} Focused on structured historical data using data warehouses.
+			\item \textbf{Web \& Cloud Era (2000–2010):} Web apps, cloud, and sensors increased data volume and speed.
+		\end{itemize}
+		
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item \textbf{Big Data Era (2010–now):} Tools like Hadoop and Spark enabled distributed large-scale processing.
+			\item \textbf{AI \& Real-Time Era (2018–now):} Integration of AI and real-time analytics powers intelligent systems.
+		\end{itemize}
+		
+		\vspace{4pt}
+		\textbf{Modern Strategy:}  
+		Data is a core business asset—used in supply chains, digital marketing, personalisation, and planning.
+		
+		\textbf{Conclusion:}  
+		Success in the data economy requires infrastructure, analytics skills, governance, and a data-driven mindset.
+	\end{columns}
+\end{frame}
+
+\section{Challenges and Opportunities in Leveraging Big Data}
+
+\begin{frame}[fragile]{Challenges in Leveraging Big Data}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\textbf{Key Challenges:}
+		\begin{enumerate}
+			\item \textbf{Data Quality \& Integration:} Inconsistent formats and incomplete data from various sources complicate analysis.
+			\item \textbf{Talent Gap:} Limited availability of professionals with advanced data analytics skills.
+			\item \textbf{Unclear Data Strategy:} Lack of alignment between data initiatives and business objectives.
+		\end{enumerate}
+		
+		\column{0.5\textwidth}
+		\begin{enumerate}
+			\setcounter{enumi}{3}
+			\item \textbf{Security \& Privacy Risks:} High volumes of sensitive data increase exposure to leaks and misuse.
+			\item \textbf{Governance \& Ethics Issues:} Unclear roles and responsibilities for data accuracy, usage, and retention.
+		\end{enumerate}
+		
+		\textbf{Conclusion:}  
+		Addressing these challenges requires integrated efforts across people, processes, and technology to support secure and meaningful data use.
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Strategic Opportunities from Big Data}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\textbf{Opportunities:}
+		\begin{itemize}
+			\item \textbf{Operational Efficiency:} Data-driven forecasting and automation improve resource allocation and supply chains.
+			\item \textbf{Deeper Customer Insight:} Enables personalised marketing and customer engagement based on behaviour and feedback.
+			\item \textbf{Product \& Service Innovation:} Market trends and data insights drive new solution development.
+		\end{itemize}
+		
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item \textbf{Real-Time Decision Making:} Integrated dashboards and AI enable instant strategic and operational responses.
+			\item \textbf{Data Monetisation:} Internal data becomes a valuable asset through subscription models and inter-organisational sharing.
+		\end{itemize}
+		
+		\textbf{Conclusion:}  
+		Organisations must align technology, talent, processes, and governance to reduce risks and fully realise big data’s strategic value.
+	\end{columns}
+\end{frame}
+
+\section{Examples of Big Data Applications in Business}
+
+\begin{frame}[fragile]{Big Data Use Cases Across Industries}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item \textbf{Retail \& E-commerce:}  
+			Customer behaviour analysis, product recommendations, and supply chain optimisation.
+			
+			\item \textbf{Finance \& Banking:}  
+			Fraud detection, credit risk scoring, and personalised financial services.
+			
+			\item \textbf{Manufacturing \& Industry 4.0:}  
+			IoT and predictive analytics for maintenance and smart factory operations.
+		\end{itemize}
+		
+		\column{0.5\textwidth}
+		\begin{itemize}
+			\item \textbf{Transport \& Logistics:}  
+			Route and delivery optimisation based on real-time demand and location data.
+			
+			\item \textbf{Healthcare:}  
+			Medical record analytics for early diagnosis and personalised treatment.
+			
+			\item \textbf{Education:}  
+			Learning analytics to monitor student progress and adapt instruction.
+		\end{itemize}
+		
+		\textbf{Conclusion:}  
+		Big data enables innovation and competitive advantage when supported by the right infrastructure and capabilities.
+	\end{columns}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}[fragile]{Conclusion}
+	\vspace{20pt}
+	\small
+	\begin{columns}[T]
+		\column{0.62\textwidth}
+		\textbf{Key Takeaways:}
+		\begin{itemize}
+			\item Big data is defined by five core dimensions: volume, velocity, variety, veracity, and value.
+			\item It requires new approaches in data collection, storage, and analysis beyond conventional systems.
+			\item Beyond technology, big data reshapes business models, decision-making, and organisational strategies.
+		\end{itemize}
+		
+		\textbf{Strategic Value:}
+		\begin{itemize}
+			\item Enables competitive advantage through efficiency and innovation.
+			\item Supported by technologies like cloud computing, IoT, and AI.
+		\end{itemize}
+		
+		\column{0.38\textwidth}
+		\textbf{Challenges Ahead:}
+		\begin{itemize}
+			\item Governance, security, ethics, and human resource readiness remain critical concerns.
+		\end{itemize}
+		
+		\textbf{Sector Applications:}
+		\begin{itemize}
+			\item Value creation depends on alignment between technology, business strategy, and data culture.
+		\end{itemize}
+		
+		\textbf{Next Sessions:}  
+		Will explore data lifecycle management, infrastructure selection, and practical analytics across industries.
+	\end{columns}
+\end{frame}
+
+\section{Course Plan: Big Data for Business}
+
+\begin{frame}[fragile]{Course Topics and Focus (Weeks 1–5)}
+	\vspace{20pt}
+	\small
+	\begin{enumerate}
+		\item \textbf{Introduction to Big Data in Business} — Key definitions, business relevance, and case illustrations.
+		\item \textbf{Big Data Strategy \& Frameworks} — Overview of 5Vs, Big Data Value Chain, BDMM, and DAMA.
+		\item \textbf{Big Data Infrastructure \& Technologies} — Technologies such as Hadoop, Spark, Kafka, NoSQL, and cloud platforms.
+		\item \textbf{Understanding Databases \& SQL} — Structured data basics and SQL querying using online tools.
+		\item \textbf{NoSQL \& Semi-Structured Data} — JSON and MongoDB for flexible schema and document-based data.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Course Topics and Focus (Weeks 6–10)}
+	\vspace{20pt}
+	\small
+	\begin{enumerate}
+		\setcounter{enumi}{5}
+		\item \textbf{Data Cleaning \& Preparation} — Techniques for ensuring quality and consistency; KNIME workflows.
+		\item \textbf{Business Intelligence \& Dashboards} — Building dashboards, KPIs, and visual insights with Power BI.
+		\item \textbf{Introduction to Machine Learning} — Classification, clustering, and BI comparison using Orange.
+		\item \textbf{Customer Segmentation (Clustering)} — Market segmentation using unsupervised learning (k-means).
+		\item \textbf{Prediction \& Forecasting} — Forecasting churn, revenue, or risk with regression models.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Course Topics and Focus (Weeks 11–14)}
+	\vspace{20pt}
+	\small
+	\begin{enumerate}
+		\setcounter{enumi}{10}
+		\item \textbf{Text \& Sentiment Analysis} — NLP for analysing feedback and sentiment using Orange.
+		\item \textbf{Data-Driven Decision Frameworks} — CRISP-DM, OSEMN, and converting insights into action.
+		\item \textbf{Data Monetisation \& Value Realisation} — Strategies to turn data into economic and strategic value.
+		\item \textbf{Ethics, Governance \& Maturity Review} — Data ethics, privacy, governance, and BDMM self-assessment.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Final Assignment Guidelines}
+	\vspace{20pt}
+	\small
+	Students are required to write an academic paper focusing on one of the following themes. The paper should be based on a structured approach and, where possible, include practical application or evaluation.
+	
+	\begin{enumerate}
+		\item \textbf{Systematic Literature Review on the Data Value Chain}.  
+		Review existing models of the Data Value Chain (DVC), summarise key steps, and propose a refined version. Apply this framework to a small-scale case and evaluate the usefulness of the framework.
+		
+		\item \textbf{Insight Discovery from Captured Data}.  
+		Collect and analyse secondary data or internal workplace data to discover new business insights. Highlight the data preparation, analysis process, and conclusions.
+		
+		\item \textbf{Maturity Assessment and Improvement Strategy}.  
+		Evaluate an organisation's big data maturity using a recognised framework (e.g., BDMM). Recommend actionable tactics to improve maturity, implement them, and evaluate the results.
+		
+		\item \textbf{Other Topics Related to Big Data}.  
+		Proposals on other relevant topics in big data are welcome.
+	\end{enumerate}
+\end{frame}
+
+
+
+	
+%\section{Bab 1: Pengenalan ChatGPT}
+%\begin{frame}{\hfill}
+%	\centering
+%	\Huge{\textbf{Bab 1: Pengenalan ChatGPT}}
+%\end{frame}	
+		\end{document}

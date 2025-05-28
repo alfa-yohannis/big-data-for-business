@@ -1,0 +1,578 @@
+\documentclass[aspectratio=169, table]{beamer}
+
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit}
+
+\usetheme{Pradita}
+
+\title{\Huge Strategy and Big Data\\
+	\vspace{10pt}
+	Frameworks}
+\subtitle{IT140704 - Big Data for Business}
+%\date[Serial]{Penggunaan Large Language Model untuk Pengajaran}
+\author{\textbf{Alfa Yohannis}}
+\begin{document}
+	
+	\frame{\titlepage}
+	
+	
+	\begin{frame}[fragile]
+		\frametitle{Materi 1}
+		\vspace{20pt}
+		\begin{columns}[t]
+			\column{0.5\textwidth}
+			\tableofcontents[sections={1-3}]
+			
+			\column{0.5\textwidth}
+			\tableofcontents[sections={4-6}]
+		\end{columns}
+	\end{frame}
+	
+	\section{Big Data Strategy and Frameworks}
+	
+	\begin{frame}[fragile]{Why Strategy Matters in Big Data}
+		\vspace{20pt}
+		\small
+		\begin{columns}[T]
+			\column{0.5\textwidth}
+			\textbf{Strategic Importance:}
+			\begin{itemize}
+				\item Aligns data with business goals.
+				\item Avoids fragmented and costly initiatives.
+				\item Supports governance and performance.
+			\end{itemize}
+			
+			\textbf{Common Failures:} Over 85\% of big data projects fail due to lack of alignment between technology, process, and capability.
+			
+			
+			\vspace{5pt}
+			\textbf{Big Data Requires Strategy:}
+			\begin{itemize}
+				\item Business-driven
+				\item Measurable impact
+				\item Scalable and secure
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Covered Frameworks:}
+			\begin{itemize}
+				\item \textbf{5Vs Model:} Core characteristics of big data.
+				\item \textbf{Big Data Value Chain :} Step-by-step data lifecycle.
+				\item \textbf{Big Data Maturity Model (BDMM):} Assessing organisational readiness.
+				\item \textbf{DAMA-DMBOK:} Governance, quality, stewardship.
+			\end{itemize}
+			
+			\textbf{Strategic Outcome:}  
+			Big data strategy bridges vision and execution, supporting digital transformation and data-driven decision-making.
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Key Elements of a Big Data Strategy}
+		\vspace{20pt}
+		\small
+		\begin{columns}[T]
+			\column{0.5\textwidth}
+			\begin{enumerate}
+				\item \textbf{Business Vision:}  
+				Start from business priorities like customer experience or innovation.
+				
+				\item \textbf{Architecture \& Technology:}  
+				Select platforms matching data scale, speed, and integration needs.
+				
+				\item \textbf{Governance \& Compliance:}  
+				Ensure ethical, secure, and rule-compliant data use.
+			\end{enumerate}
+			
+			\column{0.5\textwidth}
+			\begin{enumerate}
+				\setcounter{enumi}{3}
+				\item \textbf{Organisational Capability:}  
+				Invest in skills, data literacy, and culture.
+				
+				\item \textbf{Metrics \& Impact:}  
+				Set KPIs to measure operational, financial, and strategic outcomes.
+			\end{enumerate}
+			
+			\vspace{6pt}
+			\textbf{Conclusion:}  
+			An effective strategy integrates technology, people, and governance to ensure data delivers real business value.
+		\end{columns}
+	\end{frame}
+	
+	
+	\section{5Vs Conceptual Framework for Big Data}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{5Vs Conceptual Framework for Big Data}}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Introduction and Volume}
+		\vspace{20pt}
+		\textbf{Introduction:} The 5Vs framework is widely used to conceptualise big data characteristics. Originally introduced by Doug Laney (2001) with Volume, Velocity, and Variety, it has expanded to include Veracity and Value.
+		
+		\vspace{10pt}
+		\begin{columns}[T]
+			\column{0.5\textwidth}
+			\textbf{1. Volume:}
+			\begin{itemize}
+				\item Refers to the massive amount of data generated from various sources.
+				\item Requires scalable distributed storage (e.g., Hadoop HDFS, cloud).
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Examples:}
+			\begin{itemize}
+				\item Amazon handles billions of daily product interactions and transactions.
+				\item Hospitals store high-volume radiology, lab, and patient records.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Velocity and Variety}
+		\vspace{20pt}
+		\begin{columns}[T]
+			\column{0.5\textwidth}
+			\textbf{2. Velocity:}
+			\begin{itemize}
+				\item Refers to the speed of data generation and processing.
+				\item Enables real-time analytics using Apache Kafka, Spark Streaming.
+			\end{itemize}
+			
+			\vspace{10pt}
+			\textbf{Examples:}
+			\begin{itemize}
+				\item Gojek/Grab use live GPS data for fleet dispatch.
+				\item Stock trading systems respond to data within milliseconds.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{3. Variety:}
+			\begin{itemize}
+				\item Represents the diversity of data types (structured, semi, unstructured).
+				\item Integration across formats enhances business insights.
+			\end{itemize}
+			
+			\vspace{10pt}
+			\textbf{Examples:}
+			\begin{itemize}
+				\item TikTok processes videos, audio, and user metadata.
+				\item Telkom combines billing and call centre transcripts.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Veracity and Value}
+		\vspace{20pt}
+		\begin{columns}[T]
+			\column{0.5\textwidth}
+			\textbf{4. Veracity:}
+			\begin{itemize}
+				\item Describes data quality, consistency, and reliability.
+				\item Requires cleansing, validation, and deduplication.
+			\end{itemize}
+			
+			\vspace{10pt}
+			\textbf{Examples:}
+			\begin{itemize}
+				\item Medical input errors risk misdiagnosis.
+				\item Banking records may cause credit scoring mistakes if duplicated.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{5. Value:}
+			\begin{itemize}
+				\item Focuses on extracting business value from analytics.
+				\item Value includes efficiency, savings, innovation.
+			\end{itemize}
+			
+			\vspace{10pt}
+			\textbf{Examples:}
+			\begin{itemize}
+				\item Netflix boosts retention with personal recommendations.
+				\item DHL uses predictive models to cut costs and emissions.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	
+	\section{Big Data Value Chain}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Big Data Value Chain}}
+	\end{frame}
+	
+	
+	\begin{frame}[fragile]{Overview: Big Data Value Chain}
+		\vspace{20pt}
+		\begin{columns}[T]
+			\column{0.6\textwidth}
+			\begin{itemize}
+				\item A strategic framework that maps the full lifecycle of data use — from initial planning to capturing, transforming, analysing, and generating business impact.
+				\item Ensures that data activities are aligned with business objectives and measured for effectiveness.
+				\item Consists of 9 stages: \textbf{Define, Capture, Curate, Process, Analyse, Visualise, Decide, Act, Measure}.
+				\item Emphasises both the technical and business dimensions of big data initiatives.
+			\end{itemize}
+			
+			\column{0.4\textwidth}
+			\begin{enumerate}
+				\item \textbf{Define} — Set goals, data needs, and analysis questions.\\
+				\textit{e.g.:} Define focus, needed data, tools, methods.
+			\end{enumerate}
+		\end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}[fragile]{Big Data Value Chain: Capture to Analyse}
+		\vspace{20pt}
+		\begin{columns}[T]
+			\column{0.5\textwidth}
+			\begin{enumerate}
+				\setcounter{enumi}{1}
+				
+				\item \textbf{Capture} — Collect structured/unstructured data from various sources.\\
+				\textit{e.g.:} IoT sensors, transactions, logs.\\
+				Tools: API, web scraping, Apache NiFi.
+				
+				\item \textbf{Curate} — Clean, validate, standardise, integrate data.\\
+				\textit{e.g.:} De-duplication, harmonisation.\\
+				Tools: KNIME, Talend, Alteryx.
+			\end{enumerate}
+			
+			\column{0.5\textwidth}
+			\begin{enumerate}
+				\setcounter{enumi}{3}
+				
+				
+				
+				\item \textbf{Process} — Transform and store data via ETL, batch, or real-time processing.\\
+				\textit{e.g.:} Daily Hadoop jobs, Spark streaming.\\
+				Tools: Hadoop, Spark, Airflow.
+				
+				\item \textbf{Analyse} — Explore and model data using statistical or ML techniques.\\
+				\textit{e.g.:} Customer segmentation, churn prediction.\\
+				Tools: Orange, scikit-learn, R, Python.
+			\end{enumerate}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Big Data Value Chain: Visualise to Measure}
+		\vspace{20pt}
+		\begin{columns}[t]
+			\column{0.5\textwidth}
+			\begin{enumerate}
+				\setcounter{enumi}{5}
+				
+				
+				\item \textbf{Visualise} — Present findings with charts, dashboards, and visuals.\\
+				\textit{e.g.:} BI dashboards, Tableau clusters.
+				
+				\item \textbf{Decide} — Make informed decisions (operational to strategic).\\
+				\textit{e.g.:} Dynamic pricing, campaign priorities.
+			\end{enumerate}
+			
+			\column{0.5\textwidth}
+			\begin{enumerate}
+				\setcounter{enumi}{7}
+				\item \textbf{Act} — Implement actions based on insights into real-world business processes.\\
+				\textit{e.g.:} Trigger campaign, adjust operations.
+				
+				\item \textbf{Measure} — Evaluate outcomes to assess value, improve strategy.\\
+				\textit{e.g.:} ROI analysis, A/B testing, KPI tracking.
+			\end{enumerate}
+		\end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}[fragile]{Applications of Big Data Value Chain (1)}
+		\vspace{20pt}
+		\small
+		\begin{columns}[t]
+			\column{0.5\textwidth}
+			\textbf{Retail and E-commerce}
+			\begin{itemize}
+				\item \textbf{Define:} Improve conversions via personalisation.
+				\item \textbf{Capture:} Collect click and purchase logs.
+				\item \textbf{Curate:} Clean bots, fix session errors.
+				\item \textbf{Process:} Load into warehouse, run ETL.
+				\item \textbf{Analyse:} Segment users, detect patterns.
+				\item \textbf{Visualise:} Product recommendation dashboards.
+				\item \textbf{Decide:} Personalise homepage content.
+				\item \textbf{Act:} Apply dynamic deals and feeds.
+				\item \textbf{Measure:} Track CTR, cart size, sales.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Manufacturing}
+			\begin{itemize}
+				\item \textbf{Define:} Reduce downtime with predictions.
+				\item \textbf{Capture:} Stream IoT sensor data.
+				\item \textbf{Curate:} Filter outliers, standardise values.
+				\item \textbf{Process:} Store in time-series DB.
+				\item \textbf{Analyse:} Predict failure via ML models.
+				\item \textbf{Visualise:} Show equipment health status.
+				\item \textbf{Decide:} Notify preventive maintenance.
+				\item \textbf{Act:} Auto-schedule technician visits.
+				\item \textbf{Measure:} Downtime and cost reduction.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Applications of Big Data Value Chain (2)}
+		\vspace{20pt}
+		\small
+		\begin{columns}[t]
+			\column{0.5\textwidth}
+			\textbf{Finance and Banking}
+			\begin{itemize}
+				\item \textbf{Define:} Detect transaction fraud quickly.
+				\item \textbf{Capture:} Ingest streaming payments.
+				\item \textbf{Curate:} Fix errors, remove duplicates.
+				\item \textbf{Process:} Stream via Kafka/Flink.
+				\item \textbf{Analyse:} Spot fraud with ML models.
+				\item \textbf{Visualise:} Alert dashboards for analysts.
+				\item \textbf{Decide:} Auto-flag risky actions.
+				\item \textbf{Act:} Block or freeze accounts.
+				\item \textbf{Measure:} Fraud drop, accuracy rate.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Public Sector}
+			\begin{itemize}
+				\item \textbf{Define:} Evaluate policy and services.
+				\item \textbf{Capture:} Pull survey and service data.
+				\item \textbf{Curate:} Merge census and usage logs.
+				\item \textbf{Process:} Aggregate by region or type.
+				\item \textbf{Analyse:} Find service gaps, trends.
+				\item \textbf{Visualise:} Dashboards for decision makers.
+				\item \textbf{Decide:} Recommend targeted policies.
+				\item \textbf{Act:} Roll out public programmes.
+				\item \textbf{Measure:} Assess impact via KPIs.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\section{Big Data Maturity Model (BDMM)}
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Big Data Maturity Model (BDMM)}}
+	\end{frame}
+
+	\begin{frame}[fragile]{BDMM: Definition and Purpose}
+		
+		\begin{itemize}
+			\item The Big Data Maturity Model (BDMM) is a strategic framework to assess an organisation's readiness and capability in managing and leveraging big data.
+			\item It maps current conditions (\textit{as-is}) and future targets (\textit{to-be}) through progressive stages.
+			\item BDMM provides a roadmap for becoming data-driven and aligns with business transformation initiatives.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{BDMM Levels (1--2)}
+		\textbf{Level 1: Initial}
+		\begin{itemize}
+			\item Also known as \textit{Nascent} or \textit{Ad-hoc}.
+			\item No formal data strategy; isolated efforts.
+			\item \textit{Example:} Marketing uses Excel for surveys; finance stores data locally.
+		\end{itemize}
+		
+		\textbf{Level 2: Managed}
+		\begin{itemize}
+			\item Early experiments or pilots in isolated units.
+			\item Governance is minimal.
+			\item \textit{Example:} Logistics uses Power BI dashboard; HR runs churn models independently.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{BDMM Levels (3--5)}
+		
+		\textbf{Level 3: Defined}
+		\begin{itemize}
+			\item Documented and repeatable practices; shared infrastructure.
+			\item \textit{Example:} Central data warehouse; demand forecasting for inventory.
+		\end{itemize}
+		
+		\textbf{Level 4: Integrated}
+		\begin{itemize}
+			\item Cross-functional adoption with strong governance.
+			\item \textit{Example:} Shared KPI dashboards; governance committee in place.
+		\end{itemize}
+		
+		\textbf{Level 5: Optimized}
+		\begin{itemize}
+			\item Predictive and real-time decision-making embedded.
+			\item \textit{Example:} Auto product recommendations; simulation-based business strategy.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Assessment Dimensions}
+		\vspace{18pt}
+		\begin{itemize}
+			\item \textbf{Strategy and Vision:} Alignment with business objectives. \textit{Example:} Customer insights for service innovation.
+			\item \textbf{Data and Governance:} Policies and roles. \textit{Example:} Sensitive data classification; data stewards.
+			\item \textbf{Technology:} Infrastructure readiness. \textit{Example:} Cloud-based data lake; Kafka streaming.
+			\item \textbf{Analytics:} Advanced tools and use cases. \textit{Example:} Power BI dashboards; churn prediction models.
+			\item \textbf{Organisation and HR:} Training and structure. \textit{Example:} Regular analyst training; dedicated data teams.
+			\item \textbf{Security and Privacy:} Compliance and risk. \textit{Example:} Role-based access control; PDP/GDPR adherence.
+			\item Indicators support self-assessment via surveys, benchmarks, and workshops.
+		\end{itemize}
+	\end{frame}
+
+	
+	\begin{frame}[fragile]{Using BDMM Strategically}
+		\vspace{20pt}
+		\begin{itemize}
+			\item \textbf{Gap Analysis:} Identify current level and priority areas. \textit{Example:} Customer service unit operates in silo.
+			\item \textbf{Roadmap Planning:} Transition roadmap to higher maturity. \textit{Example:} Move from opportunistic to systematic with a data warehouse.
+			\item \textbf{Investment Planning:} Align investments to capability gaps. \textit{Example:} Adopt integration platforms to improve quality and speed.
+			\item \textbf{Cross-Functional Alignment:} Foster collaboration across departments.
+			\item \textbf{Impact Measurement:} Monitor strategic outcomes like ROI and time savings.
+		\end{itemize}
+	\end{frame}
+	
+		\section{Data Management Body of Knowledge}
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Data Management Body of Knowledge}}
+		
+		\vspace{20pt}
+		\large{\textbf{Data Management Association International}}
+	\end{frame}
+	
+	\begin{frame}[fragile]{DAMA-DMBOK: Overview and Domains}
+		\vspace{20pt}
+		\begin{columns}
+			\column{0.5\textwidth}
+			\textbf{What is DAMA-DMBOK?}
+			\begin{itemize}
+				\item A comprehensive framework for data governance developed by DAMA International.
+				\item Covers principles, roles, and best practices across the data lifecycle.
+				\item Technology-neutral, focusing on policies and organisational capabilities.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Key Domains (1–6):}
+			\begin{itemize}
+				\item \textbf{Data Governance}
+				\item \textbf{Data Architecture}
+				\item \textbf{Data Modelling \& Design}
+				\item \textbf{Data Storage \& Operations}
+				\item \textbf{Data Security}
+				\item \textbf{Data Integration \& Interoperability}
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{DAMA-DMBOK: Domains (7–11)}
+		\vspace{20pt}
+		\begin{columns}
+			\column{0.5\textwidth}
+			\textbf{Key Domains (7–11):}
+			\begin{itemize}
+				\item \textbf{Document \& Content Management}
+				\item \textbf{Reference \& Master Data}
+				\item \textbf{Data Warehousing \& BI}
+				\item \textbf{Metadata Management}
+				\item \textbf{Data Quality Management}
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Integration:}
+			\begin{itemize}
+				\item All domains are interconnected.
+				\item Foundation for sustainable, scalable data governance.
+				\item Aligns well with Big Data strategy, maturity models, and compliance frameworks.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Strategic Contributions of DAMA}
+		\vspace{20pt}
+		\begin{columns}
+			\column{0.5\textwidth}
+			\textbf{Supports Long-term Strategy}
+			\begin{itemize}
+				\item Provides clear roles (e.g., data steward).
+				\item Aligns governance with transformation roadmaps.
+			\end{itemize}
+			
+			\textbf{Ensures Compliance and Ethics}
+			\begin{itemize}
+				\item GDPR, UU PDP, and internal audit alignment.
+				\item Consent and access control based on defined policies.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Enables Quality and Consistency}
+			\begin{itemize}
+				\item DQ and metadata as performance indicators.
+				\item Uniform data definitions organisation-wide.
+			\end{itemize}
+			
+			\textbf{Bridges Tech and Policy}
+			\begin{itemize}
+				\item Co-owned validation rules by engineers and business users.
+				\item Collaborative cross-division governance.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[fragile]{Practical Organisational Implications}
+		\vspace{20pt}
+		\begin{columns}
+			\column{0.5\textwidth}
+			\textbf{Role Clarity and Accountability}
+			\begin{itemize}
+				\item Define data owner, steward, custodian roles.
+				\item Required coordination for migrations and audits.
+			\end{itemize}
+			
+			\textbf{Transparency and Auditability}
+			\begin{itemize}
+				\item Lineage metadata supports traceability.
+				\item KPI definitions avoid misinterpretation.
+			\end{itemize}
+			
+			\column{0.5\textwidth}
+			\textbf{Risk and Cost Reduction}
+			\begin{itemize}
+				\item Eliminate redundancy and unauthorised access.
+				\item Role-based authentication and 30\% storage savings.
+			\end{itemize}
+			
+			\textbf{Analytics Scalability}
+			\begin{itemize}
+				\item AI/ML teams use official data catalogue.
+				\item Cloud platforms can be easily integrated because of standardisation and documentation.
+			\end{itemize}
+		\end{columns}
+	\end{frame}
+	
+	\section{Conclusion}
+	
+	\begin{frame}[fragile]{Conclusion}
+		\small
+		Big data strategies and frameworks are essential for turning data into lasting business value. This chapter introduced several core conceptual and practical approaches:
+		
+		\vspace{6pt}
+		\begin{itemize}
+			\item \textbf{5Vs:} Capturing data's core traits — volume, velocity, variety, veracity, and value.
+			\item \textbf{Big Data Value Chain:} Outlining end-to-end data flow from goals to decisions.
+			\item \textbf{BDMM:} Enabling maturity assessment and roadmap for data capability growth.
+			\item \textbf{DAMA-DMBOK:} Structuring governance roles and policies for reliable data use.
+		\end{itemize}
+		
+		\vspace{6pt}
+		Together, these frameworks bridge technology, organisation, people, and policy—crucial for a successful, data-driven transformation.
+	\end{frame}
+	
+	
+	
+	
+	%\section{Bab 1: Pengenalan ChatGPT}
+	%\begin{frame}{\hfill}
+	%	\centering
+	%	\Huge{\textbf{Bab 1: Pengenalan ChatGPT}}
+	%\end{frame}	
+\end{document}
