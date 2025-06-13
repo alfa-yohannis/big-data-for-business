@@ -1,315 +1,350 @@
-\chapter{Umpan Balik dan Penilaian Personal dengan Bantuan AI}
+\chapter{Arsitektur untuk Infrastruktur Big Data}
 
-\section{Mengapa Penilaian yang Responsif dan Personal Penting}
+\noindent
+Perkembangan teknologi digital dan konektivitas internet telah menghasilkan ledakan data dari berbagai sumber, baik yang terstruktur maupun tidak terstruktur. Data ini berasal dari sensor di perangkat pintar (seperti wearable dan kamera pengawas), interaksi pengguna di media sosial, transaksi bisnis digital, hingga catatan aktivitas sistem. Pertumbuhan data yang cepat ini memunculkan tantangan dalam hal volume (jumlah data), kecepatan (seberapa cepat data dihasilkan dan perlu diproses), serta variasi (jenis dan format data).
 
-Penilaian bukan hanya alat untuk mengukur hasil belajar siswa, tetapi juga merupakan bagian integral dari proses pembelajaran itu sendiri. Penilaian yang dilakukan secara responsif dan personal memberikan dampak yang jauh lebih besar dibandingkan sekadar angka akhir atau nilai ujian. Ketika siswa menerima umpan balik yang sesuai dengan kebutuhan dan kemampuannya, proses belajar menjadi lebih bermakna, reflektif, dan berkelanjutan.
+Untuk mengatasi tantangan tersebut, organisasi perlu membangun infrastruktur big data yang dirancang secara sistematis dan dapat berkembang seiring kebutuhan. Arsitektur big data bukan sekadar susunan teknologi, melainkan kerangka kerja yang mengintegrasikan berbagai komponen penting seperti akuisisi data (pengambilan), penyimpanan, pemrosesan, analisis, hingga integrasi dengan sistem operasional dan pengambilan keputusan. Tujuan akhirnya adalah agar organisasi dapat memperoleh wawasan yang relevan dan dapat bertindak secara cepat dan berbasis data (data-driven decision making), sekaligus mematuhi kebijakan privasi dan regulasi yang berlaku \cite{marz2015bigdata, kiran2015bigdata}.
 
-\textbf{Penilaian yang responsif} berarti guru mampu menangkap perkembangan belajar siswa secara tepat waktu dan menyesuaikan strategi pembelajaran berdasarkan kondisi aktual di kelas. Misalnya, ketika seorang siswa menunjukkan kesulitan dalam memahami konsep, guru dapat segera memberikan penjelasan tambahan atau latihan berbeda. Teknologi seperti Large Language Model (LLM) dapat membantu guru merancang umpan balik yang cepat, terarah, dan tetap personal.
+Bab ini menyajikan gambaran menyeluruh mengenai arsitektur big data, dengan pendekatan visual berupa diagram berlapis (layered architecture) yang menggambarkan alur data dari sumber hingga konsumsi akhir. Visualisasi ini bertujuan untuk membantu pemahaman secara konseptual sebelum masuk ke detail teknis setiap komponen. Penjelasan lebih rinci untuk masing-masing lapisan akan disajikan dalam bagian-bagian berikutnya.
 
-\textbf{Penilaian yang personal} berarti bahwa setiap siswa dipandang sebagai individu yang unik—dengan gaya belajar, tingkat kemampuan, dan kebutuhan yang berbeda-beda. Umpan balik personal tidak hanya menyampaikan apa yang benar atau salah, tetapi juga membantu siswa memahami mengapa suatu jawaban salah, bagaimana cara memperbaikinya, dan apa langkah selanjutnya yang bisa dilakukan.
+\section{Arsitektur Big Data}
 
-\textbf{Manfaat penilaian responsif dan personal antara lain:}
-\begin{itemize}
-	\item Meningkatkan motivasi belajar siswa karena merasa dihargai dan diperhatikan
-	\item Membantu siswa mengenali kekuatan dan kelemahannya sendiri secara lebih sadar
-	\item Mendorong pembelajaran yang bersifat reflektif dan tidak hanya mengejar nilai
-	\item Memberikan dasar yang kuat untuk pembelajaran diferensiasi dan intervensi dini
-\end{itemize}
+Gambar~\ref{fig:bigdata-architecture} menyajikan arsitektur big data dalam bentuk berlapis yang menggambarkan hubungan antara berbagai komponen utama. Arsitektur ini dimulai dari berbagai sumber data heterogen seperti perangkat IoT, log sistem, API, dan media sosial. Data dari sumber-sumber ini diambil melalui sistem ingestion baik secara real-time maupun batch, lalu disimpan dalam raw data lake. Setelah itu, data diproses menggunakan framework pemrosesan seperti Spark atau Flink, dan disimpan ke dalam lakehouse atau data warehouse untuk penggunaan lebih lanjut.
 
-Dalam praktiknya, guru sering kali menghadapi keterbatasan waktu untuk memberikan umpan balik yang mendalam dan menyusun laporan perkembangan secara individual. Di sinilah teknologi berbasis AI seperti LLM menjadi relevan: dengan instruksi yang tepat, guru dapat dengan cepat menghasilkan komentar atau evaluasi tertulis yang disesuaikan dengan karakteristik jawaban siswa.
+Dari layer penyimpanan tersebut, data dapat diakses oleh platform analitik seperti Tableau atau Power BI untuk keperluan bisnis intelligence, atau oleh platform machine learning untuk pengembangan model prediktif. Hasil akhirnya kemudian dikonsumsi oleh sistem pendukung keputusan (misalnya dashboard atau laporan eksekutif) serta aplikasi operasional yang membutuhkan informasi real-time. Di atas semua proses tersebut, terdapat lapisan tata kelola dan orkestrasi yang mengawasi kualitas data, keamanan, kepatuhan terhadap kebijakan, serta pengelolaan metadata \cite{gdpr2021bigdata}. Setiap lapisan memiliki peran penting dan saling terhubung dalam pipeline big data yang end-to-end, dan akan dibahas secara mendalam pada bagian selanjutnya.
 
-Sebagai contoh, jika siswa menulis esai atau laporan singkat, LLM dapat membantu menilai aspek bahasa, isi, dan struktur, lalu menyusun umpan balik yang jelas dan membangun. Hasil ini dapat menjadi draf awal yang kemudian disempurnakan oleh guru sesuai konteks dan gaya komunikasi yang diinginkan.
-
-Dengan penilaian yang responsif dan personal, pembelajaran tidak hanya berfokus pada hasil akhir, tetapi juga memperhatikan proses dan perkembangan yang dialami siswa secara individual. Pendekatan ini sangat sejalan dengan prinsip pendidikan yang humanis, reflektif, dan berorientasi pada pertumbuhan jangka panjang.
-
-
-\section{Menyusun Umpan Balik Otomatis untuk Tugas Siswa}
-
-Memberikan umpan balik terhadap tugas siswa merupakan bagian penting dalam proses pembelajaran yang efektif. Umpan balik yang tepat dapat membantu siswa memahami kesalahannya, mengembangkan potensi, dan meningkatkan kinerjanya secara berkelanjutan. Namun, memberikan umpan balik yang mendalam dan personal untuk setiap siswa, terutama dalam kelas besar, sering kali menjadi tantangan bagi pendidik. Di sinilah peran teknologi, khususnya Large Language Model (LLM) seperti ChatGPT, menjadi relevan dan strategis.
-
-LLM dapat digunakan untuk membantu menyusun umpan balik otomatis yang bersifat konstruktif, spesifik, dan disesuaikan dengan isi tugas siswa. Hanya dengan memasukkan jawaban atau teks esai siswa dan beberapa instruksi tambahan, LLM dapat menghasilkan komentar yang menilai kekuatan dan kelemahan isi, struktur, serta gaya penulisan.
-
-\textbf{Jenis tugas yang cocok untuk umpan balik otomatis:}
-\begin{itemize}
-	\item Esai atau tulisan reflektif
-	\item Laporan hasil eksperimen atau proyek
-	\item Jawaban uraian pendek
-	\item Deskripsi hasil observasi atau analisis data
-\end{itemize}
-
-Contoh prompt untuk menghasilkan umpan balik terhadap esai:
-
-\begin{quote}
+\begin{figure}[ht]
 	\centering
-	\texttt{"Berikan umpan balik konstruktif untuk esai berikut. Tinjau aspek isi, struktur argumen, dan penggunaan bahasa: [salin isi esai]."}
-\end{quote}
+	\begin{tikzpicture}[node distance=1cm and 0.5cm]
+		
+		% Define styles
+		\tikzset{
+			box/.style={
+				rectangle, draw, rounded corners,
+				minimum width=2.2cm, minimum height=1cm,
+				text width=3cm, align=center, font=\small
+			},
+			widebox/.style={
+				rectangle, draw, rounded corners,
+				minimum width=6.5cm, minimum height=1cm,
+				text width=6.8cm, align=center, font=\small
+			},
+			source/.style={box, fill=gray!20},
+			ingestion/.style={box, fill=blue!20},
+			storage/.style={box, fill=cyan!20},
+			processing/.style={box, fill=cyan!10},
+			lakehouse/.style={box, fill=green!20},
+			serving/.style={box, fill=yellow!30},
+			ml/.style={box, fill=orange!20},
+			governance/.style={widebox, fill=red!20},
+			output/.style={box, fill=purple!10},
+			arrow/.style={thick, ->, >=Stealth},
+			dashedarrow/.style={thick, dashed, ->, >=Stealth}
+		}
+		
+		% Main flow (horizontal line)
+		\node (source)    [source]        {\textbf{Data Sources}\\• IoT\\• Logs\\• APIs\\• Social Media};
+		\node (ingest)    [ingestion, right=of source] {\textbf{Ingestion Layer}\\• Kafka\\• Pub/Sub\\• NiFi};
+		\node (lake)      [storage,   right=of ingest] {\textbf{Raw Data Lake}\\• S3\\• GCS\\• ADLS\\• HDFS};
+		\node (process)   [processing, right=of lake] {\textbf{Processing}\\• Spark\\• Flink\\• Dataflow};
+		
+		% Warehouse
+		\node (warehouse) [lakehouse, below=1.5cm of process] {\textbf{Lakehouse/ DW}\\• BigQuery\\• Snowflake\\• Delta Lake};
+		
+		% Governance (above lake and process)
+		\node (gov)       [governance, left=1cm of warehouse] {\textbf{Governance \& Orchestration}\\• Atlas\quad• Airflow\quad• IAM\quad• Data Catalog};
+		
+		% BI and ML 
+		\node (bi)        [serving, below=1.5cm of warehouse] {\textbf{BI \& Analytics}\\• Tableau\\• Power BI\\• Looker};
+		\node (decision)  [output, left=.5cm of bi] {\textbf{Decision Support}\\• Dashboards\\• Reports\\• KPIs};
+		
+		\node (ml)        [ml, left= of decision] {\textbf{ML Platform}\\• SageMaker\\• TensorFlow\\• Feature Store};
+		\node (opsys)     [output, left=.5cm of ml] {\textbf{Operational Systems}\\• Recommenders\\• Alerts\\• Automation};
+		
+		
+		% Arrows (main flow)
+		\draw[arrow] (source) -- (ingest);
+		\draw[arrow] (ingest) -- (lake);
+		\draw[arrow] (lake) -- (process);
+		\draw[arrow] (process) -- (warehouse);
+		
+		% BI and ML branches
+		\draw[arrow] (warehouse.south) -- (bi.north);
+		\draw[arrow] (warehouse.south) -- (ml.north);
+		\draw[arrow] (bi) -- (decision);
+		\draw[arrow] (ml) -- (opsys);
+		\draw[arrow] (ml) -- (decision);
+		
+		% Governance dashed arrows to all
+		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (source.south);
+		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (ingest.south);
+		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (lake.south);
+		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (process.south);
+		
+		\draw[dashedarrow] (gov.east) -- (warehouse.west);
+		
+		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (bi.north);
+		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (ml.north);
+		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (decision.north);
+		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (opsys.north);
+		
+	\end{tikzpicture}
+	\caption{Big Data Architecture}
+	\label{fig:bigdata-architecture}
+\end{figure}
 
-Contoh hasil dari prompt tersebut dapat mencakup:
+
+\section{Sumber Data}
+
+Dalam sistem big data, tahap awal yang sangat penting adalah mengenali dan mengelola berbagai jenis sumber data yang tersedia. Sumber data adalah asal-usul dari seluruh informasi yang akan diproses oleh sistem. Sumber-sumber ini sangat beragam—baik dari segi bentuk, kecepatan kedatangan, maupun nilainya. Untuk memudahkan pemahaman, sumber data dapat dibagi ke dalam empat kategori umum: perangkat Internet of Things (IoT), log sistem, antarmuka pemrograman aplikasi (API), dan media sosial.
+
+\textbf{Perangkat IoT (Internet of Things)} adalah alat-alat fisik yang mampu mengumpulkan dan mengirimkan data secara otomatis, seperti sensor suhu, alat pemantau tekanan darah, mesin pabrik, atau kamera CCTV. Data dari perangkat ini biasanya bersifat terus-menerus dan real-time. Misalnya, sensor di mesin produksi yang setiap detik mengirimkan informasi suhu atau getaran. Karena sifatnya yang kontinu, data IoT memerlukan teknik khusus agar dapat dikumpulkan dan diproses dengan efisien \cite{gubbi2013internet}.
+
+\textbf{Log Sistem} adalah catatan digital dari aktivitas suatu sistem, seperti kapan pengguna login, apa yang mereka lakukan, atau bagaimana sistem merespons. Log ini sangat penting untuk melacak performa, menemukan kesalahan, dan memastikan keamanan sistem. Meskipun tidak selalu mudah dibaca oleh manusia, log memberikan informasi yang kaya jika dianalisis secara sistematis \cite{xu2009detecting}.
+
+\textbf{API (Application Programming Interface)} dapat diibaratkan sebagai "jembatan digital" yang menghubungkan satu sistem dengan sistem lainnya. Melalui API, organisasi dapat mengambil data dari aplikasi pihak ketiga—misalnya data cuaca, data harga saham, atau informasi pengguna dari sistem lain. Data yang diambil biasanya sudah tersusun dalam format tertentu dan bisa diatur untuk diambil secara berkala atau sesuai kebutuhan \cite{fielding2000architectural}.
+
+\textbf{Media Sosial} seperti Twitter, Facebook, dan Instagram merupakan sumber data yang sangat besar dan kompleks. Informasi dari platform ini berupa teks, gambar, video, dan metadata (seperti waktu unggahan atau lokasi). Data ini sangat bermanfaat untuk memahami opini publik, tren pasar, atau pola perilaku konsumen, tetapi juga menantang karena tidak selalu tersusun rapi dan membutuhkan alat analisis yang canggih seperti analisis bahasa alami atau pengenalan gambar \cite{alam2017twitter}.
+
+Setiap jenis sumber data memiliki kebutuhan yang berbeda dalam hal pengambilan dan pengelolaannya. Oleh karena itu, arsitektur big data dirancang untuk mampu menangani semua jenis data ini secara fleksibel dan efisien, sehingga informasi dari berbagai sumber dapat diolah menjadi wawasan yang bermanfaat.
+
+
+\section{Ingestion Layer}
+
+Lapisan \textbf{ingesti data} adalah komponen awal dalam arsitektur big data yang berfungsi untuk menangkap dan memasukkan data dari berbagai sumber ke dalam sistem penyimpanan pusat, seperti data lake. Dalam konteks ini, data dapat datang secara cepat dan terus-menerus dari berbagai sumber seperti perangkat IoT, log sistem, API, maupun media sosial. Oleh karena itu, diperlukan alat dan mekanisme yang dapat menangani aliran data besar ini dengan andal dan efisien \cite{kreps2011kafka}.
+
+Untuk mempermudah pemahaman, bayangkan lapisan ingesti seperti pintu masuk utama sebuah gudang data. Setiap kali data tiba, pintu ini bertugas menerima dan menyalurkan data ke bagian gudang yang sesuai, tanpa membiarkan data tercecer atau tertunda terlalu lama.
+
+Beberapa teknologi populer yang sering digunakan untuk mendukung proses ingesti antara lain:
+
 \begin{itemize}
-	\item Apresiasi terhadap kekuatan tulisan (misalnya: ide utama yang jelas, penggunaan contoh yang tepat)
-	\item Identifikasi area yang perlu ditingkatkan (misalnya: transisi antar paragraf kurang halus, terlalu banyak pengulangan)
-	\item Saran yang spesifik untuk perbaikan (misalnya: “Coba tambahkan data atau kutipan untuk mendukung argumen pada paragraf ketiga.”)
+	\item \textbf{Apache Kafka}: Sebuah sistem antrean pesan (\textit{message queue}) yang dapat menangani jutaan pesan per detik. Kafka sering digunakan untuk memproses data secara \textit{real-time}, seperti aliran data dari sensor kendaraan atau transaksi keuangan yang berlangsung setiap detik. Kafka mendukung pola \textit{publish-subscribe} yang membuatnya sangat skalabel dan toleran terhadap kegagalan \cite{kreps2011kafka}.
+	
+	\item \textbf{Google Cloud Pub/Sub}: Layanan milik Google yang berfungsi untuk mengirim dan menerima pesan antar sistem secara terdistribusi. Cocok untuk perusahaan yang menggunakan infrastruktur berbasis cloud dan ingin menghubungkan berbagai layanan dalam sistemnya secara fleksibel dan elastis \cite{googlepubsubdocs}.
+	
+	\item \textbf{Apache NiFi}: Alat visual yang memungkinkan pengguna untuk mengatur aliran data dari satu titik ke titik lain secara interaktif, mirip seperti menggambar diagram alur. NiFi cocok digunakan untuk pengguna non-teknis yang ingin mengatur data masuk tanpa harus menulis kode. Selain itu, NiFi mendukung kontrol aliran, pemantauan, dan keamanan yang kuat \cite{apachenifiuserguide}.
 \end{itemize}
 
-Selain itu, LLM juga dapat menyesuaikan gaya bahasa umpan balik, seperti formal, ramah, atau instruktif—tergantung pada kebutuhan guru dan karakteristik siswa. Berikut contoh prompt untuk menyesuaikan gaya:
+Tujuan utama dari lapisan ini adalah memastikan bahwa data dari sumber mana pun dapat dikumpulkan secara cepat, aman, dan konsisten ke dalam sistem penyimpanan pusat, agar dapat digunakan lebih lanjut pada tahap pemrosesan atau analisis.
 
-\begin{quote}
-	\centering
-	\texttt{"Tulis umpan balik ramah dan memotivasi untuk siswa SMP berdasarkan teks berikut."}
-\end{quote}
 
-Penggunaan LLM untuk umpan balik otomatis tidak hanya menghemat waktu guru, tetapi juga membuka peluang bagi siswa untuk mendapatkan komentar yang lebih kaya dan reflektif. Bahkan dalam tugas yang tidak dinilai secara numerik, umpan balik ini tetap dapat membantu siswa menyadari perkembangan dan area peningkatan diri.
 
-\textbf{Tips untuk penggunaan LLM secara efektif dalam umpan balik:}
+\section{Raw Data Lake}
+
+Dalam arsitektur big data, \textbf{raw data lake} berfungsi sebagai tempat penyimpanan awal seluruh data yang masuk, baik data yang telah terstruktur, semi-terstruktur, maupun tidak terstruktur. Istilah \textit{lake} atau danau digunakan karena data disimpan secara besar-besaran dalam bentuk mentah, seperti halnya air yang mengalir ke danau tanpa disaring terlebih dahulu. Konsep ini berbeda dengan basis data tradisional yang mensyaratkan data harus dibersihkan dan disusun terlebih dahulu sebelum disimpan \cite{ghosh2016journey}.
+
+Keunggulan utama dari pendekatan data lake adalah fleksibilitas dan skalabilitasnya. Organisasi tidak perlu langsung memutuskan bagaimana data akan digunakan saat data masuk; mereka cukup menyimpannya dahulu, lalu mengolah dan menganalisisnya kemudian sesuai kebutuhan. Hal ini sangat berguna dalam skenario di mana data berasal dari berbagai sumber yang belum tentu memiliki format yang seragam \cite{urbach2017data}.
+
+Beberapa teknologi populer yang digunakan untuk membangun data lake antara lain:
+
 \begin{itemize}
-	\item Gunakan prompt yang spesifik dan arahkan model pada kriteria penilaian yang relevan.
-	\item Tinjau hasil LLM dan sesuaikan sesuai konteks siswa.
-	\item Gunakan umpan balik sebagai dasar untuk diskusi tatap muka atau refleksi mandiri siswa.
+	\item \textbf{Amazon S3 (Simple Storage Service):} Layanan penyimpanan dari Amazon Web Services yang memungkinkan penyimpanan file dalam jumlah besar secara terdistribusi. S3 mendukung akses cepat dan integrasi dengan berbagai alat analitik dan pembelajaran mesin \cite{awss3docs}.
+	
+	\item \textbf{Google Cloud Storage (GCS):} Penyimpanan objek milik Google Cloud Platform yang dirancang untuk menyimpan data dalam skala petabyte, cocok untuk kebutuhan analisis data besar.
+	
+	\item \textbf{Azure Data Lake Storage (ADLS):} Platform penyimpanan dari Microsoft Azure yang dioptimalkan untuk analisis data skala besar, dan mendukung berbagai format file seperti CSV, JSON, Avro, dan Parquet.
+	
+	\item \textbf{Hadoop Distributed File System (HDFS):} Salah satu teknologi data lake tertua dan masih banyak digunakan, HDFS merupakan sistem file terdistribusi yang menjadi bagian utama dari ekosistem Hadoop. HDFS dirancang untuk menyimpan data besar secara aman di beberapa server dan memungkinkan pemrosesan paralel \cite{shvachko2010hadoop}.
 \end{itemize}
 
-Dengan pendekatan ini, guru dapat tetap menjaga kualitas interaksi pembelajaran yang personal, meskipun dibantu oleh teknologi. Umpan balik yang disusun secara cerdas dan bijak menjadi jembatan penting untuk membangun motivasi dan pemahaman siswa dalam jangka panjang.
+Semua sistem penyimpanan ini memiliki kemampuan untuk menangani volume data yang besar secara efisien dan mendukung berbagai jenis akses, termasuk pemrosesan \textit{batch} maupun \textit{real-time}. Selain itu, mereka umumnya mendukung fitur keamanan, pengelolaan versi data (\textit{versioning}), serta integrasi dengan alat tata kelola data dan orkestrasi pipeline.
+
+Dengan adanya \textit{raw data lake}, organisasi memiliki \textit{single source of truth}—yakni satu repositori pusat—yang dapat dimanfaatkan oleh berbagai tim dan sistem untuk kebutuhan analitik, riset, dan pengembangan model kecerdasan buatan.
 
 
-\section{Membuat Rubrik Penilaian Otomatis}
+\section{Processing Layer}
 
-Rubrik penilaian merupakan alat bantu penting bagi guru dalam mengevaluasi hasil belajar siswa secara objektif dan konsisten. Dengan rubrik, kriteria penilaian dapat dijabarkan secara jelas dan terstruktur, sehingga baik guru maupun siswa memahami apa yang diharapkan dari suatu tugas. Namun, menyusun rubrik dari awal sering kali membutuhkan waktu dan tenaga, terutama jika harus disesuaikan dengan indikator kompetensi yang beragam. Dalam konteks ini, Large Language Model (LLM) seperti ChatGPT dapat dimanfaatkan untuk menyusun rubrik penilaian secara otomatis berdasarkan kriteria yang diberikan.
+Lapisan \textbf{pemrosesan data} (\textit{processing layer}) merupakan bagian penting dalam arsitektur big data yang bertugas untuk mengolah data mentah dari data lake menjadi informasi yang lebih terstruktur, bersih, dan siap digunakan. Di lapisan ini, data dapat melalui berbagai proses seperti pembersihan (\textit{cleansing}), transformasi, agregasi, normalisasi, atau bahkan pelabelan untuk keperluan \textit{machine learning} \cite{armbrust2020datasystems}.
 
-LLM dapat membantu merancang rubrik untuk berbagai jenis tugas, seperti esai, proyek, presentasi, eksperimen, maupun portofolio. Cukup dengan memberikan informasi mengenai tujuan pembelajaran, jenis tugas, dan indikator yang ingin dinilai, LLM dapat menyusun rubrik dalam format tabel dengan deskriptor yang spesifik dan relevan.
+Bagi pengguna non-teknis, proses ini bisa dibayangkan seperti dapur di sebuah restoran. Bahan mentah (data mentah) dikirim dari gudang penyimpanan (data lake), kemudian diolah oleh koki (framework pemrosesan) sesuai resep (logika bisnis) agar siap disajikan ke pelanggan (sistem analitik atau aplikasi).
 
-\textbf{Langkah-langkah menyusun rubrik dengan LLM:}
+Terdapat dua jenis utama pemrosesan yang umum dilakukan dalam lapisan ini:
 
-\textbf{1. Tentukan indikator atau aspek yang ingin dinilai}  
-Misalnya:
 \begin{itemize}
-	\item Isi dan relevansi konten
-	\item Struktur dan organisasi tulisan
-	\item Kemampuan analisis atau argumentasi
-	\item Tata bahasa dan ejaan
+	\item \textbf{Pemrosesan batch}, yaitu pengolahan data dalam jumlah besar secara berkala (misalnya setiap jam atau setiap hari). Cocok untuk laporan rutin atau analisis historis.
+	
+	\item \textbf{Pemrosesan streaming}, yaitu pengolahan data secara langsung saat data masuk (\textit{real-time}). Cocok untuk aplikasi yang membutuhkan respons cepat seperti deteksi penipuan atau pemantauan kondisi mesin.
 \end{itemize}
 
-\textbf{2. Gunakan prompt untuk membuat rubrik berdasarkan indikator tersebut}  
-Contoh prompt:
+Beberapa framework populer yang digunakan pada lapisan ini antara lain:
 
-\begin{quote}
-	\centering
-	\texttt{"Buatkan rubrik penilaian esai untuk siswa SMA. Aspek yang dinilai: isi, struktur, penggunaan bahasa, dan orisinalitas. Tampilkan dalam format 4 level (Sangat Baik, Baik, Cukup, Perlu Perbaikan)."}
-\end{quote}
-
-\textbf{3. Tinjau hasil rubrik dan sesuaikan jika perlu}  
-Hasil dari LLM biasanya langsung disajikan dalam format tabel atau daftar deskriptif. Namun, guru tetap perlu menyesuaikan bahasa dan bobot sesuai kebutuhan kurikulum atau karakteristik siswa.
-
-\textbf{Contoh hasil rubrik otomatis (ringkas):}
-
-\begin{table}
-	\centering
-	\renewcommand{\arraystretch}{1.4}
-	\begin{tabularx}{\textwidth}{|l|X|X|X|X|}
-		\hline
-		\textbf{Aspek} & \textbf{Sangat Baik} & \textbf{Baik} & \textbf{Cukup} & \textbf{Perlu Perbaikan} \\
-		\hline
-		\textbf{Isi} & Isi lengkap, mendalam, relevan & Isi cukup lengkap dan relevan & Isi kurang lengkap & Isi tidak sesuai topik \\
-		\hline
-		\textbf{Struktur} & Paragraf tersusun rapi, logis & Struktur cukup jelas & Struktur agak membingungkan & Tidak ada struktur yang jelas \\
-		\hline
-		\textbf{Bahasa} & Bahasa baku, bebas kesalahan & Sedikit kesalahan tata bahasa & Banyak kesalahan tata bahasa & Sulit dipahami \\
-		\hline
-		\textbf{Orisinalitas} & Gagasan orisinal, analisis kuat & Cukup orisinal, analisis cukup & Kurang orisinal & Cenderung menyalin sumber lain \\
-		\hline
-	\end{tabularx}
-	\caption{Contoh Rubrik Penilaian Esai Otomatis}
-	\label{tab:rubrik-esai}
-\end{table}
-
-\textbf{4. Buat versi yang disesuaikan dengan jenjang dan kebutuhan belajar}  
-Prompt dapat dimodifikasi untuk membuat rubrik yang lebih sederhana untuk jenjang SD atau lebih kompleks untuk SMA. Misalnya:
-
-\begin{quote}
-	\centering
-	\texttt{"Buat rubrik penilaian untuk presentasi siswa kelas 5 SD dengan tiga aspek penilaian: kejelasan penyampaian, penggunaan gambar, dan kerja sama kelompok."}
-\end{quote}
-
-\textbf{Manfaat membuat rubrik otomatis dengan LLM:}
 \begin{itemize}
-	\item Menghemat waktu dalam menyusun instrumen penilaian yang konsisten
-	\item Memudahkan diferensiasi dan adaptasi sesuai mata pelajaran atau jenjang
-	\item Meningkatkan transparansi penilaian karena siswa dapat melihat harapan secara eksplisit
-	\item Mendorong pembelajaran berbasis tujuan dan refleksi
+	\item \textbf{Apache Spark:} Framework pemrosesan data berskala besar yang mendukung pemrosesan batch dan streaming. Spark banyak digunakan karena kemudahan penggunaannya, performa tinggi, serta ekosistem pustaka analitik dan pembelajaran mesin yang luas \cite{zaharia2016apache}.
+	
+	\item \textbf{Apache Flink:} Dirancang khusus untuk pemrosesan data streaming, Flink mendukung tingkat latensi yang rendah dan pengolahan data secara terus-menerus. Sangat ideal untuk aplikasi seperti analisis log real-time atau deteksi kejadian langsung \cite{carbone2015apache}.
+	
+	\item \textbf{Google Cloud Dataflow:} Layanan berbasis cloud dari Google yang mendukung pemrosesan batch dan streaming, berbasis pada model pemrograman Apache Beam. Kelebihannya terletak pada kemudahan penggunaan dan pengelolaan otomatis terhadap sumber daya komputasi \cite{googledataflowdocs}.
 \end{itemize}
 
-Dengan LLM, guru tidak lagi harus memulai dari nol setiap kali menyusun rubrik, namun tetap memiliki kendali untuk menyempurnakan dan menyesuaikan hasilnya. Hal ini menjadikan proses penilaian lebih efisien, terstruktur, dan mendukung pembelajaran yang adil dan terarah.
+Lapisan ini menjadi jembatan penting antara data mentah dan data siap pakai. Kualitas dan efisiensi pemrosesan di sini sangat menentukan keandalan data yang akan digunakan untuk visualisasi, pelaporan, pengambilan keputusan, maupun pelatihan model kecerdasan buatan.
 
-\section{Membangun Alat Refleksi Diri dan Penilaian Mandiri}
 
-Refleksi diri dan penilaian mandiri merupakan keterampilan penting yang mendukung perkembangan metakognitif siswa. Ketika siswa mampu menilai pemahamannya sendiri, mengenali kekuatan dan kelemahannya, serta merancang strategi belajar yang sesuai, mereka akan menjadi pembelajar yang lebih mandiri, percaya diri, dan bertanggung jawab. Namun, membimbing siswa untuk melakukan refleksi yang bermakna tidak selalu mudah. Guru memerlukan alat bantu berupa pertanyaan, panduan, atau ceklis yang relevan dan mudah digunakan.
+\section{Lakehouse and Data Warehouse}
 
-Large Language Model (LLM) seperti ChatGPT dapat dimanfaatkan untuk menyusun berbagai bentuk alat refleksi dan evaluasi mandiri yang dapat disesuaikan dengan usia, tingkat kemampuan, dan jenis tugas siswa. Dengan hanya memberikan topik atau deskripsi tugas, LLM dapat menghasilkan daftar pertanyaan reflektif, format jurnal belajar, atau lembar evaluasi diri yang siap digunakan di kelas.
+Setelah data melalui tahap pemrosesan, langkah selanjutnya adalah menyimpannya dalam bentuk yang lebih terstruktur dan siap dikonsumsi untuk analitik atau pelaporan. Dalam arsitektur big data modern, terdapat dua pendekatan utama yang sering digunakan: \textbf{data warehouse} dan \textbf{lakehouse}.
 
-\textbf{Jenis alat refleksi dan evaluasi diri yang dapat dibuat dengan LLM:}
+\textbf{Data warehouse} adalah sistem penyimpanan data terstruktur yang dirancang khusus untuk keperluan pelaporan dan analisis bisnis. Dalam analogi sehari-hari, data warehouse bisa diibaratkan seperti rak arsip yang tertata rapi—setiap berkas sudah diklasifikasikan dan dikelompokkan berdasarkan kategori tertentu, sehingga mudah dicari dan dianalisis oleh pengguna bisnis. Namun, karena mengharuskan data bersih dan terstruktur, tidak semua data dari data lake bisa langsung dimasukkan ke dalam warehouse tanpa transformasi lebih lanjut.
+
+Di sisi lain, \textbf{lakehouse} adalah pendekatan baru yang menggabungkan fleksibilitas \textit{data lake} dengan struktur dan performa dari \textit{data warehouse}. Dengan lakehouse, organisasi dapat menyimpan data dalam format mentah maupun terstruktur dalam satu sistem yang sama. Ini mengurangi kebutuhan untuk memindahkan data antar platform, serta mendukung analitik dan pembelajaran mesin secara lebih efisien \cite{armbrust2021lakehouse}.
+
+Beberapa platform yang umum digunakan pada lapisan ini antara lain:
+
 \begin{itemize}
-	\item Daftar pertanyaan reflektif setelah menyelesaikan tugas atau proyek
-	\item Ceklis pemantauan kemajuan belajar harian atau mingguan
-	\item Panduan jurnal belajar untuk mendokumentasikan proses dan pemahaman
-	\item Rubrik penilaian mandiri untuk membandingkan hasil kerja dengan kriteria
-	\item Pertanyaan metakognitif seperti “Apa yang sudah saya pahami?” dan “Apa yang masih membingungkan?”
+	\item \textbf{BigQuery:} Layanan data warehouse berbasis cloud dari Google yang mampu menganalisis data dalam skala petabyte menggunakan bahasa SQL. BigQuery terkenal dengan kecepatan kueri yang tinggi dan skalabilitas otomatis \cite{googlebigquerydocs}.
+	
+	\item \textbf{Snowflake:} Platform data warehouse modern yang mendukung penyimpanan data secara terstruktur dan semi-terstruktur, serta memungkinkan berbagai tim mengakses data yang sama tanpa konflik. Snowflake menawarkan kemampuan berbagi data antar organisasi secara aman dan efisien \cite{frost2020snowflake}.
+	
+	\item \textbf{Delta Lake:} Teknologi lakehouse berbasis pada Apache Spark yang memungkinkan penyimpanan data dalam format tabel yang mendukung transaksi ACID. Delta Lake mengatasi kelemahan data lake tradisional yang tidak menjamin konsistensi data \cite{armbrust2020delta}.
 \end{itemize}
 
-\textbf{Contoh prompt:}
+Dengan memilih dan mengonfigurasi platform lakehouse atau warehouse yang sesuai, organisasi dapat memastikan bahwa data yang tersedia benar-benar siap digunakan untuk pelaporan rutin, analisis ad hoc, maupun pelatihan model kecerdasan buatan secara efisien dan terjamin mutunya.
 
-\begin{quote}
-	\centering
-	\texttt{"Buatkan 5 pertanyaan refleksi diri untuk siswa SMP setelah menyelesaikan proyek sains tentang ekosistem."}
-\end{quote}
+\section{BI and Analytics}
 
-\begin{quote}
-	\centering
-	\texttt{"Susun format penilaian mandiri untuk tugas menulis esai, berdasarkan 3 aspek: isi, struktur, dan bahasa."}
-\end{quote}
+Lapisan \textbf{Business Intelligence (BI) dan Analitik} merupakan titik akhir dari alur data dalam arsitektur big data, di mana data yang telah diproses dan disimpan digunakan untuk menghasilkan wawasan dan mendukung pengambilan keputusan bisnis. Di tahap ini, pengguna akhir seperti manajer, analis bisnis, atau pemangku kebijakan dapat memvisualisasikan dan menelusuri data tanpa perlu memahami aspek teknisnya.
 
-\textbf{Contoh hasil pertanyaan reflektif:}
+Bayangkan bagian ini seperti panel kontrol kendaraan yang menampilkan informasi penting kepada pengemudi: kecepatan, bahan bakar, peringatan, dan lainnya. BI dan analitik bekerja dengan cara serupa, memberikan gambaran komprehensif mengenai performa bisnis, tren pasar, dan efisiensi operasional melalui tampilan yang mudah dimengerti.
+
+Tujuan utama lapisan ini adalah:
 \begin{itemize}
-	\item Apa bagian tersulit dari proyek ini dan bagaimana saya mengatasinya?
-	\item Apakah saya bekerja dengan baik dalam kelompok? Mengapa atau mengapa tidak?
-	\item Apa satu hal baru yang saya pelajari tentang ekosistem?
-	\item Bagaimana saya bisa membuat proyek ini lebih baik jika saya mengulanginya?
-	\item Apakah saya bangga dengan hasil kerja saya? Jelaskan alasannya.
+	\item Menyediakan laporan dan visualisasi data yang interaktif.
+	\item Mendukung pengambilan keputusan berbasis data secara cepat dan akurat.
+	\item Memberikan pemahaman yang lebih dalam terhadap pola-pola tersembunyi dalam data.
 \end{itemize}
 
-\textbf{Manfaat membangun alat refleksi dengan LLM:}
+Beberapa alat populer yang digunakan dalam lapisan ini meliputi:
+
 \begin{itemize}
-	\item Membantu siswa berpikir kritis terhadap proses belajarnya sendiri
-	\item Memudahkan guru menyiapkan instrumen refleksi tanpa membuat dari nol
-	\item Meningkatkan keterlibatan siswa dalam proses evaluasi
-	\item Mendorong pembelajaran yang lebih mandiri dan berkelanjutan
+	\item \textbf{Tableau:} Platform visualisasi data yang memungkinkan pengguna membuat dashboard interaktif tanpa menulis kode. Tableau banyak digunakan karena antarmukanya yang intuitif dan kemampuannya terhubung ke berbagai sumber data secara langsung \cite{tableau2023}.
+	
+	\item \textbf{Power BI:} Alat analitik dari Microsoft yang terintegrasi dengan baik dalam ekosistem Office 365. Power BI cocok untuk pengguna bisnis karena mendukung pembuatan laporan, kolaborasi tim, dan integrasi dengan Excel serta Azure \cite{microsoftpowerbi2023}.
+	
+	\item \textbf{Looker:} Alat BI berbasis web milik Google Cloud yang menekankan pada pendekatan \textit{model-driven analytics}. Looker memungkinkan tim data untuk mendefinisikan logika bisnis secara terpusat, sehingga hasil analitik menjadi lebih konsisten di seluruh organisasi \cite{lookerdocs}.
 \end{itemize}
 
-Untuk hasil yang maksimal, guru dapat mengadaptasi atau menyederhanakan hasil dari LLM agar lebih kontekstual dan sesuai dengan budaya kelas masing-masing. Refleksi dan evaluasi diri yang konsisten akan memperkuat kesadaran siswa akan proses belajarnya dan mendorong mereka untuk terus berkembang secara aktif.
+Melalui kombinasi data yang akurat dan alat BI yang tepat, organisasi dapat mentransformasikan data mentah menjadi nilai bisnis yang nyata—baik dalam bentuk efisiensi operasional, peningkatan layanan pelanggan, maupun strategi bisnis yang lebih tepat sasaran.
 
+\section{Machine Learning Platform}
 
-\section{Contoh Kasus Penggunaan Umpan Balik dalam Konteks Kelas}
+Lapisan \textbf{Machine Learning (ML)} dalam arsitektur big data bertanggung jawab untuk membangun model prediktif atau klasifikasi berdasarkan data historis yang telah diolah. Teknologi ML memungkinkan sistem untuk belajar dari data dan membuat keputusan secara otomatis tanpa perlu diprogram secara eksplisit untuk setiap kasus. Dalam konteks bisnis, ML sering digunakan untuk membuat rekomendasi produk, mendeteksi penipuan, memprediksi permintaan pasar, atau mengotomatisasi proses operasional.
 
-Untuk memahami penerapan nyata dari umpan balik otomatis menggunakan LLM dalam pembelajaran, mari kita telaah sebuah studi kasus mini yang menggambarkan bagaimana teknologi ini digunakan di kelas, serta dampak yang dihasilkan terhadap pengalaman belajar siswa.
+Secara sederhana, lapisan ML dapat dianalogikan seperti bagian riset dan pengembangan dalam sebuah organisasi: ia menganalisis data dari masa lalu untuk merancang strategi masa depan yang lebih akurat dan efisien.
 
-\textbf{Studi Kasus: Kelas Bahasa Indonesia SMA – Menulis Esai Argumentatif}
+Agar proses ini berjalan dengan lancar, dibutuhkan platform yang mendukung seluruh siklus pengembangan model ML, mulai dari pelatihan, validasi, penyimpanan model, hingga penyajian prediksi ke sistem lain. Beberapa alat penting dalam lapisan ini antara lain:
 
-Di sebuah kelas Bahasa Indonesia tingkat SMA, guru meminta siswa untuk menulis esai argumentatif dengan topik: "Apakah media sosial membawa lebih banyak manfaat atau kerugian bagi remaja?" Terdapat 36 siswa yang mengumpulkan tugas secara daring melalui platform pembelajaran.
-
-\textbf{Tantangan:}
-Guru ingin memberikan umpan balik mendalam untuk setiap esai—meliputi aspek struktur, kekuatan argumen, dan penggunaan bahasa. Namun, dengan keterbatasan waktu, memberi komentar satu per satu secara manual akan sangat memakan waktu dan bisa mengurangi konsistensi penilaian.
-
-\textbf{Solusi: Menggunakan LLM untuk Membantu Umpan Balik Otomatis}
-
-Guru kemudian menggunakan LLM untuk menghasilkan komentar otomatis dari setiap esai. Ia menyalin teks esai ke dalam prompt berikut:
-
-\begin{quote}
-	\centering
-	\texttt{"Berikan umpan balik konstruktif dan ramah untuk esai ini. Tinjau struktur argumen, kekuatan alasan, dan penggunaan bahasa: [isi esai]."}
-\end{quote}
-
-Model kemudian menghasilkan umpan balik personal seperti:
-
-\begin{quote}
-	\itshape
-	“Esai ini memiliki ide utama yang jelas dan argumen yang cukup meyakinkan. Akan lebih baik jika Anda menyertakan contoh konkret untuk memperkuat posisi Anda. Beberapa kalimat bisa disusun ulang agar lebih efektif. Secara keseluruhan, Anda menunjukkan kemampuan berpikir kritis yang baik.”
-\end{quote}
-
-\textbf{Hasil:}
 \begin{itemize}
-	\item Semua siswa menerima umpan balik dalam waktu singkat (kurang dari 1 hari).
-	\item Beberapa siswa merasa lebih termotivasi untuk merevisi tulisannya karena komentar yang disampaikan terasa personal dan membangun.
-	\item Guru tetap meninjau dan menyunting sebagian hasil, namun prosesnya jauh lebih efisien.
-	\item Proses refleksi siswa meningkat: lebih dari separuh siswa menuliskan tanggapan terhadap umpan balik dalam jurnal belajar mereka.
+	\item \textbf{Amazon SageMaker:} Platform berbasis cloud dari Amazon Web Services yang menyediakan lingkungan lengkap untuk membangun, melatih, dan mengelola model machine learning. SageMaker dirancang untuk memudahkan pengguna dalam menerapkan ML secara cepat dan efisien \cite{sagemaker2023}.
+	
+	\item \textbf{TensorFlow:} Framework open-source dari Google yang sangat populer di kalangan praktisi ML. TensorFlow menyediakan berbagai pustaka untuk membangun dan melatih model dengan tingkat kompleksitas yang berbeda-beda, dari yang sederhana hingga deep learning berskala besar \cite{tensorflow2023}.
+	
+	\item \textbf{Feature Store:} Komponen penting dalam pipeline ML yang berfungsi sebagai repositori terpusat untuk menyimpan dan mengelola \textit{fitur}—yaitu informasi atau atribut penting yang diekstrak dari data mentah dan digunakan untuk melatih model. Dengan feature store, tim data dapat memastikan konsistensi fitur antara tahap pelatihan dan penerapan model \cite{featurestore2021}.
 \end{itemize}
 
-\textbf{Refleksi Guru:}
-Guru menyadari bahwa penggunaan LLM dalam memberi umpan balik bukanlah pengganti interaksi guru-siswa, melainkan pelengkap. Dengan adanya teknologi ini, ia dapat mengalokasikan lebih banyak waktu untuk diskusi kelas dan pembimbingan individu, tanpa mengorbankan kualitas evaluasi tertulis.
+Lapisan ML merupakan kunci untuk mendorong transformasi digital berbasis kecerdasan buatan. Namun agar efektif, implementasi ML membutuhkan kolaborasi lintas disiplin antara tim data, domain expert, dan pengambil keputusan, serta infrastruktur yang mendukung siklus pengembangan model secara menyeluruh.
 
-\textbf{Kesimpulan:}
-Studi kasus ini menunjukkan bahwa pemanfaatan LLM untuk umpan balik otomatis dapat:
+
+\section{Decision Support}
+
+Lapisan \textbf{Decision Support} dalam arsitektur big data berperan penting dalam mengubah data yang telah dianalisis menjadi informasi yang dapat digunakan oleh manajemen untuk membuat keputusan strategis, taktis, maupun operasional. Tujuan utama dari lapisan ini adalah menyajikan hasil analisis dalam bentuk yang mudah dipahami dan relevan dengan kebutuhan bisnis.
+
+Secara konseptual, lapisan ini dapat diibaratkan seperti panel kontrol atau dashboard dalam mobil: meskipun mesin bekerja di balik layar, pengemudi hanya perlu melihat indikator yang penting untuk membuat keputusan mengemudi. Begitu pula dalam organisasi, pemangku kepentingan tidak perlu melihat seluruh detail teknis data, cukup menerima informasi yang sudah disederhanakan dan difokuskan pada hal yang berdampak langsung terhadap keputusan.
+
+Output utama dari lapisan ini meliputi:
+
 \begin{itemize}
-	\item Meningkatkan efisiensi dan jangkauan penilaian
-	\item Menumbuhkan budaya reflektif dalam menulis
-	\item Memperkuat interaksi yang lebih bermakna antara guru dan siswa
+	\item \textbf{Dashboard:} Visualisasi data interaktif yang menyajikan indikator kinerja utama (\textit{Key Performance Indicators} atau KPI), tren, dan metrik penting lainnya secara real-time. Dashboard sering digunakan oleh manajer atau eksekutif untuk memantau kinerja bisnis dan mengambil tindakan cepat bila ada penyimpangan.
+	
+	\item \textbf{Laporan (Reports):} Dokumen terstruktur yang merangkum data historis atau analisis berkala, biasanya dalam bentuk tabel, grafik, atau narasi. Laporan dapat bersifat harian, mingguan, atau bulanan, dan ditujukan untuk berbagai level manajemen.
+	
+	\item \textbf{KPI (Key Performance Indicators):} Ukuran kuantitatif yang digunakan untuk mengevaluasi keberhasilan suatu organisasi dalam mencapai tujuan bisnisnya. Contoh KPI meliputi jumlah penjualan, tingkat konversi pelanggan, tingkat kepuasan pelanggan, atau efisiensi operasional.
 \end{itemize}
 
-Penerapan ini menunjukkan bahwa dengan strategi yang tepat, AI dapat menjadi mitra aktif dalam mendorong pembelajaran yang personal, responsif, dan berkelanjutan.
+Agar lapisan Decision Support ini efektif, perlu dipastikan bahwa data yang ditampilkan akurat, terkini, dan relevan dengan konteks penggunaannya. Oleh karena itu, integrasi erat dengan lapisan sebelumnya (analitik, pemrosesan, dan tata kelola data) sangat penting untuk menjaga kualitas informasi.
 
-\section{Latihan Mendesain Umpan Balik dan Rubrik dengan LLM}
+Lapisan ini merupakan jembatan antara dunia teknis data dengan proses pengambilan keputusan bisnis, menjadikannya komponen krusial dalam transformasi digital dan penerapan prinsip \textit{data-driven decision making} \cite{davenport2010analytics}.
 
-Setelah memahami konsep dasar dan contoh penerapan umpan balik otomatis dan rubrik penilaian, bagian ini dirancang sebagai sesi praktik langsung. Tujuannya adalah agar peserta dapat mengalami sendiri bagaimana LLM dapat digunakan untuk menyusun komentar penilaian dan rubrik secara efisien, responsif, dan kontekstual.
 
-Latihan ini bertujuan tidak hanya untuk memperkenalkan teknis penggunaan LLM, tetapi juga untuk mengasah sensitivitas pedagogis dalam menyesuaikan hasil AI dengan karakteristik siswa dan mata pelajaran yang diajarkan.\\
+\section{Operational Systems}
 
-\textbf{Tujuan Latihan:}
+Lapisan \textbf{Operational Systems} dalam arsitektur big data mencakup sistem-sistem yang secara langsung mendukung atau menjalankan aktivitas operasional sehari-hari suatu organisasi. Berbeda dengan lapisan \textit{Decision Support} yang fokus pada analisis dan pelaporan untuk pengambilan keputusan strategis, lapisan ini bertujuan untuk memberikan respons otomatis atau rekomendasi langsung berdasarkan data yang sudah dianalisis, bahkan dalam hitungan detik.
+
+Lapisan ini dapat dianalogikan seperti sistem autopilot dalam pesawat atau mobil pintar. Ketika data sensor menunjukkan perubahan kondisi, sistem dapat segera memberikan respons yang sesuai tanpa harus menunggu intervensi manusia. Dalam konteks bisnis, ini berarti memungkinkan otomatisasi proses atau pemberian rekomendasi secara real-time.
+
+Beberapa contoh implementasi pada lapisan ini antara lain:
+
 \begin{itemize}
-	\item Menggunakan LLM untuk menilai jawaban atau tugas siswa
-	\item Menyusun umpan balik otomatis berdasarkan kriteria tertentu
-	\item Membuat rubrik penilaian yang sesuai dengan capaian pembelajaran
-	\item Merefleksikan efektivitas hasil AI dalam konteks pembelajaran nyata\\
+	\item \textbf{Sistem Rekomendasi (Recommender Systems):} Digunakan untuk memberikan saran otomatis kepada pengguna berdasarkan riwayat interaksi mereka. Contohnya dapat dilihat pada platform e-commerce atau layanan streaming yang merekomendasikan produk atau konten sesuai preferensi pengguna \cite{ricci2011recommender}.
+	
+	\item \textbf{Notifikasi dan Peringatan Otomatis (Alerts):} Sistem ini secara otomatis mengirimkan peringatan ketika terjadi kondisi yang menyimpang dari batas yang ditentukan, seperti kecurangan transaksi, lonjakan trafik situs, atau penurunan performa mesin industri.
+	
+	\item \textbf{Automasi Proses Bisnis (Automation):} Termasuk dalam kategori ini adalah proses yang berjalan otomatis berdasarkan aturan atau kecerdasan buatan, seperti penjadwalan produksi otomatis, pengelolaan persediaan berdasarkan permintaan, atau respon chatbot dalam layanan pelanggan.
 \end{itemize}
 
-\textbf{Langkah-langkah Latihan:}\\
+Agar sistem operasional ini dapat berjalan secara efektif dan efisien, perlu adanya integrasi yang kuat antara data real-time, algoritma analitik, serta aturan bisnis yang telah ditetapkan. Hal ini memungkinkan organisasi untuk meningkatkan kecepatan respons, mengurangi kesalahan manusia, serta menciptakan layanan yang lebih adaptif dan personal bagi pengguna akhir.
 
-\textbf{1. Pilih Contoh Tugas Siswa}  
-Gunakan salah satu contoh tugas seperti esai pendek, jawaban uraian, atau laporan proyek dari siswa (bisa fiktif). Alternatifnya, peserta dapat membuat jawaban singkat berdasarkan instruksi tugas yang disediakan.
+Lapisan ini menunjukkan bagaimana hasil dari arsitektur big data tidak hanya digunakan untuk analisis, tetapi juga dapat dimanfaatkan secara langsung untuk menjalankan fungsi operasional secara otomatis, real-time, dan berskala besar \cite{gandomi2015beyond}.
 
-\textbf{2. Susun Prompt Umpan Balik Otomatis}  
-Masukkan teks tugas ke dalam LLM dengan instruksi eksplisit. Contoh prompt:
 
-\begin{quote}
-	\centering
-	\texttt{"Tulis umpan balik konstruktif dan ramah untuk jawaban ini. Tinjau isi, struktur, dan penggunaan bahasa: [salin jawaban siswa]."}
-\end{quote}
+\section{Governance and Orchestration}
 
-Tinjau hasil umpan balik yang diberikan oleh LLM. Diskusikan apakah umpan balik tersebut:
+Dalam arsitektur big data, lapisan \textbf{Governance and Orchestration} memiliki peran sentral dalam memastikan bahwa seluruh siklus hidup data — mulai dari pengumpulan, penyimpanan, pemrosesan, hingga konsumsi — berjalan secara teratur, aman, dan sesuai dengan kebijakan serta regulasi yang berlaku. Lapisan ini dapat dianggap sebagai \textit{manajemen lalu lintas dan aturan main} dari semua aktivitas data dalam organisasi.
+
+Secara umum, \textit{data governance} mengacu pada sistem pengendalian kualitas, keamanan, dan kepatuhan terhadap kebijakan data. Sedangkan \textit{orchestration} merujuk pada pengelolaan dan penjadwalan otomatis berbagai proses atau alur kerja (\textit{workflow}) dalam pipeline data. Bagi pengguna non-teknis, orchestration dapat dianalogikan seperti sistem manajemen produksi yang memastikan setiap langkah dalam pabrik berjalan dalam urutan dan waktu yang tepat.
+
+Beberapa alat dan layanan populer yang sering digunakan dalam lapisan ini meliputi:
+
 \begin{itemize}
-	\item Sudah spesifik dan relevan
-	\item Terlalu umum atau klise
-	\item Perlu penyuntingan untuk nada atau konteks
+	\item \textbf{Apache Atlas:} Sistem manajemen metadata yang membantu mendokumentasikan asal-usul data (data lineage), klasifikasi data, serta menerapkan kebijakan tata kelola. Atlas mempermudah pelacakan dari mana data berasal, bagaimana diproses, dan ke mana data digunakan.
+	
+	\item \textbf{Apache Airflow:} Platform orkestrasi alur kerja yang memungkinkan penjadwalan tugas-tugas data secara otomatis dan terstruktur. Airflow sangat berguna untuk pipeline data yang kompleks, seperti pemrosesan harian, pembersihan data, atau pemodelan machine learning.
+	
+	\item \textbf{Identity and Access Management (IAM):} Sistem pengaturan hak akses pengguna terhadap data dan aplikasi. IAM menjamin bahwa hanya pengguna yang berwenang yang dapat mengakses jenis data tertentu, menjaga keamanan dan kerahasiaan informasi organisasi.
+	
+	\item \textbf{Data Catalog:} Repositori metadata yang berfungsi sebagai katalog untuk seluruh aset data dalam organisasi. Dengan data catalog, pengguna dapat mencari dan memahami sumber data yang tersedia tanpa harus bertanya ke tim IT, sehingga mempercepat proses analisis.
 \end{itemize}
 
-\textbf{3. Bangun Rubrik Penilaian dengan Kriteria Sederhana}  
-Susun prompt untuk menghasilkan rubrik berdasarkan indikator pembelajaran. Contoh:
+Lapisan ini sangat penting untuk memastikan bahwa penggunaan data dalam organisasi dapat dipercaya (trustworthy), akuntabel, dan dapat diaudit. Dalam konteks kepatuhan terhadap regulasi seperti GDPR atau HIPAA, data governance dan orchestration membantu organisasi menghindari pelanggaran hukum serta menjaga reputasi bisnis mereka \cite{olson2020practical, otto2011data}.
 
-\begin{quote}
-	\centering
-	\texttt{"Buatkan rubrik penilaian esai singkat untuk siswa kelas 9 SMP. Aspek penilaian: isi, struktur, tata bahasa. Tampilkan dalam format 4 level."}
-\end{quote}
 
-Bandingkan hasil rubrik LLM dengan kebutuhan kelas nyata. Tambahkan atau sesuaikan deskriptor jika diperlukan.
 
-\textbf{4. Ciptakan Variasi Sesuai Jenjang atau Gaya Bahasa}  
-Uji coba membuat versi rubrik dan umpan balik yang berbeda untuk:
-\begin{itemize}
-	\item Siswa SD dengan bahasa yang lebih sederhana
-	\item Siswa SMA dengan ekspektasi akademik lebih tinggi
-	\item Versi formal vs versi ramah dan suportif
-\end{itemize}
+\section{End-to-End Data Flow}
 
-\textbf{5. Refleksi: Evaluasi Peran AI sebagai Mitra Penilaian}  
-Diskusikan bersama:
-\begin{itemize}
-	\item Apakah penggunaan LLM mempermudah proses evaluasi?
-	\item Apa yang perlu tetap dilakukan secara manual oleh guru?
-	\item Bagaimana menjaga keadilan dan konteks saat menggunakan AI untuk menilai?
-\end{itemize}
+Untuk memahami bagaimana arsitektur big data bekerja secara keseluruhan, penting untuk melihat bagaimana data mengalir dari awal hingga akhir dalam sistem. Proses ini disebut sebagai \textbf{end-to-end data flow}, yaitu alur lengkap mulai dari data dikumpulkan, disimpan, diproses, dianalisis, hingga dimanfaatkan untuk mendukung keputusan atau otomatisasi.
 
-\textbf{Manfaat Latihan Ini:}
-\begin{itemize}
-	\item Meningkatkan keterampilan peserta dalam merancang evaluasi berbasis AI
-	\item Memberikan pengalaman nyata bagaimana teknologi mendukung praktik penilaian yang efisien dan bermakna
-	\item Menumbuhkan kesadaran kritis tentang batasan dan potensi AI dalam konteks pendidikan
-\end{itemize}
+\textbf{Langkah-langkah utama alur data end-to-end} dapat dijelaskan sebagai berikut:
 
-Dengan latihan ini, diharapkan pendidik dapat menjadikan LLM sebagai mitra yang andal dalam proses penilaian—bukan sebagai pengganti, melainkan sebagai alat yang mendukung keputusan profesional yang bijak dan reflektif.
+\begin{enumerate}
+	\item \textbf{Pengumpulan Data (Ingestion):} Data dikumpulkan dari berbagai sumber seperti perangkat IoT, log sistem, API, atau media sosial melalui sistem seperti Kafka atau NiFi.
+	
+	\item \textbf{Penyimpanan Awal (Raw Data Lake):} Data disimpan dalam bentuk mentah di data lake seperti Amazon S3 atau Google Cloud Storage, tanpa perlu diolah terlebih dahulu.
+	
+	\item \textbf{Pemrosesan Data:} Data diproses menggunakan Spark atau Flink, baik secara batch maupun real-time, untuk membersihkan dan mentransformasikannya menjadi lebih siap pakai.
+	
+	\item \textbf{Penyimpanan Terstruktur (Lakehouse/DW):} Hasil pemrosesan data disimpan ke dalam lakehouse seperti Delta Lake atau data warehouse seperti BigQuery untuk analisis lanjutan.
+	
+	\item \textbf{Konsumsi Data:} Data kemudian digunakan oleh sistem Business Intelligence (seperti Tableau) atau platform Machine Learning (seperti SageMaker) untuk menghasilkan insight.
+	
+	\item \textbf{Aksi dan Keputusan:} Output dari analisis digunakan oleh manajer melalui dashboard, atau secara otomatis diteruskan ke sistem operasional seperti sistem rekomendasi atau deteksi penipuan.
+	
+	\item \textbf{Tata Kelola dan Orkestrasi:} Sepanjang alur ini, sistem tata kelola dan orkestrasi seperti Atlas dan Airflow memastikan proses berjalan aman, sesuai jadwal, dan terdokumentasi dengan baik \cite{olson2020practical}.
+\end{enumerate}
 
-\section*{Latihan Praktik: Umpan Balik dan Rubrik Adaptif}
-\addcontentsline{toc}{section}{Latihan Praktik: Umpan Balik dan Rubrik Adaptif}
-\begin{itemize}
-	\item \textbf{Tujuan:} Menyusun umpan balik dan rubrik yang sesuai dengan karakteristik tugas dan capaian pembelajaran.
-	\item \textbf{Tugas:}
-	\begin{itemize}
-		\item Gunakan LLM untuk mengevaluasi contoh esai siswa dan berikan umpan balik otomatis.
-		\item Buat rubrik penilaian untuk tugas presentasi atau proyek kelompok.
-		\item Susun 5 pertanyaan refleksi yang bisa digunakan siswa untuk menilai kemajuan belajarnya sendiri.
-	\end{itemize}
-\end{itemize}
+\subsection*{Contoh 1: Pendeteksian Penipuan Transaksi Keuangan}
+
+Sebuah institusi keuangan mengumpulkan data transaksi pelanggan secara real-time melalui API dan log sistem. Data mentah disimpan di Google Cloud Storage. Sistem pemrosesan menggunakan Apache Flink untuk mendeteksi pola transaksi mencurigakan secara langsung. Setelah diproses, hasil analisis disimpan di Snowflake dan dikonsumsi oleh model machine learning untuk klasifikasi potensi penipuan. Jika skor risiko transaksi tinggi, sistem secara otomatis mengirim notifikasi ke tim keamanan dan menunda transaksi untuk verifikasi manual. Semua langkah ini dijalankan dan dicatat oleh orkestrator Airflow, sementara Data Catalog dan IAM memastikan akses hanya oleh personel yang berwenang \cite{kim2019fraud}.
+
+\subsection*{Contoh 2: Analisis Sentimen untuk Strategi Pemasaran}
+
+Sebuah perusahaan e-commerce memantau ulasan dan komentar dari media sosial (seperti Twitter dan Instagram) menggunakan koneksi API. Data dikumpulkan oleh Apache NiFi dan disimpan dalam data lake berbasis Amazon S3. Proses Natural Language Processing (NLP) dilakukan oleh Spark untuk mengekstrak sentimen dan tema utama. Informasi ini dimuat ke dalam Delta Lake dan divisualisasikan melalui dashboard Power BI. Tim pemasaran menggunakan informasi ini untuk menyesuaikan strategi promosi secara real-time. Seluruh alur ini dikendalikan melalui orkestrasi Airflow dan diawasi oleh Atlas untuk pelacakan metadata dan audit \cite{alam2017twitter}.
+
+Melalui dua contoh ini, mahasiswa dapat memahami bahwa alur data end-to-end bukan hanya soal teknologi, tetapi juga menyangkut koordinasi sistem dan pengambilan keputusan berbasis data secara strategis.
+
+
+
+
+\section{Conclusion}
+
+Arsitektur big data yang telah dibahas dalam bab ini menunjukkan bagaimana berbagai komponen teknis dapat diintegrasikan secara sistematis untuk mendukung pengelolaan data berskala besar. Dimulai dari pengumpulan data melalui ingestion layer, penyimpanan fleksibel di data lake, pemrosesan data melalui framework seperti Spark dan Flink, hingga konsumsi data dalam bentuk analitik bisnis, pembelajaran mesin, dan sistem operasional, seluruh alur ini memungkinkan organisasi untuk mendapatkan wawasan secara efisien dan akurat. Keberadaan lapisan tata kelola dan orkestrasi menjamin bahwa proses tersebut dilakukan secara aman, terpantau, dan sesuai dengan regulasi yang berlaku.
+
+Sebagai praktik terbaik, penting bagi organisasi untuk membangun arsitektur yang modular, skalabel, dan mendukung kebutuhan data secara real-time maupun batch. Selain itu, integrasi dengan alat analitik dan kecerdasan buatan harus dirancang sejak awal agar hasil dari arsitektur ini tidak hanya mendukung pelaporan, tetapi juga pengambilan keputusan strategis dan otomatisasi operasional. Dengan pendekatan ini, organisasi tidak hanya mampu menyimpan data dalam jumlah besar, tetapi juga mengubahnya menjadi nilai bisnis yang nyata.
+
