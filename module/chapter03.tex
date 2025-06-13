@@ -76,17 +76,17 @@ Dari layer penyimpanan tersebut, data dapat diakses oleh platform analitik seper
 		\draw[arrow] (ml) -- (decision);
 		
 		% Governance dashed arrows to all
-		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (source.south);
-		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (ingest.south);
-		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (lake.south);
-		\draw[dashedarrow] (gov.north) -- ++(0,1) -| (process.south);
+		\draw[dashedarrow] (gov.north) -- (source.south);
+		\draw[dashedarrow] (gov.north) -- (ingest.south);
+		\draw[dashedarrow] (gov.north) -- (lake.south);
+		\draw[dashedarrow] (gov.north) -- (process.south);
 		
 		\draw[dashedarrow] (gov.east) -- (warehouse.west);
 		
-		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (bi.north);
-		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (ml.north);
-		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (decision.north);
-		\draw[dashedarrow] (gov.south) -- ++(0,-1) -| (opsys.north);
+		\draw[dashedarrow] (gov.south) --  (bi.north);
+		\draw[dashedarrow] (gov.south) --  (ml.north);
+		\draw[dashedarrow] (gov.south) --  (decision.north);
+		\draw[dashedarrow] (gov.south) --  (opsys.north);
 		
 	\end{tikzpicture}
 	\caption{Big Data Architecture}
@@ -94,7 +94,7 @@ Dari layer penyimpanan tersebut, data dapat diakses oleh platform analitik seper
 \end{figure}
 
 
-\section{Sumber Data}
+\section{Data Sources}
 
 Dalam sistem big data, tahap awal yang sangat penting adalah mengenali dan mengelola berbagai jenis sumber data yang tersedia. Sumber data adalah asal-usul dari seluruh informasi yang akan diproses oleh sistem. Sumber-sumber ini sangat beragam—baik dari segi bentuk, kecepatan kedatangan, maupun nilainya. Untuk memudahkan pemahaman, sumber data dapat dibagi ke dalam empat kategori umum: perangkat Internet of Things (IoT), log sistem, antarmuka pemrograman aplikasi (API), dan media sosial.
 
