@@ -1,0 +1,37 @@
+@startuml
+skinparam dpi 300
+left to right direction
+
+' ---------- Entitas ----------
+entity Customer {
+  *id : INTEGER
+  name : TEXT
+  city : TEXT
+}
+
+entity "Order" as Order {
+  *id : INTEGER
+  *customer_id : INTEGER
+  order_date : TEXT
+  total : REAL
+}
+
+entity OrderDetail {
+  *order_id   : INTEGER
+  *product_id : INTEGER
+  quantity    : INTEGER
+  line_total  : REAL
+}
+
+entity Product {
+  *id        : INTEGER
+  name       : TEXT
+  category   : TEXT
+  unit_price : REAL
+}
+
+' ---------- Relasi (IE notation) ----------
+Customer   ||--o{ Order        : places[id..customer_id]
+Order      ||--o{ OrderDetail  : contains[id..order_id]
+Product    ||--o{ OrderDetail  : includes[id..product_id]
+@enduml

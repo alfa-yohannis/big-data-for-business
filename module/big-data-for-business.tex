@@ -25,9 +25,57 @@ BoldItalicFont = TitilliumWeb-BoldItalic.ttf
 \usepackage{graphicx}
 \usepackage{xcolor}
 \graphicspath{{images/}}
-\usepackage{listings}
 \usepackage{svg}
 
+
+\usepackage{listings}
+\lstdefinestyle{SqlStyle}{
+	language=SQL,
+	basicstyle=\ttfamily\footnotesize,
+	morekeywords={REAL, TEXT, REFERENCES},
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=2,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	string=[s]{'}{'},
+	morestring=[s]{"}{"},
+	%	stringstyle=\color{teal}\ttfamily,
+	%	showstringspaces=false
+}
+
+\lstdefinelanguage{bash} {
+	keywords={},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={iex},
+	ndkeywordstyle=\color{purple}\bfseries,
+	sensitive=true,
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	breaklines=true,
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	tabsize=2,
+	comment=[l]{\#},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	stringstyle=\color{purple}\ttfamily,
+	showstringspaces=false
+}
+
+\usepackage{plantuml}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning}
 
@@ -92,7 +140,7 @@ BoldItalicFont = TitilliumWeb-BoldItalic.ttf
 	\include{chapter01}
 	\include{chapter02}
 	\include{chapter03}
-%	\include{chapter04}
+	\include{chapter04}
 %	\include{chapter05}
 %	\include{chapter06}
 %	\include{penutup}
