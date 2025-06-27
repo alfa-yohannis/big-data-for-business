@@ -53,6 +53,30 @@ BoldItalicFont = TitilliumWeb-BoldItalic.ttf
 	%	showstringspaces=false
 }
 
+
+\lstdefinelanguage{json}{
+	basicstyle=\ttfamily\footnotesize,
+	morekeywords={REAL, TEXT, REFERENCES},
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=2,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	string=[s]{'}{'},
+	morestring=[s]{"}{"},
+	%	stringstyle=\color{teal}\ttfamily,
+	%	showstringspaces=false
+}
+
 \lstdefinelanguage{bash} {
 	keywords={},
 	basicstyle=\ttfamily\small,
@@ -73,6 +97,30 @@ BoldItalicFont = TitilliumWeb-BoldItalic.ttf
 	commentstyle=\color{gray}\ttfamily,
 	stringstyle=\color{purple}\ttfamily,
 	showstringspaces=false
+}
+
+% Define Java language style for listings
+\lstdefinestyle{JavaScript}{
+	language=Java,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=4,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	string=[s]{'}{'},
+	morestring=[s]{"}{"},
+	%	stringstyle=\color{teal}\ttfamily,
+	%	showstringspaces=false
 }
 
 \usepackage{plantuml}
@@ -141,7 +189,7 @@ BoldItalicFont = TitilliumWeb-BoldItalic.ttf
 	\include{chapter02}
 	\include{chapter03}
 	\include{chapter04}
-%	\include{chapter05}
+	\include{chapter05}
 %	\include{chapter06}
 %	\include{penutup}
 
