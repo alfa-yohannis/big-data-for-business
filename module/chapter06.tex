@@ -1,404 +1,481 @@
-\chapter{Etika dalam Penggunaan AI: Apa yang Bisa Salah?}
+\chapter{Teknologi Pemrosesan Big Data }
 
-\section{Mengapa Etika Penting dalam Penggunaan AI di Pendidikan}
+\section{Pendahuluan}
 
-Kehadiran kecerdasan buatan (Artificial Intelligence/AI), khususnya model bahasa besar (LLM), telah membuka peluang besar untuk meningkatkan efisiensi dan kualitas dalam berbagai aspek pendidikan. Namun, seperti halnya teknologi lainnya, penggunaan AI dalam konteks pendidikan tidak lepas dari potensi risiko. Oleh karena itu, penting untuk membekali pendidik dengan kesadaran dan pemahaman etis agar penggunaan AI dapat dilakukan secara bertanggung jawab, adil, dan aman.
+Pemrosesan big data memiliki peran penting dalam arsitektur data bisnis karena memungkinkan organisasi untuk mengubah data mentah, tidak terstruktur, dan beragam menjadi format terstruktur yang siap untuk analisis. Transformasi ini sangat penting untuk mendukung inisiatif Business Intelligence (BI) dan Machine Learning (ML) yang mendorong pengambilan keputusan strategis dan efisiensi operasional. Dalam arsitektur data modern, teknologi pemrosesan berfungsi sebagai jembatan antara pengumpulan data dan ekstraksi nilai, menentukan seberapa efektif data dapat diintegrasikan, dibersihkan, ditransformasikan, dan disiapkan untuk aplikasi analitik selanjutnya.
 
-\textbf{Mengapa isu etika perlu mendapat perhatian khusus?}  
-AI tidak memiliki kesadaran, penilaian moral, atau pemahaman kontekstual seperti manusia. Model seperti ChatGPT hanya menghasilkan respons berdasarkan pola data pelatihan yang sangat besar, tanpa benar-benar memahami kebenaran, nilai-nilai budaya, atau konsekuensi sosial. Hal ini membuat hasil yang diberikan AI bisa saja:
-\begin{itemize}
-	\item Menyesatkan atau tidak akurat
-	\item Bias terhadap kelompok tertentu
-	\item Terlalu bergantung pada data yang tidak lengkap atau tidak relevan
-\end{itemize}
-
-\textbf{Risiko penggunaan AI tanpa kesadaran etis antara lain:}
-\begin{itemize}
-	\item \textbf{Bias algoritma:} AI dapat memperkuat stereotip karena datanya berasal dari internet dan publikasi yang tidak selalu netral.
-	\item \textbf{Plagiarisme:} Siswa bisa menyalahgunakan AI untuk menyalin tugas tanpa pemahaman atau proses belajar yang bermakna.
-	\item \textbf{Misinformasi:} AI mungkin memberikan informasi yang tampak meyakinkan, tetapi ternyata tidak benar atau tidak relevan.
-	\item \textbf{Ketergantungan berlebih:} Siswa atau guru bisa terlalu mengandalkan AI dan mengurangi daya pikir kritis atau kreativitasnya sendiri.
-	\item \textbf{Privasi dan keamanan data:} Memasukkan informasi pribadi siswa ke dalam sistem AI publik dapat menimbulkan risiko kebocoran data.
-\end{itemize}
-
-\textbf{Mengapa guru perlu bersikap kritis terhadap hasil AI?}  
-Guru perlu meninjau ulang setiap hasil yang diberikan AI, bukan hanya untuk memverifikasi kebenarannya, tetapi juga untuk memastikan bahwa hasil tersebut sesuai dengan konteks pembelajaran, karakter siswa, serta nilai-nilai budaya dan institusional. AI seharusnya dilihat sebagai \textit{alat bantu}, bukan pengganti proses pendidikan yang melibatkan relasi manusia, empati, dan pertimbangan pedagogis.
-
-\textbf{Tanggung jawab etis dalam penggunaan AI di pendidikan meliputi:}
-\begin{itemize}
-	\item Menyampaikan secara jujur kepada siswa bahwa suatu materi dihasilkan oleh AI.
-	\item Mengarahkan siswa untuk tetap berpikir kritis terhadap hasil AI.
-	\item Menyunting dan menyesuaikan materi AI agar sesuai dengan nilai dan standar pendidikan.
-	\item Melindungi identitas dan data pribadi siswa saat menggunakan layanan AI daring.
-\end{itemize}
-
-AI menghadirkan potensi luar biasa dalam mendukung pembelajaran, namun potensi ini hanya akan bermanfaat bila dikawal dengan prinsip-prinsip etika. Guru sebagai pendidik memiliki peran penting untuk memastikan bahwa pemanfaatan AI dilakukan dengan bijaksana—tidak hanya efisien, tetapi juga adil, aman, dan bermakna bagi pembelajaran jangka panjang. Pendidikan yang beretika di era digital adalah pendidikan yang sadar akan batas, tanggung jawab, dan nilai-nilai kemanusiaan.
+Bab ini memperkenalkan konsep dan teknologi dasar dalam pemrosesan big data. Pembahasan dimulai dengan menempatkan pemrosesan big data dalam konteks arsitektur data yang lebih luas, menjelaskan alur data dari berbagai sumber ke data lake, kemudian diproses dan diorganisir ke dalam data warehouse atau lakehouse untuk analisis. Bab ini mencakup paradigma pemrosesan batch dan stream beserta perannya dalam berbagai skenario bisnis seperti pelaporan keuangan dan deteksi penipuan secara real-time. Selain itu, akan dibahas kerangka kerja inti seperti Hadoop MapReduce dan Apache Spark, serta alat ekosistem lainnya termasuk Apache Hive, HBase, Sqoop, dan Kafka, dengan evaluasi implikasi strategis pemilihan teknologi pemrosesan terkait biaya, skalabilitas, integrasi, dan kebutuhan keterampilan organisasi.
 
 
-\section{Bias dalam AI dan Dampaknya pada Pembelajaran}
+\section{Gambaran Umum Pemrosesan Big Data}
 
-Meskipun kecerdasan buatan (AI) seperti Large Language Models (LLM) dirancang untuk membantu menyelesaikan berbagai tugas secara efisien, penting untuk diingat bahwa sistem ini dilatih menggunakan data yang dikumpulkan dari dunia nyata. Data tersebut mencakup miliaran kata dari internet, buku, berita, forum, dan media sosial yang sering kali mencerminkan sudut pandang mayoritas, budaya dominan, atau bahkan asumsi dan stereotip yang tidak disadari. Akibatnya, AI tidak hanya belajar pola bahasa yang umum, tetapi juga bisa mewarisi \textbf{bias} yang terdapat dalam data tersebut.
-
-\textbf{Apa itu bias dalam AI?}  
-Bias dalam AI merujuk pada kecenderungan model untuk memberikan hasil atau prediksi yang tidak netral, memihak kelompok tertentu, atau mencerminkan prasangka yang tersembunyi dalam data pelatihan. Bias ini bisa bersifat:
-\begin{itemize}
-	\item \textbf{Bias budaya atau etnis}: misalnya AI lebih banyak menampilkan nama, referensi, atau gaya komunikasi dari budaya Barat.
-	\item \textbf{Bias gender}: misalnya peran pekerjaan atau karakter diasosiasikan dengan jenis kelamin tertentu.
-	\item \textbf{Bias bahasa atau regional}: model lebih akurat dalam menjawab dalam bahasa Inggris dibandingkan bahasa lain, atau lebih memahami konteks negara-negara tertentu.
-	\item \textbf{Bias sosio-ekonomi}: informasi yang lebih mendukung kelompok tertentu, sementara kelompok marjinal terabaikan.
-\end{itemize}
-
-\textbf{Contoh dalam konteks pembelajaran:}
-\begin{itemize}
-	\item Ketika diminta memberikan tokoh inspiratif, AI lebih cenderung menyebut figur pria dari negara-negara maju.
-	\item Ketika diminta membuat cerita anak, AI mungkin menggunakan nama-nama dari budaya tertentu secara dominan.
-	\item Dalam membuat soal atau latihan, AI mungkin menyarankan konteks yang tidak relevan dengan latar belakang siswa Indonesia.
-\end{itemize}
-
-\textbf{Dampak terhadap pembelajaran:}
-\begin{itemize}
-	\item \textbf{Tidak inklusif}: siswa dari latar belakang minoritas bisa merasa tidak terwakili dalam materi yang dihasilkan oleh AI.
-	\item \textbf{Penguatan stereotip}: jika tidak disadari, guru atau siswa bisa ikut melestarikan bias yang muncul dari AI.
-	\item \textbf{Kehilangan konteks lokal}: materi belajar menjadi kurang relevan karena tidak sesuai dengan budaya, nilai, atau lingkungan siswa.
-\end{itemize}
-
-\textbf{Peran guru dalam mengelola bias AI:}
-\begin{itemize}
-	\item Meninjau dan menyunting hasil dari LLM agar lebih kontekstual dan adil.
-	\item Menambahkan prompt yang memperjelas konteks lokal atau nilai-nilai yang ingin diangkat (misalnya: "sertakan tokoh dari Asia Tenggara").
-	\item Menggunakan hasil AI sebagai titik awal diskusi kritis, bukan sebagai sumber kebenaran tunggal.
-	\item Mendorong siswa untuk mengenali dan mempertanyakan bias, baik dalam AI maupun dalam sumber lain.
-\end{itemize}
-
-\textbf{Contoh prompt korektif:}
-
-\begin{quote}
+\begin{figure}[ht]
 	\centering
-	\texttt{"Buatkan daftar 5 tokoh inspiratif perempuan dari Asia Tenggara dalam bidang pendidikan."}
-\end{quote}
+	\begin{tikzpicture}[node distance=1cm and 0.5cm]
+		
+		% Define styles
+		\tikzset{
+			box/.style={
+				rectangle, draw, rounded corners,
+				minimum width=2.2cm, minimum height=1cm,
+				text width=3cm, align=center, font=\small
+			},
+			widebox/.style={
+				rectangle, draw, rounded corners,
+				minimum width=6.5cm, minimum height=1cm,
+				text width=6.8cm, align=center, font=\small
+			},
+			source/.style={box, fill=gray!30},
+			ingestion/.style={box, fill=blue!20},
+			storage/.style={box, fill=gray!30},
+			processing/.style={box, fill=cyan!10},
+			lakehouse/.style={box, fill=gray!30},
+			serving/.style={box, fill=gray!30},
+			ml/.style={box, fill=gray!30},
+			governance/.style={widebox, fill=gray!30},
+			output/.style={box, fill=gray!30},
+			arrow/.style={thick, ->, >=Stealth},
+			dashedarrow/.style={thick, dashed, ->, >=Stealth}
+		}
+		
+		% Main flow (horizontal line)
+		\node (source)    [source]        {\textbf{Data Sources}\\• IoT\\• Logs\\• APIs\\• Social Media};
+		\node (ingest)    [ingestion, right=of source] {\textbf{Ingestion Layer}\\• Kafka\\• Pub/Sub\\• NiFi};
+		\node (lake)      [storage,   right=of ingest] {\textbf{Raw Data Lake}\\• S3\\• GCS\\• ADLS\\• HDFS};
+		\node (process)   [processing, right=of lake] {\textbf{Processing}\\• Spark\\• Flink\\• Dataflow};
+		
+		% Warehouse
+		\node (warehouse) [lakehouse, below=1.5cm of process] {\textbf{Lakehouse/ DW}\\• BigQuery\\• Snowflake\\• Delta Lake};
+		
+		% Governance (above lake and process)
+		\node (gov)       [governance, left=1cm of warehouse] {\textbf{Governance \& Orchestration}\\• Atlas\quad• Airflow\quad• IAM\quad• Data Catalog};
+		
+		% BI and ML 
+		\node (bi)        [serving, below=1.5cm of warehouse] {\textbf{BI \& Analytics}\\• Tableau\\• Power BI\\• Looker};
+		\node (decision)  [output, left=.5cm of bi] {\textbf{Decision Support}\\• Dashboards\\• Reports\\• KPIs};
+		
+		\node (ml)        [ml, left= of decision] {\textbf{ML Platform}\\• SageMaker\\• TensorFlow\\• Feature Store};
+		\node (opsys)     [output, left=.5cm of ml] {\textbf{Operational Systems}\\• Recommenders\\• Alerts\\• Automation};
+		
+		
+		% Arrows (main flow)
+		\draw[arrow] (source) -- (ingest);
+		\draw[arrow] (ingest) -- (lake);
+		\draw[arrow] (lake) -- (process);
+		\draw[arrow] (process) -- (warehouse);
+		
+		% BI and ML branches
+		\draw[arrow] (warehouse.south) -- (bi.north);
+		\draw[arrow] (warehouse.south) -- (ml.north);
+		\draw[arrow] (bi) -- (decision);
+		\draw[arrow] (ml) -- (opsys);
+		\draw[arrow] (ml) -- (decision);
+		
+		% Governance dashed arrows to all
+		\draw[dashedarrow] (gov.north) -- (source.south);
+		\draw[dashedarrow] (gov.north) -- (ingest.south);
+		\draw[dashedarrow] (gov.north) -- (lake.south);
+		\draw[dashedarrow] (gov.north) -- (process.south);
+		
+		\draw[dashedarrow] (gov.east) -- (warehouse.west);
+		
+		\draw[dashedarrow] (gov.south) --  (bi.north);
+		\draw[dashedarrow] (gov.south) --  (ml.north);
+		\draw[dashedarrow] (gov.south) --  (decision.north);
+		\draw[dashedarrow] (gov.south) --  (opsys.north);
+		
+	\end{tikzpicture}
+	\caption{Data Processing, particularly ingestion for data lake and transformation for lake/warehouse, in Big Data}
+	\label{fig:bigdata-processing}
+\end{figure}
 
-AI bukanlah sistem yang netral secara otomatis. Ia merefleksikan dunia apa adanya, termasuk ketimpangan dan ketidakadilan yang ada di dalamnya. Oleh karena itu, penting bagi guru dan siswa untuk mendekati AI dengan sikap kritis dan etis. Ketika disadari dan dikelola dengan tepat, pembelajaran tidak hanya menjadi lebih adil dan inklusif, tetapi juga menjadi ruang refleksi yang memperkaya pemahaman terhadap keberagaman dunia nyata.
+
+Big data processing merupakan proses penting dalam arsitektur big data yang bertujuan untuk mengolah data berukuran besar dan beragam menjadi informasi yang bernilai bagi organisasi. Pada bagian ini akan dibahas definisi big data processing (Gambar \ref{fig:bigdata-processing}), peran pemrosesan dalam mengubah data mentah menjadi format terstruktur, serta alur arsitektur pemrosesan data secara keseluruhan.
+
+Big data processing dapat didefinisikan sebagai serangkaian aktivitas untuk membaca, membersihkan, mengintegrasi, mengubah, dan menganalisis data dalam jumlah besar yang berasal dari berbagai sumber. Proses ini dilakukan menggunakan teknologi dan kerangka kerja khusus yang mampu menangani volume, kecepatan, dan variasi data yang tinggi, seperti Hadoop MapReduce, Apache Spark, dan teknologi pemrosesan streaming lainnya.
+
+Peran utama dari big data processing adalah untuk mengubah data mentah yang tidak terstruktur atau semi-terstruktur menjadi data terstruktur yang dapat dimanfaatkan untuk analisis lanjutan, business intelligence (BI), atau machine learning (ML). Tanpa adanya tahap pemrosesan ini, data yang dikumpulkan hanya menjadi kumpulan informasi yang tidak memiliki makna strategis. Melalui pemrosesan, data dapat dibersihkan dari duplikasi, divalidasi, digabungkan, serta diubah menjadi format tabel atau schema yang sesuai dengan kebutuhan analisis bisnis dan prediktif.
+
+Secara umum, alur arsitektur big data processing dimulai dari berbagai sumber data seperti IoT sensor, aplikasi bisnis, media sosial, dan file log, yang kemudian disimpan dalam data lake. Setelah itu, data akan diproses menggunakan pipeline pemrosesan batch maupun streaming untuk transformasi dan integrasi data. Hasil dari pemrosesan ini selanjutnya disimpan dalam data warehouse atau lakehouse yang telah terstruktur, sehingga dapat digunakan oleh sistem business intelligence (BI) untuk pelaporan dan visualisasi, serta oleh machine learning (ML) untuk model prediktif dan analitik lanjutan.
+
+Dengan demikian, big data processing menjadi salah satu komponen utama dalam menciptakan nilai dari data, mendukung pengambilan keputusan berbasis data, serta mendorong inovasi berbasis AI dan analitik dalam organisasi modern.
+
+\section{Tinjauan Ulang Data Ingestion}
+
+Data ingestion merupakan tahap awal dalam arsitektur big data yang berfokus pada proses memasukkan data dari berbagai sumber ke dalam sistem penyimpanan terpusat seperti data lake. Tahap ini menjadi fondasi penting karena kualitas dan keberagaman data yang diingest akan menentukan efektivitas pemrosesan dan analisis data di tahap selanjutnya.
+
+Secara umum, data ingestion menggambarkan bagaimana data dari beragam sumber seperti sensor IoT, aplikasi bisnis, media sosial, file log server, sistem transaksi, hingga open data pemerintah dikumpulkan dan disimpan dalam data lake. Proses ini dapat dilakukan secara batch, di mana data dikumpulkan dalam interval tertentu untuk dimuat secara bersamaan, maupun secara streaming yang memungkinkan data dikirim dan disimpan secara real-time saat data dihasilkan.
+
+Jenis data yang diingest ke dalam data lake sangat beragam, mencakup data terstruktur, semi-terstruktur, dan tidak terstruktur. Data terstruktur adalah data yang memiliki format tabel yang jelas dengan schema terdefinisi, seperti data transaksi penjualan dalam database relasional. Data semi-terstruktur adalah data yang memiliki struktur tertentu namun tidak terdefinisi dalam schema tabel tradisional, seperti file JSON dan XML. Sementara itu, data tidak terstruktur adalah data yang tidak memiliki struktur tetap, seperti teks dokumen, gambar, video, dan rekaman audio.
+
+Dengan memahami proses dan tipe data dalam data ingestion, organisasi dapat merancang strategi penyimpanan dan pemrosesan yang sesuai, memastikan bahwa data yang masuk ke dalam data lake siap untuk diolah lebih lanjut dalam pipeline big data untuk mendukung kebutuhan business intelligence dan machine learning secara optimal.
+
+\section{Apache Kafka untuk Ingesti Data Real-Time}
 
 
-\section{Risiko Misinformasi dan Fakta yang Salah}
-
-Salah satu tantangan terbesar dalam penggunaan Large Language Model (LLM) seperti ChatGPT dalam pendidikan adalah kemampuannya untuk menghasilkan informasi yang terdengar sangat meyakinkan, padahal belum tentu akurat. LLM dirancang untuk memprediksi kata atau kalimat berikutnya berdasarkan pola yang dipelajari dari data pelatihan. Ia tidak memiliki mekanisme internal untuk memverifikasi fakta seperti manusia yang merujuk pada sumber terpercaya. Akibatnya, model dapat menyampaikan jawaban yang salah atau menyesatkan—meskipun dikemas dengan gaya bahasa yang lugas, runtut, dan terlihat “pintar”.
-
-\textbf{Apa itu misinformasi dalam konteks AI?}  
-Misinformasi adalah informasi yang tidak benar atau tidak akurat, namun disampaikan seolah-olah benar. Dalam konteks AI, misinformasi bisa muncul karena:
-\begin{itemize}
-	\item Data pelatihan yang sudah usang atau tidak valid
-	\item Kurangnya akses terhadap data yang diperbarui secara real-time
-	\item Kesalahan dalam memahami konteks atau pertanyaan
-	\item Permintaan pengguna yang ambigu atau kurang jelas
-\end{itemize}
-
-\textbf{Contoh misinformasi dari LLM:}
-\begin{itemize}
-	\item Memberikan tanggal yang salah dari peristiwa sejarah
-	\item Mengutip penulis atau buku yang tidak ada
-	\item Mengarang statistik atau hasil penelitian yang tidak pernah diterbitkan
-	\item Memberikan definisi konsep yang keliru atau tidak sesuai standar ilmiah
-\end{itemize}
-
-\textbf{Mengapa ini berbahaya dalam pendidikan?}
-\begin{itemize}
-	\item \textbf{Siswa dapat menerima informasi yang keliru sebagai fakta}, jika tidak diajarkan untuk memverifikasi sumber.
-	\item \textbf{Guru dapat menggunakan materi yang tidak akurat}, jika terlalu mengandalkan LLM tanpa proses pengecekan ulang.
-	\item \textbf{Proses pembelajaran kehilangan validitas ilmiah}, yang seharusnya berbasis bukti dan referensi terpercaya.
-\end{itemize}
-
-\textbf{Contoh prompt yang rentan menyebabkan misinformasi:}
-\begin{quote}
+\begin{figure}[ht]
 	\centering
-	\texttt{"Apa 3 penemuan terpenting dari ilmuwan Indonesia yang memenangkan Nobel?"}
-\end{quote}
+	\begin{tikzpicture}[node distance=1cm and 0.8cm]
+		
+		% Styles
+		\tikzset{
+			component/.style={
+				rectangle, draw, rounded corners,
+				minimum width=2.5cm, minimum height=1cm,
+				text width=3cm, align=center, font=\small, fill=gray!20
+			},
+			kafka/.style={
+				rectangle, draw, rounded corners,
+				minimum width=3.2cm, minimum height=1.2cm,
+				text width=3.4cm, align=center, font=\small, fill=orange!30
+			},
+			consumer/.style={
+				rectangle, draw, rounded corners,
+				minimum width=2.5cm, minimum height=1cm,
+				text width=3cm, align=center, font=\small, fill=green!20
+			},
+			labelbox/.style={
+				draw=none, fill=none, text centered, font=\small
+			},
+			arrowpub/.style={thick, ->, >=Stealth, blue},
+			arrowsub/.style={thick, ->, >=Stealth, red}
+		}
+		
+		% Producers
+		\node (webapp) [component] {\textbf{Web Apps}\\(Clicks, Logs)};
+		\node (iot) [component, below=of webapp] {\textbf{IoT Sensors}\\(Telemetry)};
+		\node (trx) [component, below=of iot] {\textbf{Transaction Systems}\\(Payments, Orders)};
+		\node (log) [component, below=of trx] {\textbf{Log Servers}\\(Events)};
+		
+		% Kafka
+		\node (kafka) [kafka, right=2cm of iot, yshift=-1cm] {\textbf{Apache Kafka}\\(Topics, Brokers)};
+		
+		% Topic ID label
+		\node (topic) [labelbox, below=0.2cm of kafka] {Contoh: Topic ID = \texttt{transactions}};
+		
+		% Consumers
+		\node (stream) [consumer, right=2cm of kafka, yshift=1cm] {\textbf{Stream Processing}\\• Spark Streaming\\• Flink};
+		\node (lake) [consumer, right=2cm of kafka, yshift=-1cm] {\textbf{Data Lake / Lakehouse}\\• S3\\• HDFS\\• Delta Lake};
+		
+		% Publish arrows: producers to kafka
+		\draw[arrowpub] (webapp.east) -- node[above, font=\scriptsize, blue] {Publish} (kafka.west);
+		\draw[arrowpub] (iot.east) -- node[above, font=\scriptsize, blue] {Publish} (kafka.west);
+		\draw[arrowpub] (trx.east) -- node[above, font=\scriptsize, blue] {Publish} (kafka.west);
+		\draw[arrowpub] (log.east) -- node[above, font=\scriptsize, blue] {Publish} (kafka.west);
+		
+		% Subscribe arrows: kafka to consumers
+		\draw[arrowsub] (kafka.east) -- node[above, font=\scriptsize, red] {Subscribe} (stream.west);
+		\draw[arrowsub] (kafka.east) -- node[below, font=\scriptsize, red] {Subscribe} (lake.west);
+		
+		% Publish-subscribe label
+		\node (pubsub) [labelbox, above=0.4cm of kafka] {\textbf{Publish - Subscribe}};
+		
+	\end{tikzpicture}
+	\caption{Arsitektur Apache Kafka dengan konsep Publish-Subscribe dan Topic ID}
+	\label{fig:kafka-architecture}
+\end{figure}
 
-Model bisa menjawab dengan menyebut nama ilmuwan Indonesia yang sebenarnya belum pernah menerima Nobel, karena ia "menebak" berdasarkan pola umum, bukan fakta aktual.
 
-\textbf{Strategi untuk memitigasi risiko misinformasi:}
-\begin{itemize}
-	\item Gunakan LLM sebagai alat bantu awal, bukan sebagai satu-satunya sumber kebenaran.
-	\item Selalu verifikasi jawaban dengan sumber primer atau referensi resmi.
-	\item Ajarkan siswa untuk membandingkan informasi dari LLM dengan buku teks, jurnal, atau situs terpercaya.
-	\item Tambahkan klausa penegasan pada prompt, seperti:
-\end{itemize}
+Apache Kafka merupakan platform streaming ingestion yang banyak digunakan dalam arsitektur big data modern untuk mendukung pemrosesan data secara real-time. Kafka awalnya dikembangkan oleh LinkedIn dan kemudian menjadi proyek open source di bawah Apache Software Foundation. Teknologi ini dirancang untuk menangani aliran data berkecepatan tinggi dengan throughput tinggi, latensi rendah, dan kemampuan skalabilitas horizontal yang baik.
 
-\begin{quote}
+Sebagai platform ingestion streaming, Kafka berfungsi sebagai perantara (message broker) yang memungkinkan data dari berbagai sumber dikirim secara terus-menerus ke dalam sistem penyimpanan dan pemrosesan downstream, seperti data lake dan lakehouse (perhatikan Gambar \ref{fig:kafka-architecture}). Kafka menggunakan konsep \textit{publish-subscribe}, di mana produser (producers) mengirimkan data ke topik tertentu, dan konsumer (consumers) membaca data tersebut sesuai kebutuhan mereka. Dengan arsitektur terdistribusi ini, Kafka mampu memastikan data dapat diterima dengan andal meskipun terdapat lonjakan volume data yang tinggi.
+
+Dalam pipeline data real-time, Apache Kafka berperan penting untuk menghubungkan sistem sumber data seperti aplikasi web, sensor IoT, sistem transaksi, dan log server dengan data lake atau lakehouse. Data yang masuk melalui Kafka dapat diproses secara langsung menggunakan teknologi pemrosesan stream seperti Apache Flink atau Spark Streaming, atau disimpan terlebih dahulu ke dalam data lake untuk diproses lebih lanjut secara batch.
+
+Contoh kasus penggunaan Kafka dalam dunia bisnis meliputi pelacakan aktivitas pelanggan secara real-time pada aplikasi e-commerce untuk analisis perilaku dan rekomendasi produk instan, pemantauan transaksi keuangan untuk mendeteksi penipuan (fraud detection) secara langsung, dan pengumpulan data sensor IoT untuk pengendalian operasional mesin atau kendaraan secara real-time. Dengan menggunakan Kafka, organisasi dapat membangun pipeline data streaming yang andal untuk mendukung kebutuhan analitik dan operasional yang membutuhkan data up-to-date dengan kecepatan tinggi.
+
+Dengan demikian, Apache Kafka menjadi komponen strategis dalam arsitektur big data modern yang menuntut ingestion data real-time, mendukung transformasi digital, dan meningkatkan ketepatan pengambilan keputusan berbasis data terkini.
+
+\section{Pemrosesan dalam Arsitektur Big Data}
+
+
+Processing atau pemrosesan dalam arsitektur big data merupakan tahap penting yang berfokus pada transformasi, pembersihan, integrasi, dan penataan data sehingga dapat digunakan untuk analisis bisnis dan machine learning secara efektif. Tanpa adanya tahap pemrosesan, data yang dikumpulkan dalam data lake hanya akan menjadi kumpulan informasi mentah yang tidak memiliki nilai strategis bagi organisasi.
+
+Secara umum, pemrosesan data meliputi beberapa aktivitas utama. Pertama, transformasi data, yaitu mengubah data dari format awal menjadi format yang sesuai dengan kebutuhan analisis, seperti konversi tipe data, perhitungan agregat, atau pembuatan variabel turunan. Kedua, pembersihan data (data cleaning) yang bertujuan untuk menghapus duplikasi, menangani nilai kosong atau tidak valid, dan memastikan konsistensi data. Ketiga, integrasi data, yaitu menggabungkan data dari berbagai sumber menjadi satu set data terpadu yang dapat digunakan untuk analisis lintas sumber. Keempat, penataan data (structuring) yang mengorganisir data ke dalam schema tabel atau format file tertentu sesuai standar data warehouse atau lakehouse.
+
+Terdapat perbedaan strategis dalam pemrosesan data untuk data warehouse dan lakehouse. Pada arsitektur data warehouse tradisional, pemrosesan dilakukan secara ketat untuk memastikan data sudah sepenuhnya terstruktur, terintegrasi, dan divalidasi sebelum dimasukkan ke dalam warehouse (ETL: Extract, Transform, Load). Pendekatan ini menekankan kualitas dan konsistensi data yang tinggi, sehingga cocok untuk pelaporan keuangan, compliance, dan analisis bisnis yang memerlukan data bersih dan stabil.
+
+Sementara itu, pada arsitektur lakehouse yang menggabungkan kelebihan data lake dan data warehouse, pemrosesan dapat dilakukan dengan pendekatan ELT (Extract, Load, Transform), di mana data mentah disimpan terlebih dahulu di lakehouse kemudian diproses sesuai kebutuhan analisis. Pendekatan ini memungkinkan fleksibilitas yang lebih tinggi, mendukung analisis eksplorasi data besar dan machine learning dengan cepat, tanpa harus menunggu seluruh proses transformasi selesai sebelum data tersedia.
+
+Dengan demikian, pemrosesan dalam big data architecture tidak hanya menentukan kualitas data yang digunakan oleh organisasi, tetapi juga mempengaruhi kecepatan, fleksibilitas, dan skalabilitas dalam mendukung pengambilan keputusan strategis berbasis data di era digital.
+
+
+\subsection{Batch vs Stream Processing}
+
+Pemrosesan batch dan stream merupakan dua paradigma utama dalam big data processing yang memiliki perbedaan konsep dan strategi penerapan dalam arsitektur data organisasi.
+
+Secara konseptual, \textbf{batch processing} adalah metode pemrosesan di mana data dikumpulkan terlebih dahulu dalam jumlah besar dalam periode waktu tertentu, kemudian diproses secara serentak dalam satu eksekusi. Pendekatan ini cocok untuk pekerjaan yang tidak memerlukan hasil secara langsung, seperti pelaporan keuangan bulanan, penghitungan total penjualan harian, atau pengolahan data historis untuk analisis tren bisnis. Teknologi yang umum digunakan untuk batch processing meliputi Hadoop MapReduce dan Apache Spark batch mode, yang mampu menangani volume data besar dengan biaya komputasi yang efisien.
+
+Di sisi lain, \textbf{stream processing} atau pemrosesan streaming merupakan metode pemrosesan data secara real-time atau near real-time, di mana data diproses segera setelah diterima. Pendekatan ini sangat penting untuk skenario bisnis yang memerlukan respon cepat, seperti deteksi penipuan transaksi keuangan secara real-time, monitoring kondisi mesin industri melalui sensor IoT, dan analisis perilaku pengguna aplikasi untuk memberikan rekomendasi instan. Teknologi populer untuk stream processing meliputi Apache Kafka Streams, Apache Flink, dan Spark Streaming.
+
+Dalam konteks kesiapan data warehouse dan lakehouse, pemrosesan batch lebih sesuai untuk data warehouse tradisional karena memastikan data sudah bersih, terstruktur, dan divalidasi sebelum dimuat ke warehouse (ETL). Hal ini mendukung kebutuhan pelaporan yang menuntut akurasi tinggi dan data yang konsisten. Sementara itu, pemrosesan streaming lebih sering digunakan pada arsitektur lakehouse atau hybrid, yang memungkinkan data dimuat dan dianalisis secara cepat tanpa menunggu seluruh proses transformasi selesai, mendukung analitik prediktif dan machine learning yang membutuhkan data terkini.
+
+Sebagai contoh penerapan bisnis, perusahaan perbankan menggunakan batch processing untuk menghasilkan laporan keuangan harian dan bulanan yang diolah pada malam hari di luar jam operasional, sedangkan stream processing digunakan untuk mendeteksi anomali transaksi yang mengindikasikan penipuan (fraud detection) dalam hitungan detik saat transaksi terjadi.
+
+Dengan memahami perbedaan dan keunggulan masing-masing paradigma, organisasi dapat merancang pipeline pemrosesan data yang sesuai dengan kebutuhan analitik, memastikan ketersediaan data yang cepat dan akurat untuk mendukung pengambilan keputusan strategis dan operasional secara efektif.
+
+
+\section{Hadoop Ecosystem}
+
+\subsection{Introduction to Hadoop}
+
+Hadoop merupakan salah satu teknologi fundamental dalam big data processing yang memungkinkan organisasi untuk menyimpan dan memproses data berukuran sangat besar secara efisien dengan biaya yang relatif rendah. Hadoop dikembangkan pertama kali oleh Doug Cutting dan Mike Cafarella pada tahun 2005 sebagai proyek open source yang terinspirasi dari makalah Google File System (GFS) dan MapReduce. Saat ini, Hadoop berada di bawah naungan Apache Software Foundation dan telah menjadi standar de facto untuk pemrosesan data skala besar di banyak organisasi global.
+
+Secara umum, Hadoop memiliki dua komponen utama. Pertama, \textbf{Hadoop Distributed File System (HDFS)}, yaitu sistem file terdistribusi yang dirancang untuk menyimpan data dalam jumlah besar dengan membagi file menjadi blok-blok kecil dan mendistribusikannya ke beberapa node dalam cluster. HDFS menyediakan mekanisme replikasi otomatis untuk memastikan keandalan dan ketersediaan data meskipun terjadi kegagalan pada salah satu node.
+
+Kedua, Hadoop memiliki \textbf{MapReduce}, sebuah model pemrograman untuk pemrosesan data secara paralel di seluruh node dalam cluster Hadoop. Dengan model ini, data diproses dekat dengan lokasi penyimpanannya (data locality principle), sehingga mengurangi biaya transfer data dan meningkatkan efisiensi pemrosesan.
+
+Hadoop relevan dalam konteks big data karena mampu menangani volume data yang sangat besar (petabyte) dengan struktur yang beragam. Selain itu, Hadoop dibangun dengan arsitektur terdistribusi yang bersifat scalable dan fault-tolerant, memungkinkan organisasi untuk menambah kapasitas cluster hanya dengan menambahkan node baru tanpa perlu mengganti sistem secara keseluruhan.
+
+Dalam perkembangannya, Hadoop tidak hanya terdiri dari HDFS dan MapReduce, tetapi juga memiliki ekosistem luas yang mencakup berbagai alat dan kerangka kerja pendukung seperti Apache Hive, HBase, Pig, Sqoop, dan lainnya, yang memudahkan integrasi, query, analisis, dan manajemen data besar secara komprehensif.
+
+Dengan demikian, Hadoop menjadi salah satu pondasi utama dalam arsitektur big data modern yang mendukung pemrosesan data batch berskala besar untuk berbagai keperluan analisis bisnis, pelaporan, dan pengambilan keputusan strategis di era data-driven.
+
+
+\subsection{MapReduce}
+
+MapReduce merupakan model pemrograman yang menjadi inti dari pemrosesan batch dalam Hadoop. Konsep MapReduce pertama kali diperkenalkan oleh Google pada tahun 2004 dan diimplementasikan dalam Hadoop untuk memungkinkan pemrosesan data berukuran besar secara paralel di seluruh node dalam cluster.
+
+\begin{figure}[ht]
 	\centering
-	\texttt{"Berikan jawaban berdasarkan data yang diketahui publik hingga tahun 2023, dan sebutkan jika jawabannya bersifat asumsi atau tidak pasti."}
-\end{quote}
+	\begin{tikzpicture}[node distance=0.5cm and 0.5cm]
+		
+		% Styles
+		\tikzset{
+			stage/.style={
+				rectangle, draw, rounded corners,
+				minimum width=2cm, minimum height=1cm,
+				text width=2cm, align=center, font=\small, fill=orange!20
+			},
+			process/.style={
+				rectangle, draw, rounded corners,
+				minimum width=2.2cm, minimum height=0.8cm,
+				text width=2.4cm, align=center, font=\scriptsize, fill=green!20
+			},
+			arrow/.style={thick, ->, >=Stealth}
+		}
+		
+		% Input data
+		\node (input) [stage] {Input Data\\(Split Files)};
+		
+		% Mappers
+		\node (map1) [process, right=of input, yshift=1cm] {Mapper 1:\\(Key, Value)};
+		\node (map2) [process, right=of input, yshift=-1cm] {Mapper 2:\\(Key, Value)};
+		
+		% Shuffle and Sort
+		\node (shuffle) [stage, right=3.5cm of input] {Shuffle \& Sort};
+		
+		% Reducers
+		\node (reduce1) [process, right=of shuffle, yshift=0.8cm] {Reducer 1:\\(Key, Aggregated Value)};
+		\node (reduce2) [process, right=of shuffle, yshift=-0.8cm] {Reducer 2:\\(Key, Aggregated Value)};
+		
+		% Output
+		\node (output) [stage, right=of reduce1, xshift=0.5cm, yshift=-0.8cm] {Final Output\\(Results)};
+		
+		% Arrows: Input to Mappers
+		\draw[arrow] (input.east) -- (map1.west);
+		\draw[arrow] (input.east) -- (map2.west);
+		
+		% Arrows: Mappers to Shuffle
+		\draw[arrow] (map1.east) -- (shuffle.west);
+		\draw[arrow] (map2.east) -- (shuffle.west);
+		
+		% Arrows: Shuffle to Reducers
+		\draw[arrow] (shuffle.east) -- (reduce1.west);
+		\draw[arrow] (shuffle.east) -- (reduce2.west);
+		
+		% Arrows: Reducers to Output
+		\draw[arrow] (reduce1.east) -- (output.west);
+		\draw[arrow] (reduce2.east) -- (output.west);
+		
+	\end{tikzpicture}
+	\caption{Ilustrasi alur kerja MapReduce pada Hadoop}
+	\label{fig:mapreduce-flow}
+\end{figure}
 
-\textbf{Peran guru sangat penting dalam hal ini:}  
-Guru berperan sebagai penjamin kualitas informasi yang disampaikan di kelas. Dalam ekosistem yang didukung oleh AI, guru tidak hanya bertindak sebagai fasilitator pembelajaran, tetapi juga sebagai kurator pengetahuan—yang bertanggung jawab untuk memastikan bahwa informasi yang digunakan telah melalui proses validasi yang kritis.
 
-Kekuatan LLM dalam menyampaikan informasi secara meyakinkan adalah pedang bermata dua. Di satu sisi, ia dapat menjelaskan konsep dengan sangat baik; namun di sisi lain, ia juga bisa menyesatkan jika tidak dikawal dengan kesadaran kritis. Oleh karena itu, kemampuan literasi informasi dan kebiasaan memverifikasi fakta menjadi kompetensi penting baik bagi guru
+Gambar \ref{fig:mapreduce-flow} mengilustrasikan cara kerja MapReduce. Secara konseptual, MapReduce terdiri dari dua tahap utama. Tahap pertama adalah \textbf{Map}, di mana data input dibagi menjadi potongan-potongan kecil dan setiap potongan diproses secara independen untuk menghasilkan pasangan kunci-nilai (key-value pairs). Tahap kedua adalah \textbf{Reduce}, di mana hasil keluaran dari tahap Map akan digabungkan dan dikompilasi berdasarkan kunci untuk menghasilkan output akhir yang terintegrasi. Pendekatan ini memungkinkan pemrosesan data secara terdistribusi dengan memanfaatkan banyak node sekaligus, sehingga meningkatkan kecepatan eksekusi dan skalabilitas pemrosesan. 
 
-\section{Ketergantungan Berlebih terhadap AI}
+Secara strategis, MapReduce memiliki beberapa manfaat utama. Pertama, model ini mendukung pemrosesan batch dengan volume data yang sangat besar, bahkan hingga petabyte, dengan memanfaatkan arsitektur cluster Hadoop yang scalable. Kedua, MapReduce bersifat fault-tolerant karena jika terjadi kegagalan pada satu task, sistem akan secara otomatis menjadwalkan ulang task tersebut pada node lain. Ketiga, MapReduce mengoptimalkan prinsip data locality, yaitu memproses data di lokasi penyimpanan data berada, sehingga mengurangi biaya transfer data di dalam cluster.
 
-Kemajuan teknologi kecerdasan buatan (Artificial Intelligence/AI), khususnya Large Language Model (LLM) seperti ChatGPT, telah membawa banyak manfaat dalam dunia pendidikan. AI mampu membantu menyusun materi pelajaran, merangkum teks, menilai tugas, bahkan merancang rencana pembelajaran secara otomatis. Namun, jika digunakan tanpa batas atau tanpa pemahaman kritis, AI berpotensi menimbulkan risiko serius—salah satunya adalah \textbf{ketergantungan berlebih} dari guru maupun siswa.
+Namun, MapReduce juga memiliki beberapa keterbatasan. Salah satunya adalah kompleksitas dalam penulisan program MapReduce yang memerlukan pemahaman mendalam tentang cara kerja model Map dan Reduce, serta tidak seintuitif menulis query SQL. Selain itu, MapReduce kurang optimal untuk skenario pemrosesan real-time atau near real-time karena bersifat batch-oriented, sehingga memiliki latensi yang tinggi dalam menghasilkan output.
 
-\textbf{Apa itu ketergantungan berlebih terhadap AI?}  
-Ketergantungan berlebih terjadi ketika pengguna—baik guru maupun siswa—terlalu mengandalkan AI untuk menyelesaikan tugas-tugas intelektual dan kreatif, tanpa menyisakan ruang untuk berpikir kritis, inisiatif pribadi, atau proses reflektif yang mendalam. Alih-alih menjadi alat bantu, AI malah digunakan sebagai pengganti proses belajar yang seharusnya dijalani manusia.
+Dengan demikian, meskipun MapReduce sangat efektif untuk pemrosesan batch skala besar seperti agregasi data historis dan pelaporan berkala, organisasi perlu mempertimbangkan keterbatasannya dalam kecepatan eksekusi dan fleksibilitas saat memilih teknologi pemrosesan untuk kebutuhan bisnis yang memerlukan analitik real-time atau interaktif.
 
-\textbf{Contoh bentuk ketergantungan yang dapat muncul:}
-\begin{itemize}
-	\item Siswa menggunakan AI untuk mengerjakan semua tugas tanpa memahami isinya.
-	\item Guru menyalin hasil LLM untuk membuat soal atau materi tanpa menyesuaikan konteks kelas.
-	\item Siswa menjadi enggan membaca, menulis, atau berdiskusi karena semua informasi bisa "ditanyakan ke AI".
-	\item Guru kehilangan semangat untuk bereksperimen dalam merancang pembelajaran karena merasa AI sudah "cukup membantu".
-\end{itemize}
+\subsection{Use Cases for Data Warehouse Preparation}
 
-\textbf{Dampak negatif terhadap pembelajaran:}
-\begin{itemize}
-	\item \textbf{Menurunnya kemampuan berpikir kritis dan analitis}, karena siswa tidak terbiasa memproses informasi secara mandiri.
-	\item \textbf{Hilangnya kreativitas dan orisinalitas}, baik dalam tulisan, proyek, maupun diskusi.
-	\item \textbf{Kualitas pembelajaran yang generik dan kurang kontekstual}, karena terlalu bergantung pada output otomatis.
-	\item \textbf{Ketimpangan pembelajaran}, karena siswa dengan literasi AI rendah menjadi semakin tertinggal.
-\end{itemize}
+Dalam konteks persiapan data warehouse, Hadoop MapReduce memiliki berbagai kasus penggunaan yang relevan untuk mendukung integrasi dan penataan data dalam skala besar sebelum dimuat ke dalam sistem warehouse. Dua contoh utama yang sering diterapkan di dunia bisnis adalah agregasi transaksi ritel dan peringkasan data log untuk pelaporan kepatuhan.
 
-\textbf{Mengapa ini menjadi perhatian penting?}  
-Pendidikan bukan sekadar mencari jawaban, tetapi melatih proses berpikir, membangun pemahaman, dan menumbuhkan nilai-nilai. AI dapat mendukung proses ini, tetapi tidak bisa menggantikannya. AI tidak mampu merasakan, memahami emosi, atau mempertimbangkan konteks sosial yang penting dalam interaksi belajar. Jika terlalu sering digunakan tanpa pendampingan kritis, AI bisa mereduksi nilai-nilai kemanusiaan dalam proses pendidikan.
+Contoh pertama adalah \textbf{agregasi transaksi ritel}. Perusahaan ritel besar seperti supermarket dan e-commerce menghasilkan jutaan transaksi penjualan setiap harinya yang tersimpan dalam sistem point of sales (POS) terdistribusi. Dengan menggunakan MapReduce, data transaksi dari berbagai outlet atau lokasi dapat digabungkan dan dihitung totalnya berdasarkan kategori produk, wilayah, atau periode waktu tertentu. Hasil agregasi ini kemudian dimuat ke dalam data warehouse untuk mendukung analisis penjualan, optimasi inventori, strategi promosi, dan perencanaan pembelian barang dagangan secara efisien.
 
-\textbf{Langkah pencegahan ketergantungan berlebih:}
-\begin{itemize}
-	\item Gunakan AI sebagai alat bantu, bukan sebagai solusi akhir.
-	\item Dorong siswa untuk merefleksikan jawaban AI: \textit{“Apakah kamu setuju dengan jawaban ini? Mengapa atau mengapa tidak?”}
-	\item Beri ruang bagi siswa untuk menciptakan, menulis, dan menyampaikan gagasan orisinal mereka.
-	\item Ajak guru berdiskusi untuk memadukan hasil dari AI dengan strategi pedagogi yang kontekstual dan kreatif.
-	\item Libatkan siswa dalam proses metakognitif: \textit{“Apa yang kamu pelajari setelah menggunakan AI?”}
-\end{itemize}
+Contoh kedua adalah \textbf{peringkasan data log untuk pelaporan kepatuhan}. Perusahaan di sektor keuangan dan telekomunikasi diwajibkan untuk menyimpan log aktivitas sistem dan transaksi untuk kepentingan audit dan regulasi. Volume data log yang besar dari server aplikasi, database, dan perangkat jaringan perlu diringkas sebelum dimasukkan ke data warehouse. MapReduce digunakan untuk membaca data log mentah, melakukan parsing untuk mengekstrak field yang relevan, mengelompokkan data berdasarkan jenis aktivitas atau user, serta menghasilkan ringkasan penggunaan sistem atau statistik akses yang dibutuhkan untuk pelaporan kepatuhan kepada regulator.
 
-AI memiliki potensi luar biasa untuk memperkuat proses pembelajaran, namun potensi ini harus digunakan dengan kesadaran penuh. Ketergantungan berlebih dapat menggerus daya nalar, rasa ingin tahu, dan tanggung jawab personal dalam belajar. Tugas utama pendidik adalah membimbing siswa agar tidak hanya “pandai menggunakan teknologi”, tetapi juga “cerdas dalam berpikir”—termasuk berpikir secara kritis terhadap hasil dari teknologi itu sendiri.
+Dengan demikian, penggunaan MapReduce dalam tahap persiapan data warehouse membantu organisasi dalam melakukan pemrosesan batch berukuran besar secara efisien, memastikan data yang dimuat ke warehouse sudah terstruktur, bersih, dan siap digunakan untuk pelaporan, analisis bisnis, serta pengambilan keputusan strategis secara tepat waktu.
 
-\section{Plagiarisme dan Keaslian Karya}
 
-Di era digital yang semakin terhubung dan didukung oleh kecerdasan buatan (AI), tantangan terhadap keaslian karya akademik semakin kompleks. Dengan kehadiran model bahasa besar (LLM) seperti ChatGPT, siswa kini dapat menghasilkan teks yang tampak rapi, logis, dan akademis hanya dengan satu perintah. Meskipun AI dapat menjadi alat bantu yang luar biasa dalam proses belajar, penggunaannya juga membuka peluang terjadinya \textbf{plagiarisme berbasis teknologi}, yakni praktik menyerahkan karya yang bukan hasil pemikiran sendiri tanpa pengakuan yang layak.
+\section{Framework dan Alat Lain dalam Ekosistem Hadoop}
+Hadoop tidak berdisi sendiri, melainkan memiliki ekosistem di mana terdapat frameworks dan tools yang menunjang penggunaan framework tersebut. Gambar \ref{fig:hadoop-ecosystem-complete} menggambarkan beberapa frameworks dan tools tersebut dan kontribusinya di ekosistem Hadoop.
 
-\textbf{Apa yang dimaksud dengan plagiarisme di era AI?}  
-Plagiarisme tidak lagi terbatas pada menyalin teks dari buku atau internet secara langsung, tetapi juga meliputi:
-\begin{itemize}
-	\item Menyerahkan hasil dari AI sebagai karya pribadi tanpa revisi atau refleksi.
-	\item Menggunakan AI untuk menjawab soal esai tanpa pemahaman substansi.
-	\item Menyisipkan kalimat atau paragraf dari hasil AI tanpa mencantumkan bahwa itu dibantu oleh mesin.
-\end{itemize}
-
-\textbf{Tantangan utama:}
-\begin{itemize}
-	\item \textbf{Sulit dibedakan}: Teks hasil AI sering kali terdengar alami dan orisinal, sehingga sulit untuk dideteksi secara kasat mata.
-	\item \textbf{Tidak terdeteksi oleh alat cek plagiarisme biasa}: Banyak hasil AI tidak terdaftar dalam database publik, sehingga tidak muncul dalam hasil cek.
-	\item \textbf{Kurangnya pemahaman siswa}: Sebagian siswa tidak sadar bahwa menyerahkan hasil AI secara utuh tanpa pengakuan adalah bentuk ketidakjujuran akademik.
-\end{itemize}
-
-\textbf{Mengapa keaslian karya penting?}  
-Tujuan utama dari tugas akademik bukan hanya menyelesaikan soal, melainkan membentuk:
-\begin{itemize}
-	\item Kemampuan berpikir kritis dan analitis
-	\item Daya nalar dan kreativitas pribadi
-	\item Tanggung jawab intelektual dan integritas
-\end{itemize}
-
-Ketika siswa tidak benar-benar terlibat dalam proses berpikir, mereka kehilangan kesempatan untuk tumbuh sebagai pembelajar sejati. Pendidikan menjadi dangkal jika hanya berfokus pada “hasil” dan bukan “proses”.
-
-\textbf{Cara mengedukasi siswa tentang integritas akademik:}
-\begin{itemize}
-	\item Jelaskan dengan jelas apa itu plagiarisme, termasuk penggunaan AI tanpa atribusi.
-	\item Ajak siswa berdiskusi tentang perbedaan antara \textit{mendapat bantuan} dan \textit{menyerahkan hasil orang lain}.
-	\item Terapkan refleksi mandiri sebagai bagian dari tugas: \textit{“Bagian mana yang kamu buat sendiri, dan bagian mana yang dibantu AI?”}
-	\item Tunjukkan contoh prompt yang etis, misalnya:
-\end{itemize}
-
-\begin{quote}
+\begin{figure}[ht]
 	\centering
-	\texttt{"Bantu saya membuat kerangka esai tentang dampak teknologi, tetapi saya akan menulis isi lengkapnya sendiri."}
-\end{quote}
+	\begin{tikzpicture}[node distance=1cm and 1.2cm]
+		
+		% Styles
+		\tikzset{
+			core/.style={
+				rectangle, draw, rounded corners,
+				minimum width=4cm, minimum height=1.2cm,
+				text width=4.2cm, align=center, font=\small, fill=orange!30
+			},
+			component/.style={
+				rectangle, draw, rounded corners,
+				minimum width=3.2cm, minimum height=1cm,
+				text width=3.4cm, align=center, font=\small, fill=green!20
+			},
+			arrow/.style={thick, ->, >=Stealth},
+			labelbox/.style={
+				draw=none, fill=none, text centered, font=\small
+			}
+		}
+		
+		% Hadoop Core
+		\node (core) [core] {\textbf{Hadoop Core}\\HDFS + MapReduce};
+		
+		% Components above
+		\node (hive) [component, above left=of core] {\textbf{Apache Hive}\\SQL-like Query};
+		\node (hbase) [component, above=of core] {\textbf{Apache HBase}\\NoSQL Real-time DB};
+		\node (sqoop) [component, above right=of core] {\textbf{Apache Sqoop}\\RDBMS Import/Export};
+		
+		% Arrows with labels
+		\draw[arrow] (hive.south) -- node[left, font=\scriptsize] {Query via SQL} (core.north west);
+		\draw[arrow] (hbase.south) -- node[right, font=\scriptsize] {Real-time Access} (core.north);
+		\draw[arrow] (sqoop.south) -- node[right, font=\scriptsize] {DB Integration} (core.north east);
+		
+	
+		
+	\end{tikzpicture}
+	\caption{Komponen pendukung melengkapi Hadoop Core dengan fungsi query, NoSQL, dan integrasi RDBMS}
+	\label{fig:hadoop-ecosystem-complete}
+\end{figure}
 
-\textbf{Peran guru dan sekolah:}
-\begin{itemize}
-	\item Memberikan ruang diskusi terbuka tentang etika digital dan literasi AI.
-	\item Menyediakan panduan atau kebijakan jelas tentang penggunaan AI dalam tugas sekolah.
-	\item Menilai tidak hanya hasil akhir, tetapi juga proses pembuatan karya.
-	\item Menggunakan AI detection tools dengan bijak, bukan sebagai alat penghukuman semata.
-\end{itemize}
-  
-Plagiarisme bukan sekadar tindakan menyalin, tetapi kehilangan kesempatan untuk belajar dan berkembang. AI tidak seharusnya dihindari, tetapi perlu digunakan dengan kesadaran penuh dan integritas. Tugas pendidik adalah membekali siswa dengan keterampilan dan nilai untuk menggunakan teknologi secara bijak, bertanggung jawab, dan tetap menjunjung tinggi keaslian sebagai bentuk penghargaan terhadap proses belajar.
+\subsection{Apache Hive}
 
+Apache Hive merupakan salah satu komponen penting dalam ekosistem Hadoop yang dirancang untuk memberikan kemampuan query data dengan sintaks mirip SQL pada data yang disimpan di Hadoop Distributed File System (HDFS). Hive dikembangkan oleh Facebook pada tahun 2008 untuk mengatasi tantangan dalam menulis program MapReduce secara langsung, sehingga analis data yang terbiasa menggunakan SQL dapat melakukan query dan analisis data besar di Hadoop dengan lebih mudah dan efisien.
 
-\section{Privasi dan Keamanan Data}
+Hive menerjemahkan perintah HiveQL (varian SQL milik Hive) menjadi job MapReduce, Tez, atau Spark di backend untuk mengeksekusi query tersebut secara terdistribusi pada cluster Hadoop. Dengan demikian, Hive memungkinkan pemrosesan data dalam volume besar menggunakan infrastruktur Hadoop tanpa harus memahami kompleksitas pemrograman MapReduce.
 
-Di tengah semakin meluasnya pemanfaatan teknologi kecerdasan buatan (AI) dalam pendidikan, muncul tantangan besar terkait \textbf{privasi dan keamanan data}. Banyak layanan AI, termasuk model bahasa besar (Large Language Model/LLM), diakses melalui internet dan berbasis cloud. Ini berarti semua masukan (input) yang diketikkan ke dalam sistem—termasuk informasi pribadi, catatan siswa, atau data institusi—dapat tersimpan, dianalisis, atau diproses oleh server pihak ketiga. Tanpa kesadaran akan risiko ini, guru maupun siswa bisa secara tidak sengaja membahayakan kerahasiaan data pendidikan.
+Dalam konteks bisnis, Hive mempermudah tim data analyst dan business intelligence dalam mengakses dan menganalisis data di Hadoop menggunakan perintah SQL yang familiar. Hal ini mempercepat adopsi Hadoop dalam organisasi, mengurangi kebutuhan pelatihan teknis mendalam, serta memungkinkan integrasi data warehouse berbasis Hadoop dengan alat visualisasi atau reporting yang mendukung koneksi SQL standar.
 
-\textbf{Mengapa privasi penting dalam penggunaan AI?}  
-Dalam konteks pendidikan, data yang diproses sering kali mengandung informasi yang bersifat sensitif, seperti:
-\begin{itemize}
-	\item Nama lengkap dan identitas siswa
-	\item Data kesehatan atau kebutuhan khusus
-	\item Catatan perkembangan belajar dan penilaian
-	\item Masalah perilaku atau psikososial
-	\item Informasi internal sekolah atau lembaga
-\end{itemize}
+\subsection{Apache HBase}
 
-Jika informasi-informasi tersebut dimasukkan secara utuh ke dalam sistem AI publik (seperti ChatGPT versi online), maka data tersebut \textit{berpotensi} digunakan untuk pelatihan model lebih lanjut, disimpan oleh penyedia layanan, atau—pada kasus ekstrem—terekspos melalui pelanggaran keamanan.
+Apache HBase adalah database NoSQL terdistribusi yang dibangun di atas HDFS dan dirancang untuk mendukung operasi read dan write dengan kecepatan tinggi pada data dalam skala besar. HBase mengimplementasikan model penyimpanan key-value yang mirip dengan Google BigTable, memungkinkan penyimpanan miliaran baris data dengan latensi akses yang rendah.
 
-\textbf{Contoh kesalahan umum:}
-\begin{itemize}
-	\item Guru meminta AI menyusun laporan siswa dengan memasukkan nama lengkap, prestasi, dan masalah belajar secara langsung.
-	\item Siswa menyalin transkrip konseling ke AI untuk “minta saran”.
-	\item Pegawai sekolah menggunakan AI untuk menulis surat terkait data keuangan atau administratif yang bersifat rahasia.
-\end{itemize}
+Dalam praktik bisnis, HBase digunakan untuk kasus penggunaan yang memerlukan lookup data secara real-time pada dataset besar. Misalnya, perusahaan telekomunikasi menggunakan HBase untuk menyimpan data penggunaan pelanggan yang terus bertambah setiap detik, memungkinkan query cepat untuk analisis operasional dan layanan pelanggan. Selain itu, HBase mendukung operasi update dan random access yang tidak efisien dilakukan pada HDFS murni, sehingga melengkapi kemampuan Hadoop dalam pemrosesan batch dengan kemampuan database real-time.
 
-\textbf{Risiko yang dapat timbul:}
-\begin{itemize}
-	\item \textbf{Kebocoran data pribadi siswa}
-	\item \textbf{Pelanggaran hukum perlindungan data (misalnya UU PDP atau GDPR)}
-	\item \textbf{Disalahgunakan oleh pihak tidak bertanggung jawab}
-	\item \textbf{Kehilangan kepercayaan antara sekolah dan orang tua}
-\end{itemize}
+\subsection{Apache Sqoop}
 
-\textbf{Prinsip dasar menjaga privasi saat menggunakan AI:}
-\begin{itemize}
-	\item Jangan pernah memasukkan informasi identitas yang lengkap ke dalam layanan AI publik.
-	\item Gunakan nama samaran, inisial, atau deskripsi umum jika perlu membuat prompt berbasis kasus nyata.
-	\item Pilih layanan AI yang menawarkan mode lokal, privat, atau tidak menyimpan data.
-	\item Baca dan pahami kebijakan privasi platform AI sebelum digunakan dalam kegiatan pembelajaran.
-	\item Jika memungkinkan, gunakan sistem AI internal sekolah yang dikendalikan secara lokal.
-\end{itemize}
+Apache Sqoop adalah alat yang dirancang untuk memfasilitasi proses import dan export data antara Hadoop dan database relasional seperti MySQL, Oracle, dan PostgreSQL. Sqoop secara otomatis menghasilkan kode MapReduce untuk melakukan transfer data secara paralel, sehingga proses pemindahan data menjadi lebih cepat dan efisien.
 
-\textbf{Contoh prompt yang lebih aman:}
+Dalam konteks bisnis, Sqoop memungkinkan integrasi antara data Hadoop dengan sistem enterprise yang sudah ada. Sebagai contoh, data transaksi yang diolah dalam Hadoop dapat diekspor ke database relasional untuk digunakan oleh aplikasi bisnis, atau data historis dari database relasional diimpor ke Hadoop untuk dianalisis dengan Spark atau Hive. Dengan demikian, Sqoop mendukung interoperabilitas antara ekosistem Hadoop dan infrastruktur data tradisional organisasi.
 
-\begin{quote}
-	\centering
-	\texttt{"Buat laporan perkembangan siswa berdasarkan karakter berikut: siswa aktif, memiliki kesulitan membaca, sangat baik dalam kerja kelompok. Gunakan nama samaran 'Siswa A'."}
-\end{quote}
-
-\textbf{Peran pendidik dan institusi:}
-\begin{itemize}
-	\item Memberikan pelatihan kepada guru dan siswa tentang etika digital dan keamanan data.
-	\item Menyusun kebijakan internal sekolah tentang batasan penggunaan AI.
-	\item Menyediakan alternatif layanan AI yang ramah privasi.
-\end{itemize}
-
-AI dapat membantu mempercepat banyak aspek kerja pendidik, tetapi tidak boleh digunakan secara sembarangan—terutama jika menyangkut data pribadi. Menjaga privasi bukan hanya soal etika, tetapi juga soal hukum dan keamanan. Dengan sikap hati-hati dan kebijakan yang jelas, teknologi AI dapat dimanfaatkan secara bertanggung jawab dan tetap melindungi hak-hak peserta didik.
-
-\section{Menggunakan AI secara Aman dan Bertanggung Jawab di Kelas}
-
-Penggunaan AI dalam pembelajaran membawa banyak manfaat, mulai dari membantu menyusun materi ajar, memberikan umpan balik otomatis, hingga mendukung siswa dalam menulis, menganalisis, dan menyederhanakan informasi. Namun, seperti halnya teknologi lainnya, AI harus digunakan secara \textbf{bijak, aman, dan bertanggung jawab}—baik oleh guru maupun siswa. Tanpa panduan yang tepat, penggunaan AI dapat mengarah pada ketergantungan, penyebaran misinformasi, pelanggaran privasi, bahkan pelanggaran etika akademik.
-
-\textbf{Mengapa pedoman penggunaan AI di kelas penting?}  
-AI bukan sekadar alat bantu teknis, tetapi juga bagian dari proses pembelajaran. Penggunaannya harus mendukung kompetensi berpikir kritis, literasi digital, dan pembentukan karakter siswa. Tanpa regulasi dan edukasi yang baik, teknologi yang seharusnya memperkuat pembelajaran justru bisa melemahkan esensi belajar itu sendiri.
-
-\textbf{Prinsip-prinsip penggunaan AI yang aman dan bertanggung jawab:}
-\begin{itemize}
-	\item \textbf{Transparansi}: Jelaskan kepada siswa saat materi atau penilaian dibuat dengan bantuan AI.
-	\item \textbf{Refleksi}: Dorong siswa untuk mengevaluasi dan mempertanyakan hasil dari AI, bukan menerimanya secara mentah.
-	\item \textbf{Konfirmasi}: Ajarkan siswa untuk selalu membandingkan informasi dari AI dengan sumber terpercaya.
-	\item \textbf{Privasi}: Jangan memasukkan data pribadi, nama lengkap, atau informasi sensitif ke dalam sistem AI terbuka.
-	\item \textbf{Orisinalitas}: Gunakan AI sebagai alat bantu berpikir, bukan untuk menggantikan proses berkarya atau berargumentasi.
-\end{itemize}
-
-\textbf{Contoh aktivitas yang mendukung penggunaan AI yang etis:}
-\begin{itemize}
-	\item Menganalisis dua versi teks: hasil buatan manusia vs hasil AI, dan membahas kelebihan/kekurangannya.
-	\item Memberikan tugas yang menggabungkan bantuan AI dengan refleksi pribadi siswa.
-	\item Mengajak siswa menyusun “Pedoman Penggunaan AI di Kelas” versi mereka sendiri.
-\end{itemize}
-
-\textbf{Tugas guru dalam memandu penggunaan AI:}
-\begin{itemize}
-	\item Menyediakan konteks: bantu siswa memahami bahwa AI tidak "tahu segalanya", tapi hanya memprediksi berdasarkan data.
-	\item Menilai proses, bukan hanya produk akhir: beri apresiasi terhadap usaha berpikir dan refleksi.
-	\item Memfasilitasi diskusi tentang nilai, etika, dan konsekuensi dalam penggunaan teknologi.
-\end{itemize}
-
-\textbf{Contoh pernyataan yang dapat digunakan guru saat mengajar:}
-\begin{quote}
-	“Silakan gunakan ChatGPT untuk membantu menjelaskan konsep ini, tapi pastikan kamu memahami isinya dan bisa menjelaskan dengan kata-katamu sendiri.”
-\end{quote}
-
-\textbf{Checklist singkat untuk penggunaan AI di kelas:}
-\begin{itemize}
-	\item Sudahkah saya memahami hasil yang diberikan AI?
-	\item Apakah saya sudah mengecek sumber lain?
-	\item Apakah saya menyebutkan bahwa saya menggunakan bantuan AI?
-	\item Apakah informasi yang saya masukkan tidak bersifat pribadi?
-	\item Apakah saya sudah menambahkan ide atau refleksi saya sendiri?
-\end{itemize}
-  
-AI dapat menjadi mitra cerdas dalam proses pembelajaran, tetapi hanya jika digunakan dengan tanggung jawab dan kesadaran etis. Guru berperan penting sebagai pendamping dan pengarah dalam memfasilitasi pemanfaatan teknologi ini. Dengan membangun budaya berpikir kritis dan literasi digital, kita dapat memastikan bahwa AI mendukung pendidikan yang bermakna, bukan menggantikannya.
+\subsection{Relevansi Alat-Alat dalam Ekosistem Hadoop}
 
 
-\section{Latihan Analisis Risiko dan Refleksi Etis}
+Beragam alat dan framework dalam ekosistem Hadoop memiliki nilai strategis dalam mendukung pemrosesan data secara efisien dan komprehensif. Integrasi alat seperti Hive, HBase, dan Sqoop memungkinkan organisasi untuk melakukan berbagai jenis pemrosesan dan penyimpanan data sesuai kebutuhan bisnis, mulai dari batch processing, real-time lookup, hingga integrasi data warehouse tradisional dengan big data platform.
 
-Agar pemahaman mengenai penggunaan AI dalam pendidikan tidak hanya bersifat teoretis, peserta pelatihan perlu dilibatkan dalam aktivitas praktik yang mendorong analisis kritis, refleksi nilai, dan pengambilan keputusan secara etis. Latihan ini bertujuan untuk mengembangkan sensitivitas peserta terhadap potensi risiko yang mungkin muncul dari penggunaan AI, sekaligus memperkuat pemahaman tentang bagaimana bersikap bijak dan bertanggung jawab dalam mengintegrasikan teknologi ke dalam pembelajaran.
+Dalam memilih teknologi ini, organisasi perlu mempertimbangkan beberapa faktor, seperti biaya implementasi dan operasional, skalabilitas sistem, serta keterampilan teknis tim yang akan mengelola dan mengembangkan solusi. Pelatihan dan pengembangan kompetensi sumber daya manusia menjadi penting untuk memastikan teknologi yang diadopsi dapat digunakan secara optimal untuk mencapai tujuan strategis organisasi dalam transformasi data-driven.
 
-\textbf{Tujuan latihan:}
-\begin{itemize}
-	\item Mengidentifikasi risiko etis dan teknis dalam penggunaan AI di kelas
-	\item Menganalisis studi kasus nyata atau simulatif secara kritis
-	\item Membiasakan diri untuk mempertimbangkan aspek keamanan, keadilan, dan integritas akademik
-	\item Merumuskan prinsip atau pedoman praktis untuk penggunaan AI yang bertanggung jawab
-\end{itemize}
 
-\textbf{Langkah-langkah aktivitas:}
+\section{Apache Spark}
 
-\textbf{1. Studi Kasus: Identifikasi Risiko}
-Berikan beberapa studi kasus singkat yang menggambarkan situasi dilematis dalam penggunaan AI. Contohnya:
+\subsection{Pengenalan Spark}
 
-\begin{quote}
-	\textbf{Kasus A:} Seorang siswa menyerahkan esai yang ditulis sepenuhnya menggunakan ChatGPT tanpa menyunting atau menyebutkan penggunaan AI. Guru merasa isi esainya sangat rapi dan mencurigakan.
-\end{quote}
+Apache Spark merupakan framework pemrosesan big data yang dikembangkan untuk mengatasi keterbatasan MapReduce dalam hal kecepatan dan fleksibilitas pemrosesan. Spark awalnya dikembangkan oleh AMPLab di University of California, Berkeley pada tahun 2009, kemudian menjadi proyek open source di bawah Apache Software Foundation pada tahun 2014. Spark dirancang untuk mendukung pemrosesan data secara in-memory, sehingga dapat meningkatkan kecepatan eksekusi hingga puluhan kali lebih cepat dibandingkan dengan MapReduce yang berbasis disk I/O.
 
-\begin{quote}
-	\textbf{Kasus B:} Guru memasukkan catatan perkembangan siswa ke dalam AI berbasis cloud untuk membuat laporan, tanpa menyadari bahwa data tersebut mengandung informasi pribadi dan sensitif.
-\end{quote}
+Secara teknis, Spark memiliki arsitektur yang memungkinkan data disimpan dalam memori (RAM) selama proses eksekusi, meminimalkan kebutuhan pembacaan dan penulisan data ke disk yang menjadi bottleneck utama pada MapReduce. Selain itu, Spark mendukung berbagai jenis pemrosesan data dalam satu platform terpadu, termasuk batch processing, stream processing (melalui Spark Streaming), machine learning (dengan MLlib), dan graph processing (dengan GraphX). Hal ini menjadikan Spark sebagai framework yang sangat fleksibel dan serbaguna untuk berbagai kebutuhan analitik data besar.
 
-\textbf{2. Diskusi Kelompok: Analisis dan Pendapat}
-Peserta dibagi ke dalam kelompok kecil. Setiap kelompok diminta untuk mendiskusikan:
-\begin{itemize}
-	\item Apa potensi risiko yang muncul dari kasus tersebut?
-	\item Apakah ada pelanggaran terhadap prinsip etika atau privasi?
-	\item Apa tindakan alternatif yang lebih tepat?
-	\item Jika Anda adalah guru dalam kasus tersebut, apa keputusan yang Anda ambil?
-\end{itemize}
+Dalam konteks bisnis, Apache Spark menawarkan kecepatan dan skalabilitas tinggi yang memungkinkan organisasi untuk menjalankan analisis data kompleks dan machine learning dalam waktu yang lebih singkat. Sebagai contoh, perusahaan e-commerce dapat menggunakan Spark untuk menganalisis perilaku pembelian pelanggan secara real-time dan mengupdate model rekomendasi produk mereka dalam hitungan menit. Selain itu, Spark memiliki API yang mendukung berbagai bahasa pemrograman populer seperti Scala, Java, Python, dan R, sehingga memudahkan integrasi dengan pipeline data yang sudah ada dan mempercepat proses pengembangan analitik.
 
-\textbf{3. Presentasi dan Debrief}
-Setiap kelompok mempresentasikan hasil diskusinya. Fasilitator dapat memancing refleksi lanjutan dengan pertanyaan seperti:
-\begin{itemize}
-	\item Bagaimana membedakan bantuan AI dengan bentuk kecurangan?
-	\item Apa batas yang perlu disepakati dalam penggunaan AI di kelas?
-	\item Apa tanggung jawab guru terhadap hasil yang dihasilkan oleh teknologi?
-\end{itemize}
+Dengan demikian, Apache Spark menjadi salah satu framework big data processing yang paling banyak diadopsi oleh organisasi modern karena kemampuannya dalam meningkatkan performa pemrosesan, mendukung berbagai jenis workload, dan memberikan fleksibilitas tinggi untuk kebutuhan analitik dan machine learning skala besar.
 
-\textbf{4. Refleksi Individu Tertulis}
-Minta peserta menuliskan refleksi pribadi:  
-\textit{“Apa satu hal baru yang saya sadari tentang penggunaan AI secara etis di kelas?”}  
-\textit{“Apa yang akan saya ubah dalam praktik saya ke depan setelah latihan ini?”}
 
-\textbf{5. Merancang Pedoman Mini}
-Sebagai tugas akhir, peserta diminta menyusun satu paragraf pedoman atau komitmen pribadi tentang bagaimana mereka akan menggunakan AI secara etis dan bertanggung jawab dalam konteks pembelajaran.
+\subsection{Spark SQL}
 
-\textbf{Contoh hasil pedoman peserta:}
-\begin{quote}
-	"Saya akan menggunakan AI sebagai alat bantu pembelajaran, bukan sebagai pengganti proses berpikir siswa. Saya akan selalu meninjau dan menyesuaikan hasil AI, serta menjaga kerahasiaan data siswa dalam setiap interaksi digital."
-\end{quote}
+Spark SQL merupakan salah satu komponen utama dalam Apache Spark yang menyediakan kemampuan untuk melakukan query data menggunakan sintaks SQL pada data yang disimpan di berbagai sumber, termasuk HDFS, Hive, JSON, Parquet, dan JDBC. Spark SQL dikembangkan untuk menjembatani kebutuhan analis data dan data engineer yang terbiasa menggunakan SQL dengan kekuatan pemrosesan terdistribusi dan in-memory milik Spark.
 
-\textbf{Manfaat latihan ini:}
-\begin{itemize}
-	\item Menumbuhkan kesadaran kritis terhadap teknologi
-	\item Membantu peserta mengembangkan standar etika pribadi
-	\item Menyiapkan guru untuk menjadi role model dalam literasi digital dan tanggung jawab teknologi
-\end{itemize}
+Secara teknis, Spark SQL memungkinkan pengguna untuk menulis query SQL standar yang kemudian dikompilasi menjadi operasi eksekusi Spark, sehingga memanfaatkan engine Spark untuk menjalankan query tersebut dengan cepat dan skalabel di cluster. Selain itu, Spark SQL mendukung DataFrame API dan Dataset API yang memungkinkan transformasi data kompleks dilakukan dengan cara deklaratif yang mudah dibaca dan dioptimasi oleh Catalyst Optimizer milik Spark.
 
-Analisis risiko dan refleksi etis adalah langkah penting dalam memastikan AI digunakan dengan cara yang memperkuat nilai-nilai pendidikan, bukan hanya sebagai alat otomatisasi. Melalui studi kasus dan diskusi, peserta tidak hanya belajar tentang risiko teknologi, tetapi juga mengembangkan kompas moral untuk menghadapinya secara bijak.
+Dalam konteks transformasi data untuk data warehouse dan lakehouse, Spark SQL berperan penting dalam melakukan ETL (Extract, Transform, Load) secara efisien. Spark SQL dapat digunakan untuk membaca data mentah dari data lake, membersihkan dan mentransformasi data menjadi schema terstruktur, serta menuliskan hasilnya ke data warehouse tradisional atau ke lakehouse berbasis Delta Lake. Pendekatan ini mendukung pipeline data yang modern, di mana transformasi dapat dilakukan secara scalable untuk volume data yang sangat besar tanpa menurunkan performa sistem.
 
-\section*{Latihan Praktik: Etika dan Pengambilan Keputusan dalam Penggunaan AI}
-\addcontentsline{toc}{section}{Latihan Praktik: Etika dan Pengambilan Keputusan dalam Penggunaan AI}
-\begin{itemize}
-	\item \textbf{Tujuan:} Mengenali potensi risiko penggunaan AI dan membangun sikap reflektif dalam pengambilan keputusan.
-	\item \textbf{Tugas:}
-	\begin{itemize}
-		\item Analisis kasus: "Siswa mengumpulkan tugas hasil ChatGPT tanpa revisi" – apa langkah bijak yang dapat diambil?
-		\item Buat daftar panduan penggunaan AI yang aman dan etis untuk siswa di kelas.
-		\item Diskusikan batasan penggunaan AI untuk tugas, ujian, dan interaksi guru-siswa.
-	\end{itemize}
-\end{itemize}
+Secara bisnis, Spark SQL memiliki relevansi strategis karena memungkinkan tim data analyst dan engineer untuk menggunakan SQL yang familiar dengan performa tinggi pada big data. Hal ini mempercepat proses pengolahan data, integrasi antar sistem, dan penyediaan data analytics-ready bagi tim business intelligence atau data science. Sebagai contoh, perusahaan fintech dapat menggunakan Spark SQL untuk melakukan transformasi transaksi keuangan harian dari data lake ke warehouse mereka untuk pelaporan keuangan dan kepatuhan regulasi.
+
+Dengan demikian, Spark SQL memperkuat posisi Apache Spark sebagai framework pemrosesan big data yang serbaguna, mendukung kebutuhan analitik modern yang menuntut kecepatan, skalabilitas, dan kemudahan integrasi dengan ekosistem data warehouse maupun lakehouse.
+
+
+\subsection{Spark vs MapReduce}
+
+Apache Spark dan Hadoop MapReduce merupakan dua framework pemrosesan big data yang memiliki perbedaan mendasar dalam konsep, performa, fleksibilitas, dan kemudahan penggunaannya.
+
+Secara konseptual, \textbf{Hadoop MapReduce} menggunakan model pemrosesan berbasis disk I/O, di mana setiap tahap pemrosesan (Map dan Reduce) menuliskan hasil sementara ke disk sebelum dilanjutkan ke tahap berikutnya. Pendekatan ini memastikan fault tolerance yang tinggi karena data antara tahap dipersistensikan di disk, namun menimbulkan latensi yang tinggi akibat banyaknya operasi baca tulis disk.
+
+Sementara itu, \textbf{Apache Spark} dirancang dengan arsitektur in-memory processing, di mana data dapat disimpan dalam memori (RAM) selama proses eksekusi, sehingga mengurangi waktu baca tulis disk dan meningkatkan kecepatan eksekusi secara signifikan. Spark mampu menjalankan pemrosesan batch hingga 10-100 kali lebih cepat daripada MapReduce untuk pekerjaan yang sama, terutama untuk iterative processing seperti machine learning dan analisis graph.
+
+Dalam hal fleksibilitas, MapReduce hanya dirancang untuk batch processing berbasis Map dan Reduce, sedangkan Spark mendukung berbagai workload dalam satu platform, seperti batch processing dengan Spark Core, stream processing dengan Spark Streaming, machine learning dengan MLlib, dan graph processing dengan GraphX. Hal ini menjadikan Spark sebagai framework yang serbaguna untuk kebutuhan analitik modern.
+
+Dari segi kemudahan penggunaan, MapReduce memerlukan penulisan kode pemrosesan dalam model Map dan Reduce yang relatif kompleks dan verbose, biasanya menggunakan Java. Sebaliknya, Spark menyediakan API tingkat tinggi yang mendukung Scala, Python, Java, dan R, serta mendukung operasi deklaratif melalui DataFrame dan Spark SQL, sehingga lebih mudah dipelajari dan digunakan oleh data engineer maupun data analyst.
+
+Namun demikian, MapReduce tetap memiliki keunggulan pada workload yang tidak membutuhkan kecepatan tinggi dan memerlukan fault tolerance maksimal dengan biaya infrastruktur yang relatif lebih rendah. Di sisi lain, Spark membutuhkan kapasitas memori yang lebih besar agar dapat menjalankan keunggulan in-memory processing secara optimal.
+
+Dengan demikian, pemilihan antara Spark dan MapReduce perlu mempertimbangkan kebutuhan bisnis, ukuran dan kompleksitas data, kecepatan eksekusi yang diinginkan, serta infrastruktur yang tersedia dalam organisasi untuk mencapai efisiensi dan efektivitas pemrosesan data secara optimal.
+
+
+
+\section{Aplikasi Bisnis dan Contoh Kasus}
+
+\subsection{Contoh 1: Batch Processing untuk Persiapan Data Warehouse Keuangan}
+
+
+Dalam industri perbankan dan keuangan, batch processing banyak digunakan untuk mempersiapkan data warehouse yang berisi informasi transaksi keuangan yang dibutuhkan untuk pelaporan regulasi dan analisis bisnis. 
+
+\textbf{Context.} Setiap harinya, bank menghasilkan jutaan transaksi yang berasal dari ATM, mobile banking, transfer antar bank, dan pembayaran merchant. Data transaksi ini tersebar di berbagai sistem operasional dengan format dan struktur yang berbeda-beda. Untuk keperluan pelaporan keuangan, audit internal, dan perhitungan risiko, data tersebut perlu dikonsolidasikan ke dalam data warehouse yang terstruktur dengan schema yang sudah ditentukan.
+
+\textbf{Technology Choice.} Hadoop MapReduce atau Apache Spark batch processing sering digunakan untuk mendukung proses ETL (Extract, Transform, Load) dalam skala besar. Data transaksi dari berbagai sumber akan diekstrak, dibersihkan untuk menghapus duplikasi atau anomali, ditransformasikan ke dalam schema standar pelaporan keuangan, dan dimuat ke data warehouse berbasis SQL. Jika organisasi sudah mengadopsi Spark, maka Spark SQL akan digunakan untuk mempercepat transformasi data dan agregasi sebelum loading.
+
+\textbf{Business Impact.} Dengan menggunakan batch processing pada framework seperti MapReduce atau Spark, bank dapat memproses miliaran baris transaksi dalam waktu yang lebih singkat dibandingkan dengan ETL tradisional berbasis single server. Hal ini memastikan laporan keuangan harian dan bulanan dapat tersedia tepat waktu untuk kepentingan regulator seperti OJK atau Bank Indonesia. Selain itu, proses data preparation yang cepat dan akurat mendukung analisis profitabilitas produk, segmentasi nasabah, dan penilaian risiko kredit dengan data historis yang lengkap dan terpercaya.
+
+Dengan demikian, batch processing menjadi fondasi penting dalam pipeline data warehouse keuangan yang mendukung kepatuhan regulasi, pengambilan keputusan strategis, dan perencanaan bisnis jangka panjang berbasis data.
+
+
+\subsection{Contoh 2: Stream Processing untuk Operational Data Store Hampir Real-Time}
+
+
+Dalam dunia bisnis modern yang membutuhkan respon cepat, stream processing digunakan untuk membangun operational data store (ODS) yang hampir real-time, mendukung kebutuhan analitik dan operasional secara langsung.
+
+\textbf{Context.} Sebagai contoh, perusahaan e-commerce besar menangani jutaan interaksi pengguna setiap menit, termasuk klik produk, pencarian kata kunci, transaksi pembelian, dan pembaruan stok. Data ini perlu diproses secara cepat untuk mendukung fitur seperti rekomendasi produk instan, deteksi penipuan transaksi secara real-time, serta pembaruan dashboard operasional yang digunakan oleh tim marketing dan operasional untuk memantau performa penjualan.
+
+\textbf{Technology Choice.} Teknologi stream processing seperti Apache Kafka untuk ingestion dan Apache Spark Streaming atau Apache Flink untuk pemrosesan data real-time digunakan dalam skenario ini. Kafka berfungsi sebagai message broker yang menerima data event dari aplikasi web, mobile, dan sistem backend, lalu mendistribusikannya ke Spark Streaming atau Flink untuk diproses. Data yang telah diproses kemudian disimpan di operational data store berbasis NoSQL seperti Apache HBase atau database in-memory seperti Redis, sehingga dapat diakses dengan latensi rendah oleh aplikasi analitik dan dashboard.
+
+\textbf{Business Impact.} Implementasi stream processing memungkinkan perusahaan e-commerce untuk mendeteksi anomali transaksi dalam hitungan detik, sehingga mengurangi risiko kerugian akibat penipuan. Selain itu, sistem rekomendasi produk dapat diupdate hampir secara real-time berdasarkan aktivitas terakhir pengguna, meningkatkan konversi penjualan dan pengalaman pelanggan. Dashboard operasional yang terupdate setiap detik mendukung pengambilan keputusan cepat oleh tim bisnis, misalnya dalam menyesuaikan promosi flash sale berdasarkan pola pembelian yang sedang berlangsung.
+
+Dengan demikian, stream processing memainkan peran strategis dalam menciptakan ODS yang hampir real-time, mendukung kebutuhan analitik operasional, meningkatkan responsivitas bisnis, dan memberikan keunggulan kompetitif di era digital yang serba cepat.
+
+
+\section{Implikasi Strategis untuk Bisnis}
+
+Pemanfaatan teknologi big data processing seperti Hadoop MapReduce, Apache Spark, dan Apache Kafka memiliki implikasi strategis yang signifikan bagi organisasi dalam menghadapi persaingan bisnis di era digital.
+
+Pertama, teknologi ini memungkinkan \textbf{pengambilan keputusan yang lebih cepat}. Dengan kemampuan memproses data dalam volume besar secara batch maupun real-time, organisasi dapat mengakses informasi terbaru dan melakukan analisis secara instan. Contohnya, laporan keuangan yang sebelumnya hanya tersedia mingguan kini dapat dihasilkan harian atau bahkan hampir real-time, mendukung pengambilan keputusan strategis oleh manajemen dengan data yang selalu terbarui.
+
+Kedua, teknologi pemrosesan big data meningkatkan \textbf{customer insights} yang lebih mendalam. Stream processing memungkinkan analisis perilaku pengguna saat itu juga, sehingga perusahaan dapat memberikan rekomendasi produk yang relevan, penawaran personalisasi, dan layanan pelanggan berbasis data terkini. Hal ini meningkatkan kepuasan dan loyalitas pelanggan, serta membuka peluang revenue tambahan melalui cross-selling dan up-selling yang lebih tepat sasaran.
+
+Ketiga, adopsi teknologi big data processing memberikan \textbf{keunggulan kompetitif} bagi organisasi. Perusahaan yang mampu memanfaatkan data besar secara efektif dapat berinovasi lebih cepat, mengoptimalkan operasi, serta merespon perubahan pasar dan kebutuhan pelanggan dengan lebih agile dibandingkan pesaing yang masih bergantung pada proses data tradisional.
+
+Namun, terdapat beberapa pertimbangan penting dalam implementasi teknologi ini. Dari sisi \textbf{biaya}, meskipun framework seperti Hadoop dan Spark bersifat open source, diperlukan investasi infrastruktur hardware, cloud resources, dan biaya operasional cluster yang signifikan, terutama untuk pemrosesan in-memory Spark dalam skala besar. Selain itu, organisasi perlu mempertimbangkan \textbf{kebutuhan skill SDM}, karena teknologi big data processing memerlukan tim dengan kompetensi data engineering, distributed computing, dan DevOps untuk membangun, mengelola, dan mengoptimasi pipeline data.
+
+Dalam hal \textbf{skalabilitas}, teknologi seperti Spark dan Kafka dirancang untuk mendukung pertumbuhan data yang cepat dengan menambah node secara horizontal, namun \textbf{desain arsitektur} awal dan monitoring perlu direncanakan dengan baik untuk memastikan performa tetap optimal seiring bertambahnya beban kerja. Terakhir, \textbf{integrasi} dengan sistem eksisting seperti database relasional, data warehouse, dan aplikasi analitik perlu diperhatikan agar data dapat mengalir dengan lancar tanpa menimbulkan bottleneck dan overhead yang membebani infrastruktur.
+
+\section{Kesimpulan}
+
+Bab ini telah membahas berbagai konsep dan teknologi utama dalam big data processing, mulai dari proses ingestion data, paradigma batch dan stream processing, hingga pemanfaatan Hadoop MapReduce dan Apache Spark beserta ekosistem pendukungnya seperti Hive, HBase, Sqoop, dan Kafka. Pemrosesan big data berperan penting dalam mengubah data mentah yang tidak terstruktur menjadi data terstruktur yang siap dianalisis, mendukung kebutuhan business intelligence, machine learning, serta aplikasi analitik operasional secara efektif dan efisien dalam skala besar.
+
+Dengan pemahaman menyeluruh terhadap teknologi-teknologi ini, organisasi dapat merancang arsitektur data yang mampu menangani volume dan kecepatan data yang terus meningkat, menghasilkan insight bisnis yang mendalam, dan mendukung pengambilan keputusan yang cepat dan berbasis data. Selain itu, pemilihan teknologi pemrosesan yang tepat, disertai pengembangan keterampilan SDM yang memadai, akan menjadi kunci keberhasilan transformasi digital dan penciptaan keunggulan kompetitif di era ekonomi berbasis data.

@@ -59,25 +59,25 @@ Materi dalam mata kuliah ini disusun secara bertahap, mencakup empat area pembel
 	\hline
 	2 & Big Data Strategy \& Frameworks Overview & Introduce 5Vs, Big Data Value Chain, BDMM, DAMA & -- \\
 	\hline
-	3 & Big Data Infrastructure \& Technologies & Technologies: Hadoop, Spark, Kafka, NoSQL, cloud & Big Data Value Chain (Capture–Process), BDMM, DAMA. Architecture mapping activity. \\
+	3 & Big Data Architecture \& Value Chain & End-to-end process: from data sources, ingestion, storage, processing, to BI and analytics presentation & Big Data Value Chain (Capture–Process–Analyse–Visualise–Decide), BDMM, DAMA. Architecture mapping activity. \\
 	\hline
 	4 & Understanding Databases \& SQL & Structured data and basic querying & Big Data Value Chain (Capture), DAMA (Architecture). SQL tools (DB Fiddle). \\
 	\hline
 	5 & NoSQL \& Semi-Structured Data & JSON, MongoDB, flexibility in schema design & Big Data Value Chain (Capture), 5Vs (Variety). MongoDB Atlas. \\
 	\hline
-	6 & Data Cleaning \& Preparation & Data quality, integration, consistency & Big Data Value Chain (Curate), DAMA (Quality), 5Vs (Veracity). KNIME workflow. \\
+	6 & Big Data Processing Technologies & Distributed processing frameworks: Hadoop, MapReduce, Spark, Kafka, stream vs batch concepts & Big Data Value Chain (Process–Analyse). Demos of Spark, Hadoop HDFS overview, Kafka stream processing concept. \\
 	\hline
-	7 & Business Intelligence \& Dashboards & KPIs, dashboards, visualisation & Big Data Value Chain (Analyse–Visualise), DAMA. Power BI. \\
+	7 & Data Cleaning \& Preparation & Data quality, integration, consistency & Big Data Value Chain (Curate), DAMA (Quality), 5Vs (Veracity). KNIME workflow. \\
 	\hline
-	8 & Introduction to Machine Learning & ML vs BI, supervised learning & Big Data Value Chain (Analyse), BDMM (Analytics readiness). Orange ML demo. \\
+	8 & Business Intelligence \& Dashboards & KPIs, dashboards, visualisation & Big Data Value Chain (Analyse–Visualise), DAMA. Power BI. \\
 	\hline
-	9 & Customer Segmentation (Clustering) & Market segmentation with unsupervised learning & Big Data Value Chain (Analyse), DAMA (Mining), 5Vs (Variety). Orange: k-means. \\
+	9 & Introduction to Machine Learning & ML vs BI, supervised learning & Big Data Value Chain (Analyse), BDMM (Analytics readiness). Orange ML demo. \\
 	\hline
-	10 & Prediction \& Forecasting & Churn, revenue, or risk prediction & Big Data Value Chain (Analyse–Decide), BDMM. Orange: regression/classification. \\
+	10 & Customer Segmentation (Clustering) & Market segmentation with unsupervised learning & Big Data Value Chain (Analyse), DAMA (Mining), 5Vs (Variety). Orange: k-means. \\
 	\hline
-	11 & Text \& Sentiment Analysis & Review/opinion analysis with NLP & Big Data Value Chain (Capture–Analyse), 5Vs (Veracity). Orange: sentiment analysis. \\
+	11 & Prediction \& Forecasting & Churn, revenue, or risk prediction & Big Data Value Chain (Analyse–Decide), BDMM. Orange: regression/classification. \\
 	\hline
-	12 & Data-Driven Decision Frameworks & CRISP-DM, OSEMN, insight-to-decision process & Big Data Value Chain (Decide), DAMA (Stewardship). Case mapping activity. \\
+	12 & Text \& Sentiment Analysis & Review/opinion analysis with NLP & Big Data Value Chain (Capture–Analyse), 5Vs (Veracity). Orange: sentiment analysis. \\
 	\hline
 	13 & Data Monetisation \& Value Realisation & Economic/business value from data & Big Data Value Chain (full chain), BDMM (Value). Value creation strategy. \\
 	\hline
@@ -85,6 +85,7 @@ Materi dalam mata kuliah ini disusun secara bertahap, mencakup empat area pembel
 	\hline
 	
 \end{longtable}
+
 
 
 
@@ -104,17 +105,17 @@ Setelah mengikuti mata kuliah ini, mahasiswa diharapkan mampu mengambil peran st
 Tabel~\ref{tab:course_plan} menjelaskan struktur 14 pertemuan untuk mata kuliah \textit{Big Data for Business} yang dirancang khusus bagi mahasiswa pascasarjana dari latar belakang manajemen atau non-TIK. Setiap sesi disusun secara bertahap untuk membekali mahasiswa dengan pemahaman praktis mengenai konsep, teknologi, dan penerapan big data dalam konteks organisasi. Materi perkuliahan dibagi ke dalam empat tahapan pembelajaran utama:
 
 \begin{enumerate}
-	\item \textbf{Dasar-dasar dan Strategi Big Data (Sesi 1--3)} \\
-	Mahasiswa diperkenalkan pada konsep dasar big data, kerangka kerja strategis seperti \textit{Big Data Value Chain}, \textit{5Vs}, \textit{BDMM}, dan arsitektur teknologi big data (Hadoop, Spark, Kafka, dsb.).
+	\item \textbf{Dasar-dasar, Strategi, dan Arsitektur Big Data (Sesi 1--3)} \\
+	Mahasiswa diperkenalkan pada konsep dasar big data, kerangka kerja strategis seperti \textit{Big Data Value Chain}, \textit{5Vs}, \textit{BDMM}, serta arsitektur big data end-to-end dari sumber data hingga analitik bisnis.
 	
-	\item \textbf{Pengelolaan dan Pemrosesan Data (Sesi 4--6)} \\
-	Fokus pada pemahaman basis data relasional (SQL), data semi-terstruktur (NoSQL), serta proses pembersihan dan integrasi data menggunakan alat bantu visual seperti KNIME.
+	\item \textbf{Teknologi Pengelolaan dan Pemrosesan Data (Sesi 4--7)} \\
+	Fokus pada pemahaman basis data relasional (SQL), data semi-terstruktur (NoSQL), serta teknologi pemrosesan big data seperti Hadoop, MapReduce, Spark, dan Kafka. Termasuk juga pembersihan dan integrasi data menggunakan alat bantu visual seperti KNIME.
 	
-	\item \textbf{Analisis dan Pengambilan Keputusan (Sesi 7--11)} \\
+	\item \textbf{Analitik Bisnis dan Pembelajaran Mesin (Sesi 8--12)} \\
 	Mahasiswa mengeksplorasi penerapan \textit{Business Intelligence} menggunakan Power BI, serta pembelajaran mesin (machine learning) menggunakan Orange untuk segmentasi pelanggan, prediksi, dan analisis sentimen.
 	
-	\item \textbf{Manfaat, Etika, dan Tata Kelola Data (Sesi 12--14)} \\
-	Tahap akhir mengkaji kerangka kerja pengambilan keputusan berbasis data (seperti CRISP-DM), strategi monetisasi data, serta isu etika dan tata kelola data melalui pendekatan DAMA dan evaluasi BDMM.
+	\item \textbf{Manfaat, Tata Kelola, dan Etika Big Data (Sesi 13--14)} \\
+	Tahap akhir mengkaji strategi monetisasi dan realisasi nilai data, serta isu etika, tata kelola data, dan evaluasi kematangan big data melalui pendekatan DAMA dan BDMM.
 \end{enumerate}
 
 Kegiatan pembelajaran memanfaatkan pendekatan praktis berbasis alat bantu visual tanpa pemrograman, serta studi kasus dari industri untuk menghubungkan teori dan praktik. Hasil akhir yang diharapkan adalah pemahaman menyeluruh tentang bagaimana data besar mendukung keputusan dan transformasi bisnis dalam berbagai sektor industri.
