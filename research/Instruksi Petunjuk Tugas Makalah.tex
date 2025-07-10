@@ -1,0 +1,1139 @@
+\documentclass{article}
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\usepackage{hyperref}
+
+
+\hyphenation{se-mi-ter-struk-tur se-mi ter-struk-tur me-ngam-pa-nye-kan se-ka-rang peng-am-bil-an me-re-ka me-ning-kat-kan me-la-ku-kan ber-da-sar-kan an-da An-da ber-da-sar-kan hi-dup meng-gam-bar-kan ma-sa-lah me-ren-ca-na-kan me-ning-kat-kan me-mas-ti-kan wa-wan-ca-ra a-ta-u se-ge-ra o-to-ma-tis tek-no-lo-gi or-ga-ni-sa-si}
+
+
+\title{Tugas Penulisan Makalah: IT140704 -- Big Data for Business\\
+
+\LARGE{\textbf{Evaluasi TDWI Maturity Model}}
+}
+
+\author{Alfa Yohannis}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Pendahuluan}
+	\label{sec:pendahuluan}
+	
+	\textbf{TDWI BI dan AI Maturity Model} merupakan framework penilaian yang digunakan secara luas untuk mengukur tingkat kematangan Business Intelligence (BI) dan Artificial Intelligence (AI) suatu organisasi. Model ini mencakup lima dimensi utama, yaitu \textit{Organization}, \textit{Data Infrastructure}, \textit{Resources}, \textit{Analytics}, dan \textit{Governance}, dengan tahapan dari \textit{Nascent} hingga \textit{Advanced/Visionary}. 
+	
+	Meskipun TDWI telah banyak diterapkan di perusahaan besar, relevansi dan kesesuaiannya untuk organisasi skala kecil-menengah (SME) dan non-profit belum banyak diteliti. Padahal, SME dan non-profit memiliki karakteristik, struktur organisasi, dan sumber daya yang berbeda dibanding perusahaan besar, sehingga kemungkinan memerlukan adaptasi model agar lebih kontekstual dan aplikatif.
+	
+	\textbf{Tujuan Penelitian:} Penelitian ini bertujuan untuk mengevaluasi kesesuaian dan relevansi kuesioner TDWI BI dan AI Maturity Model pada organisasi SME dan non-profit di Indonesia. Selain itu, penelitian ini juga mengidentifikasi perbaikan atau adaptasi yang diperlukan agar model ini dapat digunakan secara efektif dalam mengukur kematangan BI dan AI di konteks tersebut. Penelitian dilakukan oleh mahasiswa pascasarjana dengan melibatkan responden profesional di tempat kerja mereka, melalui wawancara atau kuesioner kualitatif mendalam untuk menggali persepsi dan rekomendasi adaptasi yang diperlukan.
+	
+	
+	\section{Rumusan Masalah}
+	Penelitian ini dirumuskan untuk menjawab dua pertanyaan riset berikut:
+	
+	\begin{enumerate}
+		\item[\textbf{RQ1}] \textbf{Sejauh mana kuesioner TDWI BI dan AI Maturity Model sesuai dan relevan untuk mengukur kematangan BI dan AI pada organisasi skala kecil-menengah (SME) dan non-profit?}
+		
+		Pertanyaan ini bertujuan untuk memahami persepsi responden terkait kejelasan, relevansi isi, kecukupan dimensi, kesesuaian dengan konteks organisasi SME dan non-profit di Indonesia, serta manfaat praktis kuesioner TDWI bagi organisasi mereka. Fokusnya adalah menggali wawasan kualitatif tentang sejauh mana kuesioner ini dapat digunakan secara efektif di luar konteks perusahaan besar.
+		
+		\item[\textbf{RQ2}] \textbf{Perbaikan atau adaptasi apa yang diperlukan pada TDWI BI dan AI Maturity Model agar lebih aplikatif dan kontekstual bagi organisasi SME dan non-profit?}
+		
+		Pertanyaan ini fokus pada perbaikan dan adaptasi, sehingga pertanyaan kualitatif diarahkan untuk menggali rekomendasi praktis dan strategis dari responden. Tujuannya adalah untuk memahami aspek-aspek yang perlu diubah, ditambahkan, atau disederhanakan dalam kuesioner TDWI agar lebih relevan, mudah dipahami, dan dapat diimplementasikan secara efektif di organisasi SME dan non-profit dengan keterbatasan sumber daya dan struktur yang berbeda dari perusahaan besar.
+	\end{enumerate}
+	
+
+\section{Metode}
+Penelitian ini menggunakan pendekatan kualitatif dengan desain studi kasus evaluatif, di mana setiap mahasiswa bertindak sebagai peneliti yang melakukan evaluasi di organisasi tempat kerja mereka masing-masing.
+
+Penelitian ini fokus pada evaluasi kesesuaian dan relevansi kuesioner TDWI BI dan AI Maturity Model untuk organisasi skala kecil-menengah (SME) dan non-profit. Setiap mahasiswa mengumpulkan data dengan menggunakan instrumen kualitatif berupa kuesioner evaluasi terbuka atau wawancara semi terstruktur kepada responden yang memiliki pemahaman tentang praktik BI dan AI di organisasi mereka.
+
+Jumlah responden ditargetkan minimal lima orang per peneliti, dengan purposive sampling untuk memastikan variasi peran dan konteks organisasi. Data yang dikumpulkan meliputi persepsi responden terkait kejelasan pertanyaan, relevansi isi, kecukupan dimensi, kesesuaian konteks, manfaat praktis, serta saran perbaikan atau adaptasi kuesioner TDWI.
+
+Data dianalisis menggunakan teknik \textit{thematic analysis} untuk mengidentifikasi tema-tema utama dari jawaban responden, kemudian disintesis untuk menjawab dua pertanyaan penelitian terkait kesesuaian model serta perbaikan atau adaptasi yang diperlukan agar lebih aplikatif di konteks SME dan non-profit.
+
+Langkah-langkah metode penelitian ini adalah sebagai berikut:
+
+\begin{enumerate}
+	\item[\textbf{M1.}] Mahasiswa mempelajari kuesioner TDWI BI dan AI Maturity Model untuk memahami struktur, dimensi, dan jenis pertanyaan yang terdapat di dalamnya.
+	
+	\item[\textbf{M2.}] Mahasiswa mengidentifikasi responden yang relevan di organisasi mereka (misalnya manajer TI, analis data, pimpinan unit bisnis, atau staf non-profit yang terlibat dalam penggunaan data dan BI/AI) dengan menggunakan purposive sampling untuk memastikan variasi peran dan konteks organisasi.
+	
+	\item[\textbf{M3.}] Mahasiswa mengumpulkan data melalui wawancara semiterstruktur atau kuesioner kualitatif terbuka, dengan instrumen yang mencakup dimensi evaluasi berikut: kejelasan pertanyaan, relevansi isi, kecukupan dimensi, kesesuaian konteks organisasi SME atau non-profit, manfaat praktis, serta saran perbaikan atau adaptasi kuesioner TDWI.
+	
+	\item[\textbf{M4.}] Mahasiswa mendokumentasikan semua jawaban responden secara lengkap dan mentranskripsikan hasil wawancara untuk keperluan analisis.
+	
+	\item[\textbf{M5.}] Data dianalisis menggunakan teknik \textit{thematic analysis} untuk mengidentifikasi tema-tema utama yang menjawab dua pertanyaan penelitian, yaitu mengenai kesesuaian dan relevansi kuesioner TDWI, serta rekomendasi perbaikan atau adaptasi yang diperlukan agar lebih aplikatif dan kontekstual bagi SME dan non-profit.
+	
+	\item[\textbf{M6.}] Mahasiswa menyusun laporan hasil analisis yang mencakup temuan utama, diskusi implikasi teoretis dan praktis, keterbatasan penelitian, serta rekomendasi penelitian lanjutan.
+\end{enumerate}
+
+% Catatan: Langkah dapat disesuaikan tergantung konteks dan jumlah responden yang diperoleh di masing-masing organisasi.
+
+
+\subsection{Dimensi Evaluasi untuk RQ1}
+Untuk menjawab RQ1, yaitu sejauh mana kuesioner TDWI BI dan AI Maturity Model sesuai dan relevan untuk mengukur kematangan BI dan AI pada organisasi SME dan non-profit, penelitian ini menggunakan pendekatan \textbf{kualitatif} dengan pengumpulan data melalui wawancara semiterstruktur atau kuesioner terbuka.
+
+Pendekatan ini bertujuan menggali persepsi mendalam responden pada setiap dimensi evaluasi, sehingga diperoleh insight kontekstual dan rekomendasi adaptasi yang aplikatif.
+
+\textbf{Dimensi evaluasi} yang digunakan meliputi:
+
+\begin{enumerate}
+	\item[\textbf{D1.}] \textbf{Kejelasan (Clarity)} – seberapa jelas kata-kata dan instruksi dalam kuesioner TDWI bagi responden.
+	
+	\item[\textbf{D2.}] \textbf{Relevansi Isi (Relevance)} – sejauh mana pertanyaan-pertanyaan dalam kuesioner relevan dengan kondisi, kebutuhan, dan praktik BI serta AI di organisasi mereka.
+	
+	\item[\textbf{D3.}] \textbf{Kecukupan Dimensi (Coverage / Construct Validity)} – apakah dimensi yang diukur oleh kuesioner sudah mencakup aspek penting BI dan AI yang dibutuhkan organisasi SME atau non-profit.
+	
+	\item[\textbf{D4.}] \textbf{Kesesuaian Konteks (Contextual Fit)} – apakah kuesioner sesuai dengan realitas dan karakteristik organisasi SME atau non-profit di Indonesia, atau cenderung berorientasi pada perusahaan besar.
+	
+	\item[\textbf{D5.}] \textbf{Manfaat Praktis (Practical Usefulness)} – sejauh mana kuesioner dan hasilnya bermanfaat untuk perencanaan strategis dan pengembangan BI dan AI di organisasi responden.
+\end{enumerate}
+
+Output dari evaluasi ini akan berupa:
+\begin{enumerate}
+	\item[\textbf{O1.}] Identifikasi tema-tema utama berdasarkan analisis tematik untuk masing-masing dimensi evaluasi.
+	\item[\textbf{O2.}] Ringkasan persepsi responden tentang kekuatan dan kelemahan kuesioner TDWI dalam konteks SME dan non-profit.
+	\item[\textbf{O3.}] Rekomendasi awal perbaikan dan adaptasi model untuk konteks organisasi di Indonesia.
+\end{enumerate}
+
+\subsubsection{Pertanyaan Evaluasi untuk RQ1}
+Berikut adalah daftar pertanyaan yang diajukan kepada responden untuk menjawab RQ1, difokuskan pada evaluasi kualitatif mendalam sesuai dimensi evaluasi:
+
+\begin{enumerate}
+	\item[P1.] Bagaimana pendapat Anda tentang kejelasan kata-kata dan instruksi dalam kuesioner TDWI BI dan AI Maturity Model?  
+	- Apakah ada istilah atau kalimat yang kurang jelas atau membingungkan? Mohon sebutkan contohnya dan jelaskan alasannya.
+	
+	\item[P2.] Menurut Anda, seberapa relevan isi pertanyaan dalam kuesioner TDWI dengan kondisi dan kebutuhan organisasi Anda?  
+	- Bagian mana yang paling relevan? Mengapa?  
+	- Bagian mana yang kurang relevan? Jelaskan alasannya.
+	
+	\item[P3.] Apakah dimensi yang diukur oleh TDWI (Organisasi, Infrastruktur Data, Sumber Daya, Analitik, Tata Kelola) sudah mencakup semua aspek penting BI dan AI di organisasi Anda?  
+	- Jika ada yang belum tercakup, sebutkan aspek tersebut dan jelaskan mengapa penting bagi organisasi Anda.
+	
+	\item[P4.] Bagaimana menurut Anda kesesuaian kuesioner TDWI dengan konteks organisasi SME atau non-profit di Indonesia?  
+	- Apakah ada bagian yang terasa hanya relevan untuk perusahaan besar? Jelaskan.  
+	- Bagaimana sebaiknya pertanyaan-pertanyaan tersebut diadaptasi agar lebih sesuai dengan organisasi Anda?
+	
+	\item[P5.] Jika organisasi Anda menggunakan kuesioner ini, apakah hasilnya akan berguna untuk pengembangan BI dan AI di organisasi Anda?  
+	- Mengapa atau mengapa tidak?  
+	- Bagaimana hasilnya dapat diimplementasikan dalam perencanaan atau pengambilan keputusan?
+\end{enumerate}
+
+Selain pertanyaan di atas, responden juga akan diminta untuk memberikan masukan tambahan terkait kekuatan dan keterbatasan kuesioner TDWI BI dan AI Maturity Model secara keseluruhan.
+
+
+\subsection{Metode untuk Menjawab RQ2}
+
+RQ2 dalam penelitian ini adalah: \textit{Perbaikan atau adaptasi apa yang diperlukan pada TDWI BI dan AI Maturity Model agar lebih aplikatif dan kontekstual bagi organisasi SME dan non-profit?}
+
+Untuk menjawab RQ2, penelitian ini menggunakan pendekatan \textbf{kualitatif} melalui wawancara semiterstruktur atau kuesioner terbuka kepada responden yang telah mengevaluasi kuesioner TDWI. Pendekatan ini bertujuan untuk menggali rekomendasi praktis dan strategis dari responden mengenai aspek-aspek yang perlu diubah, ditambahkan, atau disederhanakan dalam kuesioner TDWI agar lebih relevan, mudah dipahami, dan dapat diimplementasikan secara efektif di organisasi SME dan non-profit yang memiliki keterbatasan sumber daya dan struktur yang berbeda dari perusahaan besar.
+
+\textbf{Daftar pertanyaan evaluasi} yang digunakan untuk RQ2 meliputi:
+
+\begin{enumerate}
+	\item[P6.] Menurut Anda, apakah ada \textbf{dimensi baru} yang perlu ditambahkan agar kuesioner TDWI lebih sesuai untuk SME atau non-profit?  
+	Jelaskan mengapa dimensi tersebut penting bagi organisasi Anda.
+	
+	\item[P7.] Apakah ada \textbf{dimensi atau pertanyaan} dalam kuesioner yang menurut Anda kurang relevan dan sebaiknya dikurangi atau disederhanakan?  
+	Jelaskan alasannya.
+	
+	\item[P8.] Bagaimana cara memperbaiki \textbf{redaksi atau bahasa} dalam kuesioner TDWI agar lebih mudah dipahami oleh manajemen dan staf di organisasi Anda?
+	
+	\item[P9.] Apakah \textbf{skala penilaian dan opsi jawaban} dalam kuesioner ini sesuai dengan kondisi organisasi SME atau non-profit Anda?  
+	Jika tidak, bagaimana sebaiknya skala dan opsi jawaban tersebut diadaptasi?
+	
+	\item[P10.] Bagaimana kuesioner ini dapat diadaptasi agar lebih relevan untuk \textbf{perencanaan strategis dan operasional organisasi SME atau non-profit}, misalnya terkait tingkat kompleksitas teknis, fokus data untuk dampak sosial, atau keterbatasan sumber daya?
+	
+	\item[P11.] Apa rekomendasi Anda secara keseluruhan untuk memperbaiki atau mengadaptasi TDWI BI dan AI Maturity Model agar dapat digunakan secara efektif di organisasi seperti Anda?
+\end{enumerate}
+
+Jawaban dari pertanyaan-pertanyaan tersebut akan dianalisis menggunakan \textbf{metode analisis tematik} untuk mengidentifikasi tema-tema utama terkait rekomendasi perbaikan dan adaptasi kuesioner TDWI. Untuk mempermudah, Anda dapat menggunakan LLM untuk membantu mengeksekusi metode ini. Metode analisis tematik yang digunakan mengikuti langkah-langkah yang dikembangkan oleh Braun dan Clarke (2006), yaitu:
+
+\begin{enumerate}
+	\item Familiarisasi dengan data (membaca dan memahami transkrip secara menyeluruh)
+	\item Generasi kode awal (initial coding) untuk bagian-bagian data yang bermakna
+	\item Pencarian tema (searching for themes) dari kelompok kode yang serupa
+	\item Peninjauan ulang tema (reviewing themes) untuk memastikan koherensi internal dan perbedaan antar tema
+	\item Pendefinisian dan penamaan tema (defining and naming themes)
+	\item Penyusunan laporan hasil analisis (producing the report)
+\end{enumerate}
+
+Pendekatan ini merupakan salah satu metode analisis kualitatif yang paling banyak digunakan dan diakui keabsahannya dalam penelitian sosial dan organisasi. Referensi metodologi analisis tematik Braun dan Clarke dapat diakses pada:
+
+Braun, V. \& Clarke, V. (2006). Using thematic analysis in psychology. \textit{Qualitative Research in Psychology}, 3(2), 77-101.  
+\url{https://doi.org/10.1191/1478088706qp063oa}
+
+Panduan ringkas juga tersedia melalui University of Auckland:  
+\url{https://www.psych.auckland.ac.nz/en/about/thematic-analysis.html}
+
+Analisis ini diharapkan menghasilkan insight mendalam yang dapat digunakan untuk pengembangan maturity model yang lebih kontekstual dan aplikatif bagi organisasi SME dan non-profit di Indonesia.
+
+
+\section{Kontribusi dan Kebaruan Penelitian}
+Penelitian ini memberikan kontribusi dan kebaruan dalam konteks evaluasi dan adaptasi TDWI BI dan AI Maturity Model untuk organisasi SME dan non-profit, yang dijelaskan sebagai berikut:
+
+\begin{enumerate}
+	\item[\textbf{K1.}] \textbf{Kontribusi Empiris:}  
+	Penelitian ini merupakan studi empiris yang mengevaluasi kesesuaian dan relevansi kuesioner TDWI BI dan AI Maturity Model pada organisasi SME dan non-profit di Indonesia. Hasilnya memberikan gambaran praktis tentang bagaimana model ini dipahami dan diterapkan di organisasi dengan sumber daya dan struktur yang berbeda dari perusahaan besar.
+	
+	\item[\textbf{K2.}] \textbf{Kontribusi Metodologis:}  
+	Penelitian ini mengembangkan kerangka evaluasi kualitatif berbasis dimensi clarity, relevance, coverage, contextual fit, dan practical usefulness yang dapat digunakan untuk menilai kesesuaian maturity model global di konteks lokal. Pendekatan ini menggunakan metode \textit{thematic analysis} untuk menghasilkan rekomendasi adaptasi yang aplikatif.
+	
+	\item[\textbf{K3.}] \textbf{Kebaruan Praktis:}  
+	Penelitian ini memberikan rekomendasi adaptasi praktis agar kuesioner TDWI dapat digunakan secara efektif untuk pengembangan BI dan AI di organisasi berskala kecil-menengah dan non-profit dengan keterbatasan sumber daya.
+	
+	\item[\textbf{K4.}] \textbf{Kontribusi Teoretis:}  
+	Penelitian ini menambahkan perspektif teoretis tentang pentingnya contextualisation dan adaptasi maturity model global ketika diterapkan di sektor SME dan non-profit, serta mendukung literatur terkait limitations of one-size-fits-all maturity models dan kebutuhan desain model yang lebih inklusif dan kontekstual.
+\end{enumerate}
+
+
+\section{Limitasi dan Ancaman terhadap Validitas}
+Penelitian ini memiliki beberapa keterbatasan (limitation) serta potensi ancaman terhadap validitas (threats to validity) yang perlu diperhatikan dalam interpretasi hasilnya.
+
+\begin{enumerate}
+	\item[\textbf{L1.}] \textbf{Generalisasi Temuan}  
+	Penelitian ini menggunakan pendekatan studi kasus kualitatif dengan jumlah responden yang terbatas (sekitar lima orang per peneliti) dari SME dan non-profit. Oleh karena itu, temuan bersifat kontekstual dan tidak dapat digeneralisasi ke seluruh organisasi SME dan non-profit secara luas tanpa validasi lanjutan.
+	
+	\item[\textbf{L2.}] \textbf{Variasi Latar Belakang Responden}  
+	Responden memiliki latar belakang peran dan pengalaman yang berbeda terkait BI dan AI, sehingga interpretasi mereka atas pertanyaan evaluasi mungkin bervariasi tergantung pemahaman dan keterlibatan mereka dalam praktik BI dan AI organisasi.
+	
+	\item[\textbf{L3.}] \textbf{Bias Penilaian Responden}  
+	Penilaian responden dapat dipengaruhi oleh preferensi pribadi mereka terhadap maturity model tertentu, pengalaman sebelumnya dengan asesmen BI dan AI, atau bias organisasi terhadap framework global seperti TDWI.
+	
+	\item[\textbf{L4.}] \textbf{Threats to Construct Validity}  
+	Potensi ancaman terhadap validitas konstruk muncul apabila dimensi evaluasi yang digunakan belum sepenuhnya mencakup seluruh aspek kesesuaian dan relevansi maturity model, atau jika interpretasi pertanyaan berbeda di antara responden.
+	
+	\item[\textbf{L5.}] \textbf{Threats to Internal Validity}  
+	Faktor eksternal seperti kebijakan organisasi yang sedang berubah, prioritas proyek lain, atau keterbatasan waktu responden saat wawancara dapat memengaruhi kualitas dan kedalaman jawaban.
+	
+	\item[\textbf{L6.}] \textbf{Threats to External Validity}  
+	Temuan penelitian ini mungkin kurang relevan untuk organisasi berskala besar atau perusahaan multinasional dengan struktur, sumber daya, dan kebutuhan BI serta AI yang jauh lebih kompleks dibanding SME dan non-profit.
+	
+\end{enumerate}
+
+Meskipun demikian, penelitian ini tetap memberikan kontribusi awal yang penting dalam memahami kesesuaian, relevansi, serta kebutuhan adaptasi kuesioner TDWI BI dan AI Maturity Model untuk digunakan secara efektif di konteks organisasi SME dan non-profit di Indonesia.
+
+\section{Panduan Literature Review}
+Untuk mendukung penelitian ini, terdapat beberapa topik utama yang perlu dipelajari dalam literature review agar kerangka teoritis dan landasan konsep penelitian menjadi kuat dan komprehensif. Topik-topik tersebut meliputi:
+
+\begin{enumerate}
+	\item[\textbf{LR1.}] \textbf{Business Intelligence (BI) dan Artificial Intelligence (AI) Maturity Models}  
+	Meninjau berbagai maturity model BI dan AI yang ada, termasuk TDWI BI and AI Maturity Model, Gartner AI Maturity Model, serta model lain seperti DAMA-DMBOK Data Maturity Framework. Fokus pada tujuan, struktur dimensi, dan aplikasi praktis model-model tersebut di organisasi.
+	
+	\item[\textbf{LR2.}] \textbf{TDWI BI and AI Maturity Model}  
+	Memahami secara mendalam framework TDWI, termasuk lima dimensi utamanya (Organization, Data Infrastructure, Resources, Analytics, Governance), tahapan maturity (Nascent hingga Advanced/Visionary), dan implementasi model ini dalam pengukuran kematangan BI dan AI di perusahaan.
+	
+	\item[\textbf{LR3.}] \textbf{BI dan AI Maturity pada SME dan Non-Profit Organisations}  
+	Mencari studi terkait penerapan BI dan AI maturity models pada sektor SME dan non-profit, mengidentifikasi tantangan, keterbatasan, serta kebutuhan adaptasi framework global di organisasi berskala kecil-menengah dan berbasis sosial.
+	
+	\item[\textbf{LR4.}] \textbf{Adaptasi dan Contextualisation Framework dalam Penelitian Sistem Informasi}  
+	Meninjau teori dan studi yang membahas pentingnya adaptasi framework atau model global ke konteks lokal dan sektor spesifik, serta konsep \textit{contextual fit} dalam evaluasi maturity model.
+	
+	\item[\textbf{LR5.}] \textbf{Metodologi Evaluasi Maturity Model dan Instrument Validity}  
+	Memahami pendekatan evaluasi kuesioner dan maturity model, termasuk metode \textit{thematic analysis} untuk analisis kualitatif dan prinsip-prinsip validity (construct, internal, external validity) dalam penelitian evaluasi alat ukur.
+	
+	\item[\textbf{LR6.}] \textbf{Manfaat dan Risiko Penerapan BI dan AI di SME dan Non-Profit}  
+	Mengkaji literatur terkait manfaat implementasi BI dan AI dalam meningkatkan efisiensi dan pengambilan keputusan di SME dan non-profit, serta keterbatasan sumber daya yang mempengaruhi readiness dan maturity organisasi.
+\end{enumerate}
+
+
+Literature review pada topik-topik di atas akan menjadi dasar untuk:
+\begin{itemize}
+	\item Menyusun kerangka konseptual dan metodologi penelitian yang relevan untuk mengevaluasi kesesuaian dan relevansi TDWI BI and AI Maturity Model pada konteks SME dan non-profit.
+	
+	\item Mengidentifikasi gap penelitian terkait keterbatasan penerapan maturity model global di sektor SME dan non-profit serta kebutuhan adaptasi agar lebih kontekstual dan aplikatif.
+	
+	\item Menyusun instrumen evaluasi (pertanyaan wawancara dan kuesioner kualitatif) serta melakukan interpretasi hasil penelitian dengan merujuk pada teori maturity model, contextual fit, dan praktik implementasi BI dan AI di organisasi berskala kecil-menengah.
+\end{itemize}
+
+\section{Panduan Penulisan}
+Untuk penulisan makalah penelitian ini, diharapkan mahasiswa menggunakan template dan struktur yang sesuai dengan standar publikasi ilmiah internasional, dapat berupa template prosiding konferensi internasional IEEE/ACM/AIS atau minimal jurnal nasional SINTA 3.
+
+
+\subsection{Kerangka Penulisan Makalah}
+Berikut adalah kerangka section dan subsection yang direkomendasikan (dapat disesuaikan sesuai kebutuhan) untuk makalah penelitian ini:
+
+\begin{enumerate}
+	\item \textbf{Abstract}
+	
+	\item \textbf{Keywords}
+	
+	\item \textbf{1. Pendahuluan}
+	\begin{enumerate}
+		\item[1.1] Latar Belakang
+		\item[1.2] Rumusan Masalah
+		\item[1.3] Tujuan Penelitian
+		\item[1.4] Kontribusi dan Kebaruan Penelitian
+		\item[1.5] Struktur Makalah
+	\end{enumerate}
+	
+	\item \textbf{2. Literature Review}
+	\begin{enumerate}
+		\item[2.1] Business Intelligence dan Artificial Intelligence Maturity Models
+		\item[2.2] TDWI BI and AI Maturity Model
+		\item[2.3] BI dan AI Maturity pada SME dan Non-Profit Organisations
+		\item[2.4] Adaptasi dan Contextualisation Framework dalam Penelitian Sistem Informasi
+		\item[2.5] Metodologi Evaluasi Maturity Model dan Instrument Validity
+		\item[2.6] Manfaat dan Risiko Penerapan BI dan AI di SME dan Non-Profit
+	\end{enumerate}
+	
+	\item \textbf{3. Metodologi Penelitian}
+	\begin{enumerate}
+		\item[3.1] Desain Penelitian
+		\item[3.2] Metode Pengumpulan Data
+		\item[3.3] Partisipan dan Konteks
+		\item[3.4] Instrumen Penelitian
+		\item[3.5] Dimensi Evaluasi RQ1
+		\item[3.6] Pertanyaan Evaluasi RQ1
+		\item[3.7] Metode untuk Menjawab RQ2
+		\item[3.8] Pertanyaan Evaluasi RQ2
+		\item[3.9] Teknik Analisis Data
+		\item[3.10] Limitasi dan Ancaman terhadap Validitas
+	\end{enumerate}
+	
+	\item \textbf{4. Hasil dan Pembahasan}
+	\begin{enumerate}
+		\item[4.1] Temuan RQ1: Kesesuaian dan Relevansi Kuesioner TDWI
+		\item[4.2] Temuan RQ2: Rekomendasi Perbaikan dan Adaptasi TDWI
+		\item[4.3] Diskusi Implikasi Teoretis dan Praktis
+	\end{enumerate}
+	
+	\item \textbf{5. Kesimpulan dan Rencana Penelitian Selanjutnya}
+	
+	\item \textbf{References}
+\end{enumerate}
+
+Mahasiswa diharapkan mengikuti kerangka penulisan di atas untuk memastikan kelengkapan dan keseragaman struktur makalah penelitian, serta memudahkan proses review dan integrasi hasil penelitian ke dalam publikasi bersama.
+
+
+\newpage
+
+
+\appendix
+
+\section{Lampiran Kuesioner TDWI (The Data Warehouse Institute) BI dan AI Maturity Model Assessment}
+
+Sebelum mengisi kuesioner ini, Anda diharapkan telah membaca dan memahami dokumen \textit{TDWI BI and AI Maturity Model Assessment Guide} yang telah disediakan.
+
+Data pribadi Anda akan dijaga kerahasiaannya. Mohon untuk tidak memasukkan data pribadi yang bersifat sensitif ke dalam kuesioner ini. Anda juga memiliki opsi untuk melakukan opt-out atau menghapus data yang telah diinput apabila memutuskan untuk membatalkan partisipasi dalam penelitian ini.
+
+
+\subsection{Pendahuluan}
+Terima kasih sebelumnya atas partisipasi Anda dalam asesmen kematangan BI dan AI ini. Tujuan TDWI adalah membantu organisasi belajar dari rekan-rekan mereka untuk mendapatkan keuntungan bisnis baru melalui analitik.
+
+\subsubsection{Latar Belakang}
+Asesmen ini menanyakan tentang tingkat kematangan organisasi Anda dalam BI dan AI di berbagai dimensi termasuk kematangan organisasi, kematangan infrastruktur data, kematangan analitik, dan kematangan tata kelola. Asesmen ini meninjau apakah organisasi Anda memiliki sumber daya untuk melanjutkan perjalanannya.
+
+\subsubsection{Definisi}
+Dalam asesmen ini, analitik adalah proses menelaah data untuk menemukan pola, tren, dan insight yang mendukung pengambilan keputusan dan tindakan strategis yang terinformasi. Analitik mencakup Business Intelligence (BI), yang berfokus pada analisis deskriptif dan diagnostik melalui pelaporan, dashboard, dan visualisasi, serta Artificial Intelligence (AI), yang meningkatkan analitik dengan kemampuan prediktif dan preskriptif, memungkinkan otomatisasi, pemodelan lanjutan, dan pengambilan keputusan otonom.
+
+\subsubsection{Tujuan}
+Asesmen selama 10-15 menit ini menyajikan serangkaian pernyataan dan pertanyaan di lima dimensi terkait kematangan BI dan AI. Untuk setiap pertanyaan, pilihlah jawaban yang paling sesuai dengan kondisi Anda saat ini. Kami meminta Anda memberikan penilaian yang jujur atas kemajuan BI dan AI Anda. Hal ini akan memastikan Anda dan peserta lainnya memperoleh insight terbaik dari asesmen ini.
+
+\subsubsection{Panduan}
+Pastikan Anda membaca Panduan yang menyertai asesmen ini untuk mendapatkan pemahaman lebih lanjut.
+
+\subsubsection{Siapa yang Perlu Mengikuti Survei Ini}
+Survei ini ditujukan bagi individu yang terlibat dalam analitik, baik dari sisi bisnis maupun IT. Jika Anda adalah seorang konsultan, mohon jawab pertanyaan dengan mengacu pada klien terbaru Anda.
+
+
+\twocolumn
+
+\section*{Pertanyaan-Pertanyaan Kue\-si\-o\-ner}
+
+
+\textbf{Profil Organisasi.} Untuk bagian ini, lengkapi profil organisasi berikut (dapat dikosongkan jika dianggap rahasia):
+\begin{itemize}
+	\item Bidang usaha perusahaan/organisasi:
+	\item Kisaran jumlah karyawan:
+	\item Kisaran pendapatan (\textit{omzet}) perusahaan/organisasi per tahun:
+	\item Kisaran valuasi aset:
+\end{itemize}
+
+\subsection{Organisasi}
+
+\subsubsection{Kepemimpinan}
+
+\textbf{Pimpinan perusahaan saya mendukung dan mengampanyekan BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak sama sekali
+	\item[b.] Mereka tampak ambivalen terhadap BI dan tidak benar-benar mengampanyekannya, meskipun sekarang ada ketertarikan pada AI dengan munculnya generative AI
+	\item[c.] Mereka mendukung upaya BI dan AI dan mulai mengampanyekannya
+	\item[d.] Mereka mendukung penuh analitik termasuk BI dan AI, menggunakan analitik untuk mengambil keputusan, dan mengampanyekannya di seluruh perusahaan
+\end{enumerate}
+
+\textbf{Bagaimana pimpinan mendorong dan mempromosikan penggunaan data, BI, dan AI dalam pengambilan keputusan?}
+
+\begin{enumerate}
+	\item[a.] Pimpinan berbicara tentang data, tetapi keputusan tetap berdasarkan intuisi
+	\item[b.] Pimpinan menyadari pentingnya data, tetapi tidak secara aktif menggunakan BI atau AI dalam pengambilan keputusan
+	\item[c.] Beberapa eksekutif mendorong pengambilan keputusan berbasis data, tetapi tidak merata di seluruh pimpinan
+	\item[d.] Pimpinan secara aktif menggunakan insight BI dan AI untuk pengambilan keputusan dan mengharapkan tim melakukan hal yang sama
+\end{enumerate}
+
+\subsubsection{Strategi}
+
+\textbf{Perusahaan saya memiliki strategi yang kuat untuk mendukung upaya BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan tidak ada rencana untuk membuatnya
+	\item[b.] Kami memiliki strategi BI dan menjalankannya, tetapi belum ke AI
+	\item[c.] Kami memiliki strategi BI dan menjalankannya serta sedang menyiapkan strategi AI
+	\item[d.] Ya, kami memiliki strategi solid untuk BI dan AI dan sedang menjalankannya
+\end{enumerate}
+
+\textbf{Seberapa jelas strategi BI dan AI organisasi Anda?}
+
+\begin{enumerate}
+	\item[a.] Kami tidak memiliki strategi BI atau AI formal; upaya bersifat ad hoc dan tidak terkoordinasi
+	\item[b.] Kami memiliki inisiatif BI dan AI, tetapi tidak berada di bawah strategi yang jelas
+	\item[c.] Kami memiliki strategi BI dan AI, tetapi tidak dikomunikasikan secara luas atau diikuti secara konsisten di seluruh organisasi
+	\item[d.] Strategi BI dan AI kami terdefinisi dengan baik, selaras dengan tujuan bisnis, dan ditinjau secara berkala untuk efektivitasnya
+	\item[e.] Kami memiliki strategi BI dan AI yang komprehensif, tertanam dalam operasi bisnis, terus berkembang, dan mendorong keunggulan kompetitif yang terukur
+\end{enumerate}
+
+\subsubsection{Dampak}
+
+\textbf{Berapa \% unit bisnis di perusahaan Anda yang menggunakan self-service BI untuk pengambilan keputusan sehari-hari?}
+
+\begin{enumerate}
+	\item[a.] Kurang dari 25\%
+	\item[b.] 26-40\%
+	\item[c.] 41-55\%
+	\item[d.] 56-70\%
+	\item[e.] Lebih dari 70\%
+\end{enumerate}
+
+\textbf{Apakah BI di perusahaan Anda sudah terdemosratisasi (yaitu, pengguna bisnis memanfaatkannya)?}
+
+\begin{enumerate}
+	\item[a.] Tidak sama sekali. Biasanya pengguna bisnis harus meminta laporan, dashboard, dan sejenisnya ke IT atau grup lain
+	\item[b.] Beberapa pengguna bisnis secara aktif menggunakan BI, tetapi adopsinya tidak merata
+	\item[c.] BI sepenuhnya terdemosratisasi – pengguna bisnis dapat mengakses dan menganalisis data secara mandiri
+\end{enumerate}
+
+\subsubsection{Budaya}
+
+\textbf{Pegawai di semua level menggunakan data dan analitik untuk mendukung keputusan harian mereka.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Ada budaya percaya pada analitik di perusahaan saya.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Ada kemauan untuk mencoba hal baru di perusahaan saya, termasuk BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Ada budaya inovasi di perusahaan saya yang mencakup BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Organisasi saya memiliki landasan etika yang kuat yang mencakup BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\subsection{Data Infrastructure}
+
+\subsubsection{Keanekaragaman, Volume, Kecepatan}
+
+\textbf{Jenis data apa saja yang saat ini dikumpulkan dan dikelola perusahaan Anda sebagai bagian dari upaya analitik?}
+
+\begin{enumerate}
+	\item[a.] Data terstruktur (misalnya tabel, record)
+	\item[b.] Data terstruktur serta data demografis seperti usia, lokasi, dan data SaaS (CRM, ERP)
+	\item[c.] Semua di atas ditambah data semiterstruktur (XML dan sejenisnya)
+	\item[d.] Semua di atas ditambah 1-2 dari berikut: data teks internal (email, catatan interaksi call, hasil survei), data media sosial (blog, tweet), data mesin, data geospasial, data peristiwa real-time, audio, video, weblog, clickstream, data spesifik industri, data demografis
+	\item[e.] Semua di atas ditambah 3+ dari berikut: data teks internal (email, catatan interaksi call, hasil survei), data media sosial (blog, tweet), data mesin, data geospasial, data peristiwa real-time, audio, video, weblog, clickstream, data spesifik industri, data demografis
+\end{enumerate}
+
+\subsubsection{Akses Data}
+
+\textbf{Pegawai dapat mengakses data sesuai kebutuhan, termasuk data terstruktur dan tidak terstruktur, melalui platform akses terpadu dan proses tata kelola yang terdefinisi dengan baik.}
+
+\begin{enumerate}
+	\item[a.] Tidak sama sekali
+	\item[b.] Hanya jika melalui IT
+	\item[c.] Ya, jika memenuhi kriteria akses tertentu
+	\item[d.] Ya, sebagian besar analis bisnis dan data scientist dapat mengakses dan menggunakan data, meskipun terkadang ada kesulitan
+	\item[e.] Ya, kami menggunakan teknologi seperti data catalog untuk membantu mengorganisir dan mengakses data
+\end{enumerate}
+
+\textbf{Organisasi saya menggunakan model produk data; ini membantu meningkatkan akses dan kualitas data.}
+
+\begin{enumerate}
+	\item[a.] Tidak, kami tidak menggunakan model produk data
+	\item[b.] Kami menuju ke arah model produk data, tetapi belum meningkatkan akses
+	\item[c.] Kami memiliki model produk data dan itu meningkatkan akses dan kualitas
+\end{enumerate}
+
+\subsubsection{Integrasi Data}
+
+\textbf{Organisasi saya sering menggunakan berbagai jenis data untuk BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak
+	\item[b.] Ya, dengan data terstruktur
+	\item[c.] Ya, dengan berbagai jenis data termasuk data tidak terstruktur dan data non-tradisional lainnya
+	\item[d.] Ya, dengan berbagai jenis data dan kami melakukan integrasi dengan baik
+	\item[e.] Ya, dengan data terstruktur dan tidak terstruktur – semua dianggap data penting untuk mendapatkan gambaran utuh
+\end{enumerate}
+
+\textbf{Organisasi saya memiliki data foundation yang tepercaya untuk BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak sama sekali
+	\item[b.] Kami sedang menuju ke arah itu dengan data terstruktur
+	\item[c.] Data terstruktur kami tepercaya, tetapi data tidak terstruktur tidak
+	\item[d.] Data terstruktur dan tidak terstruktur kami sebagian besar tepercaya
+	\item[e.] Semua data kami sepenuhnya tepercaya
+\end{enumerate}
+
+\textbf{Teknologi apa yang digunakan organisasi Anda untuk manajemen data?}
+
+\begin{enumerate}
+	\item[a.] Flat files atau spreadsheet
+	\item[b.] Data warehouse atau data mart
+	\item[c.] Data warehouse bersama data lake atau platform lain, tetapi masih terpisah
+	\item[d.] Berbagai teknologi termasuk data warehouse, data lake, data lakehouse, cloud, dan kami sedang mengarkitekturnya bersama sebagai ekosistem terpadu
+	\item[e.] Berbagai pendekatan yang membentuk lingkungan terarkitektur dan terpadu untuk akses data
+\end{enumerate}
+
+\textbf{Organisasi saya mampu mengorkestrasi dan memonitor multiple data pipeline.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\subsubsection{Arsitektur Data}
+
+\textbf{Organisasi saya memiliki arsitektur data perusahaan untuk BI dan AI yang dapat menangani pertumbuhan data dan pengguna. Ini merupakan arsitektur modern.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Organisasi saya mendesain arsitekturnya untuk mengintegrasikan data yang beragam dari berbagai sumber untuk diakses dan dianalisis.}
+
+\begin{enumerate}
+	\item[a.] Belum sama sekali
+	\item[b.] Kami menggunakan banyak sumber, tetapi semua analitik terintegrasi hanya memanfaatkan data terstruktur
+	\item[c.] Ya, dan kami mengintegrasikan data terstruktur dan tidak terstruktur karena keduanya diperlukan untuk gambaran yang lengkap dan pengambilan keputusan terbaik atau otomatisasi tindakan terbaik
+\end{enumerate}
+
+\textbf{Arsitektur data perusahaan saya dirancang untuk scale berdasarkan use case.}
+
+\begin{enumerate}
+	\item[a.] Tidak sama sekali
+	\item[b.] Belum, tetapi kami sedang menuju arsitektur yang lebih fleksibel dan scalable
+	\item[c.] Ya, kami yakin perusahaan mampu scale berdasarkan use case termasuk beban kerja komputasi yang intensif
+\end{enumerate}
+
+\textbf{Arsitektur data perusahaan saya sangat performan untuk mendukung use case AI baru.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\subsection{Resources}
+
+\subsubsection{Pendanaan}
+
+\textbf{Organisasi saya memiliki proses pendanaan yang mapan untuk teknologi BI dan AI. Pendanaan ini didorong oleh bisnis dan IT.}
+
+\begin{enumerate}
+	\item[a.] Tidak, tidak untuk BI atau AI
+	\item[b.] Kami sedang menyiapkan pendanaan untuk BI
+	\item[c.] Kami memiliki pendanaan untuk BI dan berencana menyiapkan untuk AI
+	\item[d.] Kami memiliki pendanaan untuk BI dan sedang menyiapkan pendanaan untuk AI
+	\item[e.] Kami memiliki pendanaan untuk inisiatif BI dan AI
+\end{enumerate}
+
+\textbf{Strategi analitik organisasi saya mencakup komponen organisasi yang memungkinkan kami membangun dan mengeksekusi analitik, termasuk pendanaan untuk center of excellence, tim inovasi, dan sejenisnya.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan saya rasa kami tidak tahu apa itu
+	\item[b.] Tidak, tetapi kami menyadari hal ini penting dan beberapa dari kami menginginkannya
+	\item[c.] Ya, kami sedang menyiapkannya
+	\item[d.] Ya, kami sudah memiliki dan sedang mengembangkannya
+	\item[e.] Ya, kami memiliki komponen signifikan termasuk pelatihan dan dukungan untuk inisiatif analitik
+\end{enumerate}
+
+\textbf{Perusahaan saya berinvestasi dalam inisiatif manajemen perubahan.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan kami tidak berencana melakukannya
+	\item[b.] Tidak, tetapi kami berencana dalam 1 tahun ke depan
+	\item[c.] Ya, kami sedang melakukannya sekarang
+	\item[d.] Ya, kami memiliki program pelatihan manajemen perubahan – tetapi hanya untuk eksekutif
+	\item[e.] Ya, kami memiliki ini di seluruh organisasi
+\end{enumerate}
+
+\subsubsection{Peran dan Tanggung Jawab}
+
+\textbf{Perusahaan saya memiliki CDO/CAO untuk mendukung BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak
+	\item[b.] Tidak, VP Analytics kami sudah melakukan tugasnya dengan baik
+	\item[c.] Kami sedang mempertimbangkan hal ini sekarang
+	\item[d.] Kami telah merekrut CDO/CAO
+\end{enumerate}
+
+\textbf{Perusahaan saya telah mempekerjakan data scientist untuk upaya analitik.}
+
+\begin{enumerate}
+	\item[a.] Tidak
+	\item[b.] Tidak, tetapi kami berencana melakukannya segera
+	\item[c.] Ya, kami memiliki beberapa data scientist
+	\item[d.] Ya, data scientist kami bagian dari tim analitik
+	\item[e.] Ya, data scientist kami bagian dari tim analitik dan berkolaborasi dengan bisnis
+\end{enumerate}
+
+\textbf{Selain data scientist, organisasi Anda mempekerjakan staf untuk berbagai aspek siklus hidup analitik, termasuk data engineer dan tim operasional untuk BI dan AI dalam produksi.}
+
+\begin{enumerate}
+	\item[a.] Tidak, dan saya rasa kami belum memikirkan data engineer atau DataOps
+	\item[b.] Tidak, tetapi kami menyadari ini penting dan mencoba mengerjakannya secara ad hoc dengan staf yang ada
+	\item[c.] Kami sedang mengembangkan grup khusus / staf yang bertanggung jawab untuk ini
+	\item[d.] Kami memiliki anggota tim khusus dengan mandat dan sumber daya untuk ini
+	\item[e.] Kami memiliki tim lengkap dengan cukup data engineer, dev/ops, dan lainnya untuk mendukung seluruh kebutuhan kami
+\end{enumerate}
+
+\textbf{Perusahaan saya telah menempatkan peran baru seperti MLOps dan AI developer untuk upaya AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak, kami belum beralih ke AI, jadi peran ini belum diperlukan
+	\item[b.] Kami sedang merencanakan peran-peran baru ini untuk mendukung AI
+	\item[c.] Peran-peran ini sudah ada
+\end{enumerate}
+
+\subsubsection{Talenta dan Keterampilan}
+
+\textbf{Organisasi saya memiliki tim berbakat untuk mengelola data management dalam analitik.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Organisasi saya memiliki tim berbakat untuk deployment BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Perusahaan saya yakin dapat meng-upskill business analyst menjadi data scientist.}
+
+\begin{enumerate}
+	\item[a.] Tidak, kami belum membutuhkan data scientist
+	\item[b.] Ya, tetapi mereka akan membutuhkan bantuan dari pihak lain
+	\item[c.] Ya, mereka dapat membangun model terutama dengan tools yang mudah digunakan di pasar
+	\item[d.] Tidak, kami sudah memiliki data scientist yang dibutuhkan
+\end{enumerate}
+
+\textbf{Perusahaan saya memiliki literasi data. Pengguna bisnis dan analis bisnis dapat menggunakan data untuk memperoleh insight.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\subsubsection{Pelatihan}
+
+\textbf{Organisasi saya berinvestasi dalam pelatihan BI dan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan kami tidak berencana melakukannya
+	\item[b.] Tidak, tetapi kami menyarankan staf untuk belajar mandiri
+	\item[c.] Ya, kami mendanai pelatihan internal
+	\item[d.] Ya, kami mendanai pelatihan internal dan eksternal untuk staf yang perlu mengembangkan keterampilan atau karier
+	\item[e.] Ya, kami rutin menjadwalkan pelatihan terdanai dan mendorong – bahkan mewajibkan – staf untuk hadir agar selalu siap dengan praktik BI dan AI terbaru
+\end{enumerate}
+
+\subsection{Analytics}
+
+\subsubsection{Lingkup}
+
+\textbf{Teknologi apa saja yang digunakan organisasi Anda untuk menganalisis data?}
+
+\begin{enumerate}
+	\item[a.] Spreadsheet
+	\item[b.] Laporan, dashboard, dan visualisasi
+	\item[c.] Semua di atas ditambah self-service data discovery (dengan AI) dan mulai menggunakan teknik prediktif seperti machine learning
+	\item[d.] Semua di atas dan AI seperti machine learning terhadap berbagai jenis data
+	\item[e.] Semua di atas ditambah teknik seperti NLP, deep learning, dan AI baru seperti generative AI
+\end{enumerate}
+
+\textbf{Organisasi saya menganalisis data dalam jumlah besar (misalnya lebih dari 10 TB).}
+
+\begin{enumerate}
+	\item[a.] Tidak
+	\item[b.] Belum, tetapi kami bergerak cepat ke arah itu
+	\item[c.] Ya, kami menggunakan analitik pada volume data besar
+\end{enumerate}
+
+\textbf{Pernyataan mana yang paling menggambarkan posisi organisasi Anda dalam perjalanan BI?}
+
+\begin{enumerate}
+	\item[a.] Kami masih terutama menggunakan spreadsheet
+	\item[b.] Kami sedang bergerak ke tools visualisasi, tetapi hanya digunakan analis data
+	\item[c.] Kami mulai beralih ke tools dengan AI untuk menampilkan insight, tetapi belum tersebar luas dan masih digunakan analis data
+	\item[d.] Kami menggunakan tools dengan AI yang menyediakan insight serta tools yang memudahkan pengguna bisnis men-query data (misalnya dengan generative front end)
+	\item[e.] BI terdemosratisasi secara luas di organisasi kami; menggunakan tools yang mudah dipakai pengguna bisnis
+\end{enumerate}
+
+\textbf{Pernyataan mana yang paling menggambarkan posisi organisasi Anda dalam perjalanan AI?}
+
+\begin{enumerate}
+	\item[a.] Kami belum menggunakan AI
+	\item[b.] Kami mulai membuat model dengan tools AI tradisional seperti forecasting
+	\item[c.] Kami membangun model di luar forecasting dengan machine learning dan teknik AI lain
+	\item[d.] Kami menjalankan model AI tradisional di produksi (misalnya churn, fraud, scheduling)
+	\item[e.] Kami menjalankan model AI tradisional di produksi dan saat ini bereksperimen/mengimplementasikan aplikasi generative AI dengan data perusahaan
+\end{enumerate}
+
+\subsubsection{Kematangan Analitik}
+
+\textbf{Organisasi saya berhasil merumuskan masalah bisnis yang memerlukan analitik dan memahami kapan menggunakan teknik tertentu untuk masalah bisnis tertentu.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Organisasi saya menggunakan generative AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan tidak ada rencana
+	\item[b.] Kami sedang bereksperimen dengan generative AI
+	\item[c.] Kami memiliki model generative AI di produksi terhadap data perusahaan menggunakan teknik seperti RAG
+\end{enumerate}
+
+\subsubsection{Platform dan Teknik}
+
+\textbf{Solusi analitik organisasi Anda berbasis persona untuk menyediakan UI terbaik sesuai peran (misalnya analis bisnis, pengguna bisnis, data scientist, data engineer).}
+
+\begin{enumerate}
+	\item[a.] Tidak, kami hanya memiliki satu tool dan semua orang mengeluh karena tidak cocok untuk siapa pun
+	\item[b.] Kami sedang mempertimbangkan atau merencanakan tools untuk berbagai persona
+	\item[c.] Ya, kami menggunakan banyak tools sehingga tiap persona memiliki lingkungan yang sesuai
+	\item[d.] Sama seperti c dan tools kami terhubung untuk memudahkan perpindahan antar tools
+\end{enumerate}
+
+\textbf{Organisasi saya memanfaatkan BI yang diinfus dengan AI.}
+
+\begin{enumerate}
+	\item[a.] Tidak
+	\item[b.] Tidak, tetapi kami sedang mempertimbangkan
+	\item[c.] Ya, kami menggunakan untuk mendemokratisasi analitik dan meningkatkan produktivitas
+	\item[d.] Ya, kami menggunakan data platform untuk meningkatkan produktivitas dan menempatkan kontrol agar tools berfungsi dengan baik
+\end{enumerate}
+
+\subsubsection{Metode Delivery}
+
+\textbf{Model AI dioperasionalkan/dideploy di sistem bisnis atau aplikasi organisasi.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan tidak ada rencana
+	\item[b.] Tidak, tetapi kami sedang mempertimbangkan
+	\item[c.] Ya, kami sedang mencoba mengimplementasikannya
+	\item[d.] Ya, kami sudah mengoperasionalkannya
+\end{enumerate}
+
+\textbf{Output model AI dengan augmented intelligence memiliki fitur penjelasan untuk meningkatkan transparansi bagi ahli dan non-ahli.}
+
+\begin{enumerate}
+	\item[a.] Tidak berlaku / Tidak dan tidak ada rencana
+	\item[b.] Belum, tetapi kami sedang mempertimbangkan
+	\item[c.] Ya, kami mencoba melakukan ini sekarang
+	\item[d.] Ya, kami rutin melakukannya pada model kami dan sering otomatis
+	\item[e.] Ya, kami rutin melakukannya dengan checks otomatis dan menyediakan waktu bagi staf untuk menindaklanjuti
+\end{enumerate}
+
+\subsubsection{Manajemen Model}
+
+\textbf{Organisasi saya memonitor model AI-nya untuk decay.}
+
+\begin{enumerate}
+	\item[a.] Tidak berlaku, kami tidak menggunakan tools ini
+	\item[b.] Tidak, sejauh ini belum ada
+	\item[c.] Ya, kami hanya menggunakan packages yang memiliki fitur ini
+	\item[d.] Tidak / Tidak ada rencana
+	\item[e.] Belum, tetapi kami sedang mempertimbangkan
+	\item[f.] Ya, kami mencoba melakukannya kadang sekarang
+	\item[g.] Ya, kami rutin melakukannya sekarang
+	\item[h.] Ya, kami rutin melakukannya dengan checks otomatis dan mengalokasikan waktu staf untuk menindaklanjuti
+\end{enumerate}
+
+
+\subsection{Governance}
+
+\subsubsection{Data Governance}
+
+\textbf{Data dipercaya untuk analitik di seluruh platform dalam organisasi saya.}
+
+\begin{enumerate}
+	\item[a.] Tidak, kami memiliki banyak silo data yang tidak dikelola
+	\item[b.] Kami hanya percaya data untuk pelaporan dari data warehouse, tidak lainnya
+	\item[c.] Kami mulai membuat proses tata kelola data di luar data warehouse atau sumber data yang perlu compliant (mis. HIPAA) agar dapat dipercaya
+	\item[d.] Kami memiliki rencana tata kelola data yang solid dengan kebijakan dan proses yang diikuti organisasi
+\end{enumerate}
+
+\textbf{Organisasi saya memahami sumber data dan memiliki kebijakan yang tepat untuk berbagai jenis data termasuk data tidak terstruktur.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Pengguna menerima dan responsif terhadap kebutuhan mematuhi kebijakan tata kelola data.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Organisasi saya menggunakan tools seperti data catalog untuk membantu pengguna mengakses data terpercaya.}
+
+\begin{enumerate}
+	\item[a.] Tidak dan kami tidak berencana memiliki data catalog
+	\item[b.] Tidak, tetapi kami sedang mempertimbangkannya
+	\item[c.] Kami sedang memilih vendor catalog sekarang
+	\item[d.] Ya, kami memiliki data catalog dan penggunaannya diterima
+	\item[e.] Ya, kami memiliki data catalog tetapi tidak semua menggunakannya
+\end{enumerate}
+
+\subsubsection{Model Governance}
+
+\textbf{Tata kelola analitik diterapkan di perusahaan saya.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Proses deployment model AI diterapkan di organisasi saya, misalnya model dicek untuk memastikan tidak salah atau bias sebelum produksi.}
+
+\begin{enumerate}
+	\item[a.] Tidak berlaku / kami tidak memiliki model di produksi
+	\item[b.] Kami memiliki model di produksi tetapi tidak dicek, kami percaya pada data scientist kami
+	\item[c.] Kami sedang membuat kontrol atas model kami
+	\item[d.] Kami memiliki proses kontrol model yang kuat
+\end{enumerate}
+
+\textbf{Kebijakan manajemen model diterapkan di organisasi saya. Model harus version-controlled dan metadata disimpan untuk setiap model yang diproduksi.}
+
+\begin{enumerate}
+	\item[a.] Tidak berlaku / kami tidak memiliki model produksi yang perlu dikelola
+	\item[b.] Kami hanya memiliki sedikit model, data scientist kami yang melakukan versioning
+	\item[c.] Kami menggunakan file system untuk versioning model
+	\item[d.] Kami mulai menggunakan model registry dan teknologi lain untuk metadata
+	\item[e.] Kami menggunakan tools dan teknologi untuk mengelola model. Semua terversioning dan terlacak.
+\end{enumerate}
+
+\subsubsection{Governance Roles}
+
+\textbf{Perusahaan saya memiliki tim data governance dengan perwakilan dari seluruh perusahaan termasuk stakeholder bisnis utama, dengan peran dan tanggung jawab yang jelas.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Perusahaan saya memiliki tim governance analytics/AI dengan perwakilan dari seluruh perusahaan termasuk stakeholder bisnis utama, dengan peran dan tanggung jawab yang jelas.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\textbf{Peran data steward ada dan peran serta tanggung jawabnya jelas.}
+
+\begin{enumerate}
+	\item[a.] Sangat tidak setuju
+	\item[b.] Tidak setuju
+	\item[c.] Netral
+	\item[d.] Setuju
+	\item[e.] Sangat setuju
+\end{enumerate}
+
+\subsubsection{Security and Privacy}
+
+\textbf{Kebijakan keamanan diterapkan dan ditegakkan untuk semua bentuk data di perusahaan saya.}
+
+\begin{enumerate}
+	\item[a.] Tidak
+	\item[b.] Data di data warehouse diamankan dan dikelola, tetapi tidak di sumber eksternal atau data lake
+	\item[c.] Ya, kebijakan keamanan diterapkan untuk semua data sensitif
+	\item[d.] Ya, kami telah memikirkan bagaimana menangani berbagai jenis data dalam tim governance kami
+	\item[e.] Ya, kami telah memikirkan dan mengoperasionalkan cara menangani berbagai jenis data dalam tim governance kami
+\end{enumerate}
+
+\subsection{Demografi dan Pengeluaran}
+
+\textbf{Berapa banyak yang bersedia Anda bayarkan untuk solusi (software + services) yang membantu organisasi Anda maju secara signifikan menuju tingkat Mature/Visionary?}
+
+\begin{enumerate}
+	\item[a.] Lebih dari Rp16 miliar
+	\item[b.] Rp8 miliar – Rp16 miliar
+	\item[c.] Rp4 miliar – Rp8 miliar
+	\item[d.] Rp1,6 miliar – Rp4 miliar
+	\item[e.] Kurang dari Rp1,6 miliar
+	\item[f.] Belum ada anggaran saat ini
+\end{enumerate}
+
+\textbf{Berapa jangka waktu Anda untuk membeli solusi AI guna mendukung inisiatif organisasi?}
+
+\begin{enumerate}
+	\item[a.] Segera
+	\item[b.] 3 bulan ke depan
+	\item[c.] 3-6 bulan ke depan
+	\item[d.] 6 bulan hingga 1 tahun ke depan
+	\item[e.] Lebih dari 1 tahun
+	\item[f.] Belum ada rencana saat ini
+\end{enumerate}
+
+\textbf{Departemen mana saja yang saat ini paling tertarik dengan AI? (Pilih semua yang sesuai)}
+
+\begin{enumerate}
+	\item[a.] HR
+	\item[b.] Supply Chain/Operations
+	\item[c.] Konten
+	\item[d.] Compliance/Legal
+	\item[e.] Marketing
+	\item[f.] Finance
+	\item[g.] IT
+	\item[h.] Lainnya
+\end{enumerate}
+
+\textbf{Industri apa organisasi Anda?}
+
+\begin{enumerate}
+	\item[a.] Jasa Keuangan
+	\item[b.] Asuransi
+	\item[c.] Sektor Publik
+	\item[d.] Pendidikan
+	\item[e.] Energi/Utilitas
+	\item[f.] Ritel
+	\item[g.] Manufaktur
+	\item[h.] Transportasi
+	\item[i.] Perangkat Lunak
+	\item[j.] Layanan
+	\item[k.] Kesehatan
+	\item[l.] Life Sciences
+	\item[m.] Media dan Hiburan
+	\item[n.] Teknik/Konstruksi
+	\item[o.] Telekomunikasi
+	\item[p.] Utilitas
+	\item[q.] Lainnya
+\end{enumerate}
+
+\textbf{Berapa pendapatan tahunan organisasi Anda? (pilih satu jawaban saja)}
+
+\begin{enumerate}
+	\item[a.] Kurang dari Rp1,6 triliun
+	\item[b.] Rp1,6 triliun – Rp8 triliun
+	\item[c.] Rp8 triliun – Rp16 triliun
+	\item[d.] Rp16 triliun – Rp78,4 triliun
+	\item[e.] Rp80 triliun – Rp160 triliun
+	\item[f.] Rp160 triliun atau lebih
+	\item[g.] Tidak tahu / tidak dapat mengungkapkan
+\end{enumerate}
+
+\textbf{Di wilayah mana organisasi Anda berada? (pilih satu jawaban saja)}
+
+\begin{enumerate}
+	\item[a.] Amerika Serikat
+	\item[b.] Kanada
+	\item[c.] Eropa
+	\item[d.] Australia/Selandia Baru/Oseania
+	\item[e.] Asia
+	\item[f.] Afrika
+	\item[g.] Meksiko, Amerika Tengah, Amerika Selatan, atau Karibia
+	\item[h.] Timur Tengah
+\end{enumerate}
+
+
+\newpage
+\onecolumn
+
+\section{Lampiran Lembar Jawaban Pertanyaan Evaluasi}
+
+Jawablah pertanyaan-pertanyan berikut setelah membaca Panduan Kuesioner \textit{TDWI BI and AI Maturity Model} dan selesai mengisi kuesioner tersebut.
+
+\vspace{10pt}
+
+\large{\textbf{Pertanyaan Evaluasi untuk Persepsi Terhadap Kualitas dan Efektivitas Kuesioner TDWI BI dan AI Maturity Model (RQ1)}}
+
+
+\vspace{15pt}
+
+\textbf{P1.} Bagaimana pendapat Anda tentang kejelasan kata-kata dan instruksi dalam kuesioner TDWI BI dan AI Maturity Model?\\
+- Apakah ada istilah atau kalimat yang kurang jelas atau membingungkan? Mohon sebutkan contohnya dan jelaskan alasannya.
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P2.} Menurut Anda, seberapa relevan isi pertanyaan dalam kuesioner TDWI dengan kondisi dan kebutuhan organisasi Anda?\\
+- Bagian mana yang paling relevan? Mengapa?\\
+- Bagian mana yang kurang relevan? Jelaskan alasannya.
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P3.} Apakah dimensi yang diukur oleh TDWI (Organisasi, Infrastruktur Data, Sumber Daya, Analitik, Tata Kelola) sudah mencakup semua aspek penting BI dan AI di organisasi Anda?\\
+- Jika ada yang belum tercakup, sebutkan aspek tersebut dan jelaskan mengapa penting bagi organisasi Anda.
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P4.} Bagaimana menurut Anda kesesuaian kuesioner TDWI dengan konteks organisasi SME atau non-profit di Indonesia?\\
+- Apakah ada bagian yang terasa hanya relevan untuk perusahaan besar? Jelaskan.\\
+- Bagaimana sebaiknya pertanyaan-pertanyaan tersebut diadaptasi agar lebih sesuai dengan organisasi Anda?
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P5.} Jika organisasi Anda menggunakan kuesioner ini, apakah hasilnya akan berguna untuk pengembangan BI dan AI di organisasi Anda?\\
+- Mengapa atau mengapa tidak?\\
+- Bagaimana hasilnya dapat diimplementasikan dalam perencanaan atau pengambilan keputusan?
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][6cm][t]{\textwidth}{}}
+
+
+\vspace{20pt}
+
+\noindent
+\large{\textbf{Pertanyaan Evaluasi untuk Perbaikan dan Adaptasi yang Diperlukan Agar Kuesioner TDWI Lebih Aplikatif untuk SME dan Non-Profit (RQ2)}}
+
+\vspace{15pt}
+
+\textbf{P6.} Menurut Anda, apakah ada \textbf{dimensi baru} yang perlu ditambahkan agar kuesioner TDWI lebih sesuai untuk SME atau non-profit?\\
+Jelaskan mengapa dimensi tersebut penting bagi organisasi Anda.
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P7.} Apakah ada \textbf{dimensi atau pertanyaan} dalam kuesioner yang menurut Anda kurang relevan dan sebaiknya dikurangi atau disederhanakan?\\
+Jelaskan alasannya.
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P8.} Bagaimana cara memperbaiki \textbf{redaksi atau bahasa} dalam kuesioner TDWI agar lebih mudah dipahami oleh manajemen dan staf di organisasi Anda?
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P9.} Apakah \textbf{skala penilaian dan opsi jawaban} dalam kuesioner ini sesuai dengan kondisi organisasi SME atau non-profit Anda?\\
+Jika tidak, bagaimana sebaiknya skala dan opsi jawaban tersebut diadaptasi?
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P10.} Bagaimana kuesioner ini dapat diadaptasi agar lebih relevan untuk \textbf{perencanaan strategis dan operasional organisasi SME atau non-profit}, misalnya terkait tingkat kompleksitas teknis, fokus data untuk dampak sosial, atau keterbatasan sumber daya?
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][5cm][t]{\textwidth}{}}
+
+\vspace{15pt}
+
+\textbf{P11.} Apa rekomendasi Anda secara keseluruhan untuk memperbaiki atau mengadaptasi TDWI BI dan AI Maturity Model agar dapat digunakan secara efektif di organisasi seperti Anda?
+
+\vspace{10pt}
+\noindent\framebox[\textwidth][l]{\parbox[t][6cm][t]{\textwidth}{}}
+
+
+
+\end{document}
