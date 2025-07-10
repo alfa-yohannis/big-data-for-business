@@ -4,7 +4,9 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{tikz}
-\usetikzlibrary{positioning, arrows.meta, fit, shapes.geometric, positioning}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usetikzlibrary{arrows.meta, positioning, calc}
 
 \usetheme{Pradita}
 
@@ -156,6 +158,43 @@ and Preparation}
 	
 \end{frame}
 
+\begin{frame}{Data Quality Dimensions}
+	\vspace{20pt}
+	\centering
+	\begin{tikzpicture}[scale=1]
+		\begin{polaraxis}[
+			width=7cm,
+			height=7cm,
+			grid=none, % disable default grid to customise lines
+			xtick=data,
+			xticklabels={\textbf{Accuracy}, \textbf{Completeness}, \textbf{Consistency}, \textbf{Timeliness}, \textbf{Validity}, \textbf{Uniqueness}},
+			tick label style={font=\small},
+			ylabel=,
+			ytick=\empty,
+			ymin=0, ymax=1,
+			]
+			% Draw filled polygon for dimensions
+			\addplot[fill=blue!30, draw=blue] coordinates {
+				(0,1)
+				(60,1)
+				(120,1)
+				(180,1)
+				(240,1)
+				(300,1)
+				(360,1)
+			};
+			
+			% Add radial lines from center to each dimension
+			\draw[black] (axis cs:0,0) -- (axis cs:0,1);
+			\draw[black] (axis cs:60,0) -- (axis cs:60,1);
+			\draw[black] (axis cs:120,0) -- (axis cs:120,1);
+			\draw[black] (axis cs:180,0) -- (axis cs:180,1);
+			\draw[black] (axis cs:240,0) -- (axis cs:240,1);
+			\draw[black] (axis cs:300,0) -- (axis cs:300,1);
+			
+		\end{polaraxis}
+	\end{tikzpicture}
+\end{frame}
 
 \begin{frame}{Data Quality Dimensions}
 	\vspace{20pt}
@@ -201,6 +240,7 @@ and Preparation}
 	
 \end{frame}
 
+
 \begin{frame}{Definition of Data Preparation}
 	\vspace{20pt}
 	
@@ -218,6 +258,40 @@ and Preparation}
 	
 \end{frame}
 
+\begin{frame}{Data Preparation Structure and Components}
+	\vspace{20pt}
+	\centering
+	\begin{tikzpicture}[
+		node distance=.5cm and .5cm,
+		box/.style={rectangle, draw=black, fill=blue!10, rounded corners, minimum width=5cm, minimum height=1cm, align=center},
+		subbox/.style={rectangle, draw=black, fill=green!20, rounded corners, minimum width=3cm, minimum height=0.8cm, align=center},
+		arrow/.style={->, thick}
+		]
+		
+		% Main Data Preparation box at centre
+		\node[box] (prep) {\textbf{Data Preparation}};
+		
+		% Two components above shifted left and right
+		\node[subbox, above left=1cm and -1cm of prep] (clean) {\textbf{Cleaning}};
+		\node[subbox, above right=1cm and -1cm of prep] (integration) {\textbf{Integration}};
+		
+		% Three components below
+		\node[subbox, below=1cm of prep] (transform) {\textbf{Transformation}};
+		\node[subbox, left=of transform] (reduction) {\textbf{Reduction}};
+		\node[subbox, right=of transform] (formatting) {\textbf{Formatting}};
+		
+		% Inclusion arrows from Preparation to subprocesses
+		\draw[arrow] (prep) -- (clean);
+		\draw[arrow] (prep) -- (integration);
+		\draw[arrow] (prep) -- (transform);
+		\draw[arrow] (prep) -- (reduction);
+		\draw[arrow] (prep) -- (formatting);
+		
+	\end{tikzpicture}
+\end{frame}
+
+
+
 \begin{frame}{Data Cleaning and Preparation}
 	\vspace{20pt}
 	
@@ -233,6 +307,28 @@ and Preparation}
 		\item Both are essential for accurate analysis and successful business decisions.
 	\end{itemize}
 	
+\end{frame}
+
+
+\begin{frame}{Key Data Cleaning Techniques and Examples}
+	\vspace{20pt}
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+		\hline
+		\textbf{Data Cleaning Technique} & \textbf{Implementation Example} \\
+		\hline
+		Handling Missing Values & Imputing missing customer ages with the average of similar age groups \\
+		\hline
+		Handling Outliers & Log transformation on extreme income data to reduce influence \\
+		\hline
+		Data Normalisation & Min-Max scaling sales column to 0–1 scale before analysis \\
+		\hline
+		Removing Duplicates & Removing duplicate customer entries when merging data from two stores \\
+		\hline
+		Correcting Data Entry Errors & Correcting typos in product codes or standardising date formats \\
+		\hline
+	\end{tabular}
 \end{frame}
 
 \begin{frame}{Key Data Cleaning Techniques}
@@ -276,6 +372,50 @@ and Preparation}
 		\item Data integration prepares data for analysis, supporting strategic and operational goals.
 	\end{itemize}
 	
+\end{frame}
+
+\begin{frame}{Data Integration Techniques}
+	\vspace{20pt}
+	\centering
+	\begin{tikzpicture}[scale=0.9, transform shape, % scale the whole figure
+		node distance=0.5cm and 0.8cm,
+		box/.style={rectangle, draw=black, fill=orange!20, rounded corners, minimum width=4.5cm, minimum height=1cm, align=left, font=\small},
+		sourcebox/.style={rectangle, draw=black, fill=blue!20, rounded corners, minimum width=4.5cm, minimum height=0.5cm, align=left, font=\small},
+		arrow/.style={->, thick}
+		]
+		
+		% Source systems node (different color)
+		\node[sourcebox] (sources) {\textbf{Data Sources}\\Various systems and formats};
+		
+		% ETL
+		\node[box, above right=.1cm and .7cm of sources] (etl) {\textbf{ETL}\\Extract, Transform, Load};
+		\draw[arrow] (sources) -- (etl);
+		\node[box, right=of etl] (dw1) {\textbf{Data Warehouse}\\Centralised repository};
+		\draw[arrow] (etl) -- (dw1);
+		
+		% ELT
+		\node[box, below right=.1cm and .7cm of sources] (elt) {\textbf{ELT}\\Extract, Load, Transform};
+		\draw[arrow] (sources) -- (elt);
+		\node[box, right=of elt] (dw2) {\textbf{Data Lake/Warehouse}\\Transformation at target};
+		\draw[arrow] (elt) -- (dw2);
+		
+		% Data Federation
+		\node[box, above=2cm of sources] (federation) {\textbf{Data Federation}\\Real-time virtual integration};
+		\draw[arrow] (sources) -- (federation);
+		
+		% Data Warehousing (direct)
+		\node[box, right=1.3cm of federation] (warehouse) {\textbf{Data Warehousing}\\Structured data consolidation};
+		\draw[arrow] (sources) -- (warehouse.west);
+		
+		% Application-Based Integration
+		\node[box, below=2cm of sources] (appint) {\textbf{Application Integration}\\APIs or middleware};
+		\draw[arrow] (sources) -- (appint);
+		
+		% Manual Integration
+		\node[box, right=1.3cm of appint] (manual) {\textbf{Manual Integration}\\Spreadsheets or copy-paste};
+		\draw[arrow] (sources) -- (manual.west);
+		
+	\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Data Integration Techniques}
@@ -384,6 +524,34 @@ and Preparation}
 
 \section{Case Study}
 
+\begin{frame}{RetailCo System Integration}
+	\vspace{20pt}
+	\centering
+	\begin{tikzpicture}[
+		scale=1, transform shape, % scale for beamer frame fit
+		node distance=1cm and 1cm,
+		system/.style={rectangle, draw=black, fill=green!20, rounded corners, text width=3.5cm, minimum height=1cm, align=center, font=\small},
+		repo/.style={rectangle, draw=black, fill=blue!20, rounded corners, text width=4.5cm, minimum height=1cm, align=center, font=\small},
+		arrow/.style={->, thick}
+		]
+		
+		% Systems
+		\node[system] (pos) {\textbf{POS}\\Physical Store Purchases};
+		\node[system, right=of pos] (ecom) {\textbf{E-commerce}\\Online Purchases, Reviews, Delivery};
+		\node[system, right=of ecom] (loyalty) {\textbf{Loyalty Programme}\\Membership, Points, Rewards};
+		
+		% Customer Data Repository
+		\node[repo, below=1cm of ecom] (cdr) {\textbf{Customer Data Repository}\\Integrated Customer Repository};
+		
+		% Arrows
+		\draw[arrow] (pos) -- (cdr);
+		\draw[arrow] (ecom) -- (cdr);
+		\draw[arrow] (loyalty) -- (cdr);
+		
+	\end{tikzpicture}
+\end{frame}
+
+
 \begin{frame}{Overview: Customer Data Integration}
 	\vspace{20pt}
 	
@@ -431,6 +599,32 @@ and Preparation}
 
 
 \section{Practical Activity: Evaluating and Preparing Data Without Coding}
+
+
+\begin{frame}{Online Retail Dataset for Practice}
+	\vspace{10pt}
+	\url{https://archive.ics.uci.edu/dataset/352/online+retail}
+	
+	\vspace{10pt}
+
+	\renewcommand{\arraystretch}{1.2}
+	\setlength{\arrayrulewidth}{0.3mm} % hairline explicit black border
+	\arrayrulecolor{black}
+	\centering
+		\scriptsize
+	\begin{tabular}{|p{0.08\textwidth}|p{0.08\textwidth}|p{0.15\textwidth}|p{0.06\textwidth}|p{0.1\textwidth}|p{0.08\textwidth}|p{0.08\textwidth}|p{0.1\textwidth}|}
+		\hline
+		\textbf{InvoiceNo} & \textbf{StockCode} & \textbf{Description} & \textbf{Quantity} & \textbf{InvoiceDate} & \textbf{UnitPrice} & \textbf{CustomerID} & \textbf{Country} \\
+		\hline
+		536365 & 85123A & WHITE HANGING HEART T-LIGHT HOLDER & 6 & 01/12/2010 08:26 & 2.55 & 17850 & United Kingdom \\
+		\hline
+		536365 & 71053 & WHITE METAL LANTERN & 6 & 01/12/2010 08:26 & 3.39 & 17850 & United Kingdom \\
+		\hline
+		\multicolumn{8}{c}{\ldots} \\
+		\hline
+	\end{tabular}
+\end{frame}
+
 
 \begin{frame}{Activity Overview and Dataset}
 	\vspace{20pt}
