@@ -1,479 +1,642 @@
-\chapter{Data Cleaning and Preparation}
+\chapter{Pembersihan dan Persiapan Data}
 
-\section{Introduction}
+\section{Pendahuluan}
 
-Data cleaning and preparation are fundamental steps in any data analysis process. High-quality and well-prepared data ensures that subsequent analysis, modelling, and decision-making are accurate and reliable. Without appropriate cleaning and preparation, even advanced analytics and visualisations may produce misleading insights \cite{kim2020data}. 
+Pembersihan dan persiapan data merupakan langkah dasar dalam setiap proses analisis data. Data yang berkualitas tinggi dan dipersiapkan dengan baik memastikan bahwa analisis, pemodelan, dan pengambilan keputusan selanjutnya akan akurat dan dapat diandalkan. Tanpa pembersihan dan persiapan yang tepat, bahkan analisis dan visualisasi tingkat lanjut pun dapat menghasilkan wawasan yang menyesatkan \cite{kim2020data}.
 
-Data cleaning involves identifying and correcting errors or inconsistencies within the dataset, such as missing values, outliers, or duplicate records \cite{rahm2000data}. Meanwhile, data preparation encompasses broader activities including transforming, integrating, and organising data into a usable form for analysis \cite{kotu2014predictive}. 
+Pembersihan data melibatkan identifikasi dan perbaikan kesalahan atau inkonsistensi dalam dataset, seperti nilai yang hilang, outlier, atau data duplikat \cite{rahm2000data}. Sementara itu, persiapan data mencakup aktivitas yang lebih luas termasuk transformasi, integrasi, dan pengorganisasian data ke dalam bentuk yang dapat digunakan untuk analisis \cite{kotu2014predictive}.
 
-In business environments, these processes are critical because data often comes from multiple sources with differing formats, structures, and quality levels. For management and decision-makers, understanding the importance of data cleaning and preparation helps in appreciating the time and effort required before data can provide meaningful insights \cite{gandomi2015beyond}. This chapter introduces the key concepts, techniques, and challenges in cleaning and preparing data for effective analysis and strategic business decisions.
+Dalam lingkungan bisnis, proses-proses ini sangat penting karena data sering berasal dari berbagai sumber dengan format, struktur, dan tingkat kualitas yang berbeda-beda. Bagi manajemen dan pengambil keputusan, memahami pentingnya pembersihan dan persiapan data membantu mereka menghargai waktu dan upaya yang diperlukan sebelum data dapat memberikan wawasan yang bermakna \cite{gandomi2015beyond}. Bab ini memperkenalkan konsep utama, teknik, dan tantangan dalam pembersihan dan persiapan data untuk analisis yang efektif dan pengambilan keputusan bisnis strategis.
 
-\section{Understanding Data Quality}
+\section{Memahami Kualitas Data}
 
-\subsection{Definition and Importance}
+\subsection{Definisi dan Pentingnya}
 
-Data quality refers to the degree to which data is accurate, complete, reliable, and relevant for its intended purpose \cite{wang1996beyond}. In a business context, high-quality data enables effective decision-making, operational efficiency, and strategic planning. Conversely, poor data quality can lead to incorrect analyses, flawed business decisions, and financial losses \cite{redman1998impact}.
-
-Key dimensions of data quality include accuracy, completeness, consistency, timeliness, and validity \cite{pipino2002data}. Accuracy indicates whether data correctly describes the real-world objects it represents. Completeness refers to the extent to which all required data is present. Consistency ensures that data is the same across different datasets or systems. Timeliness assesses whether data is up to date, while validity relates to data conforming to defined formats or rules.
-
-Understanding data quality is critical for management students, as it highlights the risks associated with relying on data without assessing its quality first \cite{strong1997data}. For example, marketing campaigns based on inaccurate customer information may fail to reach their intended audience, resulting in wasted resources and missed opportunities. Therefore, awareness of data quality principles helps business leaders ask the right questions when presented with analytical reports or strategic recommendations derived from data.
-
-\subsection{Dimensions of Data Quality}
-
-Data quality is a multi-dimensional concept encompassing several attributes that determine whether data is fit for use. Understanding these dimensions helps organisations assess and improve their data effectively \cite{lee2006data}.
-
-The main dimensions of data quality are:
-
-\textbf{1. Accuracy.} This refers to how correctly data represents real-world values or events. For example, a customer's recorded date of birth should match their actual date of birth. Inaccurate data can lead to faulty analysis and poor decisions \cite{batini2009methodologies}.
-
-\textbf{2. Completeness.} Completeness indicates whether all required data is available. Missing data can limit analysis scope. For instance, if income data is missing for many customers, segmentation or credit scoring models become unreliable.
-
-\textbf{3. Consistency.} Consistency refers to data being the same across different datasets or systems. For example, if a customer's address is recorded differently in the sales and billing systems, operational errors may occur \cite{madnick2009overview}.
-
-\textbf{4. Timeliness.} Timeliness ensures that data is up to date. Outdated data reduces relevance. For example, using last year's market data to make current pricing decisions could result in poor competitiveness.
-
-\textbf{5. Validity.} Validity indicates whether data conforms to defined formats, rules, or standards. For example, a postal code field should contain only valid codes within the specified region.
-
-\textbf{6. Uniqueness.} This dimension ensures that each entity is recorded once without duplication. Duplicate records can distort analysis results, such as inflating customer counts in reports.
-
-For business managers, these dimensions highlight specific areas to examine when assessing data quality, supporting better governance and decision-making \cite{caballero2014quality}.
-
-
-\section{Data Cleaning and Preparation Overview}
-
-\subsection{Definition of Data Cleaning}
-
-Data cleaning is the process of identifying and correcting errors, inconsistencies, or inaccuracies in datasets to improve their quality and reliability for analysis and decision-making \cite{kurgan2006survey}. This includes handling missing values, removing duplicate records, correcting typographical errors, and resolving data inconsistencies.
-
-In business contexts, data cleaning ensures that information used for strategic planning, performance monitoring, and customer analysis is trustworthy. For example, if customer email addresses contain typos or outdated entries, marketing campaigns may fail to reach their intended audience, leading to wasted resources and missed opportunities \cite{rahm2000dataquality}.
-
-Data cleaning is often considered one of the most time-consuming steps in data analysis projects, with studies showing it can take up to 80\% of a data analyst's or data scientist's time \cite{dasu2003exploratory}. However, this investment is crucial because decisions based on unclean data can result in costly mistakes, such as incorrect sales forecasts, misallocated budgets, or compliance risks due to reporting errors.
-
-Ultimately, data cleaning lays the foundation for all subsequent data preparation, integration, and analytical tasks, enabling organisations to derive meaningful and reliable insights from their data assets.
-
-\subsection{Definition of Data Preparation}
-
-Data preparation is the process of transforming raw data into a form that is suitable for analysis and decision-making. It involves a series of steps including data cleaning, integration, transformation, reduction, and formatting to ensure the data is ready for use in analytical models or reporting \cite{pyle1999data}.
-
-In business contexts, data preparation enables analysts to convert scattered, inconsistent, or unstructured data into structured datasets that can answer specific business questions effectively. For example, preparing sales data may involve merging records from multiple stores, standardising product codes, aggregating weekly sales, and reformatting dates into a consistent structure.
-
-Effective data preparation improves the efficiency and accuracy of analytical tasks, supporting informed decision-making, performance monitoring, and strategic planning \cite{zeller2014data}.
-
-\subsection{Relationship between Cleaning and Preparation}
-
-Data cleaning and data preparation are closely related concepts but are not the same. Data cleaning is a **subprocess within data preparation** focused on identifying and correcting errors, inconsistencies, and inaccuracies in data \cite{kelleher2015fundamentals}. It ensures that the data is of high quality.
-
-Data preparation, however, is a broader process. It includes data cleaning as well as other activities such as data integration (combining datasets from different sources), data transformation (changing data formats or structures to match analytical needs), data reduction (selecting relevant variables or aggregating data), and data formatting (ensuring data conforms to required input formats for models or tools) \cite{han2011data}.
-
-In simple terms, **data cleaning ensures that data is correct and reliable, while data preparation ensures that data is ready to be used for its intended purpose**. Both are essential for accurate analysis and successful business decision-making.
-
-\subsection{Key Data Cleaning Techniques}
-
-Data cleaning involves various techniques to ensure that data is accurate, consistent, and ready for analysis. The choice of technique depends on the nature of the data and the types of issues identified \cite{rahm2000data}.
-
-\textbf{1. Handling Missing Values.}  
-Missing data is common in business datasets due to human error, system limitations, or incomplete processes. Techniques to address missing values include:
-
-- \emph{Deletion}, where rows with missing values are removed if they are few and unlikely to bias the dataset.
-- \emph{Imputation}, where missing values are replaced with estimated values such as the mean, median, mode, or values predicted by other variables.
-
-For example, if customer age is missing in a dataset, it can be replaced with the average age of similar customers to avoid data loss.
-
-\textbf{2. Handling Outliers.}  
-Outliers are data points that differ significantly from other observations. They can result from data entry errors or represent rare but valid cases. Common techniques include:
-
-- \emph{Investigation}, to determine whether outliers are errors or genuine extreme values.
-- \emph{Removal or transformation}, where outliers that are errors are corrected or deleted, while valid outliers may be transformed using scaling or log transformation to reduce their impact on analysis \cite{barnett1994outliers}.
-
-\textbf{3. Data Normalisation.}  
-Normalisation scales numerical data to a common range, such as 0 to 1, to ensure that variables with larger scales do not dominate analytical models. Common methods include:
-
-- \emph{Min-Max scaling}, where data is rescaled to a specified range.  
-- \emph{Z-score standardisation}, where data is centred around the mean with a standard deviation of one \cite{jain2005score}.
-
-\textbf{4. Removing Duplicates.}  
-Duplicate records often arise when combining datasets from multiple sources. Removing them ensures each entity is only represented once, preventing overestimation in analyses such as customer counts or sales volumes.
-
-\textbf{5. Correcting Data Entry Errors.}  
-Typographical errors or inconsistencies in formats (e.g. date formats, product codes) are corrected by standardising entries to a consistent format or validating against reference data sources.
-
-Applying these data cleaning techniques improves data quality and reliability, ensuring that business decisions are based on sound, accurate information \cite{oliveira2005data}.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\begin{polaraxis}[
+			width=7cm,
+			height=7cm,
+			grid=none, % turn off default grid to customise order
+			xtick=data,
+			xticklabels={\textbf{Akurasi}, \textbf{Kelengkapan}, \textbf{Konsistensi}, \textbf{Ketepatan Waktu}, \textbf{Validitas}, \textbf{Keunikan}},
+			tick label style={font=\small},
+			ylabel=,
+			ytick=\empty,
+			ymin=0, ymax=1,
+			]
+			% Draw filled polygon first
+			\addplot[fill=blue!30, draw=blue] coordinates {
+				(0,1)
+				(60,1)
+				(120,1)
+				(180,1)
+				(240,1)
+				(300,1)
+				(360,1)
+			};
+			
+			% Add lines from centre to each corner
+			\draw[black] (axis cs:0,0) -- (axis cs:0,1);
+			\draw[black] (axis cs:60,0) -- (axis cs:60,1);
+			\draw[black] (axis cs:120,0) -- (axis cs:120,1);
+			\draw[black] (axis cs:180,0) -- (axis cs:180,1);
+			\draw[black] (axis cs:240,0) -- (axis cs:240,1);
+			\draw[black] (axis cs:300,0) -- (axis cs:300,1);
+			
+		\end{polaraxis}
+	\end{tikzpicture}
+	\caption{Dimensi Kualitas Data: Akurasi, Kelengkapan, Konsistensi, Ketepatan Waktu, Validitas, Keunikan}
+	\label{fig:dimensi-kualitas-data}
+\end{figure}
 
 
-\section{Data Integration}
 
-\subsection{Definition and Purpose}
 
-Data integration is the process of combining data from different sources to provide a unified, consistent view for analysis and decision-making \cite{lenzerini2002data}. It involves merging datasets that may have varying formats, structures, or definitions into a single dataset that can be used efficiently.
 
-In business contexts, data integration is essential because organisations often store information across multiple systems. For example, customer data might be spread across sales databases, customer service records, and marketing platforms. Without integration, analysing the full customer journey or creating accurate segmentation becomes challenging \cite{doan2012principles}.
+Kualitas data mengacu pada sejauh mana data akurat, lengkap, dapat diandalkan, dan relevan untuk tujuan penggunaannya \cite{wang1996beyond}. Dalam konteks bisnis, data yang berkualitas tinggi memungkinkan pengambilan keputusan yang efektif, efisiensi operasional, dan perencanaan strategis. Sebaliknya, data dengan kualitas rendah dapat menyebabkan analisis yang salah, keputusan bisnis yang keliru, dan kerugian finansial \cite{redman1998impact}.
 
-The main purposes of data integration are:
+Dimensi utama kualitas data meliputi akurasi, kelengkapan, konsistensi, ketepatan waktu, dan validitas \cite{pipino2002data}. Akurasi menunjukkan apakah data menggambarkan objek dunia nyata dengan benar. Kelengkapan mengacu pada sejauh mana semua data yang dibutuhkan tersedia. Konsistensi memastikan data sama di berbagai dataset atau sistem. Ketepatan waktu menilai apakah data terbaru, sedangkan validitas terkait dengan kesesuaian data terhadap format atau aturan yang ditetapkan.
 
-- \textbf{Holistic View.} Integration enables organisations to view and analyse all relevant data in one place, supporting comprehensive insights.
-- \textbf{Improved Decision-Making.} By combining data from multiple sources, managers can make more informed decisions based on complete and consistent information.
-- \textbf{Operational Efficiency.} Integrated data reduces duplication of work, streamlines processes, and improves communication between departments.
-- \textbf{Data Consistency.} Integration ensures that data across systems is consistent, avoiding conflicting reports or decisions based on incomplete information.
+Memahami kualitas data sangat penting bagi mahasiswa manajemen karena hal ini menunjukkan risiko yang muncul jika bergantung pada data tanpa menilai kualitasnya terlebih dahulu \cite{strong1997data}. Sebagai contoh, kampanye pemasaran yang menggunakan informasi pelanggan yang tidak akurat mungkin gagal menjangkau audiens yang dituju, sehingga mengakibatkan pemborosan sumber daya dan hilangnya peluang. Oleh karena itu, kesadaran akan prinsip kualitas data membantu pemimpin bisnis mengajukan pertanyaan yang tepat ketika disajikan laporan analitik atau rekomendasi strategis yang dihasilkan dari data.
 
-For example, integrating inventory data from warehouse systems with sales data enables accurate demand forecasting and efficient stock management. Similarly, merging customer feedback with purchase history helps identify service improvements and product development opportunities \cite{hernandez1995merge}.
+\subsection{Dimensi Kualitas Data}
 
-Overall, data integration is a critical process in preparing data for analysis, enabling organisations to leverage their data assets effectively for strategic and operational goals.
+Kualitas data merupakan konsep multidimensi yang mencakup beberapa atribut yang menentukan apakah data layak digunakan. Memahami dimensi-dimensi ini membantu organisasi menilai dan meningkatkan data mereka secara efektif \cite{lee2006data}.
 
-\subsection{Techniques for Data Integration}
+Dimensi utama kualitas data adalah:
 
-Various techniques are used to integrate data from multiple sources effectively. The choice of technique depends on the nature of the data, the systems involved, and the business objectives \cite{singh2005survey}.
+\textbf{1. Akurasi.} Menggambarkan seberapa tepat data merepresentasikan nilai atau kejadian di dunia nyata. Misalnya, tanggal lahir pelanggan yang tercatat harus sesuai dengan tanggal lahir sebenarnya. Data yang tidak akurat dapat menyebabkan analisis yang salah dan keputusan yang buruk \cite{batini2009methodologies}.
+
+\textbf{2. Kelengkapan.} Menunjukkan apakah semua data yang dibutuhkan tersedia. Data yang hilang dapat membatasi ruang lingkup analisis. Misalnya, jika data pendapatan hilang untuk banyak pelanggan, model segmentasi atau penilaian kredit menjadi tidak dapat diandalkan.
+
+\textbf{3. Konsistensi.} Mengacu pada kesamaan data di berbagai dataset atau sistem. Contohnya, jika alamat pelanggan tercatat berbeda di sistem penjualan dan penagihan, maka dapat terjadi kesalahan operasional \cite{madnick2009overview}.
+
+\textbf{4. Ketepatan Waktu.} Menjamin bahwa data selalu diperbarui. Data yang sudah usang mengurangi relevansi. Sebagai contoh, menggunakan data pasar tahun lalu untuk menentukan harga saat ini dapat menyebabkan ketidakmampuan bersaing.
+
+\textbf{5. Validitas.} Mengindikasikan apakah data sesuai dengan format, aturan, atau standar yang ditentukan. Misalnya, kolom kode pos harus berisi kode pos yang valid dalam wilayah yang relevan.
+
+\textbf{6. Keunikan.} Dimensi ini memastikan bahwa setiap entitas dicatat hanya satu kali tanpa duplikasi. Rekaman duplikat dapat mengacaukan hasil analisis, seperti menggandakan jumlah pelanggan dalam laporan.
+
+Bagi manajer bisnis, dimensi-dimensi ini menyoroti area spesifik yang perlu diperiksa saat menilai kualitas data, sehingga mendukung tata kelola dan pengambilan keputusan yang lebih baik \cite{caballero2014quality}.
+
+\section{Gambaran Umum Pembersihan dan Persiapan Data}
+
+\subsection{Definisi Pembersihan Data}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[
+		node distance=.5cm and .5cm,
+		box/.style={rectangle, draw=black, fill=blue!10, rounded corners, minimum width=5cm, minimum height=1cm, align=center},
+		subbox/.style={rectangle, draw=black, fill=green!20, rounded corners, minimum width=3cm, minimum height=0.8cm, align=center},
+		arrow/.style={->, thick}
+		]
+		
+		% Main Data Preparation box at centre
+		\node[box] (prep) {\textbf{Persiapan Data}\\(Data Preparation)};
+		
+		% Two components above shifted left and right
+		\node[subbox, above left=1cm and -1cm of prep] (clean) {\textbf{Pembersihan Data}\\(Cleaning)};
+		\node[subbox, above right=1cm and -1cm of prep] (integration) {\textbf{Integrasi Data}\\(Integration)};
+		
+		% Three components below
+		\node[subbox, below=1cm of prep] (transform) {\textbf{Transformasi Data}\\(Transformation)};
+		\node[subbox, left=of transform] (reduction) {\textbf{Reduksi Data}\\(Reduction)};
+		\node[subbox, right=of transform] (formatting) {\textbf{Pemformatan Data}\\(Formatting)};
+		
+		% Inclusion arrows from Preparation to subprocesses
+		\draw[arrow] (prep) -- (clean);
+		\draw[arrow] (prep) -- (integration);
+		\draw[arrow] (prep) -- (transform);
+		\draw[arrow] (prep) -- (reduction);
+		\draw[arrow] (prep) -- (formatting);
+		
+	\end{tikzpicture}
+	\caption{Struktur Persiapan Data dan Komponennya}
+	\label{fig:struktur-persiapan-data}
+\end{figure}
+
+
+
+
+Pembersihan data adalah proses mengidentifikasi dan memperbaiki kesalahan, inkonsistensi, atau ketidakakuratan dalam dataset untuk meningkatkan kualitas dan keandalannya dalam analisis serta pengambilan keputusan \cite{kurgan2006survey}. Ini mencakup penanganan nilai yang hilang, penghapusan data duplikat, perbaikan kesalahan ketik, dan penyelesaian inkonsistensi data.
+
+Dalam konteks bisnis, pembersihan data memastikan bahwa informasi yang digunakan untuk perencanaan strategis, pemantauan kinerja, dan analisis pelanggan dapat dipercaya. Misalnya, jika alamat email pelanggan mengandung kesalahan ketik atau sudah tidak aktif, kampanye pemasaran mungkin gagal menjangkau audiens yang dituju, menyebabkan pemborosan sumber daya dan hilangnya peluang \cite{rahm2000dataquality}.
+
+Pembersihan data sering dianggap sebagai langkah yang paling memakan waktu dalam proyek analisis data, dengan studi menunjukkan bahwa proses ini dapat menyita hingga 80\% waktu analis atau ilmuwan data \cite{dasu2003exploratory}. Namun, investasi ini sangat penting karena keputusan yang didasarkan pada data yang kotor dapat menimbulkan kesalahan mahal, seperti prakiraan penjualan yang salah, alokasi anggaran yang keliru, atau risiko kepatuhan akibat pelaporan yang tidak akurat.
+
+Pada akhirnya, pembersihan data menjadi fondasi bagi semua proses persiapan, integrasi, dan analisis data berikutnya, memungkinkan organisasi mendapatkan wawasan yang bermakna dan dapat diandalkan dari aset data mereka.
+
+\subsection{Definisi Persiapan Data}
+
+Persiapan data adalah proses mengubah data mentah menjadi bentuk yang sesuai untuk analisis dan pengambilan keputusan. Proses ini meliputi serangkaian langkah seperti pembersihan data, integrasi, transformasi, reduksi, dan pemformatan agar data siap digunakan dalam model analitik atau pelaporan \cite{pyle1999data}.
+
+Dalam konteks bisnis, persiapan data memungkinkan analis mengubah data yang tersebar, inkonsisten, atau tidak terstruktur menjadi dataset terstruktur yang dapat menjawab pertanyaan bisnis secara efektif. Misalnya, menyiapkan data penjualan dapat melibatkan penggabungan catatan dari beberapa toko, standarisasi kode produk, agregasi penjualan mingguan, dan pemformatan ulang tanggal ke format yang konsisten.
+
+Persiapan data yang efektif meningkatkan efisiensi dan akurasi tugas analitik, mendukung pengambilan keputusan yang tepat, pemantauan kinerja, dan perencanaan strategis \cite{zeller2014data}.
+
+\subsection{Hubungan antara Pembersihan dan Persiapan}
+
+Pembersihan data dan persiapan data adalah konsep yang saling berkaitan tetapi tidak sama. Pembersihan data adalah \textbf{subproses dalam persiapan data} yang berfokus pada identifikasi dan perbaikan kesalahan, inkonsistensi, serta ketidakakuratan data \cite{kelleher2015fundamentals}. Ini memastikan bahwa data memiliki kualitas yang baik.
+
+Sementara itu, persiapan data adalah proses yang lebih luas. Ini mencakup pembersihan data serta aktivitas lain seperti integrasi data (menggabungkan dataset dari berbagai sumber), transformasi data (mengubah format atau struktur data agar sesuai dengan kebutuhan analisis), reduksi data (memilih variabel yang relevan atau mengagregasi data), dan pemformatan data (memastikan data sesuai dengan format input yang dibutuhkan model atau alat) \cite{han2011data}.
+
+Secara sederhana, \textbf{pembersihan data memastikan data benar dan andal, sedangkan persiapan data memastikan data siap digunakan untuk tujuan tertentu}. Keduanya penting untuk analisis yang akurat dan pengambilan keputusan bisnis yang berhasil.
+
+\subsection{Teknik Utama Pembersihan Data}
+
+
+\begin{table}[h]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
+		\hline
+		\textbf{Teknik Pembersihan Data} & \textbf{Contoh Implementasi} \\
+		\hline
+		Menangani Nilai Hilang & Imputasi umur pelanggan yang hilang dengan rata-rata kelompok umur serupa \\
+		\hline
+		Menangani Outlier & Log transformasi pada data pendapatan ekstrem untuk mengurangi pengaruhnya \\
+		\hline
+		Normalisasi Data & Min-Max scaling pada kolom penjualan untuk skala 0-1 sebelum analisis \\
+		\hline
+		Menghapus Duplikasi & Menghapus entri duplikat pelanggan saat menggabungkan data dari dua toko \\
+		\hline
+		Memperbaiki Kesalahan Input Data & Koreksi kesalahan ketik pada kode produk atau standarisasi format tanggal \\
+		\hline
+	\end{tabular}
+	\caption{Teknik Utama Pembersihan Data dan Contoh Implementasi}
+	\label{tab:teknik-pembersihan-data}
+\end{table}
+
+
+
+Pembersihan data melibatkan berbagai teknik untuk memastikan data akurat, konsisten, dan siap dianalisis. Pemilihan teknik tergantung pada sifat data dan jenis masalah yang ditemukan \cite{rahm2000data}.
+
+\textbf{1. Menangani Nilai yang Hilang.}  
+Nilai yang hilang umum ditemukan dalam dataset bisnis akibat kesalahan manusia, keterbatasan sistem, atau proses yang tidak lengkap. Teknik untuk menanganinya meliputi:
+
+- \emph{Penghapusan}, yaitu menghapus baris dengan nilai hilang jika jumlahnya sedikit dan tidak menimbulkan bias pada dataset.
+- \emph{Imputasi}, yaitu mengganti nilai hilang dengan estimasi seperti rata-rata, median, modus, atau nilai yang diprediksi variabel lain.
+
+Sebagai contoh, jika data umur pelanggan hilang dalam dataset, nilai tersebut dapat diganti dengan rata-rata umur pelanggan serupa untuk menghindari kehilangan data.
+
+\textbf{2. Menangani Outlier.}  
+Outlier adalah data yang sangat berbeda dari pengamatan lain. Ini bisa berasal dari kesalahan input data atau kasus ekstrim yang valid. Teknik yang umum digunakan meliputi:
+
+- \emph{Investigasi}, untuk menentukan apakah outlier adalah kesalahan atau nilai ekstrim yang sah.
+- \emph{Penghapusan atau transformasi}, jika outlier adalah kesalahan maka diperbaiki atau dihapus, sedangkan outlier yang valid dapat ditransformasi menggunakan penskalaan atau log transformasi untuk mengurangi dampaknya dalam analisis \cite{barnett1994outliers}.
+
+\textbf{3. Normalisasi Data.}  
+Normalisasi menskalakan data numerik ke rentang umum, seperti 0 hingga 1, agar variabel dengan skala besar tidak mendominasi model analitik. Metode umum termasuk:
+
+- \emph{Min-Max scaling}, untuk mengubah skala data ke rentang tertentu.
+- \emph{Standarisasi Z-score}, untuk menempatkan data di sekitar rata-rata dengan standar deviasi satu \cite{jain2005score}.
+
+\textbf{4. Menghapus Duplikasi.}  
+Rekaman duplikat sering muncul saat menggabungkan dataset dari berbagai sumber. Menghapusnya memastikan setiap entitas hanya tercatat satu kali, mencegah perhitungan ganda dalam analisis seperti jumlah pelanggan atau volume penjualan.
+
+\textbf{5. Memperbaiki Kesalahan Input Data.}  
+Kesalahan ketik atau ketidakkonsistenan format (misalnya format tanggal, kode produk) diperbaiki dengan standarisasi format atau validasi menggunakan sumber referensi resmi.
+
+Penerapan teknik pembersihan data ini meningkatkan kualitas dan keandalan data, sehingga keputusan bisnis didasarkan pada informasi yang akurat dan dapat dipercaya \cite{oliveira2005data}.
+
+\section{Integrasi Data}
+
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[
+		node distance=0.5cm and 0.8cm,
+		box/.style={rectangle, draw=black, fill=orange!20, rounded corners, minimum width=4.5cm, minimum height=1cm, align=left, font=\small},
+		sourcebox/.style={rectangle, draw=black, fill=blue!20, rounded corners, minimum width=4.5cm, minimum height=0.5cm, align=left, font=\small},
+		arrow/.style={->, thick}
+		]
+		
+		% Source systems node (different color)
+		\node[sourcebox] (sources) {\textbf{Sumber Data}\\Berbagai sistem dan format};
+		
+		% ETL
+		\node[box, above right=.1cm and .7cm of sources] (etl) {\textbf{ETL}\\Extract, Transform, Load};
+		\draw[arrow] (sources) -- (etl);
+		\node[box, right=of etl] (dw1) {\textbf{Data Warehouse}\\Repositori terpusat};
+		\draw[arrow] (etl) -- (dw1);
+		
+		% ELT
+		\node[box, below right=.1cm and .7cm of sources] (elt) {\textbf{ELT}\\Extract, Load, Transform};
+		\draw[arrow] (sources) -- (elt);
+		\node[box, right=of elt] (dw2) {\textbf{Data Lake/Warehouse}\\Transformasi di target};
+		\draw[arrow] (elt) -- (dw2);
+		
+		% Data Federation
+		\node[box, above=2cm of sources] (federation) {\textbf{Federasi Data}\\Integrasi virtual real-time};
+		\draw[arrow] (sources) -- (federation);
+		
+		% Data Warehousing (direct)
+		\node[box, right=1.3cm of federation] (warehouse) {\textbf{Data Warehousing}\\Konsolidasi data terstruktur};
+		\draw[arrow] (sources) -- (warehouse.west);
+		
+		% Application-Based Integration
+		\node[box, below=2cm of sources] (appint) {\textbf{Integrasi Aplikasi}\\API atau middleware};
+		\draw[arrow] (sources) -- (appint);
+		
+		% Manual Integration
+		\node[box, right=1.3cm of appint] (manual) {\textbf{Integrasi Manual}\\Spreadsheet atau copy-paste};
+		\draw[arrow] (sources) -- (manual.west);
+		
+	\end{tikzpicture}
+	\caption{Teknik Integrasi Data: ETL, ELT, Federasi, Warehousing, Integrasi Aplikasi, dan Manual}
+	\label{fig:teknik-integrasi-data}
+\end{figure}
+
+
+
+
+\subsection{Definisi dan Tujuan}
+
+
+Integrasi data adalah proses menggabungkan data dari berbagai sumber untuk memberikan pandangan yang terpadu dan konsisten dalam analisis serta pengambilan keputusan \cite{lenzerini2002data}. Ini melibatkan penggabungan dataset yang mungkin memiliki format, struktur, atau definisi berbeda ke dalam satu dataset yang dapat digunakan secara efisien.
+
+Dalam konteks bisnis, integrasi data penting karena organisasi sering menyimpan informasi di banyak sistem. Misalnya, data pelanggan dapat tersebar di database penjualan, catatan layanan pelanggan, dan platform pemasaran. Tanpa integrasi, menganalisis perjalanan pelanggan secara menyeluruh atau membuat segmentasi yang akurat menjadi sulit \cite{doan2012principles}.
+
+Tujuan utama integrasi data adalah:
+
+- \textbf{Pandangan Holistik.} Integrasi memungkinkan organisasi melihat dan menganalisis semua data relevan dalam satu tempat untuk mendapatkan wawasan menyeluruh.
+- \textbf{Pengambilan Keputusan yang Lebih Baik.} Dengan menggabungkan data dari berbagai sumber, manajer dapat membuat keputusan yang lebih tepat berdasarkan informasi yang lengkap dan konsisten.
+- \textbf{Efisiensi Operasional.} Data terintegrasi mengurangi duplikasi kerja, menyederhanakan proses, dan meningkatkan komunikasi antar departemen.
+- \textbf{Konsistensi Data.} Integrasi memastikan data konsisten di seluruh sistem, menghindari laporan yang bertentangan atau keputusan yang dibuat berdasarkan informasi yang tidak lengkap.
+
+Sebagai contoh, mengintegrasikan data inventaris dari sistem gudang dengan data penjualan memungkinkan prakiraan permintaan yang akurat dan manajemen stok yang efisien. Demikian pula, menggabungkan umpan balik pelanggan dengan riwayat pembelian membantu mengidentifikasi perbaikan layanan dan peluang pengembangan produk \cite{hernandez1995merge}.
+
+Secara keseluruhan, integrasi data adalah proses penting dalam mempersiapkan data untuk analisis, memungkinkan organisasi memanfaatkan aset data mereka secara efektif untuk tujuan strategis dan operasional.
+
+\subsection{Teknik Integrasi Data}
+
+Berbagai teknik digunakan untuk mengintegrasikan data dari banyak sumber secara efektif. Pemilihan teknik tergantung pada sifat data, sistem yang terlibat, dan tujuan bisnis \cite{singh2005survey}.
 
 \textbf{1. ETL (Extract, Transform, Load).}  
-This is the most common integration approach where data is:
+Ini adalah pendekatan integrasi paling umum di mana data:
 
-- \emph{Extracted} from different source systems.  
-- \emph{Transformed} into a common format or structure.  
-- \emph{Loaded} into a target system, such as a data warehouse.
+- \emph{Diekstraksi} dari berbagai sistem sumber.
+- \emph{Ditranformasi} ke dalam format atau struktur yang seragam.
+- \emph{Dimuat} ke dalam sistem target seperti data warehouse.
 
-For example, sales data from regional branches is extracted, transformed into a standard currency and format, and then loaded into the company’s central reporting database \cite{vassiliadis2002etl}.
+Misalnya, data penjualan dari cabang regional diekstraksi, ditransformasi ke mata uang dan format standar, lalu dimuat ke database pelaporan pusat perusahaan \cite{vassiliadis2002etl}.
 
 \textbf{2. ELT (Extract, Load, Transform).}  
-In this approach, data is first extracted and loaded into the target system (such as a data lake) and then transformed within that system. This is suitable when the target has high processing power and is often used in big data environments.
+Dalam pendekatan ini, data pertama-tama diekstraksi dan dimuat ke sistem target (misalnya data lake) lalu ditransformasi di dalam sistem tersebut. Pendekatan ini cocok bila sistem target memiliki kapasitas pemrosesan tinggi dan sering digunakan dalam lingkungan big data.
 
-\textbf{3. Data Federation (Virtual Integration).}  
-Instead of physically moving data, this technique uses a virtual layer to integrate data from different sources in real-time. Queries are run across multiple databases, presenting results as if the data were integrated. This is useful for situations requiring up-to-date data without duplicating storage \cite{halevy2001answering}.
+\textbf{3. Federasi Data (Integrasi Virtual).}  
+Alih-alih memindahkan data secara fisik, teknik ini menggunakan lapisan virtual untuk mengintegrasikan data dari berbagai sumber secara real-time. Query dijalankan melintasi banyak database dan hasil ditampilkan seolah-olah data telah terintegrasi. Teknik ini cocok jika memerlukan data terbaru tanpa menduplikasi penyimpanan \cite{halevy2001answering}.
 
 \textbf{4. Data Warehousing.}  
-A data warehouse consolidates data from various sources into a central repository designed for analysis and reporting. Data is cleaned, transformed, and stored in a structured format, enabling efficient querying for business intelligence purposes.
+Data warehouse mengkonsolidasikan data dari berbagai sumber ke dalam repositori terpusat yang dirancang untuk analisis dan pelaporan. Data dibersihkan, ditransformasi, dan disimpan dalam format terstruktur, memungkinkan query yang efisien untuk business intelligence.
 
-\textbf{5. Application-Based Integration.}  
-In this approach, integration is achieved through applications that communicate directly via APIs or integration software. For example, integrating CRM and ERP systems so that customer orders in CRM automatically update inventory levels in ERP.
+\textbf{5. Integrasi Berbasis Aplikasi.}  
+Dalam pendekatan ini, integrasi dilakukan melalui aplikasi yang berkomunikasi langsung menggunakan API atau perangkat lunak integrasi. Misalnya, integrasi sistem CRM dan ERP sehingga pesanan pelanggan di CRM secara otomatis memperbarui level inventaris di ERP.
 
-\textbf{6. Manual Integration.}  
-Sometimes, integration is performed manually, especially in small-scale projects or when dealing with ad-hoc datasets, using tools like spreadsheets to merge and align data. However, this is prone to human error and is not scalable for enterprise needs.
+\textbf{6. Integrasi Manual.}  
+Terkadang, integrasi dilakukan secara manual, terutama dalam proyek skala kecil atau dataset ad-hoc, menggunakan alat seperti spreadsheet untuk menggabungkan dan menyelaraskan data. Namun, cara ini rawan kesalahan manusia dan tidak dapat diskalakan untuk kebutuhan perusahaan.
 
-Each technique has its advantages and limitations. ETL is effective for structured data integration, while data federation is ideal for real-time needs without data duplication. Understanding these techniques enables managers to collaborate effectively with IT teams in planning data projects that support strategic goals \cite{hasselbring2000information}.
-
-\subsection{Challenges in Data Integration}
-
-While data integration offers significant benefits, it also presents various challenges that organisations must address to ensure successful implementation \cite{alexe2006cleaning}.
-
-\textbf{1. Data Heterogeneity.}  
-Data often comes from different sources with varying formats, structures, and standards. For example, customer data in one system may record dates as “DD/MM/YYYY” while another uses “MM-DD-YYYY”. Harmonising such differences requires careful transformation and standardisation to avoid errors in analysis.
-
-\textbf{2. Schema and Semantic Differences.}  
-Different systems may use different naming conventions and meanings for similar data. For instance, one database might label a field as “CustomerID” while another uses “CustNum”. Additionally, terms like “sales” may refer to gross sales in one dataset and net sales in another, creating potential confusion and integration errors \cite{doan2003reconciling}.
-
-\textbf{3. Data Quality Issues.}  
-Integration can magnify existing data quality problems, such as missing values, duplicates, or inaccuracies. Combining such data without cleaning can lead to unreliable outputs and flawed business decisions.
-
-\textbf{4. Scalability and Performance.}  
-Integrating large volumes of data, especially in real-time, can strain system resources. Ensuring that integration processes are scalable and do not slow down operations is a major technical challenge \cite{nash2019big}.
-
-\textbf{5. Security and Privacy Concerns.}  
-Integrating data often involves moving and accessing sensitive information across systems. Ensuring compliance with data privacy regulations (such as GDPR) and maintaining data security are critical considerations in integration projects \cite{zhang2019security}.
-
-\textbf{6. Organisational and Governance Challenges.}  
-Beyond technical issues, integrating data requires cooperation across departments, agreement on data definitions and ownership, and establishing data governance policies to maintain consistency and accountability.
-
-Addressing these challenges requires a combination of technical solutions, clear organisational policies, and collaboration between business and IT teams to achieve reliable, efficient, and secure data integration that supports strategic goals.
+Setiap teknik memiliki kelebihan dan keterbatasannya. ETL efektif untuk integrasi data terstruktur, sedangkan federasi data ideal untuk kebutuhan real-time tanpa duplikasi data. Memahami teknik-teknik ini membantu manajer berkolaborasi secara efektif dengan tim IT dalam merencanakan proyek data yang mendukung tujuan strategis organisasi \cite{hasselbring2000information}.
 
 
-\section{Ensuring Data Consistency}
+\subsection{Tantangan dalam Integrasi Data}
 
-\subsection{Definition and Importance}
+Meskipun integrasi data memberikan manfaat signifikan, proses ini juga menghadirkan berbagai tantangan yang harus diatasi organisasi agar implementasinya berhasil \cite{alexe2006cleaning}.
 
-Data consistency refers to the uniformity and coherence of data across different datasets, systems, or processes within an organisation. It ensures that data values do not conflict between systems and remain accurate and reliable over time \cite{chen2012data}.
+\textbf{1. Heterogenitas Data.}  
+Data sering berasal dari berbagai sumber dengan format, struktur, dan standar yang berbeda. Misalnya, data pelanggan di satu sistem mencatat tanggal sebagai “DD/MM/YYYY” sedangkan sistem lain menggunakan “MM-DD-YYYY”. Menyatukan perbedaan ini memerlukan transformasi dan standarisasi yang cermat untuk menghindari kesalahan dalam analisis.
 
-For example, if a customer’s address is updated in the sales database but not in the shipping system, inconsistencies arise, potentially leading to delivery errors and poor customer satisfaction. Similarly, in financial reporting, if revenue figures differ between accounting and sales databases due to inconsistent updates, it may result in incorrect strategic decisions and compliance issues.
+\textbf{2. Perbedaan Skema dan Semantik.}  
+Sistem yang berbeda mungkin menggunakan konvensi penamaan dan makna yang berbeda untuk data serupa. Misalnya, satu database melabeli kolom sebagai “CustomerID” sedangkan database lain menggunakan “CustNum”. Selain itu, istilah seperti “sales” bisa berarti penjualan kotor di satu dataset dan penjualan bersih di dataset lain, yang dapat menimbulkan kebingungan dan kesalahan integrasi \cite{doan2003reconciling}.
 
-The importance of data consistency in business includes:
+\textbf{3. Masalah Kualitas Data.}  
+Integrasi dapat memperbesar masalah kualitas data yang sudah ada, seperti nilai yang hilang, duplikasi, atau ketidakakuratan. Menggabungkan data tanpa pembersihan dapat menghasilkan output yang tidak dapat diandalkan dan keputusan bisnis yang salah.
 
-- \textbf{Improved Decision-Making.} Consistent data ensures that management decisions are based on uniform and reliable information, reducing risks associated with conflicting data.
+\textbf{4. Skalabilitas dan Kinerja.}  
+Mengintegrasikan volume data yang besar, terutama secara real-time, dapat membebani sumber daya sistem. Memastikan bahwa proses integrasi dapat diskalakan tanpa memperlambat operasi adalah tantangan teknis utama \cite{nash2019big}.
 
-- \textbf{Operational Efficiency.} Processes such as order fulfilment, billing, and customer service depend on consistent data to operate smoothly without delays or errors.
+\textbf{5. Masalah Keamanan dan Privasi.}  
+Integrasi data sering melibatkan pemindahan dan akses informasi sensitif antar sistem. Memastikan kepatuhan terhadap regulasi privasi data (seperti GDPR) dan menjaga keamanan data merupakan pertimbangan penting dalam proyek integrasi \cite{zhang2019security}.
 
-- \textbf{Regulatory Compliance.} Many industries require consistent reporting across systems to meet legal and regulatory standards. Inconsistencies can result in compliance breaches and financial penalties \cite{rahm2000dataquality}.
+\textbf{6. Tantangan Organisasi dan Tata Kelola.}  
+Selain masalah teknis, integrasi data memerlukan kerja sama antar departemen, kesepakatan tentang definisi dan kepemilikan data, serta penetapan kebijakan tata kelola data untuk menjaga konsistensi dan akuntabilitas.
 
-- \textbf{Enhanced Customer Experience.} Consistent customer data across touchpoints ensures that communications and services are personalised and accurate, improving satisfaction and loyalty.
+Mengatasi tantangan ini memerlukan kombinasi solusi teknis, kebijakan organisasi yang jelas, dan kolaborasi antara tim bisnis dan TI untuk mencapai integrasi data yang andal, efisien, dan aman demi mendukung tujuan strategis.
 
-Maintaining data consistency requires effective data governance policies, integration processes, and regular validation to ensure all systems reflect the same, correct data \cite{ottoo2013data}.
+\section{Menjaga Konsistensi Data}
 
-\subsection{Methods to Ensure Consistency}
+\subsection{Definisi dan Pentingnya}
 
-Ensuring data consistency requires implementing systematic methods and organisational practices to maintain uniform data across systems and processes. Key methods include \cite{watson2009data}:
+Konsistensi data mengacu pada keseragaman dan koherensi data di berbagai dataset, sistem, atau proses dalam suatu organisasi. Ini memastikan bahwa nilai data tidak bertentangan antar sistem dan tetap akurat serta dapat diandalkan seiring waktu \cite{chen2012data}.
+
+Sebagai contoh, jika alamat pelanggan diperbarui di database penjualan tetapi tidak di sistem pengiriman, maka akan terjadi inkonsistensi yang dapat menyebabkan kesalahan pengiriman dan menurunkan kepuasan pelanggan. Demikian pula, dalam pelaporan keuangan, jika angka pendapatan berbeda antara database akuntansi dan penjualan karena pembaruan yang tidak konsisten, hal ini dapat menghasilkan keputusan strategis yang salah dan masalah kepatuhan.
+
+Pentingnya konsistensi data dalam bisnis meliputi:
+
+- \textbf{Pengambilan Keputusan yang Lebih Baik.} Data yang konsisten memastikan keputusan manajemen didasarkan pada informasi yang seragam dan dapat diandalkan, sehingga mengurangi risiko akibat data yang bertentangan.
+
+- \textbf{Efisiensi Operasional.} Proses seperti pemenuhan pesanan, penagihan, dan layanan pelanggan bergantung pada data yang konsisten untuk berjalan lancar tanpa penundaan atau kesalahan.
+
+- \textbf{Kepatuhan Regulasi.} Banyak industri yang memerlukan pelaporan data yang konsisten di seluruh sistem untuk memenuhi standar hukum dan regulasi. Inkonsistensi dapat menyebabkan pelanggaran kepatuhan dan denda finansial \cite{rahm2000dataquality}.
+
+- \textbf{Pengalaman Pelanggan yang Lebih Baik.} Data pelanggan yang konsisten di seluruh titik kontak memastikan komunikasi dan layanan yang dipersonalisasi serta akurat, meningkatkan kepuasan dan loyalitas pelanggan.
+
+Menjaga konsistensi data memerlukan kebijakan tata kelola data yang efektif, proses integrasi yang baik, dan validasi berkala untuk memastikan semua sistem mencerminkan data yang sama dan benar \cite{ottoo2013data}.
+
+\subsection{Metode untuk Menjaga Konsistensi}
+
+\begin{table}[h]
+	\centering
+	\caption{Metode untuk Menjaga Konsistensi Data}
+	\begin{tabular}{|p{0.2\textwidth}|p{0.70\textwidth}|}
+		\hline
+		\textbf{Metode} & \textbf{Deskripsi} \\
+		\hline
+		Master Data Management (MDM) & Membuat sumber tunggal yang otoritatif untuk data penting (pelanggan, produk, pemasok) agar semua departemen dan sistem merujuk pada data master yang sama, mengurangi duplikasi dan konflik data \cite{otto2011mdm}. \\
+		\hline
+		Aturan Validasi Data & Menerapkan aturan validasi saat entri dan integrasi data untuk memastikan data sesuai standar sebelum masuk sistem, misalnya format tanggal yang konsisten atau kode produk yang valid. \\
+		\hline
+		Batasan Integritas Referensial & Menjaga hubungan antar tabel dalam database relasional tetap konsisten, misalnya ID pelanggan pada tabel pesanan harus cocok dengan tabel pelanggan, mencegah rekaman yatim atau referensi tidak valid. \\
+		\hline
+		Sinkronisasi Data & Memastikan pembaruan data di satu sistem tercermin di sistem lain melalui pembaruan batch, sinkronisasi real-time menggunakan API, atau middleware integration tools. \\
+		\hline
+		Audit dan Rekonsiliasi Berkala & Melakukan audit data secara berkala untuk mendeteksi inkonsistensi antar sistem dan merekonsiliasi data, seperti mencocokkan transaksi keuangan antara sistem akuntansi dan penjualan \cite{laurila1999data}. \\
+		\hline
+		Kebijakan Tata Kelola Data & Menetapkan kebijakan kepemilikan data, tanggung jawab pembaruan, dan prosedur manajemen perubahan untuk memastikan akuntabilitas dan konsistensi pengelolaan data di seluruh organisasi. \\
+		\hline
+	\end{tabular}
+	\label{tab:metode-konsistensi-data}
+\end{table}
+
+Menjaga konsistensi data memerlukan penerapan metode sistematis dan praktik organisasi untuk memastikan data tetap seragam di seluruh sistem dan proses. Metode utama meliputi \cite{watson2009data}:
 
 \textbf{1. Master Data Management (MDM).}  
-MDM involves creating a single, authoritative source for critical business data such as customer, product, or supplier information. It ensures that all departments and systems refer to the same master records, reducing duplication and conflicting data \cite{otto2011mdm}.
+MDM melibatkan pembuatan sumber tunggal yang otoritatif untuk data bisnis penting seperti pelanggan, produk, atau pemasok. Ini memastikan semua departemen dan sistem merujuk pada rekaman master yang sama, mengurangi duplikasi dan konflik data \cite{otto2011mdm}.
 
-\textbf{2. Data Validation Rules.}  
-Applying validation rules during data entry and integration ensures that data meets required standards before it enters systems. For example, enforcing consistent date formats or valid product codes across datasets prevents inconsistencies.
+\textbf{2. Aturan Validasi Data.}  
+Menerapkan aturan validasi saat entri data dan integrasi memastikan data memenuhi standar yang diperlukan sebelum masuk ke sistem. Misalnya, penerapan format tanggal yang konsisten atau kode produk yang valid di seluruh dataset mencegah inkonsistensi.
 
-\textbf{3. Referential Integrity Constraints.}  
-In relational databases, referential integrity ensures that relationships between tables remain consistent. For instance, every order record referencing a customer ID must match an existing customer record. This prevents orphaned records or invalid references.
+\textbf{3. Batasan Integritas Referensial.}  
+Dalam database relasional, integritas referensial memastikan hubungan antar tabel tetap konsisten. Misalnya, setiap rekaman pesanan yang merujuk ID pelanggan harus cocok dengan rekaman pelanggan yang ada. Ini mencegah adanya rekaman yatim atau referensi yang tidak valid.
 
-\textbf{4. Data Synchronisation.}  
-Synchronising data between systems ensures updates made in one system are reflected in others. Techniques include batch updates, real-time synchronisation via APIs, or middleware integration tools.
+\textbf{4. Sinkronisasi Data.}  
+Sinkronisasi data antar sistem memastikan pembaruan di satu sistem tercermin di sistem lain. Tekniknya termasuk pembaruan batch, sinkronisasi real-time melalui API, atau alat integrasi middleware.
 
-\textbf{5. Regular Data Audits and Reconciliation.}  
-Conducting periodic data audits identifies inconsistencies across systems. Reconciliation processes compare data between sources to detect and correct mismatches, such as financial transactions not matching across accounting and sales systems \cite{laurila1999data}.
+\textbf{5. Audit dan Rekonsiliasi Data Berkala.}  
+Melakukan audit data secara berkala membantu mengidentifikasi inkonsistensi antar sistem. Proses rekonsiliasi membandingkan data antara sumber untuk mendeteksi dan memperbaiki ketidaksesuaian, seperti transaksi keuangan yang tidak cocok antara sistem akuntansi dan penjualan \cite{laurila1999data}.
 
-\textbf{6. Clear Data Governance Policies.}  
-Establishing policies defining data ownership, update responsibilities, and change management procedures ensures accountability and consistency in data handling across the organisation.
+\textbf{6. Kebijakan Tata Kelola Data yang Jelas.}  
+Menetapkan kebijakan yang mendefinisikan kepemilikan data, tanggung jawab pembaruan, dan prosedur manajemen perubahan memastikan akuntabilitas dan konsistensi dalam pengelolaan data di seluruh organisasi.
 
-Implementing these methods improves data reliability, supports accurate reporting, and enhances organisational efficiency by ensuring all departments work with consistent and trustworthy information.
+Penerapan metode-metode ini meningkatkan keandalan data, mendukung pelaporan yang akurat, dan meningkatkan efisiensi organisasi dengan memastikan semua departemen bekerja menggunakan informasi yang konsisten dan dapat dipercaya.
 
-\subsection{Implications of Inconsistent Data}
+\subsection{Implikasi dari Data yang Tidak Konsisten}
 
-Inconsistent data can have serious implications for organisations, affecting decision-making, operational efficiency, compliance, and customer satisfaction \cite{redman1996impact}.
+Data yang tidak konsisten dapat memiliki implikasi serius bagi organisasi, mempengaruhi pengambilan keputusan, efisiensi operasional, kepatuhan, dan kepuasan pelanggan \cite{redman1996impact}.
 
-\textbf{1. Poor Decision-Making.}  
-Inconsistent data leads to conflicting reports and unreliable analysis results. For example, if sales figures differ between the finance and sales departments, management may make incorrect decisions regarding budgeting, inventory procurement, or market strategy.
+\textbf{1. Pengambilan Keputusan yang Buruk.}  
+Data yang tidak konsisten menghasilkan laporan yang bertentangan dan hasil analisis yang tidak dapat diandalkan. Misalnya, jika angka penjualan berbeda antara departemen keuangan dan penjualan, manajemen dapat membuat keputusan yang salah terkait anggaran, pengadaan inventaris, atau strategi pasar.
 
-\textbf{2. Reduced Operational Efficiency.}  
-When different systems hold inconsistent data, employees may spend significant time reconciling and verifying information before completing tasks, slowing down processes and increasing operational costs \cite{madnick2009overview}.
+\textbf{2. Efisiensi Operasional yang Menurun.}  
+Ketika sistem yang berbeda menyimpan data yang tidak konsisten, karyawan dapat menghabiskan banyak waktu untuk merekonsiliasi dan memverifikasi informasi sebelum menyelesaikan tugas, yang memperlambat proses dan meningkatkan biaya operasional \cite{madnick2009overview}.
 
-\textbf{3. Compliance Risks.}  
-Many industries require accurate and consistent data reporting for legal and regulatory compliance. Inconsistencies can result in misreporting, legal penalties, and damage to organisational reputation \cite{wang2006data}.
+\textbf{3. Risiko Kepatuhan.}  
+Banyak industri memerlukan pelaporan data yang akurat dan konsisten untuk kepatuhan hukum dan regulasi. Inkonsistensi dapat mengakibatkan pelaporan yang salah, denda hukum, dan merusak reputasi organisasi \cite{wang2006data}.
 
-\textbf{4. Customer Dissatisfaction.}  
-Inconsistent customer data across systems (e.g., outdated addresses or contact details) can lead to failed deliveries, incorrect billing, or poor service personalisation, reducing customer trust and loyalty.
+\textbf{4. Ketidakpuasan Pelanggan.}  
+Data pelanggan yang tidak konsisten antar sistem (misalnya alamat atau detail kontak yang kedaluwarsa) dapat menyebabkan pengiriman gagal, penagihan yang salah, atau layanan yang tidak dipersonalisasi, menurunkan kepercayaan dan loyalitas pelanggan.
 
-\textbf{5. Increased Costs.}  
-Resolving inconsistencies after they occur often requires significant resources, including manual data cleaning, system updates, and process redesigns, resulting in increased operational costs \cite{pipino2002dataquality}.
+\textbf{5. Peningkatan Biaya.}  
+Menyelesaikan inkonsistensi setelah terjadi sering membutuhkan sumber daya yang signifikan, termasuk pembersihan data manual, pembaruan sistem, dan redesain proses, sehingga meningkatkan biaya operasional \cite{pipino2002dataquality}.
 
-\textbf{6. Missed Opportunities.}  
-When integrated data is unreliable, organisations may miss market trends, customer insights, or operational improvements that could have provided competitive advantages.
+\textbf{6. Hilangnya Peluang.}  
+Jika data terintegrasi tidak dapat diandalkan, organisasi dapat kehilangan tren pasar, wawasan pelanggan, atau perbaikan operasional yang dapat memberikan keunggulan kompetitif.
 
-Understanding these implications highlights why ensuring data consistency is critical for organisations seeking to make informed decisions, maintain efficiency, comply with regulations, and deliver high-quality services to customers.
-
-\section{Challenges and Limitations}
-
-\subsection{Organisational Challenges}
-
-Beyond technical complexities, organisations often face several non-technical challenges when implementing data cleaning, preparation, and integration initiatives \cite{strong1997data}.
-
-\textbf{1. Lack of Data Governance.}  
-Many organisations lack formal data governance frameworks defining clear roles, responsibilities, and processes for managing data quality. Without governance, there is confusion over who owns data and who is responsible for its accuracy, leading to inconsistent practices across departments \cite{otto2011data}.
-
-\textbf{2. Siloed Data Ownership.}  
-Data is often controlled by different departments with varying priorities and standards. For example, the sales team may maintain customer data differently from the finance team, making integration and cleaning efforts difficult due to resistance to change or lack of collaboration \cite{khatri2010data}.
-
-\textbf{3. Limited Awareness of Data Quality Importance.}  
-Employees and managers may underestimate the impact of poor data quality on business outcomes, resulting in low motivation to participate in cleaning and preparation initiatives. This cultural barrier can undermine data projects despite technical readiness.
-
-\textbf{4. Resource Constraints.}  
-Effective data cleaning and preparation require skilled personnel, time, and financial investment. Organisations may prioritise immediate operational needs over long-term data quality improvement, resulting in under-resourced initiatives \cite{madnick2009overview}.
-
-\textbf{5. Change Management Challenges.}  
-Introducing new data standards, cleaning processes, or integration systems often requires changes in workflows, software use, and staff responsibilities. Resistance to change is common if benefits are not clearly communicated or if training is insufficient.
-
-\textbf{6. Lack of Strategic Alignment.}  
-Data initiatives may not align with overall business strategy. Without clear links to strategic objectives, data cleaning and preparation efforts may lack executive support, leading to fragmented implementation and limited long-term impact.
-
-Addressing these organisational challenges requires strong leadership commitment, clear communication of data value, cross-department collaboration, and alignment of data initiatives with business goals to ensure sustainable improvements in data quality and utilisation.
-
-\subsection{Technical Limitations}
-
-In addition to organisational challenges, data cleaning, preparation, and integration efforts often face several technical limitations \cite{schellhase2007data}.
-
-\textbf{1. Data Quality Issues in Source Systems.}  
-If the original data sources contain significant errors, missing values, or inconsistencies, cleaning and integration processes become more complex and time-consuming. Automated tools may struggle with unstructured errors, requiring manual review.
-
-\textbf{2. Lack of Standardisation Across Systems.}  
-Different systems may store data using varying formats, coding schemes, and database structures. For example, product categories coded differently across branches require extensive mapping before integration, increasing project complexity \cite{batini2009methodologies}.
-
-\textbf{3. System Compatibility Constraints.}  
-Legacy systems or outdated databases may not support modern integration tools or APIs, limiting the ability to automate extraction, transformation, and loading processes efficiently.
-
-\textbf{4. Scalability Challenges.}  
-Processing and integrating large volumes of data, especially in real-time, require significant computational resources. Systems without sufficient scalability capabilities may experience performance bottlenecks, delaying decision-making or operational processes \cite{stonebraker2010sql}.
-
-\textbf{5. Data Security and Privacy Risks.}  
-Technical limitations in encryption, access controls, or secure integration pipelines may expose sensitive data to breaches during integration or cleaning processes, especially when data is moved between systems or combined with external sources \cite{zhang2019security}.
-
-\textbf{6. Limited Tool Capabilities.}  
-Some data cleaning or integration tools may not support specific business requirements, such as advanced data matching, semantic reconciliation, or processing unstructured data (e.g., emails, PDFs), requiring expensive custom development.
-
-\textbf{7. Maintenance Complexity.}  
-Once integration processes are built, maintaining them becomes challenging as data sources, structures, and business requirements change over time, requiring ongoing updates, testing, and monitoring.
-
-Understanding these technical limitations enables organisations to plan realistic data projects, allocate appropriate resources, and select suitable tools and architectures to support sustainable data cleaning, preparation, and integration initiatives.
+Memahami implikasi-implikasi ini menegaskan mengapa menjaga konsistensi data sangat penting bagi organisasi yang ingin mengambil keputusan yang tepat, mempertahankan efisiensi, mematuhi regulasi, dan memberikan layanan berkualitas tinggi kepada pelanggan.
 
 
-\section{Case Study}
+\section{Studi Kasus}
 
-\subsection{Overview}
+\subsection{Gambaran Umum}
 
-\textbf{Case: Customer Data Integration at RetailCo}
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[
+		node distance=1cm and 1cm,
+		system/.style={rectangle, draw=black, fill=green!20, rounded corners, text width=3.5cm, minimum height=1cm, align=center, font=\small},
+		repo/.style={rectangle, draw=black, fill=blue!20, rounded corners, text width=4.5cm, minimum height=1cm, align=center, font=\small},
+		arrow/.style={->, thick}
+		]
+		
+		% Systems
+		\node[system] (pos) {\textbf{POS}\\Pembelian Toko Fisik};
+		\node[system, right=of pos] (ecom) {\textbf{E-commerce}\\Pembelian Online, Ulasan, Pengiriman};
+		\node[system, right=of ecom] (loyalty) {\textbf{Loyalty Programme}\\Keanggotaan, Poin, Hadiah};
+		
+		% Customer Data Repository
+		\node[repo, below=1cm of ecom] (cdr) {\textbf{Customer Data Repository}\\Repositori Terpadu Pelanggan};
+		
+		% Arrows
+		\draw[arrow] (pos) -- (cdr);
+		\draw[arrow] (ecom) -- (cdr);
+		\draw[arrow] (loyalty) -- (cdr);
+		
+	\end{tikzpicture}
+	\caption{Integrasi Sistem RetailCo ke Customer Data Repository Terpadu}
+	\label{fig:retailco-integration}
+\end{figure}
 
-RetailCo is a mid-sized retail company with physical stores across several cities and an online e-commerce platform. Over the years, customer data has been collected and stored in different systems:
+
+
+
+
+\textbf{Kasus: Integrasi Data Pelanggan di RetailCo}
+
+RetailCo adalah perusahaan ritel skala menengah dengan toko fisik di beberapa kota dan platform e-commerce online. Selama bertahun-tahun, data pelanggan dikumpulkan dan disimpan di sistem yang berbeda:
 
 \begin{itemize}
-	\item The point-of-sale (POS) system stores customer purchase records at physical stores.
-	\item The e-commerce platform records online purchase history, customer reviews, and delivery details.
-	\item The customer loyalty programme stores membership information, accumulated points, and rewards redeemed.
+	\item Sistem point-of-sale (POS) menyimpan catatan pembelian pelanggan di toko fisik.
+	\item Platform e-commerce mencatat riwayat pembelian online, ulasan pelanggan, dan detail pengiriman.
+	\item Program loyalitas pelanggan menyimpan informasi keanggotaan, poin yang dikumpulkan, dan hadiah yang ditukar.
 \end{itemize}
 
-Management wants to launch a personalised marketing campaign targeting high-value customers across all channels. However, they discover inconsistencies, duplicate records, and missing values when attempting to combine data from these systems.
+Manajemen ingin meluncurkan kampanye pemasaran personalisasi yang menargetkan pelanggan bernilai tinggi di semua kanal. Namun, mereka menemukan adanya inkonsistensi, duplikasi data, dan nilai yang hilang ketika mencoba menggabungkan data dari ketiga sistem tersebut.
 
-Key issues identified:
-
-\begin{enumerate}
-	\item Customer names are spelled differently across systems (e.g. ``John Smith" vs. ``Jon Smith").
-	\item The e-commerce platform records date of birth, but the POS system does not.
-	\item Some email addresses in the loyalty programme database are outdated or missing.
-	\item Customer IDs are system-specific with no unified identifier.
-\end{enumerate}
-
-\subsection{Analysis}
-
-RetailCo's situation highlights common challenges in data cleaning, preparation, and integration:
+Masalah utama yang diidentifikasi:
 
 \begin{enumerate}
-	\item \textbf{Data Cleaning Needs.}
-	\begin{itemize}
-		\item Duplicate records for the same customer under different name spellings require deduplication and standardisation.
-	\end{itemize}
-	
-	\item \textbf{Preparation Gaps.}
-	\begin{itemize}
-		\item Missing date of birth data in the POS system limits demographic segmentation.
-		\item Possible solutions include collecting this data at physical stores or inferring missing demographics based on purchase patterns.
-	\end{itemize}
-	
-	\item \textbf{Integration Challenges.}
-	\begin{itemize}
-		\item Different customer ID systems prevent direct merging of records.
-		\item Implementation of a master data management (MDM) system is needed to unify customer identifiers.
-	\end{itemize}
-	
-	\item \textbf{Consistency Issues.}
-	\begin{itemize}
-		\item Outdated or inconsistent email addresses reduce the effectiveness of marketing campaigns.
-		\item Data validation and updating processes are necessary to maintain data relevance.
-	\end{itemize}
-	
-	\item \textbf{Business Impact.}
-	\begin{itemize}
-		\item Ineffective marketing targeting.
-		\item Customer dissatisfaction due to irrelevant offers.
-		\item Missed revenue opportunities from cross-channel promotions.
-	\end{itemize}
+	\item Nama pelanggan dieja berbeda di setiap sistem (misalnya “John Smith” vs. “Jon Smith”).
+	\item Platform e-commerce mencatat tanggal lahir, tetapi sistem POS tidak.
+	\item Beberapa alamat email di database program loyalitas sudah kedaluwarsa atau hilang.
+	\item ID pelanggan bersifat spesifik sistem tanpa adanya pengidentifikasi yang terintegrasi.
 \end{enumerate}
 
-Addressing these challenges would involve:
+\subsection{Analisis}
+
+Situasi RetailCo menyoroti tantangan umum dalam pembersihan, persiapan, dan integrasi data:
 
 \begin{enumerate}
-	\item Applying data cleaning techniques such as standardising name formats and deduplicating records.
-	\item Integrating data using ETL processes combined with an MDM system to unify customer identifiers.
-	\item Establishing data governance policies to maintain data quality across systems.
+	\item \textbf{Kebutuhan Pembersihan Data.}
+	\begin{itemize}
+		\item Rekaman duplikat untuk pelanggan yang sama dengan ejaan nama berbeda memerlukan deduplikasi dan standarisasi.
+	\end{itemize}
+	
+	\item \textbf{Kesenjangan Persiapan Data.}
+	\begin{itemize}
+		\item Tidak adanya data tanggal lahir di sistem POS membatasi segmentasi demografis.
+		\item Solusi yang mungkin termasuk mengumpulkan data ini di toko fisik atau mengestimasi demografi berdasarkan pola pembelian.
+	\end{itemize}
+	
+	\item \textbf{Tantangan Integrasi.}
+	\begin{itemize}
+		\item Perbedaan sistem ID pelanggan mencegah penggabungan rekaman secara langsung.
+		\item Implementasi sistem master data management (MDM) diperlukan untuk menyatukan pengidentifikasi pelanggan.
+	\end{itemize}
+	
+	\item \textbf{Masalah Konsistensi.}
+	\begin{itemize}
+		\item Alamat email yang kedaluwarsa atau inkonsisten mengurangi efektivitas kampanye pemasaran.
+		\item Proses validasi dan pembaruan data diperlukan untuk menjaga relevansi data.
+	\end{itemize}
+	
+	\item \textbf{Dampak Bisnis.}
+	\begin{itemize}
+		\item Penargetan pemasaran menjadi tidak efektif.
+		\item Ketidakpuasan pelanggan akibat penawaran yang tidak relevan.
+		\item Hilangnya peluang pendapatan dari promosi lintas kanal.
+	\end{itemize}
 \end{enumerate}
 
-This case illustrates the importance of data cleaning and preparation as prerequisites for successful data integration and strategic business initiatives.
+Mengatasi tantangan ini meliputi:
 
+\begin{enumerate}
+	\item Menerapkan teknik pembersihan data seperti standarisasi format nama dan deduplikasi rekaman.
+	\item Mengintegrasikan data menggunakan proses ETL yang dikombinasikan dengan sistem MDM untuk menyatukan ID pelanggan.
+	\item Menetapkan kebijakan tata kelola data untuk menjaga kualitas data di semua sistem.
+\end{enumerate}
 
-\section{Hands-on Activity: Evaluating and Preparing Data Without Coding}
+Kasus ini menggambarkan pentingnya pembersihan dan persiapan data sebagai prasyarat untuk integrasi data yang berhasil dan inisiatif bisnis strategis.
 
-\textbf{Objective.}  
-To practice data evaluation, cleaning, preparation, and integration planning using a real-world open dataset with guided tasks and expected solutions.
+\section{Aktivitas Praktik: Mengevaluasi dan Mempersiapkan Data Tanpa Coding}
+
+\textbf{Tujuan.}  
+Berlatih mengevaluasi data, membersihkan, mempersiapkan, dan merencanakan integrasi menggunakan dataset nyata dengan tugas terarah dan solusi yang diharapkan.
 
 \textbf{Dataset.}
 
-Use the \textbf{Online Retail dataset}:
+Gunakan \textbf{dataset Online Retail} berikut:
 
 \begin{itemize}
-	\item Download from: \url{https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx} or from the main page \url{https://archive.ics.uci.edu/dataset/352/online+retail}.
-	\item Open the Excel file and review the data in the provided sheet.
+		\item \url{https://archive.ics.uci.edu/dataset/352/online+retail}.
+	\item \url{https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx} 
+	\item Buka file Excel dan tinjau data pada sheet yang tersedia.
 \end{itemize}
 
-\textbf{Instructions.}
+\begin{table}[h]
+	\centering
+	\scriptsize
+	\renewcommand{\arraystretch}{1.2}
+			\caption{Cuplikan Dataset Online Retail untuk Praktik Pembersihan dan Persiapan Data}
+	\begin{tabular}{|p{0.08\textwidth}|p{0.08\textwidth}|p{0.15\textwidth}|p{0.06\textwidth}|p{0.1\textwidth}|p{0.08\textwidth}|p{0.08\textwidth}|p{0.1\textwidth}|}
+		\hline
+		\textbf{InvoiceNo} & \textbf{StockCode} & \textbf{Description} & \textbf{Quantity} & \textbf{InvoiceDate} & \textbf{UnitPrice} & \textbf{CustomerID} & \textbf{Country} \\
+		\hline
+		536365 & 85123A & WHITE HANGING HEART T-LIGHT HOLDER & 6 & 01/12/2010 08:26 & 2.55 & 17850 & United Kingdom \\
+		\hline
+		536365 & 71053 & WHITE METAL LANTERN & 6 & 01/12/2010 08:26 & 3.39 & 17850 & United Kingdom \\
+		\hline
+		\multicolumn{8}{c}{\ldots} \\
+		\hline
+	\end{tabular}
 
-Perform the following steps individually:
+	\label{tab:online-retail-snippet}
+\end{table}
+
+
+\textbf{Instruksi.}
+
+Lakukan langkah-langkah berikut secara individu:
 
 \begin{enumerate}
-	\item \textbf{Identify Data Quality Issues.}
+	\item \textbf{Identifikasi Masalah Kualitas Data.}
 	
-	Review the dataset and note:
+	Tinjau dataset dan catat:
 	
 	\begin{enumerate}
-		\item \textbf{Missing Values.} Filter the CustomerID column to find any blank entries.
-		\item \textbf{Inconsistent Description Entries.} Check for product descriptions recorded in all uppercase vs. lowercase or mixed case formats.
-		\item \textbf{Negative Quantities.} Sort Quantity to identify negative values indicating product returns.
+		\item \textbf{Nilai Hilang.} Filter kolom CustomerID untuk menemukan entri yang kosong.
+		\item \textbf{Ketidakkonsistenan Deskripsi.} Periksa deskripsi produk yang ditulis seluruhnya dengan huruf kapital, huruf kecil, atau campuran.
+		\item \textbf{Jumlah Negatif.} Urutkan Quantity untuk mengidentifikasi nilai negatif yang menunjukkan pengembalian barang.
 	\end{enumerate}
 	
-	\textbf{Expected Solutions:}
+	\textbf{Solusi yang Diharapkan:}
 	
 	\begin{itemize}
-		\item For missing CustomerIDs: propose either removing such rows if analysis requires customer segmentation or treating them as anonymous customers.
-		\item For inconsistent descriptions: standardise to title case for consistency.
-		\item For negative quantities: classify them as returns and create a flag column to indicate returned items.
+		\item Untuk CustomerID yang hilang: usulkan untuk menghapus baris tersebut jika analisis memerlukan segmentasi pelanggan, atau perlakukan sebagai pelanggan anonim.
+		\item Untuk deskripsi yang tidak konsisten: standarisasi menjadi format title case untuk konsistensi.
+		\item Untuk jumlah negatif: klasifikasikan sebagai retur dan buat kolom penanda untuk item yang dikembalikan.
 	\end{itemize}
 	
-	\item \textbf{Prepare Data for Analysis.}
+	\item \textbf{Mempersiapkan Data untuk Analisis.}
 	
 	\begin{enumerate}
-		\item Create a new column categorising UnitPrice:
+		\item Buat kolom baru untuk mengkategorikan UnitPrice:
 		\begin{itemize}
-			\item UnitPrice < £1: “Low Price”
-			\item UnitPrice £1–£10: “Medium Price”
-			\item UnitPrice > £10: “High Price”
+			\item UnitPrice < £1: “Harga Rendah”
+			\item UnitPrice £1–£10: “Harga Menengah”
+			\item UnitPrice > £10: “Harga Tinggi”
 		\end{itemize}
-		\item Reformat InvoiceDate to extract only the month for monthly sales trend analysis.
+		\item Ubah format InvoiceDate untuk mengekstrak hanya bulan guna analisis tren penjualan bulanan.
 	\end{enumerate}
 	
-	\textbf{Expected Solutions:}
+	\textbf{Solusi yang Diharapkan:}
 	
 	\begin{itemize}
-		\item Use Excel IF formulas to categorise UnitPrice values.
-		\item Use Excel MONTH or TEXT functions to extract month from InvoiceDate.
+		\item Gunakan rumus IF di Excel untuk mengkategorikan nilai UnitPrice.
+		\item Gunakan fungsi MONTH atau TEXT di Excel untuk mengekstrak bulan dari InvoiceDate.
 	\end{itemize}
 	
-	\item \textbf{Integration Planning.}
+	\item \textbf{Perencanaan Integrasi.}
 	
 	\begin{enumerate}
-		\item Imagine a second dataset with customer demographic data containing CustomerID, AgeGroup, and LoyaltyStatus.
-		\item Propose an integration plan to combine this with the Online Retail dataset for customer segmentation analysis.
+		\item Bayangkan dataset kedua yang berisi data demografi pelanggan dengan CustomerID, AgeGroup, dan LoyaltyStatus. 
+		\item Lakukan dengan membuat Sheet baru dengan kolom-kolom tersebut. Isi CustomerID dengan beberapa CustomerID yang ada. Isi AgeGroup dan LoyaltyStatus dengan nilai yang ditentukan oleh Anda sendiri.
+		\item Usulkan rencana integrasi untuk menggabungkan dataset tersebut dengan dataset Online Retail untuk analisis segmentasi pelanggan.
 	\end{enumerate}
 	
-	\textbf{Expected Solutions:}
+	\textbf{Solusi yang Diharapkan:}
 	
 	\begin{itemize}
-		\item Perform a left join using CustomerID as the key to add demographic information to each transaction record.
+		\item Lakukan left join menggunakan CustomerID sebagai kunci untuk menambahkan informasi demografi ke setiap catatan transaksi.
 	\end{itemize}
 	
-	\item \textbf{Reflection.}
+	\item \textbf{Refleksi.}
 	
-	Write short answers to:
+	Tulis jawaban singkat untuk:
 	
 	\begin{enumerate}
-		\item Why is data consistency important when analysing sales and customer behaviour data?
-		\item What organisational or technical challenges could arise in integrating transactional and demographic data?
+		\item Mengapa konsistensi data penting dalam menganalisis data penjualan dan perilaku pelanggan?
+		\item Tantangan organisasi atau teknis apa yang dapat muncul saat mengintegrasikan data transaksi dan demografi?
 	\end{enumerate}
 	
-	\textbf{Expected Solutions:}
+	\textbf{Solusi yang Diharapkan:}
 	
 	\begin{itemize}
-		\item Consistency ensures analysis accuracy and reliable insights; inconsistency leads to wrong targeting or forecasts.
-		\item Challenges include differing data ownership across departments, incompatible data formats, or privacy and access restrictions.
+		\item Konsistensi memastikan akurasi analisis dan wawasan yang dapat diandalkan; inkonsistensi menyebabkan penargetan atau prakiraan yang salah.
+		\item Tantangan meliputi kepemilikan data yang berbeda antar departemen, format data yang tidak kompatibel, atau pembatasan privasi dan akses.
 	\end{itemize}
 	
-	\item \textbf{Reporting.}
 	
-	\begin{itemize}
-		\item Prepare a one-page report including:
-		\begin{enumerate}
-			\item Three data issues identified with cleaning proposals.
-			\item Preparation steps with screenshots if applicable.
-			\item Integration plan explanation.
-			\item Reflection answers.
-		\end{enumerate}
-		\item Submit via the learning management system before the next class.
-	\end{itemize}
 \end{enumerate}
 
-\textbf{Expected Outcome.}  
-Students will build practical confidence in evaluating and preparing real-world business data for decision-making, using structured, guided steps without coding.
+\textbf{Hasil yang Diharapkan.}  
+Latihan ini bertujuan membangun kepercayaan diri praktis dalam mengevaluasi dan mempersiapkan data bisnis nyata untuk pengambilan keputusan, menggunakan langkah-langkah terstruktur tanpa coding.
 
+\section{Ringkasan}
 
-\section{Summary}
+Bab ini telah memperkenalkan konsep pembersihan dan persiapan data, menekankan pentingnya memastikan data bisnis akurat, lengkap, dan siap untuk dianalisis. Dibahas teknik utama pembersihan data seperti menangani nilai hilang, mengelola outlier, dan normalisasi data, serta proses persiapan yang lebih luas termasuk integrasi dan menjaga konsistensi antar sistem. Langkah-langkah dasar ini penting untuk mengubah data mentah menjadi informasi yang andal yang mendukung pengambilan keputusan dan perencanaan strategis yang efektif.
 
-This chapter has introduced the concepts of data cleaning and preparation, emphasising their importance in ensuring that business data is accurate, complete, and ready for analysis. It explained key data cleaning techniques such as handling missing values, managing outliers, and normalising data, alongside the broader preparation processes including integration and ensuring consistency across systems. These foundational steps are critical to transforming raw data into reliable information that supports effective decision-making and strategic planning.
-
-The chapter also discussed practical challenges in implementing data cleaning and integration initiatives, highlighting both organisational issues such as data ownership and governance, and technical limitations including system compatibility and scalability constraints. Through the hands-on activity using the Sample Superstore dataset, students gained practical experience evaluating data quality, planning cleaning steps, and integrating datasets without coding. Understanding these concepts equips future managers to lead data-driven projects confidently and collaborate effectively with technical teams to maximise business value from data assets.
+Bab ini juga membahas tantangan praktis dalam menerapkan inisiatif pembersihan dan integrasi data, menyoroti masalah organisasi seperti kepemilikan dan tata kelola data, serta keterbatasan teknis seperti kompatibilitas sistem dan kendala skalabilitas. Melalui aktivitas praktik menggunakan dataset Online Retail, mahasiswa mendapatkan pengalaman langsung dalam mengevaluasi kualitas data, merencanakan langkah pembersihan, dan mengintegrasikan dataset tanpa coding. Memahami konsep ini membekali calon manajer untuk memimpin proyek berbasis data dengan percaya diri dan berkolaborasi secara efektif dengan tim teknis untuk memaksimalkan nilai bisnis dari aset data.
 
