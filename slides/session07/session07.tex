@@ -217,28 +217,7 @@ and Preparation}
 	
 \end{frame}
 
-\section{Overview of Data Cleaning and Preparation}
-
-\begin{frame}{Definition of Data Cleaning}
-	\vspace{20pt}
-	
-	\begin{itemize}
-		\item \textbf{Definition:} Data cleaning identifies and fixes errors, inconsistencies, or inaccuracies to improve data quality.
-		
-		\item \textbf{Scope:} Handling missing values, removing duplicates, fixing typos, resolving inconsistencies.
-		
-		\item \textbf{Importance:} Ensures data for planning, monitoring, and customer analysis is reliable.
-		
-		\item \textbf{Example:} Wrong or inactive emails cause failed marketing campaigns, wasting resources.
-		
-		\item \textbf{Time:} Takes up to 80\% of analyst or data scientist time.
-		
-		\item \textbf{Impact:} Prevents costly mistakes like incorrect forecasts or compliance risks.
-		
-		\item \textbf{Foundation:} Enables meaningful, reliable insights from data preparation and analysis.
-	\end{itemize}
-	
-\end{frame}
+\section{Overview of Data Preparation}
 
 
 \begin{frame}{Definition of Data Preparation}
@@ -290,45 +269,25 @@ and Preparation}
 	\end{tikzpicture}
 \end{frame}
 
-
-
-\begin{frame}{Data Cleaning and Preparation}
+\begin{frame}{Definition of Data Cleaning}
 	\vspace{20pt}
 	
 	\begin{itemize}
-		\item Data cleaning and preparation are related but different concepts.
+		\item \textbf{Definition:} Data cleaning identifies and fixes errors, inconsistencies, or inaccuracies to improve data quality.
 		
-		\item \textbf{Data cleaning} is a sub-process of preparation focused on identifying and fixing errors, inconsistencies, and inaccuracies to ensure data quality.
+		\item \textbf{Scope:} Handling missing values, removing duplicates, fixing typos, resolving inconsistencies.
 		
-		\item \textbf{Data preparation} is broader, including cleaning plus integration (combining datasets), transformation (changing format or structure), reduction (selecting relevant variables or aggregating), and formatting (ensuring correct input formats).
+		\item \textbf{Importance:} Ensures data for planning, monitoring, and customer analysis is reliable.
 		
-		\item Simply, cleaning ensures data is correct and reliable, while preparation ensures data is ready for its purpose.
+		\item \textbf{Example:} Wrong or inactive emails cause failed marketing campaigns, wasting resources.
 		
-		\item Both are essential for accurate analysis and successful business decisions.
+		\item \textbf{Time:} Takes up to 80\% of analyst or data scientist time.
+		
+		\item \textbf{Impact:} Prevents costly mistakes like incorrect forecasts or compliance risks.
+		
+		\item \textbf{Foundation:} Enables meaningful, reliable insights from data preparation and analysis.
 	\end{itemize}
 	
-\end{frame}
-
-
-\begin{frame}{Key Data Cleaning Techniques and Examples}
-	\vspace{20pt}
-	\centering
-	\renewcommand{\arraystretch}{1.2}
-	\begin{tabular}{|p{0.3\textwidth}|p{0.6\textwidth}|}
-		\hline
-		\textbf{Data Cleaning Technique} & \textbf{Implementation Example} \\
-		\hline
-		Handling Missing Values & Imputing missing customer ages with the average of similar age groups \\
-		\hline
-		Handling Outliers & Log transformation on extreme income data to reduce influence \\
-		\hline
-		Data Normalisation & Min-Max scaling sales column to 0–1 scale before analysis \\
-		\hline
-		Removing Duplicates & Removing duplicate customer entries when merging data from two stores \\
-		\hline
-		Correcting Data Entry Errors & Correcting typos in product codes or standardising date formats \\
-		\hline
-	\end{tabular}
 \end{frame}
 
 \begin{frame}{Key Data Cleaning Techniques}
@@ -339,14 +298,15 @@ and Preparation}
 		
 		\item \textbf{Handling Outliers:} investigate outliers; remove or transform (e.g. log scaling) if needed.
 		
-		\item \textbf{Data Normalisation:} scale data to common ranges using Min-Max scaling or Z-score standardisation to avoid dominance by large-scale variables.
+		\item \textbf{Data Normalisation:} scale data to common ranges using e.g., Min-Max scaling standardisation, to avoid dominance by large-scale variables.
 		
 		\item \textbf{Removing Duplicates:} delete duplicate records to ensure each entity is counted once.
 		
 		\item \textbf{Fixing Input Errors:} correct typos and standardise formats such as dates or product codes.
 		
-		\item These techniques improve data quality and reliability for accurate business decisions.
-	\end{itemize}
+		
+	\end{itemize}anslate.google.com/
+	Improve data quality and reliability for accurate business decisions.
 	
 \end{frame}
 
@@ -642,9 +602,9 @@ and Preparation}
 	\begin{itemize}
 		\item \textbf{Identify data quality issues:}
 		\begin{itemize}
-			\item Missing CustomerID → delete or treat as anonymous.
-			\item Inconsistent product descriptions → standardise to title case.
-			\item Negative Quantity → classify as returns with indicator column.
+			\item Missing CustomerID $\rightarrow$ delete or treat as anonymous.
+			\item Inconsistent product descriptions $\rightarrow$ standardise to title case.
+			\item Negative Quantity $\rightarrow$ classify as returns with indicator column.
 		\end{itemize}
 	\end{itemize}
 	
@@ -663,8 +623,8 @@ and Preparation}
 		
 		\item \textbf{Plan data integration:}
 		\begin{itemize}
-			\item Create a new sheet with CustomerID, AgeGroup, LoyaltyStatus.
-			\item Propose left join on CustomerID for segmentation analysis.
+			\item Create a new hypothetical sheet with CustomerID, AgeGroup, LoyaltyStatus.
+			\item Propose right join on CustomerID for segmentation analysis.
 		\end{itemize}
 		
 		\item \textbf{Reflection:}
