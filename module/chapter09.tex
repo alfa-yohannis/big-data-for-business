@@ -662,11 +662,12 @@ Setiap sel dalam matriks menunjukkan jumlah instance yang diklasifikasikan pada 
 Dari nilai-nilai tersebut dapat dihitung ulang beberapa metrik dasar untuk validasi:
 
 \begin{itemize}
-	\item \textbf{Accuracy} = \( \frac{TP + TN}{TP + TN + FP + FN} = \frac{5 + 2}{14} = 0.500 \)
-	\item \textbf{Precision} = \( \frac{TP}{TP + FP} = \frac{5}{5 + 3} = 0.625 \)
-	\item \textbf{Recall} = \( \frac{TP}{TP + FN} = \frac{5}{5 + 4} = 0.556 \)
-	\item \textbf{F1 Score} = \( 2 \times \frac{Precision \times Recall}{Precision + Recall} \approx 0.588 \)
+	\item \textbf{Accuracy} = \( \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}} = \frac{\text{5} + \text{2}}{\text{14}} = \text{0.500} \)
+	\item \textbf{Precision} = \( \frac{\text{TP}}{\text{TP} + \text{FP}} = \frac{\text{5}}{\text{5} + \text{3}} = \text{0.625} \)
+	\item \textbf{Recall} = \( \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{\text{5}}{\text{5} + \text{4}} = \text{0.556} \)
+	\item \textbf{F1 Score} = \( 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \approx \text{0.588} \)
 \end{itemize}
+
 
 Perlu dicatat bahwa nilai-nilai metrik dari confusion matrix ini dapat sedikit berbeda dari rata-rata yang ditampilkan pada hasil \textit{Test and Score}, karena confusion matrix biasanya dihitung dari agregasi keseluruhan prediksi (bukan rata-rata per fold).
 
