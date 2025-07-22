@@ -343,305 +343,365 @@ Seluruh tahapan ini sebaiknya dilakukan dalam pendekatan iteratif dan kolaborati
 
 
 
-\section{Proyek Praktik: Prediksi Churn Pelanggan Menggunakan Orange}
+\section{Praktik Hands-On dengan Orange}
 
-Salah satu cara terbaik untuk memahami konsep supervised learning adalah melalui praktik langsung. Dalam bagian ini, mahasiswa akan mempelajari bagaimana membangun model prediksi churn pelanggan menggunakan perangkat lunak \textbf{Orange}, sebuah alat machine learning berbasis visual yang dirancang agar mudah digunakan bahkan oleh pengguna tanpa latar belakang teknis.
+\subsection{Langkah-langkah Menggunakan Orange}
 
-\subsection{Kenapa Menggunakan Orange?}
+Orange merupakan perangkat lunak open-source untuk analisis data dan pembelajaran mesin yang dirancang khusus bagi pengguna non-teknis. Dengan antarmuka visual berbasis \textit{drag-and-drop}, Orange memungkinkan mahasiswa untuk membangun alur analisis data secara intuitif tanpa memerlukan keterampilan pemrograman. Dalam praktik ini, mahasiswa akan memanfaatkan Orange untuk memvisualisasikan dan membangun model pohon keputusan berdasarkan dataset persetujuan pinjaman \texttt{loan.csv}.
 
-Orange adalah platform open-source untuk analisis data dan machine learning yang menyediakan pendekatan berbasis \textit{drag-and-drop} melalui antarmuka grafis. Tidak seperti banyak framework machine learning lain yang memerlukan pengetahuan pemrograman (seperti Python atau R), Orange memungkinkan pengguna membangun alur analisis (workflow) secara visual dengan menghubungkan blok-blok (widgets) seperti membaca data, memvisualisasi, melatih model, dan mengevaluasi performa.
+Berikut adalah langkah-langkah praktis yang dapat diikuti:
 
-Beberapa alasan utama mengapa Orange sangat cocok untuk mahasiswa non-IT dalam konteks bisnis dan manajemen:
-\begin{itemize}
-	\item \textbf{Tanpa Koding:} Semua proses dilakukan melalui antarmuka grafis, sehingga pengguna dapat fokus memahami konsep, bukan sintaks.
-	\item \textbf{Pendekatan Modular:} Setiap tahap machine learning—mulai dari preprocessing, training, hingga evaluasi—tersusun dalam blok yang dapat dihubungkan secara fleksibel.
-	\item \textbf{Visualisasi yang Kuat:} Orange mendukung berbagai visualisasi seperti scatter plot, confusion matrix, ROC curve, dan decision tree, yang sangat membantu dalam memahami dan menjelaskan hasil model kepada tim manajemen.
-	\item \textbf{Cepat untuk Eksplorasi:} Pengguna dapat mencoba berbagai algoritma hanya dengan mengganti blok model, tanpa harus menulis ulang kode.
-	\item \textbf{Cocok untuk Pembelajaran Terapan:} Orange sudah banyak digunakan dalam konteks pendidikan, khususnya untuk menjembatani teori machine learning dengan aplikasi praktis di dunia nyata.
-\end{itemize}
-
-Dengan menggunakan Orange, mahasiswa diharapkan tidak hanya memahami bagaimana supervised learning bekerja, tetapi juga dapat mengaplikasikannya langsung untuk menjawab tantangan bisnis seperti churn analysis secara intuitif dan kolaboratif, tanpa ha
-
-\subsection{Persiapan dan Instalasi}
-
-Sebelum memulai proyek prediksi churn pelanggan menggunakan Orange, langkah pertama adalah menyiapkan perangkat lunak dan memahami antarmuka utamanya. Orange dapat diinstal dengan mudah di sistem operasi Windows, macOS, maupun Linux tanpa memerlukan keahlian teknis.
-
-\subsubsection*{Langkah 1: Unduh dan Instal Orange}
-
-Orange dapat diunduh secara gratis melalui situs resminya:
-
-\begin{itemize}
-	\item \url{https://orangedatamining.com/download}
-\end{itemize}
-
-Pilih versi instalasi sesuai sistem operasi Anda:
-\begin{itemize}
-	\item Untuk pengguna \textbf{Windows}, cukup unduh dan jalankan \texttt{.exe} installer.
-	\item Untuk pengguna \textbf{macOS}, unduh file \texttt{.dmg} dan seret ikon Orange ke folder \texttt{Applications}.
-	\item Untuk pengguna \textbf{Linux}, instalasi dapat dilakukan melalui \texttt{pip} atau \texttt{conda}, namun disarankan menggunakan installer resmi atau versi portable (AppImage) untuk pemula.
-\end{itemize}
-
-Setelah instalasi selesai, jalankan aplikasi Orange dengan mengklik ikonnya di desktop atau di folder aplikasi Anda.
-
-\subsubsection*{Langkah 2: Mengenal Antarmuka Utama Orange}
-
-Setelah Orange terbuka, Anda akan melihat tampilan antarmuka grafis yang sederhana dan intuitif, terdiri dari beberapa komponen utama:
-
-\begin{itemize}
-	\item \textbf{Canvas Area:} Ruang kerja utama di mana pengguna menyusun alur (workflow) analisis dengan menghubungkan blok-blok (widgets).
-	\item \textbf{Widget Toolbox (di sebelah kiri):} Daftar kategori seperti \texttt{Data}, \texttt{Visualize}, \texttt{Model}, \texttt{Evaluate}, yang masing-masing berisi blok yang dapat digunakan untuk memuat data, menampilkan grafik, membangun model, dan menguji performa.
-	\item \textbf{Menu dan Toolbar (atas):} Untuk menyimpan dan membuka workflow, mengatur preferensi, atau mengakses add-on.
-	\item \textbf{Output Panels (popup):} Muncul ketika Anda membuka masing-masing widget, berisi konfigurasi dan hasil dari blok tersebut.
-\end{itemize}
-
-Setiap widget (misalnya \texttt{File}, \texttt{Scatter Plot}, \texttt{Logistic Regression}) cukup ditarik (drag) ke canvas dan dihubungkan dengan widget lain untuk membentuk alur kerja analisis.
-
-\subsubsection*{Catatan Penting}
-
-Orange secara default sudah menyediakan banyak widget yang cukup untuk supervised learning. Namun, jika diperlukan, Anda juga bisa menambahkan add-on seperti \texttt{Text Mining}, \texttt{Geo}, atau \texttt{Time Series} melalui menu \texttt{Options > Add-ons}.
-
-Dengan perangkat lunak yang sudah siap dan antarmuka yang mudah dipahami, mahasiswa dapat langsung memulai eksperimen membangun model prediksi churn pelanggan secara interaktif dan visual.
-
-\subsection{Deskripsi Dataset}
-
-Untuk proyek praktik ini, kita akan menggunakan \textbf{Telco Customer Churn Dataset}, sebuah dataset yang populer digunakan dalam pembelajaran prediktif untuk mengetahui apakah pelanggan akan berhenti menggunakan layanan (churn) atau tidak. Dataset ini disediakan dalam format CSV dan dapat diunduh dari berbagai sumber publik, termasuk Kaggle:
-
-\begin{itemize}
-	\item \url{https://www.kaggle.com/datasets/blastchar/telco-customer-churn}
-\end{itemize}
-
-Dataset ini berisi data pelanggan dari sebuah perusahaan layanan telekomunikasi fiktif, mencakup atribut demografis, data kontrak layanan, serta status keaktifan pelanggan.
-
-\subsubsection*{Tujuan Prediksi (Label)}
-
-Kolom target atau label yang ingin diprediksi adalah:
-\begin{itemize}
-	\item \texttt{Churn}: Menunjukkan apakah pelanggan berhenti menggunakan layanan (\texttt{Yes}) atau tidak (\texttt{No}).
-\end{itemize}
-
-Ini merupakan tugas \textbf{klasifikasi biner}, karena hanya ada dua kemungkinan output.
-
-\subsubsection*{Fitur Utama (Input)}
-
-Beberapa fitur penting (atribut input) yang dapat digunakan untuk membangun model prediksi antara lain:
-
-\begin{itemize}
-	\item \texttt{gender}: Jenis kelamin pelanggan (Male / Female).
-	\item \texttt{SeniorCitizen}: Apakah pelanggan berusia lanjut (0 = Tidak, 1 = Ya).
-	\item \texttt{Partner}: Apakah pelanggan memiliki pasangan.
-	\item \texttt{Dependents}: Apakah pelanggan memiliki tanggungan keluarga.
-	\item \texttt{tenure}: Lama pelanggan menggunakan layanan (dalam bulan).
-	\item \texttt{PhoneService}: Apakah pelanggan menggunakan layanan telepon.
-	\item \texttt{MultipleLines}: Apakah pelanggan memiliki lebih dari satu saluran.
-	\item \texttt{InternetService}: Jenis layanan internet (DSL, Fiber optic, atau No).
-	\item \texttt{OnlineSecurity}, \texttt{OnlineBackup}, \texttt{TechSupport}: Status layanan tambahan.
-	\item \texttt{Contract}: Tipe kontrak (Month-to-month, One year, Two year).
-	\item \texttt{PaperlessBilling}: Apakah menggunakan tagihan digital.
-	\item \texttt{PaymentMethod}: Metode pembayaran (Credit card, Bank transfer, dsb).
-	\item \texttt{MonthlyCharges}, \texttt{TotalCharges}: Jumlah biaya bulanan dan total biaya.
-\end{itemize}
-
-\subsubsection*{Catatan Pengolahan Data}
-
-Sebelum digunakan dalam Orange, pastikan dataset dalam format CSV telah:
-\begin{itemize}
-	\item Memiliki nilai yang lengkap (tidak kosong) pada kolom penting seperti \texttt{Churn}, \texttt{tenure}, dan \texttt{MonthlyCharges}.
-	\item Memiliki tipe data yang tepat — misalnya \texttt{TotalCharges} terkadang terbaca sebagai teks, perlu dikonversi menjadi angka.
-	\item Menggunakan label target \texttt{Churn} dalam format kategorikal (Yes/No) yang dikenali Orange sebagai variabel kelas.
-\end{itemize}
-
-Dataset ini mencerminkan situasi nyata yang umum dihadapi perusahaan telekomunikasi dan menyediakan konteks yang kuat bagi mahasiswa bisnis untuk memahami bagaimana machine learning dapat dimanfaatkan untuk retensi pelanggan.
-
- 
- 
-\subsection{Langkah-Langkah Workflow}
-
-Berikut adalah alur kerja (\textit{workflow}) langkah demi langkah yang dapat diikuti di Orange untuk membangun model prediksi churn pelanggan. Seluruh proses ini dilakukan secara visual, tanpa pemrograman, hanya dengan menghubungkan blok-blok (widget) di dalam canvas.
-
-\subsubsection*{1. Memuat Dataset dari File CSV}
-
-Gunakan widget \texttt{File} untuk memuat dataset \texttt{Telco-Customer-Churn.csv}. Pastikan:
-\begin{itemize}
-	\item Format file adalah CSV.
-	\item Kolom \texttt{Churn} diatur sebagai \texttt{Target} (label) oleh Orange secara otomatis, atau atur secara manual via \texttt{Select Columns}.
-\end{itemize}
-
-\textbf{Langkah:} Tambahkan widget \texttt{File} $\rightarrow$ Klik dua kali $\rightarrow$ Pilih file dataset.
-
-\subsubsection*{2. Eksplorasi Visualisasi Awal}
-
-Tambahkan widget \texttt{Box Plot} dan \texttt{Scatter Plot} untuk memahami distribusi data dan hubungan antar variabel.
-
-Contoh eksplorasi:
-\begin{itemize}
-	\item Box plot: Lihat distribusi \texttt{MonthlyCharges} berdasarkan status \texttt{Churn}.
-	\item Scatter plot: Amati hubungan antara \texttt{tenure} dan \texttt{TotalCharges}.
-\end{itemize}
-
-\textbf{Langkah:} Hubungkan \texttt{File} $\rightarrow$ \texttt{Box Plot} / \texttt{Scatter Plot}.
-
-\subsubsection*{3. Seleksi Atribut dan Prapemrosesan}
-
-Gunakan widget \texttt{Select Columns} untuk memilih fitur yang relevan dan membuang kolom tidak informatif (misalnya \texttt{customerID}).  
-Gunakan \texttt{Continuize} untuk mengubah variabel numerik jika dibutuhkan oleh algoritma.
-
-\textbf{Langkah:} Tambahkan \texttt{Select Columns} setelah \texttt{File}, lalu tentukan fitur yang akan digunakan dan label target.
-
-\subsubsection*{4. Split Data menjadi Training dan Testing}
-
-Gunakan widget \texttt{Data Sampler} untuk membagi data menjadi dua bagian:
-\begin{itemize}
-	\item 70\% untuk \texttt{Training set},
-	\item 30\% untuk \texttt{Testing set}.
-\end{itemize}
-
-\textbf{Langkah:} Tambahkan \texttt{Data Sampler} $\rightarrow$ atur \texttt{Proportion = 0.7} $\rightarrow$ output: \texttt{Data} dan \texttt{Remaining Data}.
-
-\subsubsection*{5. Pilih Algoritma: Decision Tree atau Logistic Regression}
-
-Tambahkan salah satu model berikut:
-\begin{itemize}
-	\item \texttt{Logistic Regression}: cocok untuk klasifikasi churn dengan output probabilistik.
-	\item \texttt{Tree}: cocok untuk interpretasi visual dan pembentukan aturan.
-\end{itemize}
-
-\textbf{Langkah:} Hubungkan \texttt{Training set} dari \texttt{Data Sampler} ke model pilihan.
-
-\subsubsection*{6. Evaluasi Hasil: Akurasi dan Confusion Matrix}
-
-Tambahkan widget \texttt{Test and Score} untuk mengevaluasi model menggunakan data testing.  
-Lanjutkan dengan \texttt{Confusion Matrix} untuk melihat distribusi prediksi benar dan salah.
-
-\begin{itemize}
-	\item Metrik utama: Accuracy, Precision, Recall, AUC.
-	\item Confusion Matrix: Prediksi vs Realitas (True Positives, False Negatives, dll).
-\end{itemize}
-
-\textbf{Langkah:} 
 \begin{enumerate}
-	\item Hubungkan \texttt{Model} dan \texttt{Testing set} ke \texttt{Test and Score}.
-	\item Hubungkan hasil dari \texttt{Test and Score} ke \texttt{Confusion Matrix}.
+	\item \textbf{Menginstal Orange:} 
+	Kunjungi \url{https://orangedatamining.com}. Unduh dan instal aplikasi Orange. Aplikasi ini tersedia untuk Windows, macOS, dan Linux tanpa perlu konfigurasi tambahan.
+	
+	\item \textbf{Mempersiapkan Dataset:} 
+	Gunakan dataset \texttt{data/loan.csv}\footnote{\url{https://u.pcloud.link/publink/show?code=kZnR3B5Z8TazEXoFXx7LJ4K87WksvXM0gu1X}} yang berisi data simulasi pengajuan pinjaman. Pastikan file disimpan dalam format \texttt{CSV} dan memiliki struktur kolom seperti: \texttt{employment\_status}, \texttt{income\_level}, \texttt{credit\_score}, \texttt{has\_collateral}, dan \texttt{loan\_approved}.
+	
+	\item \textbf{Membangun Workflow Analisis di Orange:}
+	Buka Orange dan buat alur kerja (workflow) baru. Tambahkan dan hubungkan komponen-komponen berikut secara berurutan:
+	\begin{itemize}
+		\item \textbf{File:} Digunakan untuk memuat dataset \texttt{loan.csv}.
+		\item \textbf{Data Table:} Menampilkan data dalam bentuk tabel dan memungkinkan eksplorasi awal.
+		\item \textbf{Select Columns:} Untuk menentukan atribut input (fitur) dan variabel target.
+		\item \textbf{Tree:} Komponen untuk membangun dan menampilkan model pohon keputusan.
+	\end{itemize}
+	
+	\item \textbf{Menentukan Target dan Fitur:} 
+	Pada komponen \texttt{Select Columns}, tetapkan \texttt{loan\_approved} sebagai variabel target. Atribut lainnya seperti \texttt{employment\_status}, \texttt{income\_level}, \texttt{credit\_score}, dan \texttt{has\_collateral} ditetapkan sebagai input features.
+	
+	\item \textbf{Menginterpretasikan Hasil:}
+	Perhatikan fitur mana yang paling berkontribusi terhadap keputusan akhir. Jalur logika pada pohon membantu mengidentifikasi kombinasi atribut yang mendukung persetujuan pinjaman, serta mengilustrasikan bagaimana lembaga keuangan dapat membentuk strategi seleksi kredit yang lebih baik.
 \end{enumerate}
 
-\subsubsection*{7. Interpretasi Pohon Keputusan dan Fitur Penting}
+Melalui praktik ini, mahasiswa tidak hanya mempelajari aspek teknis dari pohon keputusan, tetapi juga memahami bagaimana data historis dapat digunakan untuk menyusun kebijakan pinjaman yang berbasis data. Orange memberikan pengalaman langsung terhadap konsep \textit{self-service analytics}, di mana pengambil keputusan dapat melakukan eksplorasi data secara mandiri tanpa ketergantungan pada tim teknis \cite{demsar2013orange}. Konfigurasi alur kerja analisis ini di dalam Orange ditunjukkan pada Gambar~\ref{fig:pipeline-orange}.
 
-Jika menggunakan \texttt{Tree}, tambahkan widget \texttt{Tree Viewer} untuk menampilkan struktur pohon. Ini sangat bermanfaat bagi pengguna bisnis karena menunjukkan logika prediksi secara eksplisit.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/decision_tree_pipeline.png}
+	\caption{Konfigurasi pipeline Orange untuk membangun decision tree dari dataset \texttt{loan.csv}}
+	\label{fig:pipeline-orange}
+\end{figure}
 
-Hal-hal yang dapat dianalisis:
-\begin{itemize}
-	\item Jalur keputusan: misalnya, pelanggan dengan \texttt{tenure < 5 bulan} dan \texttt{MonthlyCharges > 70} cenderung churn.
-	\item Fitur yang paling sering muncul di cabang atas biasanya adalah fitur paling penting.
-\end{itemize}
 
-\textbf{Langkah:} Hubungkan \texttt{Tree} $\rightarrow$ \texttt{Tree Viewer}.
 
-\bigskip
 
-\noindent
-Dengan menyelesaikan workflow ini, mahasiswa akan memperoleh pengalaman langsung membangun model prediktif, menilai akurasinya, dan menerjemahkan hasilnya ke dalam wawasan yang berguna untuk pengambilan keputusan bisnis.
+\subsection{Membangun Decision Tree dari Dataset Pinjaman}
 
-\subsection{Interpretasi Bisnis}
+Setelah dataset \texttt{loan.csv} dimuat dan atribut target (\texttt{loan\_approved}) ditentukan, langkah selanjutnya adalah membangun model pohon keputusan untuk memprediksi kemungkinan persetujuan pinjaman oleh lembaga keuangan. Decision tree dipilih karena model ini bersifat transparan, mudah dipahami, dan dapat divisualisasikan secara hierarkis, sehingga sangat cocok untuk kebutuhan analisis manajerial dalam dunia keuangan \cite{camm2020business}.
 
-Setelah model machine learning dibangun dan dievaluasi, tahap berikutnya yang sangat penting adalah menginterpretasikan hasilnya dalam konteks bisnis. Tujuan utama dari prediksi churn bukan hanya mengetahui siapa yang kemungkinan besar akan berhenti berlangganan, tetapi bagaimana informasi tersebut dapat digunakan untuk mengambil keputusan yang tepat.
+Di dalam Orange, pembangunan decision tree dilakukan melalui komponen \texttt{Tree}. Komponen ini secara otomatis menghasilkan model klasifikasi berdasarkan variabel input yang telah ditentukan. Prosesnya meliputi:
 
-\subsubsection*{Makna Hasil Model}
+\begin{enumerate}
+	\item \textbf{Pemilihan Atribut Pemisah (Splitting Criteria):} Orange secara default menggunakan \textit{Information Gain} atau \textit{Gini Index} untuk menentukan atribut terbaik di setiap node. Atribut ini menjadi dasar pemisahan data yang paling informatif terhadap variabel target.
+	
+	\item \textbf{Pembuatan Struktur Pohon:} Setelah atribut terbaik ditemukan, data dibagi ke dalam cabang-cabang berdasarkan nilai atribut tersebut. Proses ini berlanjut secara rekursif hingga pohon selesai terbentuk atau mencapai batasan tertentu, seperti kedalaman maksimum.
+	
+	\item \textbf{Pengendalian Overfitting:} Untuk menghindari kompleksitas model yang berlebihan, Orange menyediakan pengaturan seperti pembatasan kedalaman maksimum (\texttt{Max depth}), jumlah minimum data per simpul, dan metode pruning. Pengaturan ini dapat disesuaikan untuk menjaga keseimbangan antara akurasi dan interpretabilitas.
+\end{enumerate}
 
-Hasil dari model supervised learning, seperti Logistic Regression atau Decision Tree, memberikan dua hal utama:
-\begin{itemize}
-	\item \textbf{Prediksi churn untuk setiap pelanggan:} apakah pelanggan diperkirakan akan churn (\texttt{Yes}) atau tidak (\texttt{No}).
-	\item \textbf{Probabilitas atau skor keyakinan model:} seberapa besar kemungkinan seorang pelanggan akan churn.
-\end{itemize}
-
-Model juga memberikan wawasan tentang fitur-fitur apa yang paling berpengaruh terhadap keputusan model, seperti:
-\begin{itemize}
-	\item Pelanggan dengan \texttt{tenure} (lama berlangganan) rendah lebih rentan churn.
-	\item Pelanggan dengan \texttt{MonthlyCharges} tinggi dan kontrak bulanan lebih sering churn dibandingkan mereka yang menggunakan kontrak jangka panjang.
-	\item Layanan seperti \texttt{OnlineSecurity} atau \texttt{TechSupport} dapat menjadi faktor retensi yang signifikan.
-\end{itemize}
-
-\subsubsection*{Keputusan Strategis yang Dapat Diambil}
-
-Dengan informasi tersebut, perusahaan dapat mengembangkan strategi retensi pelanggan yang lebih tepat sasaran, antara lain:
+Dalam praktik ini, mahasiswa disarankan untuk:
 
 \begin{itemize}
-	\item \textbf{Segmentasi Intervensi:} Fokuskan program retensi hanya pada pelanggan yang diprediksi akan churn, sehingga penggunaan anggaran lebih efisien.
-	\item \textbf{Personalisasi Penawaran:} Berikan insentif khusus (diskon, bonus layanan, upgrade) kepada pelanggan berisiko tinggi, terutama mereka yang memiliki potensi nilai jangka panjang.
-	\item \textbf{Perbaikan Layanan:} Jika banyak pelanggan churn karena faktor tertentu (misalnya tidak menggunakan layanan tambahan), maka perusahaan dapat melakukan edukasi atau bundling layanan.
-	\item \textbf{Desain Kontrak:} Model dapat membantu menentukan struktur kontrak yang lebih mengikat namun tetap menarik bagi pelanggan baru dan eksisting.
+	\item Membandingkan model pohon dengan kedalaman yang berbeda untuk memahami hubungan antara kompleksitas model dan kemudahan interpretasi.
+	\item Mengamati simpul keputusan utama (root node) dan mendiskusikan alasan atribut tersebut dipilih sebagai pemisah awal.
+	\item Mengevaluasi simpul daun (leaf nodes) untuk mengenali kombinasi karakteristik nasabah yang mengarah pada persetujuan (\texttt{Yes}) atau penolakan (\texttt{No}) pinjaman.
 \end{itemize}
 
-\subsubsection*{Dampak bagi Pengambilan Keputusan}
+Sebagai contoh, model dapat menunjukkan bahwa nasabah dengan status pekerjaan \texttt{Employed}, tingkat pendapatan \texttt{Medium}, skor kredit \texttt{Good}, dan memiliki jaminan (\texttt{has\_collateral = True}) cenderung lebih mungkin mendapatkan persetujuan pinjaman. Pola semacam ini dapat dijadikan dasar untuk menyusun kebijakan pemberian kredit yang lebih efisien dan berbasis data.
 
-Interpretasi hasil model secara tepat memungkinkan perusahaan:
+Melalui eksplorasi visual di Orange, mahasiswa dapat memahami bagaimana pohon keputusan bekerja serta bagaimana pola-pola dalam data nasabah diterjemahkan menjadi logika bisnis yang dapat diterapkan secara nyata \cite{demsar2013orange}. 
+
+\subsection{Visualisasi, Interpretasi Hasil, dan Insight Bisnis}
+
+Salah satu keunggulan utama dari decision tree adalah kemampuannya untuk divisualisasikan dalam bentuk diagram pohon yang mudah dibaca. Dalam Orange, hasil pemodelan decision tree dapat ditampilkan secara interaktif melalui komponen \texttt{Tree Viewer}, yang memperlihatkan struktur node dan cabang berdasarkan pembagian data pada setiap atribut. Hal ini memudahkan manajer dan analis non-teknis untuk memahami logika di balik klasifikasi yang dihasilkan \cite{camm2020business}.
+
+Setiap simpul dalam pohon menunjukkan kondisi yang digunakan untuk membagi data, seperti:
 \begin{itemize}
-	\item Mengantisipasi churn secara proaktif, bukan reaktif.
-	\item Membuat keputusan berdasarkan data, bukan hanya intuisi.
-	\item Meningkatkan ROI dari program loyalitas dan kampanye retensi.
-	\item Memperkuat pemahaman tentang perilaku pelanggan berdasarkan pola data historis.
+	\item \texttt{credit\_score = Good}
+	\item \texttt{has\_collateral = True}
+	\item \texttt{income\_level = Medium}
+\end{itemize}
+dan setiap cabang menunjukkan kemungkinan hasil berdasarkan kondisi tersebut. Simpul daun (leaf node) akan berisi prediksi akhir (\texttt{Yes} atau \texttt{No}), jumlah observasi yang masuk ke simpul tersebut, serta persentase distribusi kelas berdasarkan data pelatihan.
+
+Interpretasi dari hasil ini dapat membantu mahasiswa menjawab pertanyaan strategis, seperti:
+\begin{itemize}
+	\item Profil nasabah seperti apa yang paling mungkin disetujui pengajuan pinjamannya?
+	\item Atribut mana yang paling menentukan keputusan persetujuan kredit?
+	\item Bagaimana alur logika model dapat mendukung kebijakan pinjaman yang berbasis segmentasi risiko?
 \end{itemize}
 
-Dengan demikian, model machine learning bukan sekadar alat teknis, tetapi menjadi \textbf{sumber wawasan strategis} yang mendukung manajemen dalam menciptakan pengalaman pelanggan yang lebih baik dan memperpanjang siklus hidup pelanggan secara berkelanjutan.
+Sebagai contoh, hasil visualisasi dapat menunjukkan bahwa nasabah yang:
+\begin{enumerate}
+	\item memiliki skor kredit \texttt{Good},
+	\item memiliki jaminan (\texttt{has\_collateral = True}), dan
+	\item bekerja sebagai \texttt{Employed},
+\end{enumerate}
+memiliki probabilitas tinggi untuk mendapatkan persetujuan pinjaman. Struktur pohon keputusan yang dihasilkan dari dataset \texttt{loan.csv} ditampilkan pada Gambar~\ref{fig:loan-tree}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{../figures/loan_tree.png}
+	\caption{Visualisasi pohon keputusan hasil pemodelan dari dataset \texttt{loan.csv} di Orange}
+	\label{fig:loan-tree}
+\end{figure}
+
+Insight dari model ini dapat dimanfaatkan oleh manajer risiko dan analis kredit untuk:
+\begin{itemize}
+	\item memprioritaskan aplikasi dari segmen berisiko rendah,
+	\item menyusun kriteria kelayakan pinjaman yang lebih akurat, serta
+	\item meningkatkan efisiensi dalam proses evaluasi kredit.
+\end{itemize}
+
+Visualisasi pohon keputusan juga memfasilitasi pendekatan \textit{what-if analysis}, di mana pengguna dapat menelusuri bagaimana perubahan pada atribut tertentu (misalnya, status pekerjaan atau keberadaan jaminan) dapat mengubah hasil prediksi. Ini menjadi sarana pembelajaran eksploratif yang sangat bermanfaat bagi mahasiswa manajemen yang sedang mempelajari konsep dasar analisis prediktif dan pengambilan keputusan berbasis data \cite{demsar2013orange}.
+
+Dengan demikian, decision tree tidak hanya memberikan akurasi prediksi, tetapi juga mendukung penyusunan strategi bisnis yang lebih berbasis fakta, terukur, dan dapat dikomunikasikan secara lintas fungsi dalam organisasi.
+
+
+\subsection{Eksplorasi Skema What-If dan Segmentasi Nasabah}
+
+Salah satu keunggulan utama dari decision tree dalam konteks manajerial adalah kemampuannya untuk digunakan dalam eksplorasi skenario “what-if”. Pendekatan ini memungkinkan pengguna untuk mengevaluasi bagaimana perubahan nilai pada satu atau lebih atribut dapat memengaruhi hasil prediksi. Dalam Orange, mahasiswa dapat secara visual mengikuti jalur dalam pohon keputusan dan mengganti nilai atribut untuk melihat dampaknya terhadap keputusan akhir \cite{demsar2013orange}.
+
+Sebagai contoh, jika seorang calon peminjam awalnya memiliki atribut:
+\begin{itemize}
+	\item \texttt{employment\_status = Unemployed},
+	\item \texttt{credit\_score = Bad},
+	\item \texttt{has\_collateral = False},
+\end{itemize}
+dan hasil prediksi menunjukkan \texttt{loan\_approved = No}, maka mahasiswa dapat mengganti nilai atribut menjadi:
+\begin{itemize}
+	\item \texttt{employment\_status = Employed},
+	\item \texttt{credit\_score = Good},
+	\item \texttt{has\_collateral = True},
+\end{itemize}
+untuk mengevaluasi apakah keputusan model berubah menjadi \texttt{loan\_approved = Yes}. Analisis seperti ini memberikan pemahaman mendalam tentang pengaruh relatif dari setiap atribut, serta dapat digunakan untuk menyusun kebijakan penyaringan kredit yang lebih adaptif.
+
+Selain itu, decision tree juga secara alami menghasilkan \textbf{segmentasi nasabah} yang terstruktur. Setiap jalur dari root ke simpul daun dalam pohon merepresentasikan satu segmen dengan karakteristik unik. Misalnya, sebuah simpul daun mungkin berisi informasi seperti:
+
+\begin{quote}
+	“Nasabah dengan \texttt{employment\_status = Employed}, \texttt{income\_level = Medium}, \texttt{credit\_score = Good}, dan \texttt{has\_collateral = True} memiliki probabilitas tinggi untuk disetujui pinjamannya.”
+\end{quote}
+
+Segmentasi ini dapat dimanfaatkan oleh tim kredit atau manajemen risiko untuk:
+\begin{enumerate}
+	\item Menyusun kebijakan pinjaman yang lebih terarah berdasarkan profil peminjam yang berpotensi disetujui.
+	\item Menyesuaikan persyaratan kredit dan skema bunga sesuai dengan karakteristik segmen tertentu.
+	\item Melakukan prioritisasi pemrosesan aplikasi berdasarkan risiko dan potensi pengembalian.
+\end{enumerate}
+
+Pendekatan ini mendukung konsep \textit{data-driven segmentation}, di mana pengelompokan nasabah tidak hanya didasarkan pada intuisi, tetapi pada bukti empiris yang terstruktur dari hasil analitik. Dengan demikian, decision tree tidak hanya bertindak sebagai alat prediksi, tetapi juga sebagai alat eksplorasi strategi dan penyusunan kebijakan bisnis yang lebih presisi dan efektif \cite{camm2020business}.
+
+Melalui eksplorasi skenario dan segmentasi ini, mahasiswa diharapkan mampu mengembangkan wawasan kritis dalam menyusun kebijakan keuangan atau layanan pelanggan yang responsif terhadap karakteristik dan perilaku peminjam yang berbeda-beda.
+
 
 
 \section{Evaluasi Model dan Ukuran Kinerja}
 
-Evaluasi model merupakan tahap krusial dalam supervised learning karena membantu menentukan apakah model yang dibangun mampu memberikan prediksi yang akurat dan bermanfaat dalam konteks bisnis. Dalam kasus prediksi churn pelanggan, kesalahan dalam memprediksi siapa yang akan berhenti dapat berdampak langsung terhadap strategi retensi dan efisiensi biaya.
+Evaluasi model merupakan tahap krusial dalam supervised learning karena membantu menentukan apakah model yang dibangun mampu memberikan prediksi yang akurat dan relevan secara bisnis. Dalam konteks prediksi persetujuan pinjaman seperti pada praktik dengan Orange, evaluasi ini sangat penting untuk memastikan bahwa keputusan yang diambil berdasarkan model akan memberikan dampak positif terhadap efektivitas strategi kredit.
 
-Beberapa ukuran kinerja utama yang umum digunakan adalah sebagai berikut:
+Orange menyediakan berbagai metrik evaluasi melalui komponen \texttt{Test \& Score}, yang dapat dihubungkan langsung ke model decision tree dan dataset. Komponen ini menghitung ukuran-ukuran kinerja utama seperti \textbf{accuracy}, \textbf{precision}, \textbf{recall}, dan \textbf{F1-score}, serta menyajikan ringkasan hasil dalam format tabel sederhana yang mudah dipahami. Berikut adalah penjelasan dari masing-masing metrik dan relevansinya dalam konteks bisnis:
 
 \subsection*{1. Akurasi (Accuracy)}
 
-Akurasi menunjukkan seberapa besar proporsi prediksi model yang benar dibandingkan dengan seluruh data. Misalnya, jika dari 100 pelanggan model berhasil memprediksi 85 dengan benar (baik churn maupun tidak churn), maka akurasinya adalah 85\%.
+Akurasi menunjukkan proporsi keseluruhan prediksi yang benar dibandingkan dengan total data. Misalnya, jika model memproses 100 data pengajuan pinjaman dan menghasilkan 85 prediksi yang sesuai dengan kenyataan, maka akurasinya adalah 85\%.
 
-\textbf{Kelebihan:} Mudah dipahami dan dihitung.  
-\textbf{Kekurangan:} Tidak selalu mencerminkan performa sebenarnya, terutama jika data tidak seimbang (misalnya 90\% pelanggan tidak churn).
+\textbf{Kelebihan:} Mudah dihitung dan dipahami.  
+\textbf{Kekurangan:} Bisa menyesatkan jika distribusi kelas tidak seimbang, misalnya jika sebagian besar aplikasi pinjaman memang disetujui.
 
 \subsection*{2. Precision}
 
-Precision mengukur dari seluruh prediksi churn, berapa banyak yang benar-benar churn.  
+Precision mengukur ketepatan model dalam memprediksi persetujuan pinjaman. Ini menunjukkan berapa banyak dari seluruh prediksi \texttt{Yes} (disetujui) yang memang benar-benar disetujui dalam kenyataannya.
+
 \[
 \text{Precision} = \frac{\text{True Positives}}{\text{True Positives + False Positives}}
 \]
 
-\textbf{Contoh:} Jika model memprediksi 40 pelanggan akan churn, tetapi hanya 30 yang benar-benar churn, maka precision = 75\%.
+\textbf{Contoh:} Jika model memprediksi 40 pengajuan akan disetujui, tetapi hanya 30 yang benar-benar disetujui, maka precision = 75\%.
 
-\textbf{Konteks bisnis:} Precision penting ketika biaya mengintervensi pelanggan yang sebenarnya tidak akan churn cukup tinggi (misalnya diskon atau insentif yang sia-sia).
+\textbf{Konteks bisnis:} Precision tinggi berarti lembaga keuangan tidak terlalu banyak menyetujui pinjaman untuk peminjam yang sebenarnya berisiko.
 
 \subsection*{3. Recall (Sensitivity)}
 
-Recall mengukur dari seluruh pelanggan yang benar-benar churn, berapa yang berhasil diprediksi oleh model.
+Recall menunjukkan seberapa baik model dalam menemukan semua kasus persetujuan pinjaman yang seharusnya disetujui. Ini mengukur kemampuan model menangkap seluruh data positif yang benar.
 
 \[
 \text{Recall} = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}
 \]
 
-\textbf{Contoh:} Jika ada 50 pelanggan yang benar-benar churn, dan model hanya berhasil mendeteksi 30, maka recall = 60\%.
+\textbf{Contoh:} Jika ada 50 pengajuan yang seharusnya disetujui, dan model hanya berhasil menangkap 30, maka recall = 60\%.
 
-\textbf{Konteks bisnis:} Recall penting jika perusahaan ingin meminimalkan jumlah pelanggan yang hilang tanpa intervensi.
+\textbf{Konteks bisnis:} Recall tinggi penting untuk memastikan lembaga tidak kehilangan peluang dari nasabah yang sebenarnya layak menerima pinjaman.
 
 \subsection*{4. F1-Score}
 
-F1-score adalah harmonisasi antara precision dan recall. Cocok digunakan ketika kita ingin menyeimbangkan antara kesalahan prediksi positif palsu (false positives) dan negatif palsu (false negatives).
+F1-score adalah ukuran keseimbangan antara precision dan recall, menggunakan rata-rata harmonis dari keduanya. Metode ini digunakan ketika kedua aspek—ketepatan dan kelengkapan—sama pentingnya.
 
 \[
 \text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \]
 
-\textbf{Konteks bisnis:} F1-score sangat berguna saat data tidak seimbang atau saat kita tidak hanya fokus pada satu metrik.
+\textbf{Konteks bisnis:} F1-score menjadi pilihan utama ketika lembaga ingin menghindari terlalu banyak kesalahan prediksi dalam dua arah: menyetujui pinjaman yang seharusnya ditolak, dan menolak pinjaman yang seharusnya disetujui.
 
-\subsection*{Memilih Metrik yang Sesuai dengan Tujuan Bisnis}
+\subsection*{Pemilihan Metrik Berdasarkan Tujuan Analisis}
 
-Dalam dunia nyata, tidak ada satu metrik yang “terbaik” untuk semua situasi. Pemilihan metrik harus disesuaikan dengan tujuan bisnis:
+Tidak ada satu metrik yang selalu paling cocok dalam semua situasi. Pemilihan metrik harus disesuaikan dengan strategi dan konteks bisnis:
 
 \begin{itemize}
-	\item Jika \textbf{biaya kehilangan pelanggan sangat tinggi}, maka recall menjadi prioritas (lebih baik memprediksi lebih banyak kemungkinan churn, meskipun ada beberapa false positives).
-	\item Jika \textbf{biaya intervensi mahal} (misalnya memberikan diskon), precision lebih penting agar intervensi hanya dilakukan pada pelanggan yang benar-benar berisiko.
-	\item Jika kedua biaya sama penting, gunakan F1-score untuk menyeimbangkan keduanya.
+	\item Jika \textbf{risiko kredit macet sangat tinggi}, maka precision lebih diutamakan untuk menghindari persetujuan kepada peminjam yang tidak layak.
+	\item Jika \textbf{lembaga ingin meningkatkan inklusi keuangan}, recall menjadi penting agar tidak banyak peminjam yang layak justru ditolak.
+	\item Jika ingin \textbf{menyeimbangkan kedua risiko tersebut}, maka F1-score digunakan untuk memberikan gambaran performa yang lebih proporsional.
 \end{itemize}
 
-Sebagai bagian dari proses evaluasi, Orange menyediakan metrik ini secara otomatis melalui widget \texttt{Test \& Score} dan visualisasi melalui \texttt{Confusion Matrix}. Hal ini memudahkan pengguna non-teknis untuk memahami performa model dan menentukan langkah strategis berdasarkan hasil evaluasi tersebut.
+Melalui pendekatan ini, mahasiswa tidak hanya memahami angka-angka dari hasil evaluasi model, tetapi juga bagaimana mengaitkan metrik tersebut dengan dampaknya terhadap strategi dan kebijakan bisnis. Orange menyediakan platform evaluasi yang ramah pengguna sehingga proses penilaian performa model dapat dilakukan secara visual, iteratif, dan intuitif tanpa memerlukan pemrograman.
+
+\section{Evaluasi Praktik Hands-On}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../figures/decision_tree_results.png}
+	\caption{Hasil evaluasi model Decision Tree pada Orange.}
+\end{figure}
+
+Evaluasi dilakukan menggunakan perangkat lunak \textit{Orange} untuk menilai kinerja model \textit{Decision Tree} terhadap dataset klasifikasi. Evaluasi dilakukan melalui widget \textit{Test and Score} dengan konfigurasi sebagai berikut:
+
+\begin{itemize}
+	\item \textbf{Metode evaluasi:} Cross Validation
+	\item \textbf{Jumlah fold:} 3 (3-Fold Cross Validation)
+	\item \textbf{Stratified:} Dicentang (Stratified)
+	\item \textbf{Model:} Decision Tree
+\end{itemize}
+
+\textbf{Cross Validation} adalah teknik evaluasi di mana dataset dibagi menjadi beberapa bagian yang disebut \textit{fold}. Dalam konfigurasi 3-fold, data dibagi menjadi tiga bagian yang seimbang. Setiap fold secara bergiliran digunakan sebagai data uji, sementara dua fold lainnya digunakan sebagai data latih. Proses ini dilakukan sebanyak tiga kali, dan hasil evaluasi dirata-ratakan.
+
+\textbf{Stratified Cross Validation} berarti bahwa distribusi kelas (label) dalam setiap fold dibuat serupa dengan distribusi asli pada dataset. Ini penting untuk menghindari ketimpangan kelas di salah satu fold, terutama pada data klasifikasi dengan distribusi tidak seimbang.
+
+\subsection*{Hasil Evaluasi}
+
+Berikut adalah nilai-nilai metrik yang dihasilkan dari proses evaluasi model Decision Tree:
+
+\begin{center}
+	\begin{tabular}{|l|c|}
+		\hline
+		\textbf{Metrik} & \textbf{Nilai} \\
+		\hline
+		AUC (Area Under Curve) & 0.567 \\
+		CA (Classification Accuracy) & 0.500 \\
+		F1 Score & 0.508 \\
+		Precision & 0.521 \\
+		Recall & 0.500 \\
+		MCC (Matthews Correlation Coefficient) & -0.043 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Interpretasi Hasil Evaluasi}
+
+\begin{itemize}
+	\item \textbf{AUC (Area Under Curve)} mengukur kemampuan model untuk membedakan antar kelas. Nilai 0.567 sedikit di atas nilai acak (0.5), artinya model memiliki kemampuan terbatas untuk membedakan kelas target.
+	
+	\item \textbf{Classification Accuracy (CA)} sebesar 0.500 menunjukkan bahwa hanya 50\% dari seluruh prediksi model yang sesuai dengan label sebenarnya. Ini berarti model hanya benar separuh waktu.
+	
+	\item \textbf{F1 Score} adalah rata-rata harmonis antara precision dan recall. Nilai 0.508 menunjukkan bahwa performa model cukup seimbang antara kemampuan mengenali kelas positif dan ketepatan dalam prediksi, tetapi masih berada di level sedang.
+	
+	\item \textbf{Precision} sebesar 0.521 berarti dari semua prediksi positif yang diberikan oleh model, sekitar 52.1\% di antaranya benar-benar positif.
+	
+	\item \textbf{Recall} sebesar 0.500 berarti bahwa model berhasil mengenali 50\% dari seluruh data yang seharusnya berlabel positif.
+	
+	\item \textbf{Matthews Correlation Coefficient (MCC)} sebesar -0.043 menunjukkan hampir tidak ada korelasi antara hasil prediksi model dan label sebenarnya. Nilai mendekati nol mengindikasikan bahwa model belum menunjukkan performa klasifikasi yang baik.
+\end{itemize}
+
+\subsection*{Kesimpulan Sementara}
+
+Meskipun hasil evaluasi lebih baik dibandingkan sebelumnya, performa model Decision Tree masih tergolong rendah. AUC yang sedikit di atas 0.5 menunjukkan bahwa model belum optimal dalam membedakan antar kelas. Kemungkinan penyebabnya adalah:
+
+\begin{enumerate}
+	\item \textbf{Kompleksitas data yang tinggi} atau pola antar fitur yang tidak cukup kuat untuk dipelajari oleh model Decision Tree.
+	\item \textbf{Ukuran dataset yang terbatas} menyebabkan model belum mampu generalisasi dengan baik.
+	\item \textbf{Distribusi fitur yang kurang informatif} terhadap target variabel.
+\end{enumerate}
 
 
+\section{Analisis Confusion Matrix}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../figures/decision_tree_confusion_matrix.png}
+	\caption{Confusion Matrix untuk model Decision Tree pada Orange.}
+\end{figure}
+
+Confusion matrix digunakan untuk melihat secara detail performa klasifikasi berdasarkan jumlah prediksi yang benar dan salah pada masing-masing kelas. Gambar di atas menunjukkan hasil confusion matrix dari model \textit{Decision Tree} dengan dua kelas: \texttt{no} dan \texttt{yes}. 
+
+Setiap sel dalam matriks menunjukkan jumlah instance yang diklasifikasikan pada masing-masing kombinasi kelas aktual dan kelas prediksi. Baris menyatakan label aktual, sedangkan kolom menyatakan prediksi model.
+
+\subsection*{Isi Matriks}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		& \textbf{Predicted: no} & \textbf{Predicted: yes} & \textbf{Total (Aktual)} \\
+		\hline
+		\textbf{Actual: no} & 2 (True Negative) & 3 (False Positive) & 5 \\
+		\textbf{Actual: yes} & 4 (False Negative) & 5 (True Positive) & 9 \\
+		\hline
+		\textbf{Total (Prediksi)} & 6 & 8 & 14 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Interpretasi}
+
+\begin{itemize}
+	\item \textbf{True Positive (TP):} 5 — Kasus \texttt{yes} yang diprediksi benar sebagai \texttt{yes}.
+	\item \textbf{True Negative (TN):} 2 — Kasus \texttt{no} yang diprediksi benar sebagai \texttt{no}.
+	\item \textbf{False Positive (FP):} 3 — Kasus \texttt{no} yang salah diprediksi sebagai \texttt{yes}.
+	\item \textbf{False Negative (FN):} 4 — Kasus \texttt{yes} yang salah diprediksi sebagai \texttt{no}.
+\end{itemize}
+
+\subsection*{Perhitungan Metrik Berdasarkan Confusion Matrix}
+
+Dari nilai-nilai tersebut dapat dihitung ulang beberapa metrik dasar untuk validasi:
+
+\begin{itemize}
+	\item \textbf{Accuracy} = \( \frac{TP + TN}{TP + TN + FP + FN} = \frac{5 + 2}{14} = 0.500 \)
+	\item \textbf{Precision} = \( \frac{TP}{TP + FP} = \frac{5}{5 + 3} = 0.625 \)
+	\item \textbf{Recall} = \( \frac{TP}{TP + FN} = \frac{5}{5 + 4} = 0.556 \)
+	\item \textbf{F1 Score} = \( 2 \times \frac{Precision \times Recall}{Precision + Recall} \approx 0.588 \)
+\end{itemize}
+
+Perlu dicatat bahwa nilai-nilai metrik dari confusion matrix ini dapat sedikit berbeda dari rata-rata yang ditampilkan pada hasil \textit{Test and Score}, karena confusion matrix biasanya dihitung dari agregasi keseluruhan prediksi (bukan rata-rata per fold).
+
+\subsection*{Kesimpulan}
+
+Model Decision Tree masih menunjukkan performa yang moderat. Dari confusion matrix terlihat bahwa model lebih sering salah dalam memprediksi kelas \texttt{yes} sebagai \texttt{no} (FN = 4), dan juga melakukan sejumlah kesalahan dalam memprediksi \texttt{no} sebagai \texttt{yes} (FP = 3). Untuk meningkatkan akurasi, disarankan eksplorasi model lain, tuning parameter, serta pemilihan fitur yang lebih relevan.
+
+
+\section{Latihan Mandiri: Karakterisasi Churn Pelanggan dengan Decision Tree}
+
+Gunakan dataset \textit{Telco Customer Churn} dari Kaggle untuk membangun model prediksi menggunakan decision tree di Orange. Dataset ini berisi data pelanggan layanan telekomunikasi dan status churn mereka (\texttt{Churn = Yes/No}).
+
+\subsection*{Langkah Praktik}
+
+\begin{enumerate}
+	\item Kunjungi \url{https://www.kaggle.com/datasets/blastchar/telco-customer-churn}, kemudian unduh dataset.
+	\item Buka Orange dan buat alur kerja (\textit{workflow}) dengan komponen. 
+	\begin{itemize}
+		\item \texttt{File} – untuk memuat \texttt{Telco-Customer-Churn.csv}
+		\item \texttt{Select Columns} – atur \texttt{Churn} sebagai target
+		\item \texttt{Data Table} – untuk melihat isi data
+		\item \texttt{Tree} – untuk membangun model decision tree
+	\end{itemize}
+	\item Jalankan model dan amati atribut yang paling memengaruhi churn.
+	\item Tampilkan hasil pohon dan simpulkan hasil analisis.
+\end{enumerate}
+
+\subsection*{Output yang Diharapkan}
+
+\begin{itemize}
+	\item Visual pohon keputusan dari Orange.
+	\item Ringkasan interpretasi simpul utama.
+	\item Rekomendasi singkat berdasarkan hasil model.
+	\item Hasil Evaluasi
+\end{itemize}
 
 
 \section{Rangkuman}
