@@ -1,0 +1,15 @@
+employment_status,income_level,credit_score,has_collateral,loan_approved
+unemployed,high,bad,False,no
+unemployed,high,bad,True,no
+self-employed,high,bad,False,yes
+employed,medium,bad,False,yes
+employed,low,good,False,yes
+employed,low,good,True,no
+self-employed,low,good,True,yes
+unemployed,medium,bad,False,no
+unemployed,low,good,False,yes
+employed,medium,good,False,yes
+unemployed,medium,good,True,yes
+self-employed,medium,bad,True,yes
+self-employed,high,good,False,yes
+employed,medium,bad,True,no
