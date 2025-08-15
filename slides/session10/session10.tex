@@ -82,7 +82,7 @@ showstringspaces=false
 	%	showstringspaces=false
 }
 
-\title{\Huge Intro to Supervised \\
+\title{\Huge Intro to Unsupervised \\
 \vspace{10pt}
 Machine Learning}
 \subtitle{IT140704 - Big Data for Business}
@@ -203,18 +203,123 @@ Machine Learning}
 	\textbf{Cons:} Requires \(k\), sensitive to outliers, assumes spherical clusters
 \end{frame}
 
+\begin{frame}{k-means Clustering (Iteration Illustration)}
+	\vspace{20pt}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[scale=.8]
+			
+			% ---------- Cluster A (red) ----------
+			% points
+			\foreach \x/\y in {0.1/0.3, -0.3/-0.2, 0.2/-0.5, -0.4/0.4, 0.5/0.1} {
+				\fill[red] (\x,\y) circle (2pt);
+			}
+			% old centroid (hollow) and new centroid (x), with update arrow
+			\draw[red,thick] (-0.4,0.2) circle (3pt);
+			\draw[->,red,thick] (-0.4,0.2) -- (0,0);
+			\node[red!70!black] at (0,0) {\large $\times$};
+			\node[red!70!black] at (0,-1.0) {\small Cluster A};
+			
+			% ---------- Cluster B (blue) ----------
+			\foreach \x/\y in {3.7/0.8, 4.1/0.2, 4.2/0.7, 3.9/1.1, 4.3/0.4} {
+				\fill[blue] (\x,\y) circle (2pt);
+			}
+			\draw[blue,thick] (4.4,0.3) circle (3pt);
+			\draw[->,blue,thick] (4.4,0.3) -- (4,0.5);
+			\node[blue!70!black] at (4,0.5) {\large $\times$};
+			\node[blue!70!black] at (4,-0.9) {\small Cluster B};
+			
+			% ---------- Cluster C (green) ----------
+			\foreach \x/\y in {1.8/2.7, 2.3/3.2, 2.1/3.3, 1.7/3.1, 2.4/2.8} {
+				\fill[green!60!black] (\x,\y) circle (2pt);
+			}
+			\draw[green!60!black,thick] (1.6,2.6) circle (3pt);
+			\draw[->,green!60!black,thick] (1.6,2.6) -- (2,3);
+			\node[green!50!black] at (2,3) {\large $\times$};
+			\node[green!50!black] at (2,1.6) {\small Cluster C};
+			
+%			% ---------- (Optional) rough Voronoi-style separators ----------
+%			% These are illustrative dashed dividers between centroids.
+%			\draw[gray!70,dashed] (2,-1.5) -- (2,3.8);   % approx between A (0,0) and B (4,0.5)
+%			\draw[gray!70,dashed,rotate around={35:(2,1.5)}] (2,-1.2) -- (2,4.0); % approx between A and C
+%			\draw[gray!70,dashed,rotate around={-25:(3,2)}] (2.2,-1.0) -- (3.8,4.2); % approx between B and C
+			
+			% ---------- Axes ----------
+			\draw[->, thick] (-1.5, -1.5) -- (5.5, -1.5) node[right] {\small Feature 1};
+			\draw[->, thick] (-1.5, -1.5) -- (-1.5, 4) node[above] {\small Feature 2};
+			
+		\end{tikzpicture}
+		\caption{k-means clustering with $k=3$: points are assigned to the nearest centroid; centroids (×) are updated to the mean of their assigned points (arrows show movement from previous centroids ○).}
+		\label{fig:kmeans-tikz}
+	\end{figure}
+\end{frame}
+
+
 \begin{frame}{Hierarchical Clustering}
 	Hierarchical clustering builds a tree-like structure (dendrogram) to group data based on distance.
 	
 	\textbf{Approaches:}
 	\begin{itemize}
 		\item \textbf{Agglomerative:} Start with individual points, merge upward
-		\item \textbf{Divisive:} Start with all points, split downward
 	\end{itemize}
 	
 	\textbf{Pros:} No need to set number of clusters, useful for visualizing group structure  
 	\textbf{Cons:} Inefficient on large datasets, not easily updated
 \end{frame}
+
+\begin{frame}{Hierarchical Clustering Dendrogram}
+	\vspace{15pt}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[scale=1.5, font=\small]
+			% merge heights
+			\def\hAB{0.8}\def\hCD{0.9}\def\hEF{0.5}\def\hABCD{1.6}\def\hALL{2.3}
+			
+			% leaves (x positions)
+			\node (A) at (0,-0.2) {A};
+			\node (B) at (1.2,-0.2) {B};
+			\node (C) at (2.4,-0.2) {C};
+			\node (D) at (3.6,-0.2) {D};
+			\node (E) at (4.8,-0.2) {E};
+			\node (F) at (6.0,-0.2) {F};
+			
+			% AB merge
+			\draw (0,0) -- (0,\hAB);
+			\draw (1.2,0) -- (1.2,\hAB);
+			\draw (0,\hAB) -- (1.2,\hAB);
+			\draw (0.6,\hAB) -- (0.6,\hABCD);   % midpoint up
+			
+			% CD merge
+			\draw (2.4,0) -- (2.4,\hCD);
+			\draw (3.6,0) -- (3.6,\hCD);
+			\draw (2.4,\hCD) -- (3.6,\hCD);
+			\draw (3.0,\hCD) -- (3.0,\hABCD);   % midpoint up
+			
+			% connect AB and CD at \hABCD
+			\draw (0.6,\hABCD) -- (3.0,\hABCD);
+			\draw (1.8,\hABCD) -- (1.8,\hALL);  % midpoint up to next level
+			
+			% EF merge
+			\draw (4.8,0) -- (4.8,\hEF);
+			\draw (6.0,0) -- (6.0,\hEF);
+			\draw (4.8,\hEF) -- (6.0,\hEF);
+			\draw (5.4,\hEF) -- (5.4,\hALL);    % midpoint up
+			
+			% final merge at \hALL
+			\draw (1.8,\hALL) -- (5.4,\hALL);
+			
+			% cut line
+			\draw[red,dashed] (-0.4,1.1) -- (6.4,1.1);
+			
+			% y-axis label
+			\node[rotate=90, anchor=south] at (-0.9,1.15) {\small Dissimilarity};
+		\end{tikzpicture}
+		\caption{Example dendrogram showing merge heights }
+		\label{fig:hierarchical-dendrogram}
+	\end{figure}
+\end{frame}
+
+
 
 \begin{frame}{DBSCAN Clustering}
 	DBSCAN groups data based on density, not distance. Points with sufficient neighbors form a cluster; isolated points are marked as noise.
@@ -225,9 +330,83 @@ Machine Learning}
 		\item Detects outliers automatically
 	\end{itemize}
 	
-	\textbf{Pros:} No need to set \(k\), handles irregular shapes, robust to noise  
+	\textbf{Pros:} No need to set \(k\), handles irregular shapes, robust to noise
+	 
 	\textbf{Cons:} Sensitive to parameters, struggles with high-dimensional data
 \end{frame}
+
+\begin{frame}{DBSCAN: Core, Border, and Noise}
+	\vspace{20pt}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[scale=1.2]
+			
+			% ----- Parameters -----
+			\def\eps{0.55} % epsilon radius for illustration
+			
+			% ----- Cluster A (left) -----
+			% Core points (green)
+			\fill[green!60!black] (-0.1,0.1) circle (2pt);
+			\fill[green!60!black] (0.2,0.2)  circle (2pt);
+			\fill[green!60!black] (0.0,-0.2) circle (2pt);
+			\fill[green!60!black] (-0.3,-0.1) circle (2pt);
+			
+			% Border points (blue) near the edge of density
+			\fill[blue] (0.55,0.15)  circle (2pt);
+			\fill[blue] (-0.55,0.25) circle (2pt);
+			
+			% Show one epsilon-neighborhood around a core point
+			\draw[gray,dashed] (0.2,0.2) circle (\eps);
+			
+			% Label cluster A
+			\node[green!60!black] at (0,-0.95) {\small Dense region (Cluster 1)};
+			
+			% ----- Cluster B (right) -----
+			% Core points (green)
+			\fill[green!60!black] (3.7,0.9) circle (2pt);
+			\fill[green!60!black] (4.1,0.8) circle (2pt);
+			\fill[green!60!black] (3.9,1.2) circle (2pt);
+			\fill[green!60!black] (4.2,1.05) circle (2pt);
+			
+			% Border points (blue)
+			\fill[blue] (4.5,0.7) circle (2pt);
+			\fill[blue] (3.5,1.35) circle (2pt);
+			
+			% Epsilon circle for one core point
+			\draw[gray,dashed] (4.1,0.8) circle (\eps);
+			
+			% Label cluster B
+			\node[green!60!black] at (4.0,-0.3) {\small Dense region (Cluster 2)};
+			
+			% ----- Noise points (red) -----
+			\fill[red] (2.1, 1.9) circle (2pt);
+			\fill[red] (1.8,-0.8) circle (2pt);
+			
+			% ----- Axes -----
+			\draw[->, thick] (-1.3, -1.2) -- (5.5, -1.2) node[right] {\small Feature 1};
+			\draw[->, thick] (-1.3, -1.2) -- (-1.3, 2.6) node[above] {\small Feature 2};
+			
+			% ----- Legend -----
+			\begin{scope}[shift={(2.6,2.1)}]
+%				\draw[rounded corners, gray!40] (-0.2,-0.35) rectangle (3.0,0.45);
+%				\fill[green!60!black] (0,0) circle (2pt);
+%				\node[anchor=west] at (0.1,0.3) {\small Core point};
+%				\fill[blue] (1.3,0) circle (2pt);
+%				\node[anchor=west] at (1.5,0) {\small Border point};
+%				\fill[red] (2.6,0) circle (2pt);
+%				\node[anchor=west] at (2.8,0) {\small Noise};
+			\end{scope}
+			
+			% Label epsilon
+			\node[gray] at (0.2,0.2+\eps+0.18) {\scriptsize $\varepsilon$-neighborhood};
+			\node[gray] at (4.1,0.8+\eps+0.18) {\scriptsize $\varepsilon$-neighborhood};
+			
+		\end{tikzpicture}
+		\caption{DBSCAN illustration: core points (green) have $\ge$ \textit{minPts} neighbors within radius $\varepsilon$; border points (blue) are reachable from a core but not dense; noise (red) lies outside any dense region.}
+		\label{fig:dbscan-tikz}
+	\end{figure}
+\end{frame}
+
 
 \begin{frame}{Choosing the Right Clustering Method}
 	\textbf{Selection depends on:}
@@ -282,40 +461,40 @@ Machine Learning}
 	\textbf{Business use:} Simplify customer survey data into key satisfaction drivers.
 \end{frame}
 
-\begin{frame}{t-SNE: For Cluster Visualization}
-	t-SNE is a non-linear technique for visualizing high-dimensional data in 2D or 3D by preserving local similarities between data points.
-	
-	\textbf{Pros:}
-	\begin{itemize}
-		\item Excellent for visualizing clusters
-		\item Captures non-linear structures
-	\end{itemize}
-	
-	\textbf{Cons:}
-	\begin{itemize}
-		\item Not scalable for large datasets
-		\item Not suited for training pipelines
-		\item Results may vary across runs
-	\end{itemize}
-	
-	\textbf{Business use:} Visualize customer segments for intuitive analysis.
-\end{frame}
-
-\begin{frame}{PCA vs. t-SNE: Summary}
-	\textbf{Comparison Overview:}
-	\begin{itemize}
-		\item \textbf{PCA:} Linear, scalable, reproducible; used for preprocessing and analysis.
-		\item \textbf{t-SNE:} Non-linear, great for visual clustering, less consistent across runs.
-	\end{itemize}
-	
-	\textbf{Use in Business:}
-	\begin{itemize}
-		\item PCA simplifies complex datasets into core dimensions.
-		\item t-SNE helps stakeholders understand customer clusters visually.
-	\end{itemize}
-	
-	Dimensionality reduction boosts both insight and efficiency in modern data workflows.
-\end{frame}
+%\begin{frame}{t-SNE: For Cluster Visualization}
+%	t-SNE is a non-linear technique for visualizing high-dimensional data in 2D or 3D by preserving local similarities between data points.
+%	
+%	\textbf{Pros:}
+%	\begin{itemize}
+%		\item Excellent for visualizing clusters
+%		\item Captures non-linear structures
+%	\end{itemize}
+%	
+%	\textbf{Cons:}
+%	\begin{itemize}
+%		\item Not scalable for large datasets
+%		\item Not suited for training pipelines
+%		\item Results may vary across runs
+%	\end{itemize}
+%	
+%	\textbf{Business use:} Visualize customer segments for intuitive analysis.
+%\end{frame}
+%
+%\begin{frame}{PCA vs. t-SNE: Summary}
+%	\textbf{Comparison Overview:}
+%	\begin{itemize}
+%		\item \textbf{PCA:} Linear, scalable, reproducible; used for preprocessing and analysis.
+%		\item \textbf{t-SNE:} Non-linear, great for visual clustering, less consistent across runs.
+%	\end{itemize}
+%	
+%	\textbf{Use in Business:}
+%	\begin{itemize}
+%		\item PCA simplifies complex datasets into core dimensions.
+%		\item t-SNE helps stakeholders understand customer clusters visually.
+%	\end{itemize}
+%	
+%	Dimensionality reduction boosts both insight and efficiency in modern data workflows.
+%\end{frame}
 
 \section{Customer Segmentation with Clustering}
 
@@ -354,32 +533,32 @@ Machine Learning}
 	These groups enable tailored actions: loyalty rewards for Cluster A, reactivation campaigns for C, discounts for D, and onboarding for B.
 \end{frame}
 
-\begin{frame}{Visualization and Business Impact}
-	\vspace{20pt}
-	\textbf{Visualization:}
-	\begin{itemize}
-		\item Use \textbf{PCA} or \textbf{t-SNE} to project customers into 2D space
-		\item Helps managers intuitively see patterns and cluster proximity
-	\end{itemize}
-	
-	\vspace{5pt}
-	\textbf{Evaluation:}
-	\begin{itemize}
-		\item Assess cluster quality using metrics like:
-		\begin{itemize}
-			\item \textit{Silhouette Score}
-			\item \textit{Davies-Bouldin Index}
-		\end{itemize}
-	\end{itemize}
-	
-	\vspace{5pt}
-	\textbf{Business Impact:}
-	\begin{itemize}
-		\item Enables data-driven strategies
-		\item Improves personalization and marketing ROI
-		\item Enhances long-term customer understanding
-	\end{itemize}
-\end{frame}
+%\begin{frame}{Visualization and Business Impact}
+%	\vspace{20pt}
+%	\textbf{Visualization:}
+%	\begin{itemize}
+%		\item Use \textbf{PCA} or \textbf{t-SNE} to project customers into 2D space
+%		\item Helps managers intuitively see patterns and cluster proximity
+%	\end{itemize}
+%	
+%	\vspace{5pt}
+%	\textbf{Evaluation:}
+%	\begin{itemize}
+%		\item Assess cluster quality using metrics like:
+%		\begin{itemize}
+%			\item \textit{Silhouette Score}
+%			\item \textit{Davies-Bouldin Index}
+%		\end{itemize}
+%	\end{itemize}
+%	
+%	\vspace{5pt}
+%	\textbf{Business Impact:}
+%	\begin{itemize}
+%		\item Enables data-driven strategies
+%		\item Improves personalization and marketing ROI
+%		\item Enhances long-term customer understanding
+%	\end{itemize}
+%\end{frame}
 
 
 \section{Customer Segmentation with Clustering}
@@ -422,20 +601,20 @@ Machine Learning}
 	These segments support specific actions like loyalty programs, reactivation efforts, discount targeting, and onboarding.
 \end{frame}
 
-\begin{frame}{Visualization and Business Impact}
-	\textbf{Visualization:}
-	\begin{itemize}
-		\item Use PCA or t-SNE to map clusters in 2D
-		\item Color-coded points show group distribution
-	\end{itemize}
-	
-	\textbf{Evaluation:}
-	\begin{itemize}
-		\item Silhouette Score and Davies-Bouldin Index assess cluster quality
-	\end{itemize}
-	
-	Clustering reveals actionable insights, supporting better campaign targeting, retention planning, and customer understanding—all grounded in actual data patterns.
-\end{frame}
+%\begin{frame}{Visualization and Business Impact}
+%	\textbf{Visualization:}
+%	\begin{itemize}
+%		\item Use PCA or t-SNE to map clusters in 2D
+%		\item Color-coded points show group distribution
+%	\end{itemize}
+%	
+%	\textbf{Evaluation:}
+%	\begin{itemize}
+%		\item Silhouette Score and Davies-Bouldin Index assess cluster quality
+%	\end{itemize}
+%	
+%	Clustering reveals actionable insights, supporting better campaign targeting, retention planning, and customer understanding—all grounded in actual data patterns.
+%\end{frame}
 
 
 
