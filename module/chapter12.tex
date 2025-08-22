@@ -1,0 +1,532 @@
+\chapter{Model Kematangan BI dan AI TDWI}
+\label{chap:tdwi_bi_ai_maturity}
+
+\section{Nilai dan Tujuan Model}
+
+Model kematangan Business Intelligence (BI) dan Artificial Intelligence (AI) yang dikembangkan oleh 
+\textit{Transforming Data with Intelligence} (TDWI) berfungsi sebagai kerangka kerja untuk menilai sejauh mana organisasi 
+telah memanfaatkan data, analitik, dan teknologi AI secara strategis.  
+
+Tujuan utama model ini adalah:
+\begin{itemize}
+	\item \textbf{Mengukur posisi saat ini:} membantu organisasi memahami di mana posisi mereka pada spektrum kematangan analitik.
+	\item \textbf{Mengidentifikasi kesenjangan:} menemukan area kelemahan seperti infrastruktur data, tata kelola, atau keterampilan SDM.
+	\item \textbf{Mengarahkan transformasi:} memberikan panduan peningkatan bertahap agar BI dan AI selaras dengan strategi bisnis.
+	\item \textbf{Mengoptimalkan nilai bisnis:} memastikan investasi data dan AI menghasilkan dampak nyata pada efisiensi, inovasi, dan pertumbuhan \cite{tdwi2025, eckerson2009tdwi}.
+\end{itemize}
+
+Menurut TDWI, organisasi yang matang dalam BI dan AI akan mampu menciptakan budaya \textit{data-driven}, 
+meningkatkan kecepatan pengambilan keputusan, dan mengelola risiko implementasi AI secara lebih efektif. 
+Selain itu, model ini juga memandu integrasi teknologi terkini seperti \textit{cloud data platform}, \textit{MLOps}, dan \textit{GenAI} 
+ke dalam strategi analitik modern \cite{fernandez2023ai_maturity}.
+
+\section{Pengantar}
+
+Perkembangan pesat dalam bidang \textit{Business Intelligence} (BI) dan \textit{Artificial Intelligence} (AI) telah 
+mengubah cara organisasi memanfaatkan data untuk mendukung pengambilan keputusan strategis. BI berfokus pada 
+penyediaan wawasan melalui pelaporan, analitik deskriptif, dan visualisasi data, sementara AI memperluas kapabilitas 
+ini dengan menghadirkan kemampuan prediksi, rekomendasi, dan otomatisasi berbasis model pembelajaran mesin 
+\cite{chen2012, davenport2018}. 
+
+Dalam praktiknya, transformasi digital menuntut organisasi untuk mengintegrasikan BI dan AI secara terpadu. 
+Pendekatan ini tidak hanya meningkatkan efisiensi operasional, tetapi juga membuka peluang inovasi baru, 
+misalnya melalui personalisasi layanan pelanggan, deteksi anomali dalam rantai pasok, serta penerapan \textit{Generative AI} 
+untuk meningkatkan produktivitas pengetahuan \cite{fernandez2020, lim2023adoption}.  
+
+Namun, tingkat adopsi dan efektivitas BI dan AI sangat bervariasi antar organisasi. Banyak organisasi yang masih berada 
+pada tahap awal, dengan pemanfaatan BI sebatas laporan tradisional dan AI hanya sebatas eksperimen terbatas. 
+Sebaliknya, organisasi yang sudah matang biasanya memiliki arsitektur data yang terintegrasi, praktik tata kelola yang 
+kuat, serta budaya \textit{data-driven} yang tertanam pada seluruh level manajemen \cite{liao2021business, mukherjee2022comparative}.  
+
+Untuk membantu organisasi memahami posisi mereka serta menentukan langkah strategis selanjutnya, 
+\textit{The Data Warehousing Institute} (TDWI) memperkenalkan \textbf{Model Kematangan BI dan AI}. 
+Model ini berfungsi sebagai peta jalan (roadmap) bagi organisasi untuk mengukur kapabilitas data dan analitik mereka, 
+mengidentifikasi kesenjangan, serta menyusun prioritas peningkatan yang selaras dengan tujuan bisnis jangka panjang.
+\section{Tren Kunci BI dan AI}
+
+Perkembangan BI dan AI dewasa ini menunjukkan sejumlah tren utama yang memengaruhi arah strategi data dan analitik 
+organisasi. Tren-tren ini bukan hanya bersifat teknologi, tetapi juga menyangkut aspek tata kelola, budaya, dan 
+perubahan peran sumber daya manusia.
+
+\subsection*{1. Self-Service Analytics dan Generative AI}
+Tren pertama adalah adopsi \textit{self-service analytics} yang semakin diperkaya oleh kemampuan 
+\textit{Generative AI} (GenAI). Pengguna bisnis kini dapat mengajukan pertanyaan langsung dalam bahasa alami 
+dan mendapatkan jawaban analitis dalam bentuk narasi, visualisasi, atau bahkan rekomendasi aksi. Hal ini 
+meningkatkan demokratisasi data, meskipun tetap menimbulkan tantangan terkait kualitas data dan kontrol tata kelola 
+\cite{imhoff2014ssbi, chen2021aibi}.  
+
+\subsection*{2. Tata Kelola Data dan AI}
+Seiring meningkatnya adopsi AI, tata kelola (governance) menjadi semakin penting. Tidak hanya mencakup 
+data governance, tetapi juga \textit{AI governance} yang mengatur transparansi model, 
+pengendalian bias, serta kepatuhan terhadap regulasi seperti GDPR. Organisasi dituntut menyeimbangkan 
+inovasi dengan kepercayaan dan akuntabilitas \cite{khatri2010data, zwitter2014}.  
+
+\subsection*{3. Integrasi Infrastruktur Cloud dan Data Lakehouse}
+Platform berbasis cloud, termasuk arsitektur \textit{data lakehouse}, semakin dominan dalam mendukung 
+analitik skala besar. Integrasi ini memungkinkan organisasi menggabungkan fleksibilitas data lake dengan 
+konsistensi data warehouse, sehingga mendukung kebutuhan BI tradisional sekaligus eksplorasi AI 
+\cite{armbrust2021lakehouse}.  
+
+\subsection*{4. Peran Baru: MLOps dan AIOps}
+Untuk memastikan model AI berjalan secara berkelanjutan, peran baru seperti MLOps dan AIOps mulai 
+menjadi kebutuhan. MLOps menekankan siklus hidup penuh model (pengembangan, deployment, monitoring), 
+sedangkan AIOps berfokus pada pemanfaatan AI untuk mengoptimalkan operasi TI. Kedua peran ini 
+memperkuat kemampuan organisasi dalam mengoperasionalkan AI pada skala besar \cite{goyal2022}.  
+
+\subsection*{5. Data sebagai Produk dan Monetisasi}
+Tren lain adalah pergeseran pandangan bahwa data bukan hanya aset internal, tetapi juga dapat 
+dimonetisasi sebagai produk. Konsep ini menuntut organisasi untuk mengelola data dengan prinsip 
+\textit{product management}, mulai dari kualitas, dokumentasi, hingga siklus hidup nilai data 
+\cite{labreuche2020}.  
+
+Secara keseluruhan, tren-tren ini menegaskan bahwa integrasi BI dan AI bukan lagi sekadar 
+persoalan teknologi, melainkan transformasi menyeluruh yang melibatkan strategi bisnis, 
+budaya organisasi, dan tata kelola yang kuat.
+
+\section{Dimensi Model}
+
+
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[font=\small, node distance=1.2cm]
+		
+		% style node umum
+		\tikzset{
+			dim/.style={draw=black!40, rounded corners=2pt, text width=3cm, minimum height=1cm, align=center, font=\bfseries},
+			levels/.style={draw=black!30, text width=11cm, minimum height=1cm, align=center}
+		}
+		
+		% 5 node dimensi secara vertikal + warna pastel berbeda
+		\node[dim, fill=red!10] (d1) {Data dan Infrastruktur};
+		\node[dim, fill=blue!10, below of=d1] (d2) {Analitik dan Teknologi};
+		\node[dim, fill=green!10, below of=d2] (d3) {Tata Kelola dan Manajemen};
+		\node[dim, fill=orange!15, below of=d3] (d4) {Organisasi dan Budaya};
+		\node[dim, fill=purple!10, below of=d4] (d5) {Strategi dan Nilai Bisnis};
+		
+		% 5 node level di kanan masing-masing dimensi, dengan warna senada
+		\node[levels, fill=red!5, right=0.2cm of d1] {Nascent $\rightarrow$ Early $\rightarrow$ Established $\rightarrow$ Mature $\rightarrow$ Advanced/Visionary};
+		\node[levels, fill=blue!5, right=0.2cm of d2] {Nascent $\rightarrow$ Early $\rightarrow$ Established $\rightarrow$ Mature $\rightarrow$ Advanced/Visionary};
+		\node[levels, fill=green!5, right=0.2cm of d3] {Nascent $\rightarrow$ Early $\rightarrow$ Established $\rightarrow$ Mature $\rightarrow$ Advanced/Visionary};
+		\node[levels, fill=orange!8, right=0.2cm of d4] {Nascent $\rightarrow$ Early $\rightarrow$ Established $\rightarrow$ Mature $\rightarrow$ Advanced/Visionary};
+		\node[levels, fill=purple!5, right=0.2cm of d5] {Nascent $\rightarrow$ Early $\rightarrow$ Established $\rightarrow$ Mature $\rightarrow$ Advanced/Visionary};
+		
+	\end{tikzpicture}
+	\caption{Lima dimensi model kematangan BI \& AI dengan warna pastel berbeda untuk tiap baris.}
+	\label{fig:dimensi-vertical}
+\end{figure}
+
+
+
+
+
+Model kematangan BI dan AI yang dikembangkan TDWI disusun berdasarkan sejumlah dimensi inti yang 
+mencerminkan aspek-aspek penting dalam pengelolaan data dan analitik (Gambar~\ref{fig:dimensi-vertical}). Setiap dimensi berfungsi 
+sebagai lensa evaluasi untuk memahami kekuatan dan kelemahan organisasi dalam perjalanan menuju 
+organisasi berbasis data yang matang.  
+
+Secara umum, terdapat lima dimensi utama yang menjadi pilar dalam model ini:
+
+\subsection*{1. Data dan Infrastruktur}
+Dimensi ini berfokus pada kualitas, ketersediaan, dan manajemen data. Organisasi pada tahap awal 
+biasanya masih menggunakan data yang terfragmentasi dan silo, sementara organisasi yang matang 
+telah mengintegrasikan \textit{data warehouse}, \textit{data lake}, maupun \textit{lakehouse} 
+dengan tata kelola yang kuat. Faktor seperti integrasi data real-time, metadata management, 
+dan kualitas data menjadi indikator utama \cite{kimball2013, armbrust2020delta}.
+
+\subsection*{2. Analitik dan Teknologi}
+Dimensi ini mencerminkan tingkat kecanggihan analitik yang digunakan, mulai dari laporan deskriptif 
+hingga analitik prediktif, preskriptif, dan penerapan AI. Organisasi dengan kematangan tinggi 
+mampu mengoperasionalkan model pembelajaran mesin melalui MLOps, serta memanfaatkan teknologi 
+baru seperti \textit{Generative AI} untuk memperluas kapabilitas analitik \cite{davenport2018, chen2021aibi}.
+
+\subsection*{3. Tata Kelola dan Manajemen}
+Governance mencakup kebijakan, standar, serta mekanisme pengendalian dalam mengelola data dan AI. 
+Hal ini termasuk kepatuhan regulasi, manajemen risiko, dan etika penggunaan AI. Tanpa tata kelola 
+yang baik, inisiatif BI dan AI berisiko menimbulkan bias, pelanggaran privasi, dan rendahnya 
+kepercayaan pengguna \cite{khatri2010data, zwitter2014}.  
+
+\subsection*{4. Organisasi dan Budaya}
+Dimensi ini menilai sejauh mana organisasi telah menginternalisasi budaya berbasis data. 
+Aspek yang diukur meliputi literasi data, kompetensi sumber daya manusia, peran \textit{data steward}, 
+dan dukungan pimpinan puncak. Organisasi yang matang memiliki \textit{data-driven culture}, di mana 
+pengambilan keputusan selalu berlandaskan bukti dan analitik, bukan intuisi semata \cite{davenport2010analytics, lim2023adoption}.
+
+\subsection*{5. Strategi dan Nilai Bisnis}
+Dimensi terakhir berfokus pada bagaimana BI dan AI mendukung pencapaian tujuan bisnis. 
+Hal ini mencakup integrasi analitik ke dalam strategi perusahaan, pengukuran dampak bisnis 
+(\textit{return on data and AI investment}), serta eksplorasi peluang monetisasi data. 
+Semakin tinggi tingkat kematangan, semakin jelas keterkaitan antara inisiatif data dengan hasil bisnis 
+yang terukur \cite{labreuche2020, ekambaram2021}.  
+
+Dengan memahami kelima dimensi ini, organisasi dapat menilai posisi mereka secara komprehensif, 
+serta mengidentifikasi prioritas peningkatan yang sesuai dengan kebutuhan dan konteks bisnis masing-masing.
+
+
+\section{Tahapan Kematangan}
+
+Model kematangan BI dan AI TDWI disusun dalam beberapa tahap evolusioner yang menggambarkan 
+perjalanan organisasi dari kondisi awal yang minim pemanfaatan data hingga mencapai tahap 
+terdepan dengan penerapan AI yang visioner. Setiap tahap ditandai dengan karakteristik, 
+tantangan, serta peluang yang berbeda. Secara umum terdapat lima tahapan utama:  
+
+\subsection*{1. Nascent}
+Pada tahap ini, penggunaan BI dan AI masih sangat terbatas. Organisasi biasanya mengandalkan 
+laporan manual, spreadsheet, dan data yang terfragmentasi dalam silo. Tidak ada strategi data 
+yang jelas, dan tata kelola data hampir tidak diterapkan. Tantangan utama adalah kurangnya 
+kesadaran manajemen puncak terhadap nilai strategis data \cite{russom2011, tdwi2013}.  
+
+\subsection*{2. Early}
+Organisasi mulai mengadopsi data warehouse atau dashboard sederhana untuk mendukung pelaporan. 
+Namun, analitik yang dilakukan masih bersifat deskriptif dan berskala departemental. 
+Pada tahap ini, organisasi menghadapi kesulitan dalam integrasi data antar unit bisnis, serta 
+keterbatasan keterampilan analitik di kalangan pengguna \cite{schieder2011decision, raj2018}.  
+
+\subsection*{3. Established}
+Tahap ini ditandai dengan penerapan BI secara lebih luas di seluruh organisasi. 
+Integrasi data mulai diperkuat melalui ETL dan tata kelola data yang lebih terstruktur. 
+Analitik prediktif dan model machine learning sederhana mulai digunakan dalam proses bisnis 
+seperti peramalan permintaan atau segmentasi pelanggan. Budaya berbasis data mulai tumbuh, 
+meskipun adopsi AI masih terbatas pada pilot project \cite{yeoh2008biimplement, islam2017success}.  
+
+\subsection*{4. Mature}
+Pada tahap matang, organisasi telah mengadopsi analitik lanjutan secara operasional. 
+Model AI dijalankan melalui kerangka MLOps yang memungkinkan deployment dan monitoring secara berkesinambungan. 
+Tata kelola AI dan data governance diterapkan dengan baik, termasuk aspek etika, keamanan, 
+dan kepatuhan. BI dan AI telah terintegrasi ke dalam pengambilan keputusan strategis, 
+membawa dampak signifikan pada efisiensi, inovasi, dan daya saing \cite{liao2021business, lim2023adoption}.  
+
+\subsection*{5. Advanced/Visionary}
+Tahap tertinggi dicapai ketika organisasi tidak hanya mengadopsi AI, tetapi juga 
+menjadi pelopor dalam inovasi berbasis data. Generative AI, augmented analytics, 
+dan otomatisasi berbasis kecerdasan buatan digunakan untuk menciptakan produk, layanan, 
+dan model bisnis baru. Data diperlakukan sebagai aset strategis yang dapat dimonetisasi, 
+dan organisasi berperan sebagai pemimpin industri dalam pemanfaatan BI dan AI \cite{chen2021aibi, gantz2020futurebi}.  
+
+Tahap-tahap kematangan ini bersifat evolusioner: organisasi perlu melewati fondasi awal 
+sebelum melangkah ke tahap lanjutan. Dengan memahami posisi saat ini, organisasi dapat 
+menyusun peta jalan (roadmap) untuk mempercepat transisi menuju tingkat kematangan berikutnya.
+
+\section{Ikhtisar Tahap per Dimensi}
+
+Setiap tahap kematangan BI dan AI dapat ditinjau dari lima dimensi utama yang telah dibahas: 
+(1) data dan infrastruktur, (2) analitik dan teknologi, (3) tata kelola dan manajemen, 
+(4) organisasi dan budaya, serta (5) strategi dan nilai bisnis. 
+Ikhtisar berikut menunjukkan evolusi kelima dimensi tersebut pada setiap level kematangan.
+
+\subsection{Nascent}
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} data tersebar dalam silo, tidak terintegrasi, dan kualitasnya sering diragukan. Penyimpanan berbasis spreadsheet mendominasi.
+	\item \textbf{Analitik dan Teknologi:} analisis sebatas pelaporan manual; tidak ada adopsi BI formal, apalagi AI.
+	\item \textbf{Tata Kelola dan Manajemen:} governance nyaris tidak ada, tidak ada standar metadata atau kebijakan keamanan data.
+	\item \textbf{Organisasi dan Budaya:} literasi data rendah, keputusan didasarkan pada intuisi manajemen, bukan analitik.
+	\item \textbf{Strategi dan Nilai Bisnis:} tidak ada strategi BI/AI; data belum dianggap sebagai aset strategis \cite{russom2011, tdwi2013}.
+\end{itemize}
+
+\subsection{Early}
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} mulai ada data warehouse atau sistem laporan sederhana, meskipun integrasi antar unit masih terbatas.
+	\item \textbf{Analitik dan Teknologi:} dashboard digunakan untuk mendukung laporan deskriptif; eksplorasi analitik dilakukan secara ad-hoc.
+	\item \textbf{Tata Kelola dan Manajemen:} awal penerapan kebijakan dasar data governance, tetapi belum konsisten.
+	\item \textbf{Organisasi dan Budaya:} beberapa departemen mulai mengadopsi BI, namun budaya berbasis data belum melembaga.
+	\item \textbf{Strategi dan Nilai Bisnis:} BI dianggap sebagai proyek TI, belum terintegrasi dalam strategi bisnis \cite{schieder2011decision, raj2018}.
+\end{itemize}
+
+\subsection{Established}
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} integrasi data lintas fungsi mulai berjalan melalui ETL dan data mart; kualitas data mulai diperhatikan.
+	\item \textbf{Analitik dan Teknologi:} organisasi menggunakan analitik prediktif dasar (misalnya forecasting, segmentasi pelanggan).
+	\item \textbf{Tata Kelola dan Manajemen:} tata kelola data lebih formal, termasuk pemilik data (data steward) dan mekanisme keamanan.
+	\item \textbf{Organisasi dan Budaya:} literasi data meningkat, pelatihan mulai diberikan, dan dukungan manajemen senior terlihat.
+	\item \textbf{Strategi dan Nilai Bisnis:} BI mulai diposisikan sebagai pendukung proses bisnis utama, bukan sekadar pelaporan \cite{yeoh2008biimplement, islam2017success}.
+\end{itemize}
+
+\subsection{Mature}
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} arsitektur data modern diterapkan, termasuk data lakehouse dan integrasi data real-time.
+	\item \textbf{Analitik dan Teknologi:} model AI digunakan secara operasional; MLOps diterapkan untuk pengelolaan siklus hidup model.
+	\item \textbf{Tata Kelola dan Manajemen:} governance mencakup AI, etika, serta kepatuhan regulasi seperti GDPR.
+	\item \textbf{Organisasi dan Budaya:} budaya data-driven sudah melembaga; pimpinan aktif menggunakan BI/AI dalam pengambilan keputusan.
+	\item \textbf{Strategi dan Nilai Bisnis:} analitik terhubung langsung dengan KPI bisnis, misalnya retensi pelanggan, optimasi supply chain, dan inovasi produk \cite{liao2021business, lim2023adoption}.
+\end{itemize}
+
+\subsection{Advanced/Visionary}
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} organisasi menjadi pelopor dalam adopsi teknologi analitik mutakhir, misalnya \textit{real-time digital twin} atau federated data platform.
+	\item \textbf{Analitik dan Teknologi:} augmented analytics, generative AI, dan otomatisasi berbasis AI menjadi praktik standar; analitik digunakan tidak hanya untuk optimasi, tetapi juga inovasi.
+	\item \textbf{Tata Kelola dan Manajemen:} tata kelola bersifat proaktif dan adaptif; organisasi memimpin dalam penerapan standar industri.
+	\item \textbf{Organisasi dan Budaya:} karyawan di semua level memiliki literasi data tinggi; ada peran khusus seperti Chief AI Officer.
+	\item \textbf{Strategi dan Nilai Bisnis:} data diperlakukan sebagai produk dan sumber pendapatan; organisasi memonetisasi data serta mengekspor keahlian BI/AI sebagai diferensiasi kompetitif \cite{chen2021aibi, gantz2020futurebi}.
+\end{itemize}
+
+
+\section{Dari Kondisi Kini ke Tahap Berikutnya}
+
+Salah satu kekuatan utama model kematangan BI dan AI adalah kemampuannya membantu organisasi 
+menentukan \textit{roadmap} pengembangan. Setiap organisasi berada pada titik yang berbeda dalam 
+spektrum kematangan, dan tujuan utama bukanlah langsung mencapai tahap visioner, 
+melainkan memastikan transisi yang realistis, terukur, dan berkelanjutan dari tahap saat ini 
+menuju tahap berikutnya.
+
+\subsection*{Identifikasi Posisi Saat Ini}
+Langkah pertama adalah melakukan \textbf{penilaian diri (self-assessment)} untuk mengidentifikasi 
+tahap kematangan saat ini berdasarkan lima dimensi inti: data, analitik, tata kelola, organisasi, 
+dan strategi. Evaluasi ini dapat dilakukan melalui survei, wawancara, serta analisis infrastruktur 
+dan proses bisnis yang ada \cite{alsai2023}.  
+
+\subsection*{Menetapkan Prioritas Peningkatan}
+Setelah posisi awal diketahui, organisasi perlu menetapkan \textbf{prioritas perbaikan} yang sesuai 
+dengan kebutuhan bisnis. Misalnya:  
+\begin{itemize}
+	\item Dari \textit{Nascent} ke \textit{Early}: fokus pada konsolidasi data dalam data warehouse 
+	dan membangun laporan standar.  
+	\item Dari \textit{Early} ke \textit{Established}: memperluas analitik prediktif dan membangun 
+	tata kelola data yang formal.  
+	\item Dari \textit{Established} ke \textit{Mature}: mengintegrasikan MLOps dan memperkuat budaya 
+	berbasis data.  
+	\item Dari \textit{Mature} ke \textit{Advanced/Visionary}: mengembangkan inovasi berbasis AI 
+	seperti augmented analytics dan monetisasi data.  
+\end{itemize}
+
+\subsection*{Faktor Pendorong Keberhasilan}
+Transisi ke tahap berikutnya memerlukan kombinasi aspek teknis, manajerial, dan budaya. 
+Beberapa faktor kunci yang sering disebut dalam literatur meliputi:
+\begin{itemize}
+	\item \textbf{Komitmen Manajemen Puncak:} sponsor eksekutif sangat menentukan keberhasilan 
+	inisiatif BI dan AI \cite{yeoh2008biimplement}.  
+	\item \textbf{Pengembangan Kapabilitas SDM:} literasi data, pelatihan AI, dan kehadiran peran 
+	baru seperti \textit{data steward} dan \textit{ML engineer} sangat penting 
+	\cite{lim2023adoption}.  
+	\item \textbf{Investasi Teknologi:} migrasi ke platform modern seperti \textit{data lakehouse}, 
+	penerapan cloud-native analytics, serta integrasi MLOps \cite{armbrust2021lakehouse}.  
+	\item \textbf{Tata Kelola dan Kepatuhan:} keberhasilan transisi sangat dipengaruhi oleh 
+	kemampuan organisasi menegakkan governance, baik dalam data maupun AI, sesuai standar 
+	industri dan regulasi \cite{zwitter2014}.  
+\end{itemize}
+
+\subsection*{Mengukur Dampak dan Perbaikan Berkelanjutan}
+Setiap langkah menuju tahap berikutnya harus diikuti dengan mekanisme \textbf{pengukuran dampak}. 
+Indikator kinerja utama (KPI) mencakup: tingkat adopsi BI, penghematan biaya operasional, 
+peningkatan akurasi prediksi, serta kontribusi analitik terhadap pendapatan. 
+Dengan menerapkan prinsip \textit{continuous improvement}, organisasi dapat bergerak secara 
+bertahap namun pasti menuju tingkat kematangan yang lebih tinggi \cite{ekambaram2021}.  
+
+Secara keseluruhan, perjalanan dari kondisi kini ke tahap berikutnya bukanlah proses linier, 
+melainkan sebuah siklus pembelajaran organisasi. Strategi yang efektif menuntut keseimbangan 
+antara investasi teknologi, pengembangan sumber daya manusia, serta penerapan governance 
+yang kuat untuk memastikan keberlanjutan dan dampak nyata bagi bisnis.
+
+\section{Evaluasi Skor dan Interpretasi}
+
+Evaluasi tingkat kematangan BI dan AI memerlukan pendekatan yang sistematis. 
+Model TDWI memberikan kerangka untuk menilai posisi organisasi dengan 
+menggunakan instrumen skoring pada tiap dimensi. Skor yang dihasilkan 
+dapat digunakan untuk: (1) mengidentifikasi kesenjangan (gap analysis), 
+(2) menentukan prioritas investasi, dan (3) menyusun peta jalan (roadmap) 
+perubahan yang terukur.
+
+\subsection{Skoring per Dimensi}
+
+Setiap dimensi dalam model—data dan infrastruktur, analitik dan teknologi, 
+tata kelola dan manajemen, organisasi dan budaya, serta strategi dan nilai bisnis—
+diberikan skor berdasarkan indikator yang relevan. 
+Pendekatan umum adalah menggunakan skala ordinal (misalnya 1–5) yang 
+merepresentasikan lima tahap kematangan: \textit{Nascent, Early, Established, Mature}, 
+dan \textit{Advanced/Visionary}.  
+
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} indikator meliputi tingkat integrasi data, 
+	kualitas data, ketersediaan metadata, serta penggunaan platform modern 
+	seperti data lakehouse.  
+	Skor 1 menunjukkan dominasi spreadsheet dan silo data, sementara skor 5 
+	menggambarkan data terintegrasi secara real-time dengan tata kelola kuat 
+	\cite{kimball2013, armbrust2021lakehouse}.
+	
+	\item \textbf{Analitik dan Teknologi:} indikator mencakup cakupan analitik 
+	(deskriptif hingga preskriptif), penggunaan AI/ML, serta operasionalisasi model 
+	melalui MLOps.  
+	Skor 1 identik dengan laporan manual, sedangkan skor 5 mencerminkan 
+	penerapan augmented analytics, generative AI, dan otomatisasi cerdas 
+	\cite{chen2012, chen2021aibi}.
+	
+	\item \textbf{Tata Kelola dan Manajemen:} penilaian dilakukan pada aspek kebijakan data, 
+	kepatuhan regulasi, manajemen risiko, serta etika AI.  
+	Skor 1 berarti tidak ada kebijakan formal, sedangkan skor 5 menunjukkan tata kelola 
+	proaktif, adaptif, dan sesuai dengan standar global (misalnya GDPR, ISO 20547) 
+	\cite{sadiq2017, gdpr2021bigdata}.
+	
+	\item \textbf{Organisasi dan Budaya:} indikator meliputi literasi data, 
+	keterampilan SDM, keberadaan peran khusus seperti \textit{Chief Data Officer}, 
+	dan tingkat dukungan manajemen puncak.  
+	Skor 1 berarti keputusan berbasis intuisi, sementara skor 5 menunjukkan 
+	budaya \textit{data-driven} yang melekat di seluruh level organisasi 
+	\cite{davenport2010analytics, lim2023adoption}.
+	
+	\item \textbf{Strategi dan Nilai Bisnis:} indikator mencakup sejauh mana BI/AI 
+	diintegrasikan dalam strategi bisnis, kontribusi terhadap KPI, serta eksplorasi 
+	monetisasi data.  
+	Skor 1 berarti BI hanya proyek TI, sedangkan skor 5 menunjukkan bahwa 
+	data diperlakukan sebagai aset strategis yang menghasilkan nilai bisnis nyata 
+	\cite{labreuche2020, ekambaram2021}.
+\end{itemize}
+
+Proses skoring ini dapat dilakukan melalui kuesioner terstruktur, wawancara 
+dengan pemangku kepentingan, atau analisis dokumentasi kebijakan dan teknologi. 
+Hasil skor per dimensi memberikan gambaran kuantitatif posisi organisasi 
+dan menjadi dasar untuk evaluasi lebih lanjut.
+
+\subsection{Membaca Hasil}
+
+Setelah setiap dimensi dinilai dan diberikan skor, organisasi perlu melakukan interpretasi 
+untuk memahami makna di balik angka tersebut. Proses membaca hasil bukan hanya melihat nilai 
+numerik semata, tetapi menafsirkan implikasi strategisnya terhadap kondisi dan arah perkembangan BI dan AI.
+
+\subsubsection*{Analisis Gap}
+Langkah pertama adalah membandingkan skor aktual dengan skor target yang ingin dicapai. 
+Perbedaan antara skor saat ini dan skor target disebut sebagai \textit{gap}.  
+Sebagai contoh, jika dimensi \textit{Data dan Infrastruktur} saat ini berada pada skor 2 (Early) 
+sementara target adalah skor 4 (Mature), maka diperlukan roadmap penguatan integrasi data, 
+peningkatan kualitas, serta modernisasi platform untuk menjembatani kesenjangan tersebut \cite{tdwi2013, alsai2023}.
+
+\subsubsection*{Profil Kematangan Organisasi}
+Dengan menggabungkan skor dari seluruh dimensi, organisasi dapat membangun \textbf{profil kematangan}.  
+Profil ini biasanya divisualisasikan menggunakan:
+\begin{itemize}
+	\item \textbf{Radar chart:} memperlihatkan distribusi skor setiap dimensi sehingga terlihat 
+	area kuat dan area lemah.  
+	\item \textbf{Heatmap:} menyoroti dimensi dengan gap paling besar untuk mempermudah prioritisasi.  
+	\item \textbf{Benchmarking:} membandingkan skor organisasi dengan rata-rata industri atau kompetitor.  
+\end{itemize}
+
+\subsubsection*{Interpretasi Strategis}
+Interpretasi skor harus dikaitkan dengan tujuan bisnis, bukan hanya kondisi teknis.  
+Sebagai contoh:
+\begin{itemize}
+	\item Skor tinggi pada dimensi \textit{Analitik dan Teknologi} tetapi rendah pada 
+	\textit{Tata Kelola} menunjukkan inovasi cepat namun dengan risiko kepatuhan.  
+	\item Skor tinggi pada \textit{Strategi dan Nilai Bisnis} namun rendah pada 
+	\textit{Organisasi dan Budaya} mengindikasikan adanya visi strategis 
+	yang belum didukung oleh literasi data karyawan.  
+\end{itemize}
+Interpretasi ini membantu organisasi menghindari bias teknis dan tetap berorientasi 
+pada penciptaan nilai bisnis \cite{ekambaram2021, labreuche2020}.
+
+\subsubsection*{Prioritisasi Perbaikan}
+Hasil evaluasi harus digunakan untuk menentukan area prioritas peningkatan.  
+Misalnya, jika gap terbesar ada pada \textit{Organisasi dan Budaya}, 
+maka investasi dalam literasi data, program pelatihan, dan pengembangan peran baru 
+(\textit{data steward, ML engineer}) harus menjadi langkah utama.  
+
+Dengan cara ini, skor kematangan tidak hanya berfungsi sebagai diagnosis, 
+tetapi juga sebagai kompas yang mengarahkan transformasi BI dan AI secara berkelanjutan.
+
+\section{Contoh Kasus Hasil Pengukuran di Bidang Bisnis}
+
+Untuk memperjelas penerapan model kematangan BI dan AI, berikut adalah contoh kasus 
+sebuah perusahaan ritel besar yang melakukan asesmen menggunakan model TDWI. 
+Perusahaan ini memiliki jaringan toko fisik dan kanal e-commerce, serta mengelola 
+jutaan transaksi pelanggan setiap bulannya.
+
+\subsection*{Hasil Skor per Dimensi}
+Berdasarkan kuesioner internal, wawancara dengan pimpinan unit, serta analisis sistem TI, 
+diperoleh hasil skoring berikut:
+\begin{itemize}
+	\item \textbf{Data dan Infrastruktur:} Skor 3 (Established).  
+	Data sudah terintegrasi dalam data warehouse, namun belum sepenuhnya 
+	mendukung pemrosesan real-time.
+	\item \textbf{Analitik dan Teknologi:} Skor 2 (Early).  
+	Analisis masih berfokus pada laporan deskriptif dan dashboard, 
+	belum ada integrasi machine learning dalam operasi sehari-hari.
+	\item \textbf{Tata Kelola dan Manajemen:} Skor 2 (Early).  
+	Kebijakan dasar mengenai kualitas data ada, namun belum ada mekanisme formal 
+	untuk etika AI atau kepatuhan regulasi lintas negara.
+	\item \textbf{Organisasi dan Budaya:} Skor 3 (Established).  
+	Beberapa divisi mulai mengandalkan BI dalam pengambilan keputusan, 
+	tetapi literasi data karyawan masih bervariasi.
+	\item \textbf{Strategi dan Nilai Bisnis:} Skor 4 (Mature).  
+	Pimpinan eksekutif menempatkan data sebagai prioritas strategis 
+	dan memasukkannya dalam roadmap transformasi digital.
+\end{itemize}
+
+\subsection*{Interpretasi Hasil}
+Profil kematangan di atas menunjukkan adanya ketidakseimbangan: 
+strategi perusahaan sudah cukup matang (skor 4), tetapi kapabilitas analitik dan tata kelola 
+masih tertinggal (skor 2). Hal ini mengindikasikan adanya “\textit{strategic aspiration gap}”—
+visi bisnis tidak diimbangi dengan kesiapan teknis dan regulatif.  
+
+Visualisasi radar chart dari skor ini memperlihatkan bentuk poligon yang tidak simetris, 
+dengan titik lemah pada dimensi analitik dan governance.  
+Hal ini memudahkan manajemen untuk menentukan area prioritas dalam jangka pendek.
+
+\subsection*{Rekomendasi Strategis}
+
+Berdasarkan hasil pengukuran, rekomendasi strategis berikut disusun dengan mempertimbangkan 
+bidang (dimensi) dan skor saat ini:
+
+\begin{itemize}
+	\item \textbf{Analitik dan Teknologi (Skor 2 – Early):}  
+	Fokus peningkatan pada pembentukan tim data science khusus, 
+	integrasi machine learning untuk prediksi permintaan, serta 
+	pengembangan sistem rekomendasi produk.  
+	Hal ini penting untuk menaikkan level ke tahap \textit{Established}.
+	
+	\item \textbf{Tata Kelola dan Manajemen (Skor 2 – Early):}  
+	Membentuk unit \textit{data governance}, menyusun kebijakan formal mengenai 
+	kualitas data, serta mengadopsi standar internasional seperti GDPR untuk 
+	perlindungan privasi.  
+	Tujuannya agar organisasi siap menuju tahap \textit{Established} dengan 
+	kepatuhan regulatif yang lebih kuat \cite{zwitter2014}.
+	
+	\item \textbf{Organisasi dan Budaya (Skor 3 – Established):}  
+	Meluncurkan program literasi data lintas divisi, mengembangkan pelatihan 
+	untuk karyawan non-teknis dalam menggunakan dashboard BI, serta memperkuat 
+	peran Chief Data Officer (CDO).  
+	Strategi ini akan mempercepat transisi ke tahap \textit{Mature} 
+	\cite{davenport2010analytics}.
+	
+	\item \textbf{Data dan Infrastruktur (Skor 3 – Established):}  
+	Melanjutkan modernisasi infrastruktur dengan migrasi ke platform 
+	\textit{data lakehouse} agar mendukung pemrosesan real-time dan 
+	analitik prediktif yang lebih cepat.  
+	Langkah ini akan membantu organisasi bergerak menuju tahap \textit{Mature}.
+	
+	\item \textbf{Strategi dan Nilai Bisnis (Skor 4 – Mature):}  
+	Memperluas inisiatif monetisasi data, seperti penawaran layanan analitik 
+	bagi mitra bisnis atau personalisasi pengalaman pelanggan berbasis AI.  
+	Rekomendasi ini ditujukan untuk membawa organisasi menuju tahap 
+	\textit{Advanced/Visionary} \cite{liao2021business, ekambaram2021}.
+\end{itemize}
+
+
+\subsection*{Dampak Bisnis yang Diharapkan}
+Dengan melaksanakan rekomendasi di atas, perusahaan diharapkan mampu:
+\begin{enumerate}
+	\item Meningkatkan akurasi prediksi inventori dan mengurangi biaya penyimpanan hingga 15\%.  
+	\item Mengurangi risiko hukum terkait data privacy pada ekspansi pasar internasional.  
+	\item Mempercepat pengambilan keputusan operasional di toko dan kanal digital.  
+\end{enumerate}
+
+Contoh ini menunjukkan bagaimana hasil pengukuran kematangan BI dan AI 
+tidak berhenti pada diagnosis, tetapi dapat langsung diterjemahkan ke dalam 
+intervensi strategis yang berdampak nyata bagi pertumbuhan bisnis \cite{liao2021business, ekambaram2021}.
+
+\section{Ringkasan}
+
+Model kematangan BI dan AI dari TDWI memberikan kerangka yang sistematis bagi organisasi 
+untuk menilai posisi mereka dalam perjalanan transformasi digital. 
+Melalui lima dimensi utama—data dan infrastruktur, analitik dan teknologi, tata kelola, 
+organisasi dan budaya, serta strategi dan nilai bisnis—model ini membantu perusahaan 
+memahami kekuatan yang sudah dimiliki sekaligus area yang masih perlu ditingkatkan. 
+Pendekatan berbasis skoring memudahkan proses evaluasi, 
+sementara interpretasi hasil memungkinkan organisasi melakukan analisis kesenjangan 
+dan menyusun prioritas yang sejalan dengan kebutuhan bisnis. 
+
+Secara keseluruhan, asesmen kematangan tidak hanya berfungsi sebagai diagnosis statis, 
+tetapi juga sebagai \textit{roadmap} dinamis untuk mencapai tingkat kematangan yang lebih tinggi. 
+Dengan membaca hasil skor per dimensi, organisasi dapat mengidentifikasi strategi peningkatan 
+yang relevan—mulai dari penguatan infrastruktur data, adopsi teknologi analitik lanjutan, 
+penerapan tata kelola yang ketat, hingga transformasi budaya menjadi lebih \textit{data-driven}. 
+Pendekatan ini memungkinkan bisnis untuk secara bertahap bergerak menuju tahap 
+\textit{Advanced/Visionary}, di mana BI dan AI bukan sekadar fungsi pendukung, 
+melainkan penggerak utama inovasi dan penciptaan nilai kompetitif yang berkelanjutan.
+
