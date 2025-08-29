@@ -1,0 +1,41 @@
+id,text,label
+1,This product is amazing and works perfectly,positive
+2,I love the design and the quality is excellent,positive
+3,The customer service was very helpful and polite,positive
+4,Fast delivery and great packaging,positive
+5,Excellent performance and easy to use,positive
+6,"Highly recommended, will buy again",positive
+7,The color and texture are exactly as described,positive
+8,Very comfortable and stylish,positive
+9,Great value for the price,positive
+10,Works better than I expected,positive
+11,The app interface is intuitive and user friendly,positive
+12,Battery life is outstanding,positive
+13,Very satisfied with my purchase,positive
+14,Sound quality is crystal clear,positive
+15,Product arrived earlier than expected,positive
+16,The material feels premium,positive
+17,It fits perfectly and looks great,positive
+18,Installation was quick and easy,positive
+19,Customer support resolved my issue quickly,positive
+20,Exceeded my expectations in every way,positive
+21,The delivery was late and the item was damaged,negative
+22,Poor quality and not worth the price,negative
+23,The product stopped working after one week,negative
+24,Customer service was rude and unhelpful,negative
+25,Item does not match the description,negative
+26,It is very difficult to use,negative
+27,I am very disappointed with this purchase,negative
+28,The sound quality is terrible,negative
+29,Battery drains too quickly,negative
+30,The size is smaller than advertised,negative
+31,It arrived broken and unusable,negative
+32,Too expensive for what it offers,negative
+33,Feels cheap and poorly made,negative
+34,The color is different from the pictures,negative
+35,Not as good as I expected,negative
+36,Instructions were unclear and confusing,negative
+37,Packaging was damaged,negative
+38,The app is slow and keeps crashing,negative
+39,Fit was uncomfortable,negative
+40,I regret buying this product,negative
