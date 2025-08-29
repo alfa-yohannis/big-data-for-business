@@ -1,0 +1,407 @@
+\documentclass[aspectratio=169, table]{beamer}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usetikzlibrary{arrows.meta, positioning, calc}
+
+\usetheme{Pradita}
+
+
+\usepackage{listings}
+\lstdefinestyle{SqlStyle}{
+	language=SQL,
+	basicstyle=\ttfamily\footnotesize,
+	morekeywords={REAL, TEXT, REFERENCES},
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=2,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	string=[s]{'}{'},
+	morestring=[s]{"}{"},
+	%	stringstyle=\color{teal}\ttfamily,
+	%	showstringspaces=false
+}
+
+\lstdefinelanguage{bash} {
+	keywords={},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	ndkeywords={iex},
+	ndkeywordstyle=\color{purple}\bfseries,
+	sensitive=true,
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	breaklines=true,
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	tabsize=2,
+	comment=[l]{\#},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	stringstyle=\color{purple}\ttfamily,
+	showstringspaces=false
+}
+
+% Define Java language style for listings
+\lstdefinestyle{JavaScript}{
+	language=Java,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=4,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	string=[s]{'}{'},
+	morestring=[s]{"}{"},
+	%	stringstyle=\color{teal}\ttfamily,
+	%	showstringspaces=false
+}
+
+\title{\Huge Data Monetization \& \\
+	\vspace{10pt}
+	Value Realization}
+\subtitle{IT140704 - Big Data for Business}
+%\date[Serial]{Penggunaan Large Language Model untuk Pengajaran}
+\author{\textbf{Alfa Yohannis}}
+\begin{document}
+	
+	\frame{\titlepage}
+	
+	
+	\begin{frame}[fragile]
+		\frametitle{Contents}
+		\vspace{20pt}
+		\begin{columns}[t]
+			\column{0.5\textwidth}
+			\tableofcontents[sections={1-5}]
+			
+			\column{0.5\textwidth}
+			\tableofcontents[sections={6-20}]
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Do you know how\\to monetize Big Data?}}
+	\end{frame}
+	
+	\section{Introduction}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Introduction}}
+	\end{frame}
+	
+	\begin{frame}{Introduction}
+		\vspace{20pt}
+		\begin{itemize}
+			\item Exponential growth of data (volume, velocity, variety) makes it a critical strategic asset.  
+			\item Data is non-rival, replicable, and increases in value when combined with other sources.  
+			\item Monetization involves direct revenues (products, services) and indirect value (efficiency, decision-making, customer experience).  
+			\item Organizations treat data as intangible capital, comparable to intellectual property or brand equity.  
+			\item Policymakers stress economic potential but also highlight governance, privacy, and fair distribution challenges.  
+			\item This chapter introduces data monetization within the framework of the Big Data Value Chain.  
+		\end{itemize}
+	\end{frame}
+	
+	\section{Data as an Economic Asset}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Data as an Economic Asset}}
+	\end{frame}
+	
+	\begin{frame}{Data as an Economic Asset (1/2)}
+		\vspace{20pt}
+		\begin{itemize}
+			\item Data is a non-rival, intangible asset: using it does not diminish value, and reuse often increases utility.  
+			\item Key characteristics:  
+			\begin{enumerate}
+				\item Scalability and low marginal replication cost.  
+				\item Context-dependent value—raw data needs processing and analysis.  
+				\item Dynamic value shaped by technology, regulation, and markets.  
+			\end{enumerate}
+			\item Valuation approaches: cost-based, market-based, and revenue-based methods.  
+			\item Firms like Microsoft and Google increasingly treat data as balance sheet assets.  
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Data as an Economic Asset (2/2)}
+		\vspace{20pt}
+		\begin{itemize}
+			\item Raw data has limited intrinsic value—true value emerges through transformation into insights.  
+			\item The DIKW model highlights progression: Data → Information → Knowledge → Wisdom.  
+			\item Advanced analytics, machine learning, and AI extract patterns and predictions from raw data.  
+			\item Culture, governance, and leadership are critical for realizing business impact.  
+			\item Data-driven firms report superior decision-making, innovation speed, and customer experience.  
+			\item Unlocking value requires holistic alignment of technology, governance, and organizational readiness.  
+		\end{itemize}
+	\end{frame}
+	
+	\section{Economic and Business Value of Data}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Economic and Business Value of Data}}
+	\end{frame}
+	
+	\begin{frame}{Direct Value (Revenue Creation)}
+		\vspace{20pt}
+		\begin{itemize}
+			\item Data can be monetized directly via sales, licensing, subscriptions, or embedding into new offerings.  
+			\item Key example: targeted advertising models of Google and Facebook.  
+			\item Financial services use predictive analytics to tailor credit products.  
+			\item Mobility firms (Uber, Grab) leverage geolocation for pricing and platform revenue.  
+			\item Data marketplaces and exchanges enable cross-industry trading.  
+			\item Success depends on data quality, regulatory compliance, and user trust.  
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Indirect Value (Efficiency and Cost Reduction)}
+		\vspace{20pt}
+		\begin{itemize}
+			\item Data enhances operations by embedding analytics into processes.  
+			\item Predictive maintenance reduces downtime in manufacturing and logistics.  
+			\item Supply chain analytics optimize procurement, inventory, and distribution.  
+			\item Healthcare: electronic health records improve diagnostics and care planning.  
+			\item Finance: real-time fraud detection prevents major losses.  
+			\item Indirect value is often more sustainable, fueling continuous operational excellence.  
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Strategic Value (Competitive Advantage)}
+		\vspace{20pt}
+		\begin{itemize}
+			\item Beyond revenue and efficiency, data drives long-term competitive advantage.
+			\item Strategic value lies in unique capabilities: turning data into insights, innovation, and customer-oriented offerings.
+			\item Netflix/Amazon: behavioral data enables personalization, loyalty, and reduced churn.
+			\item IoT in supply chains: enhances responsiveness and reliability.
+			\item Data-driven firms innovate faster, spotting trends and adapting quickly.
+			\item Platforms like Google/Alibaba build network effects, creating barriers to entry.
+			\item Treating data as a strategic capability allows firms to shape industries and capture disproportionate value.
+		\end{itemize}
+	\end{frame}
+	
+	\section{Business Models for Data Monetization}
+	
+	\begin{frame}{\hfill}
+		\centering
+		\Huge{\textbf{Business Models for Data Monetization}}
+	\end{frame}
+	
+	\begin{frame}{Subscription and Licensing Models}
+		\begin{itemize}
+			\item Subscription: recurring fees (monthly/annual) for continuous access to datasets, analytics platforms, or APIs.  
+			\item Licensing: limited rights to use specific datasets or tools for a defined scope or period.  
+			\item Common in finance (Bloomberg, Reuters) where accuracy and credibility drive value.  
+			\item Hybrid SaaS models combine software tools with predictive dashboards or industry benchmarks.  
+			\item Strengths: stable revenue and long-term customer ties.  
+			\item Challenges: pricing strategy, IP protection, and preventing unauthorized redistribution.  
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Advertising and Targeted Marketing}
+		\begin{itemize}
+			\item Leverages behavioral, demographic, and preference data for personalized ads.  
+			\item Platforms like Google, Facebook, TikTok monetize massive user interaction datasets.  
+			\item E-commerce players (Amazon, Shopee) use transaction history for contextual advertising.  
+			\item Key strength: scalability – larger user base means higher ad ecosystem value.  
+			\item Challenges: regulatory limits (GDPR, CCPA), consumer trust, and privacy ethics.  
+			\item Sustainability depends on balancing monetization with transparency and user rights.  
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Data-as-a-Service (DaaS)}
+		\begin{itemize}
+			\item Evolution of SaaS: on-demand access to curated data via cloud APIs or marketplaces.  
+			\item Reduces technical barriers – firms focus on insights, not infrastructure.  
+			\item Providers: AWS Data Exchange, Azure Data Share, Google Cloud Marketplace.  
+			\item Expands data sharing across industries, democratizing access and innovation.  
+			\item Risks: data quality, provenance, privacy compliance, and misuse.  
+			\item Governance and trust are critical to long-term sustainability of DaaS ecosystems.  
+		\end{itemize}
+	\end{frame}
+
+\begin{frame}{Marketplace and Platform Models}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Marketplace: facilitates data exchange across parties via APIs and governance.  
+		\item Examples: AWS Data Exchange, Snowflake Marketplace, Dawex (health, finance, mobility datasets).  
+		\item Platform: multi-sided ecosystems adding analytics, integration, and reputation systems.  
+		\item Value comes from \textbf{network effects}: more participants increase overall utility.  
+		\item Challenges: interoperability standards, strict privacy/ethics, and reducing information asymmetry.  
+		\item With regulation and trust, marketplaces can position data as a \textbf{global tradable commodity}, comparable to energy or finance.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Hybrid and Emerging Models}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Hybrid models combine multiple approaches (e.g., SaaS subscription + external data marketplace).  
+		\item Telecoms: license mobility data to third parties while using the same data for targeted ads.  
+		\item Emerging trends:  
+		\begin{enumerate}
+			\item Data Cooperatives – collective management and fair benefit-sharing.  
+			\item Blockchain/Data Tokenization – secure ownership and transparent trading.  
+			\item AI-as-a-Service with Data Bundling – packaged data + trained AI models.  
+		\end{enumerate}
+		\item Advantages: flexibility, diversified revenue.  
+		\item Challenges: governance, cross-border regulation, transparency, and trust.  
+	\end{itemize}
+\end{frame}
+
+\section{Big Data Value Chain}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Big Data Value Chain}}
+\end{frame}
+
+\begin{frame}{Stages of the Big Data Value Chain}
+	\vspace{15pt}
+	\begin{itemize}
+		\item Concept: raw data moves through stages to create value.  
+		\item Typical stages:  
+		\begin{enumerate}
+			\item Data Acquisition $\rightarrow$ collect from structured/unstructured sources.  
+			\item Data Storage/Integration $\rightarrow$ cloud, lakes, warehouses.  
+			\item Data Processing/Cleansing $\rightarrow$ ETL, error removal, normalization.  
+			\item Data Analytics/Interpretation $\rightarrow$ statistics, ML, AI methods.  
+			\item Visualization/Presentation $\rightarrow$ dashboards, reports, storytelling.  
+			\item Value Creation/Utilization $\rightarrow$ revenue, efficiency, social impact.  
+		\end{enumerate}
+		\item Value emerges through structured transformation, not raw data.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Linking Value Chain to Monetization}
+	\vspace{15pt}
+	\begin{itemize}
+		\item Each stage links to monetization models:  
+		\begin{enumerate}
+			\item Acquisition $\rightarrow$ Data-as-a-Service (APIs, marketplaces).  
+			\item Storage/Integration $\rightarrow$ subscription or licensing.  
+			\item Processing $\rightarrow$ premium “clean data” or ETL tools.  
+			\item Analytics $\rightarrow$ subscription analytics platforms.  
+			\item Visualization $\rightarrow$ premium dashboards, contextual ads.  
+			\item Utilization $\rightarrow$ products/services, recommender systems, ads.  
+		\end{enumerate}
+		\item Full-chain management $\rightarrow$ diverse, sustainable revenue streams.  
+		\item Value chain $\rightarrow$ key enabler for data monetization.  
+	\end{itemize}
+\end{frame}
+
+\section{Value Realization Strategies}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Value Realization Strategies}}
+\end{frame}
+
+\begin{frame}{Internal Optimization and Process Efficiency}
+	\vspace{15pt}
+	\begin{itemize}
+		\item Data used not for sale, but to improve internal operations.  
+		\item \textbf{Operational efficiency} $\rightarrow$ IoT sensors enable predictive maintenance, reducing downtime and costs.  
+		\item \textbf{Process optimization} $\rightarrow$ machine learning supports anomaly detection and “what-if” analysis for better decisions.  
+		\item \textbf{Employee productivity} $\rightarrow$ ERP/CRM data + dashboards allow real-time KPI monitoring and corrective action.  
+		\item \textbf{Quality control} $\rightarrow$ historical data predicts defects, enabling early detection and prescriptive solutions.  
+		\item Value comes from internalization of benefits, boosting competitiveness.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{New Products, Services, and Customer Experience}}
+	\vspace{15pt}
+	\begin{itemize}
+		\item Data drives \textbf{innovation and customer-centric strategies}.  
+		\item \textbf{Data-driven products} $\rightarrow$ connected cars with predictive navigation, real-time monitoring, subscription mobility.  
+		\item \textbf{Smart services \& personalization} $\rightarrow$ e-commerce and banking use recommendations and predictive offers.  
+		\item \textbf{Customer experience} $\rightarrow$ social media analytics track sentiment, improve loyalty and satisfaction.  
+		\item \textbf{Ecosystem services} $\rightarrow$ health apps linking patients, doctors, insurers.  
+		\item Outcome: stronger loyalty, unique value propositions, new revenue streams.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Partnerships, Data Sharing, and Ecosystems}
+	\vspace{15pt}
+	\begin{itemize}
+		\item Value creation often grows through \textbf{collaboration}.  
+		\item \textbf{Strategic partnerships} $\rightarrow$ telcos + city govs use mobility data for traffic planning.  
+		\item \textbf{Data sharing} $\rightarrow$ hospital consortia pool patient data for AI-driven diagnosis.  
+		\item \textbf{Data ecosystems} $\rightarrow$ e-commerce platforms integrate sellers, buyers, logistics, and payments.  
+		\item \textbf{Challenges} $\rightarrow$ privacy, security, fair value distribution demand strong governance.  
+		\item Ecosystem-based value $\rightarrow$ network effects boost innovation and digital growth.  
+	\end{itemize}
+\end{frame}
+
+\section{Monetization at Each Maturity Level (TDWI)}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Monetization at Each Maturity Level (TDWI)}}
+\end{frame}
+
+\begin{frame}{Nascent $\rightarrow$ Early $\rightarrow$ Established}
+	\vspace{12pt}
+	\begin{itemize}
+		\item \textbf{Nascent} $\rightarrow$ Data remains fragmented in silos, used mainly for basic reporting. Value limited to simple internal efficiency, no real monetization.  
+		\item \textbf{Early} $\rightarrow$ Basic analytics infrastructure is built. Monetization limited to cost savings, inventory optimization, simple analytics. Some organizations experiment with sharing aggregated datasets.  
+		\item \textbf{Established} $\rightarrow$ Data becomes integrated across units. Predictive analytics applied in core processes. Monetization expands to dataset licensing, subscription dashboards, internal analytics services.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mature $\rightarrow$ Advanced}
+	\vspace{12pt}
+	\begin{itemize}
+		\item \textbf{Mature} $\rightarrow$ Data-driven culture established, AI/ML usage widespread. Monetization more diverse: DaaS, data marketplaces, analytics subscriptions, data-driven advertising.  
+		\item \textbf{Advanced} $\rightarrow$ Data becomes the core of the business model. Strong governance and controlled digital ecosystems. Monetization fully diversified: global licensing, cross-industry marketplaces, hybrid models (AI-as-a-Service + data bundling).  
+		\item At this stage, data is a strategic capability that is hard to replicate, serving as a primary source of competitive advantage.  
+	\end{itemize}
+\end{frame}
+
+
+\section{Conclusion}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Conclusion}}
+\end{frame}
+
+\begin{frame}{Conclusion}
+	\vspace{12pt}
+	\begin{itemize}
+		\item Data has transformed into a strategic asset driving business growth, efficiency, and innovation.  
+		\item Value realized directly (products/services), indirectly (efficiency gains), and strategically (sustainable competitive advantage).  
+		\item The \textit{Big Data Value Chain} shows value is built through systematic stages from acquisition to utilization.  
+		\item Monetization models (subscription, advertising, DaaS, marketplace, hybrid) offer diverse opportunities, but sustainability depends on governance, trust, and ethics.  
+		\item Organizations that treat data as a core capability are better positioned to lead in digital ecosystems.  
+	\end{itemize}
+\end{frame}
+
+
+\end{document}

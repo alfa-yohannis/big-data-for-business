@@ -1,0 +1,718 @@
+\documentclass[aspectratio=169, table]{beamer}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\usetikzlibrary{arrows.meta, positioning, calc}
+
+\usetheme{Pradita}
+
+
+\usepackage{listings}
+\lstdefinestyle{SqlStyle}{
+language=SQL,
+basicstyle=\ttfamily\footnotesize,
+morekeywords={REAL, TEXT, REFERENCES},
+keywordstyle=\color{blue},
+commentstyle=\color{gray},
+stringstyle=\color{red},
+breaklines=true,
+showstringspaces=false,
+tabsize=2,
+captionpos=b,
+numbers=left,
+numberstyle=\tiny\color{gray},
+frame=lines,
+backgroundcolor=\color{lightgray!10},
+comment=[l]{//},
+morecomment=[s]{/*}{*/},
+commentstyle=\color{gray}\ttfamily,
+string=[s]{'}{'},
+morestring=[s]{"}{"},
+%	stringstyle=\color{teal}\ttfamily,
+%	showstringspaces=false
+}
+
+\lstdefinelanguage{bash} {
+keywords={},
+basicstyle=\ttfamily\small,
+keywordstyle=\color{blue}\bfseries,
+ndkeywords={iex},
+ndkeywordstyle=\color{purple}\bfseries,
+sensitive=true,
+commentstyle=\color{gray},
+stringstyle=\color{red},
+numbers=left,
+numberstyle=\tiny\color{gray},
+breaklines=true,
+frame=lines,
+backgroundcolor=\color{lightgray!10},
+tabsize=2,
+comment=[l]{\#},
+morecomment=[s]{/*}{*/},
+commentstyle=\color{gray}\ttfamily,
+stringstyle=\color{purple}\ttfamily,
+showstringspaces=false
+}
+
+% Define Java language style for listings
+\lstdefinestyle{JavaScript}{
+	language=Java,
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=4,
+	captionpos=b,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=lines,
+	backgroundcolor=\color{lightgray!10},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{gray}\ttfamily,
+	string=[s]{'}{'},
+	morestring=[s]{"}{"},
+	%	stringstyle=\color{teal}\ttfamily,
+	%	showstringspaces=false
+}
+
+\title{\Huge Legal and Ethical\\
+\vspace{10pt}
+Issues in Big Data}
+\subtitle{IT140704 - Big Data for Business}
+%\date[Serial]{Penggunaan Large Language Model untuk Pengajaran}
+\author{\textbf{Alfa Yohannis}}
+\begin{document}
+
+\frame{\titlepage}
+
+
+\begin{frame}[fragile]
+	\frametitle{Contents}
+	\vspace{20pt}
+	\begin{columns}[t]
+		\column{0.5\textwidth}
+		\tableofcontents[sections={1-5}]
+		
+		\column{0.5\textwidth}
+		\tableofcontents[sections={6-20}]
+	\end{columns}
+\end{frame}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Is Big Data free from ethical and legal issues?}}
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Introduction}}
+\end{frame}
+
+\begin{frame}{Context in Digital Transformation}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Data grows exponentially in volume, velocity, and variety.  
+		\item Sources include smartphones, social media, IoT sensors, and online transactions.  
+		\item Recent studies estimate most of the world’s data was created within only the past two years.  
+		\item Organizations increasingly treat data as a core intangible asset, similar to intellectual property.  
+		\item Benefits include efficiency, faster innovation, and new business models.  
+		\item Risks also arise: privacy violations, cybersecurity issues, biased algorithms, and unequal sharing of value.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Urgency of Legal and Ethical Perspectives}
+	\vspace{20pt}
+	\begin{enumerate}
+		\item \textbf{Legal:} Ensures data use complies with regulations, protects individual rights, and defines accountability mechanisms.  
+		\item \textbf{Ethical:} Goes beyond law by stressing fairness, respect for privacy, transparency, and responsibility.  
+		\item A practice may be legal yet still unethical, such as manipulative use of personal data.  
+		\item Ignoring ethics reduces public trust, invites resistance, and increases regulatory pressure.  
+		\item Together, law and ethics provide a foundation for sustainable, responsible, and trusted use of big data in society.  
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Stakeholders and Responsibilities}
+	\vspace{20pt}
+	\begin{itemize}
+		\item \textbf{Government:} Designs regulations, enforces law, and uses data for public services.  
+		\item \textbf{Companies and Organizations:} Collect and process data; responsible for security, quality, and ethical use.  
+		\item \textbf{Individuals:} Own personal information; demand privacy, control, and digital literacy.  
+		\item \textbf{Civil Society, Academia, and Media:} Monitor practices, raise awareness, and advocate inclusive governance.  
+		\item \textbf{International Bodies:} Provide standards, principles, and guidelines for harmonization across borders.  
+		\item Clear division of roles enables collaboration to manage the complexity of legal and ethical issues in big data.  
+	\end{itemize}
+\end{frame}
+
+\section{Legal Frameworks in Indonesia}
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Legal Frameworks in Indonesia}}
+\end{frame}
+
+\begin{frame}{Personal Data Protection Act (UU PDP, 2022)}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Landmark law on rights of data subjects and obligations of controllers/processors.  
+		\item Principles: lawful consent, specific purposes, limited use, and respect for individual rights.  
+		\item Grants rights to access, correct, delete, and object to processing.  
+		\item Establishes supervisory authority for enforcement and dispute resolution.  
+		\item Sanctions: administrative fines, suspension, and criminal penalties for serious misuse.  
+		\item Aligns Indonesia with global standards such as GDPR, but challenges remain in implementation and infrastructure readiness.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{Electronic Information and Transactions Law (UU ITE)}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Precursor to PDP, regulating digital activity since 2008 (with later revisions).  
+		\item Covers legitimacy of electronic contracts, signatures, and records.  
+		\item Obligates electronic system providers (PSE) to protect data confidentiality, integrity, and availability.  
+		\item Provides sanctions for data misuse and cybercrimes.  
+		\item Criticized for ambiguous provisions (e.g., defamation, hate speech).  
+		\item Still relevant today, especially for cybersecurity and digital transaction integrity, complementing PDP.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Public Information Disclosure Act (UU KIP)}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Guarantees citizens the right to access public information.  
+		\item Promotes transparency, accountability, and public participation.  
+		\item Useful for research, innovation, and public services in the era of big data.  
+		\item Limits: excludes state security, personal privacy, or trade secrets.  
+		\item Creates a legal-ethical tension between openness and protection of privacy.  
+		\item Demands proper classification and governance mechanisms by public bodies.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sectoral Regulations}
+	\vspace{20pt}
+	\begin{enumerate}
+		\item \textbf{Health:} Medical data and records classified as sensitive; strict confidentiality and sanctions for violations.  
+		\item \textbf{Finance:} OJK and Bank Indonesia mandate secrecy of customer data, cybersecurity, and fintech compliance.  
+		\item \textbf{Telecom:} Operators must protect user information; regulates lawful interception and surveillance debates.  
+	\end{enumerate}
+	\begin{itemize}
+		\item Sectoral laws reflect global practice: sensitive sectors (health, finance) require higher compliance.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Intellectual Property Rights on Data}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Raw factual data not copyrightable; but database structure or compilation may qualify as original work.  
+		\item Copyright Law (2014) protects originality; Trade Secret Law (2000) covers commercial confidential data.  
+		\item Database rights are clearer in EU; less defined in Indonesia.  
+		\item Relevant for companies relying on proprietary datasets (e.g., customer bases, algorithms).  
+		\item Raises open questions on ownership, joint data rights, and third-party use.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Law Enforcement, Sanctions, and Compliance}
+	\vspace{20pt}
+	\begin{itemize}
+		\item \textbf{Sanctions:}  
+		\begin{itemize}
+			\item Administrative: warnings, suspension, data deletion, fines.  
+			\item Criminal: illegal collection or distribution, hacking, interception.  
+		\end{itemize}
+		\item \textbf{Challenges:} limited supervisory capacity, complex tech landscape, weak coordination across agencies (Kominfo, OJK, BI, law enforcement).  
+		\item \textbf{Compliance:} requires privacy by design, audits, and breach reporting.  
+		\item \textbf{Soft law:} adoption of ISO/IEC 27001 and international standards as proof of compliance.  
+		\item Effective governance needs strong legal sanctions, independent oversight, and incentives for responsible data practices.  
+	\end{itemize}
+\end{frame}
+
+\section{Ethical Principles in Big Data}
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Ethical Principles in Big Data}}
+\end{frame}
+
+\begin{frame}{Privacy and Individual Autonomy}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Privacy is the right to control personal data: collection, use, storage, and sharing.  
+		\item In Big Data, privacy is threatened by scale, speed, and diversity of data sources.  
+		\item Implicit data exhaust (search history, GPS, metadata) enables profiling and behavioral prediction.  
+		\item Risks: erosion of autonomy, manipulation, discrimination (e.g., political microtargeting).  
+		\item Safeguards: informed consent, transparency, user control, and privacy by design/default.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fairness, Non-Discrimination, Inclusion}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Ethical use of data must avoid reinforcing social bias or inequality.  
+		\item Examples: recruitment systems favoring men, credit scoring excluding certain groups.  
+		\item Fairness requires equal treatment and proactive bias detection.  
+		\item Inclusion: ensure all groups access digital benefits, not just the privileged.  
+		\item Digital divides in access, literacy, and capacity risk deepening inequality.  
+		\item Governance must distribute benefits broadly, not only for efficiency or profit.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Transparency, Accountability, Responsibility}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Transparency: openness on data collection, processing, and algorithmic logic.  
+		\item Without transparency, information asymmetry between users and organizations grows.  
+		\item Accountability: governments, firms, and providers must answer for data impacts.  
+		\item Tools: audits, external reviews, user complaint mechanisms.  
+		\item Responsibility: correct mistakes, compensate harm, and prevent future misuse.  
+		\item Builds trust, enabling long-term, responsible data-driven innovation.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Beneficence and Non-Maleficence}
+	\vspace{20pt}
+	\begin{itemize}
+		\item \textbf{Beneficence:} data practices should deliver real benefits for individuals, organizations, and society.  
+		\item \textbf{Non-Maleficence:} avoid harm, whether direct (privacy breaches) or indirect (bias, manipulation).  
+		\item Benefits: predictive healthcare, real-time energy efficiency, personalized recommendations.  
+		\item Risks: privacy loss, algorithmic discrimination, exploitative microtargeting.  
+		\item Proportional benefit–risk analysis is essential.  
+		\item Tool: \textit{data impact assessments} covering legal, ethical, and social implications.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Human Dignity and Rights}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Every individual has intrinsic value beyond data points.  
+		\item Big Data use must align with human rights: privacy, equality, self-determination.  
+		\item Risks: invasive surveillance, unfair algorithmic classification in jobs, law, or credit.  
+		\item Violations reduce people to scores, creating stigma and inequality.  
+		\item Safeguards: \textit{human-centric AI} and \textit{ethics by design}.  
+		\item Protecting dignity builds legitimacy and prevents exploitative practices.  
+	\end{itemize}
+\end{frame}
+
+\section{Ethics in the Data Lifecycle}
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Ethics in the Data Lifecycle}}
+\end{frame}
+
+\begin{frame}{Data Collection and Informed Consent}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Collection is a critical stage; requires \textit{informed consent}.  
+		\item Consent must be voluntary, clear, and based on sufficient information.  
+		\item Challenges: long legal texts, “consent fatigue,” and hidden secondary uses.  
+		\item Modern approaches:  
+		\begin{itemize}
+			\item Layered consent – clear summaries with details available.  
+			\item Dynamic consent – users manage/adjust choices continuously.  
+			\item Just-in-time consent – requested at actual data use.  
+		\end{itemize}
+		\item Ethical goal: protect autonomy, build trust, prevent exploitation.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Data Quality and Representativeness}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Poor-quality data → misleading insights, unfair decisions.  
+		\item Ethical issue: errors may cause discrimination or harm vulnerable groups.  
+		\item Representativeness: datasets often skewed to advantaged populations.  
+		\item Example: facial recognition less accurate for darker skin due to biased training sets.  
+		\item Obligations: data audits, documentation standards, demographic checks.  
+		\item Goal: valid analysis and fair outcomes, preventing systemic bias.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Secondary Use and Data Sharing}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Data often reused for secondary purposes or shared with third parties.  
+		\item Examples: health data for research, transaction data for targeted ads.  
+		\item Ethical risks: consent violation, information asymmetry, exploitation.  
+		\item Sharing increases risks of leakage, re-identification, or misuse.  
+		\item Benefits: research, public health, social innovation.  
+		\item Safeguards: data sharing agreements, anonymization standards, and minimization principles.  
+		\item Balance needed: collective benefit vs. individual rights.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{Anonymization, Pseudonymization, Re-Identification}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Anonymization removes identifiers; pseudonymization replaces them with codes.  
+		\item Goal: protect privacy while preserving research and innovation value.  
+		\item Risk: re-identification possible with auxiliary datasets.  
+		\item Example: 87\% of US population identifiable by zip, gender, birthdate.  
+		\item Challenges grow with advanced analytics and more datasets.  
+		\item Solutions: differential privacy, regular risk assessments, clear disclosure of limits.  
+		\item Not a final fix—part of a multi-layer privacy approach.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Data Deletion and Right to be Forgotten}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Individuals may request deletion when data is irrelevant, misused, or unlawful.  
+		\item Protects dignity and autonomy against “permanent digital traces.”  
+		\item Risks: reputational harm from outdated or minor records online.  
+		\item Tension: personal rights vs. public interest (free expression, history, security).  
+		\item Governance: retention policies, permanent deletion mechanisms, verification across backups.  
+		\item Balancing test ensures fair handling of requests.  
+		\item Principle reinforces sovereignty over data across the full lifecycle.  
+	\end{itemize}
+\end{frame}
+
+\section{Algorithms, AI, and Emerging Issues}
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Algorithms, AI, and Emerging Issues}}
+\end{frame}
+
+\begin{frame}{Algorithmic Bias and Discrimination}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Bias arises from skewed training data, poor model design, or hidden assumptions.  
+		\item Examples: recruitment systems excluding women, predictive policing targeting minorities, unfair credit scoring.  
+		\item Ethical concern: violates fairness and human rights, reinforcing inequality.  
+		\item Challenges: opaque “black box” decisions limit accountability.  
+		\item Responses: diverse training data, independent audits, fairness-aware ML, and multidisciplinary oversight.  
+		\item Goal: prevent AI from deepening injustice, ensure technology serves the common good.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Explainability}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Explainability = ability to interpret how algorithms make decisions.  
+		\item Issue: deep learning is powerful but often opaque (“black box”).  
+		\item Ethical risk: individuals deserve to know why credit, jobs, or healthcare decisions affect them.  
+		\item Regulation: GDPR’s “right to explanation.”  
+		\item Technical tools: interpretable models, visualization (SHAP, LIME), hybrid approaches.  
+		\item Value: improves fairness, accountability, and public trust in AI-driven decisions.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Human Oversight and Accountability}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Human oversight ensures people remain in control of AI’s critical decisions.  
+		\item Models: \textit{human-in-the-loop}, \textit{on-the-loop}, and \textit{in-command}.  
+		\item Accountability: no “blame the algorithm.” Designers, operators, and users share responsibility.  
+		\item Mechanisms: audits, decision documentation, clear roles across the AI value chain.  
+		\item Ethically: AI must remain a tool serving humans, aligned with legal and moral norms.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Social Risks of Automation}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Automation boosts efficiency but threatens jobs in manufacturing, logistics, and services.  
+		\item Risk of deepening inequality: AI-based credit or recruitment can reinforce discrimination.  
+		\item Dehumanization: reliance on chatbots and robots may erode human trust and cohesion.  
+		\item Ethical response: policies to protect workers, prevent bias, and preserve human dignity.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{Case of Indonesia: Fintech, E-Government, Smart City}}
+	\vspace{20pt}
+	\begin{enumerate}
+		\item \textbf{Fintech:} Expands credit access via digital data, but raises privacy and abuse concerns.  
+		\item \textbf{E-Government:} Improves efficiency and transparency, yet plagued by data leaks and weak accountability.  
+		\item \textbf{Smart City:} Uses sensors and CCTV to improve services, but risks mass surveillance and misuse.  
+	\end{enumerate}
+	\textit{Lesson:} Digital transformation brings benefits but requires strong ethics, governance, and regulation.  
+\end{frame}
+
+\section{Data Governance and Compliance}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Data Governance and Compliance}}
+\end{frame}
+
+\begin{frame}{\LARGE{Data Governance in Indonesia: Satu Data Indonesia}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Satu Data Indonesia (SDI), launched by Presidential Regulation No. 39/2019.  
+		\item Goals: accurate, updated, integrated, and accountable data.  
+		\item Reduces fragmentation across ministries/agencies, enabling better policy and public services.  
+		\item Ethical challenge: ensure privacy while improving interoperability.  
+		\item Strengthens government role as data steward.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Global Standards: GDPR and OECD}
+	\vspace{20pt}
+	\begin{itemize}
+		\item \textbf{GDPR:} fairness, transparency, purpose limitation, minimization, accountability.  
+		\item Applies extraterritorially to Indonesian firms handling EU data.  
+		\item \textbf{OECD:} privacy and data governance guidelines balancing rights and innovation.  
+		\item Harmonization builds trust, attracts investment, and supports cross-border digital trade.  
+		\item Aligning with global standards strengthens both compliance and ethics.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{Audit, Impact Assessment, and Risk Management}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item \textbf{Audits:} evaluate compliance with laws, standards, and ethics.  
+		\item Cover technical (security), procedural (policies), and social (impact on vulnerable groups).  
+		\item \textbf{DPIA (Data Protection Impact Assessment):} anticipates risks to privacy and rights before projects.  
+		\item Mandated by GDPR and reinforced by Indonesia’s PDP Law.  
+		\item \textbf{Risk management:} identify, evaluate, and mitigate threats like leaks or misuse.  
+		\item Ethically: shows responsibility to protect individuals and sustain trust.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Roles of OJK, Kominfo, and Other Regulators}
+	\vspace{20pt}
+	\begin{itemize}
+		\item \textbf{OJK:} safeguards data in finance/fintech, ensures fairness in credit scoring, handles misuse.  
+		\item \textbf{Kominfo:} enforces PDP and ITE laws, registers PSEs, manages breach reporting, issues sanctions.  
+		\item \textbf{BSSN:} strengthens cybersecurity to protect national data assets.  
+		\item Future need: independent Data Protection Authority for stronger accountability.  
+		\item Collaboration among agencies ensures innovation while maintaining compliance and ethics.  
+	\end{itemize}
+\end{frame}
+
+\section{Data Commercialization and Inequality}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Data Commercialization and Inequality}}
+\end{frame}
+
+\begin{frame}{\LARGE{Data Monetization in Indonesia’s Digital Economy}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Data is a strategic commodity for e-commerce, fintech, and digital platforms.  
+		\item Behavioral data enables recommendations, dynamic pricing, and service efficiency.  
+		\item Fintech uses transaction and alternative data for credit scoring.  
+		\item Benefits: wider financial inclusion and innovation.  
+		\item Risks: privacy loss, lack of transparency, and concentration of power.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{Information Asymmetry Between Firms and Users}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Companies hold extensive user data, while users know little about usage.  
+		\item Lengthy, complex \textit{terms of service} undermine informed consent.  
+		\item Data often reused or shared without awareness.  
+		\item Risks: manipulation, discrimination, weakened autonomy.  
+		\item Solutions: transparency, clear consent models, and digital literacy.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Role of Platforms and Data Brokers}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Platforms (e-commerce, social media, OTT) act as gatekeepers of massive user data.  
+		\item Control interactions and information flow, shaping how data is monetized.  
+		\item Data brokers aggregate, combine, and sell datasets—often without user awareness.  
+		\item Ethical issues: concentration of power, lack of transparency, and unfair value distribution.  
+		\item Governance needed to ensure accountability, openness, and user rights.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Consumer Protection and Public Trust}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Consumer rights: privacy, awareness of data use, and opt-out options.  
+		\item Trust depends on ethical and legal compliance by companies.  
+		\item Data breaches damage institutional reputation and public confidence.  
+		\item Users must be treated as active stakeholders, not passive data objects.  
+		\item Strong protection builds legitimacy, avoids resistance, and sustains digital economy.  
+	\end{itemize}
+\end{frame}
+
+\section{Social Implications}
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Social Implications}}
+\end{frame}
+
+\begin{frame}{Privacy, Civil Liberties, and Digital Democracy}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Big data challenges privacy when personal data is collected without clear consent.  
+		\item Mass surveillance by governments or corporations restricts freedom of expression.  
+		\item “Chilling effect”: people self-censor online for fear of monitoring.  
+		\item Democracy risks decline when voters are micro-targeted with manipulative messages.  
+		\item Protecting privacy and civil liberties is key to sustaining inclusive digital democracy.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Hoaxes, Manipulation, and Disinformation}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Social media spreads misinformation faster than corrections.  
+		\item Hoaxes and disinformation divide communities and undermine trust.  
+		\item Political actors exploit big data to manipulate public opinion (e.g., micro-targeting).  
+		\item False information on health (e.g., vaccines) weakens national resilience.  
+		\item Countermeasures: detection tools, regulatory enforcement, and strong media literacy.  
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Digital Inclusion and Access Gaps}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Big data highlights the \textbf{digital divide}: unequal access to devices, networks, and skills.  
+		\item Marginalized groups risk becoming data sources without benefiting from digital services.  
+		\item Inequality grows as digitally empowered groups advance faster socially and economically.  
+		\item Ethical inclusion means ensuring all citizens can access, use, and benefit from data-driven innovation.  
+		\item Solutions: expand broadband and 5G, improve digital literacy, and provide affordable services.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\LARGE{Environmental Impact of Big Data Infrastructure}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Data centers consume ~1\% of global electricity, raising sustainability concerns.  
+		\item Impacts include carbon emissions, water usage for cooling, and e-waste from hardware.  
+		\item Large AI models can generate emissions equal to thousands of tons of CO\textsubscript{2}.  
+		\item Ethical responsibility: minimize digital carbon footprints through energy efficiency and renewables.  
+		\item Green computing principles and awareness of ecological costs are vital for sustainable digital futures.  
+	\end{itemize}
+\end{frame}
+
+\section{Case Studies in Indonesia}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Case Studies in Indonesia}}
+\end{frame}
+
+\begin{frame}{e-KTP and Digital Identity Governance}
+	\vspace{20pt}
+	\begin{itemize}
+		\item e-KTP is Indonesia’s largest digital identity project, centralizing biometric data for public services.  
+		\item Benefits: supports accurate administration and cross-sector data integration.  
+		\item Challenges: data breaches raise risks of identity theft and misuse.  
+		\item Ethical concerns: concentration of power, lack of transparency, and weak security.  
+		\item Governance needs: independent audits, strong safeguards, individual rights to privacy and redress.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fintech and Digital Financial Services}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Fintech growth: P2P lending, e-wallets, digital banks using transactional and alternative data.  
+		\item Benefits: expands access to credit for unbanked groups, driving inclusion.  
+		\item Risks: misuse of personal data by illegal fintechs, discriminatory credit scoring.  
+		\item OJK regulation: licensing, consumer protection, data use limits, dispute resolution.  
+		\item Ethical balance: innovation must align with regulation and privacy protection.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Health Data and Telemedicine}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Telemedicine platforms (Halodoc, Alodokter, SehatQ) use patient data for online consultations, prescriptions, and pharmacy integration.  
+		\item Benefits: expands healthcare access in remote areas, supports public health analytics (disease trends, vaccination, early detection).  
+		\item Risks: health data is highly sensitive—breaches can lead to stigma, discrimination, or insurance denial.  
+		\item Law: PDP Law (2022) requires explicit consent and strong security.  
+		\item Challenge: weak compliance, low patient literacy, and limited audits. Balance between innovation and privacy is crucial.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Smart Cities and Digital Mobility}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Smart Cities (Jakarta, Bandung, Surabaya, Makassar) use data from sensors, CCTV, and apps for traffic, energy, and safety.  
+		\item Digital mobility integrates ride-hailing (Gojek, Grab) with public transport into Mobility-as-a-Service (MaaS).  
+		\item Benefits: more efficient, sustainable, and user-friendly urban transport.  
+		\item Risks: surveillance (facial recognition, tracking) and exclusion of low-literacy groups.  
+		\item Ethically: Smart Cities must be inclusive, transparent, and accountable, ensuring data serves public good, not commercial or political misuse.  
+	\end{itemize}
+\end{frame}
+
+
+\section{Future Directions}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Future Directions}}
+\end{frame}
+
+\begin{frame}{\Large{Implementation of PDP Law and Enforcement Challenges}}
+	\vspace{20pt}
+	\begin{itemize}
+		\item PDP Law (2022) affirms rights: consent, access, correction, deletion, and breach notification.  
+		\item Challenges:  
+		\begin{enumerate}
+			\item Limited institutional capacity, no independent Data Protection Authority yet.  
+			\item Low awareness in SMEs and startups.  
+			\item Weak enforcement—limited audits, low deterrence, cross-border issues.  
+		\end{enumerate}
+		\item Future success depends on stronger oversight institutions, enforcement capacity, and massive outreach to ensure a safe, fair, and ethical digital ecosystem.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Regional Collaboration (ASEAN Data Protection Framework)}
+	\vspace{20pt}
+	\begin{itemize}
+		\item ASEAN develops regional standards: Data Protection Framework and Cross-Border Flow Mechanism.  
+		\item Opportunities: harmonized regulations, investor trust, stronger digital integration.  
+		\item Challenges: aligning PDP Law with ASEAN standards (adequacy, certification, dispute resolution).  
+		\item Ethically: builds regional trust, consumer protection, and inclusive growth.  
+		\item Indonesia’s future lies in balancing strong domestic governance and active ASEAN collaboration.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Ethics in AI and Big Data Innovation in Indonesia}
+	\vspace{20pt}
+	\begin{itemize}
+		\item AI increasingly acts as an autonomous decision-maker in finance, health, and public services.  
+		\item Ethical challenges: bias, privacy violations, lack of explainability, and risks of data commercialization.  
+		\item Indonesia still lacks a specific national AI ethics framework; literacy gaps persist among developers, regulators, and citizens.  
+		\item A \textbf{responsible AI} approach is needed—fairness, transparency, accountability, and sustainability.  
+		\item Collaboration across government, academia, industry, and civil society is essential to align AI innovation with social and human rights values.  
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Research and Policy Agenda}
+	\vspace{20pt}
+	\begin{enumerate}
+		\item \textbf{Technical research}: bias detection, explainable algorithms, energy-efficient AI.  
+		\item \textbf{Social research}: impacts on privacy, democracy, digital divide, and trust.  
+		\item \textbf{Policy research}: adaptive regulation aligned with local and global contexts.  
+	\end{enumerate}
+	\begin{itemize}
+		\item Policy priorities: independent data authority, ASEAN \& GDPR harmonization, investment in digital literacy.  
+		\item Build an inclusive innovation ecosystem balancing growth, ethics, and sustainability.  
+		\item Future depends on integrating \textbf{innovation, regulation, and ethics} to ensure AI strengthens democracy and social justice.  
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{\hfill}
+	\centering
+	\Huge{\textbf{Conclusion}}
+\end{frame}
+
+\begin{frame}{Conclusion}
+	\vspace{20pt}
+	\begin{itemize}
+		\item Big data and AI bring vast opportunities for economic growth, organizational efficiency, and improved public services.  
+		\item Risks remain: privacy violations, algorithmic bias, social inequality, and environmental impacts.  
+		\item Strong governance, legal compliance, and ethical principles are essential for fair and sustainable digital transformation.  
+		\item Indonesia’s success depends on effective domestic regulation, regional/global collaboration, inclusive innovation ecosystems, and stronger digital literacy.  
+		\item Balancing innovation, ethics, and compliance can position Indonesia as a regional leader in responsible data governance.  
+	\end{itemize}
+\end{frame}
+
+
+
+\end{document}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
